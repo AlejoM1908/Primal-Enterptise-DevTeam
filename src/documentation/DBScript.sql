@@ -224,6 +224,184 @@ CREATE TABLE IF NOT EXISTS `project`.`USUARIO` (
   `DIRECCION_CASA` VARCHAR(255) NULL DEFAULT NULL,
   `NOMBRE_USUARIO` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`USUARIO`));
+  
+  
+-- -----------------------------------------------------
+-- View getUsers
+-- -----------------------------------------------------
+DROP VIEW IF EXISTS getUsers;
+
+CREATE VIEW getUsers AS SELECT 
+	USUARIO AS id,
+    RANGO AS rango,
+    NOMBRE_USUARIO AS nombre,
+	CEDULA AS cedula, 
+    NUMERO_CEL AS celular,
+    EMAIL_USUARIO AS usuario,
+    DIRECCION_CASA AS direccion
+FROM usuario;
+  
+  
+-- -----------------------------------------------------
+-- Stored Procedure 'userList' for filtering by paramether
+-- -----------------------------------------------------
+DROP PROCEDURE IF EXISTS userList;
+DELIMITER |
+
+CREATE PROCEDURE userList(
+	IN paramether VARCHAR(45),
+    IN search VARCHAR(100)
+)
+BEGIN
+	SELECT * FROM getUsers WHERE CASE paramether
+		WHEN 'cedula' THEN
+			cedula = search
+		WHEN 'celular' THEN
+			celular = search
+		WHEN 'email' THEN
+			email = search
+		WHEN 'dirección' THEN
+			direccion = search
+		WHEN 'nombre' THEN
+			nombre = search
+		ELSE
+			id IS NOT NULL
+		END;
+END|
+DELIMITER ;
+
+
+-- -----------------------------------------------------
+-- View getProducts
+-- -----------------------------------------------------
+DROP VIEW IF EXISTS getProducts;
+
+CREATE VIEW getProducts AS SELECT
+	ID AS id,
+    NOMBRE_PRODUCTO AS nombre,
+    MARCA_PRODUCTO AS marca,
+    TIPO_DE_PRODUCTO AS tipo,
+    CANTIDAD AS cantidad,
+    LUGAR_ALMACENAMIENTO AS ubicacion,
+    NIT AS nit,
+    DESCRIPCION_PRODUCTO AS descripcion
+FROM producto;    
+
+
+-- -----------------------------------------------------
+-- Stored Procedure 'productList' for filtering by paramether
+-- -----------------------------------------------------
+DROP PROCEDURE IF EXISTS productList;
+DELIMITER |
+
+CREATE PROCEDURE productList(
+	IN paramether VARCHAR(45),
+    IN search VARCHAR(100)
+)
+BEGIN
+	SELECT * FROM getProducts WHERE CASE paramether
+		WHEN 'nombre' THEN
+			nombre = search
+		WHEN 'marca' THEN
+			marca = search
+		WHEN 'tipo' THEN
+			tipo = search
+		WHEN 'cantidad' THEN
+			cantidad = search
+		WHEN 'ubicacion' THEN
+			ubicacion = search
+		WHEN 'nit' THEN
+			nit = search
+		ELSE
+			id IS NOT NULL
+		END;
+END|
+DELIMITER ;
+
+
+-- -----------------------------------------------------
+-- View getProviders
+-- -----------------------------------------------------
+DROP VIEW IF EXISTS getProviders;
+
+CREATE VIEW getProviders AS SELECT
+	NIT AS nit,
+    NOMBRE_PROVEEDOR AS nombre,
+    EMAIL_PROVEEDOR AS email,
+    DIRECCION_TIENDA AS direccion,
+    TELEFONO AS telefono
+FROM proveedor;    
+
+
+-- -----------------------------------------------------
+-- Stored Procedure 'providerList' for filtering by paramether
+-- -----------------------------------------------------
+DROP PROCEDURE IF EXISTS providerList;
+DELIMITER |
+
+CREATE PROCEDURE providerList(
+	IN paramether VARCHAR(45),
+    IN search VARCHAR(100)
+)
+BEGIN
+	SELECT * FROM getProviders WHERE CASE paramether
+		WHEN 'nombre' THEN
+			nombre = search
+		WHEN 'email' THEN
+			email = search
+		WHEN 'direccion' THEN
+			direccion = search
+		WHEN 'telefono' THEN
+			telefono = search
+		WHEN 'nit' THEN
+			nit = search
+		ELSE
+			nit IS NOT NULL
+		END;
+END|
+DELIMITER ;
+
+
+-- -----------------------------------------------------
+-- View getActives
+-- -----------------------------------------------------
+DROP VIEW IF EXISTS getActives;
+
+CREATE VIEW getActives AS SELECT
+	ID_ACTIVO AS id,
+    NOMBRE_ACTIVO AS nombre,
+    ESTADO_ACTIVO AS estado,
+    NIT AS nit,
+    ID_FACTURA AS factura,
+    DESCRIPCION_ACTIVO AS descripcion
+FROM activo;    
+
+
+-- -----------------------------------------------------
+-- Stored Procedure 'activesList' for filtering by paramether
+-- -----------------------------------------------------
+DROP PROCEDURE IF EXISTS activesList;
+DELIMITER |
+
+CREATE PROCEDURE activesList(
+	IN paramether VARCHAR(45),
+    IN search VARCHAR(100)
+)
+BEGIN
+	SELECT * FROM getActives WHERE CASE paramether
+		WHEN 'nombre' THEN
+			nombre = search
+		WHEN 'estado' THEN
+			estado = search
+		WHEN 'nit' THEN
+			nit = search
+		WHEN 'factura' THEN
+			factura = search
+		ELSE
+			id IS NOT NULL
+		END;
+END|
+DELIMITER ;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

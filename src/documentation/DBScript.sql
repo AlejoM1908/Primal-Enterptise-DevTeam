@@ -232,12 +232,12 @@ CREATE TABLE IF NOT EXISTS `PrimalEnterpriceDB`.`USUARIO` (
 DROP VIEW IF EXISTS getUsers;
 
 CREATE VIEW getUsers AS SELECT 
-	USUARIO AS id,
+	USUARIO AS usuario,
     RANGO AS rango,
     NOMBRE_USUARIO AS nombre,
 	CEDULA AS cedula, 
     NUMERO_CEL AS celular,
-    EMAIL_USUARIO AS usuario,
+    EMAIL_USUARIO AS email,
     DIRECCION_CASA AS direccion
 FROM usuario;
   
@@ -265,7 +265,7 @@ BEGIN
 		WHEN 'nombre' THEN
 			nombre = search
 		ELSE
-			id IS NOT NULL
+			usuario IS NOT NULL
 		END;
 END|
 DELIMITER ;
@@ -309,7 +309,7 @@ BEGIN
 		WHEN 'cantidad' THEN
 			cantidad = search
 		WHEN 'ubicacion' THEN
-			ubicacion = search
+			ubicacion <= search
 		WHEN 'nit' THEN
 			nit = search
 		ELSE

@@ -2,7 +2,9 @@ package lib.app;
 
 //JDBC imports
 import java.sql.Connection;
+import java.sql.Statement;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class DBConnection{
@@ -14,9 +16,14 @@ public class DBConnection{
         "JDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 
     private Connection conn = null;
+    private Statement stat = null;
 
-    //DB connection definition
-    public DBConnection(){
+    //DB Connection getter
+    public void getConnection(){
+        if (conn != null){
+            System.out.println("La conexión ya ha sido establecida");
+        }
+
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
 
@@ -25,6 +32,7 @@ public class DBConnection{
 
             if (conn != null){
                 System.out.println("Conexión exitosa con la DB: " + DBName);
+                stat = conn.createStatement();
             }
         }
         catch(ClassNotFoundException e){
@@ -35,9 +43,21 @@ public class DBConnection{
         }
     }
 
-    //DB Connection getter
-    public Connection getConnection(){
-        return conn;
+    //Executing a Query in DB connection
+    public ResultSet executeQuery(String query){
+        if (stat == null){
+            System.out.println("La conexión no ha sido establecida");
+            return null;
+        }
+
+        try{
+            ResultSet result = stat.executeQuery(query);
+            return result;
+        }
+        catch(SQLException e){
+            System.out.println("Ha ocurrido una SQLExeption: " + e.getMessage());
+            return null;
+        }
     }
 
     //End DB Connection
@@ -48,6 +68,7 @@ public class DBConnection{
         }
 
         conn = null;
+        stat = null;
         System.out.println("La conexión ha sido terminada con: " + DBName);
     }
 }

@@ -14,6 +14,12 @@ CREATE SCHEMA IF NOT EXISTS `PrimalEnterpriceDB` DEFAULT CHARACTER SET utf8 ;
 USE `PrimalEnterpriceDB` ;
 
 -- -----------------------------------------------------
+-- PrimalEnterpriceDB Principal User
+-- -----------------------------------------------------
+CREATE USER IF NOT EXISTS 'Admin'@'localhost' IDENTIFIED BY 'HTNT^256FbzNNO6eInk$';
+GRANT ALL ON PrimalEnterpriceDB.* TO 'Admin'@'localhost';
+
+-- -----------------------------------------------------
 -- Table `PrimalEnterpriceDB`.`ACTIVO`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `PrimalEnterpriceDB`.`ACTIVO` ;

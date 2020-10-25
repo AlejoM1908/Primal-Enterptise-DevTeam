@@ -8,8 +8,8 @@ import java.sql.SQLException;
 public class DBConnection{
     //DB connection variables
     private String DBName = "PrimalEnterpriceDB";
-    private String user = "root";
-    private String password = "2R597%V%vM";
+    private String user = "Admin";
+    private String password = "HTNT^256FbzNNO6eInk$";
     private String url = "jdbc:mysql://localhost:3306/"+DBName+"?useUnicode=true&use"+
         "JDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 

@@ -8,17 +8,17 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema project
+-- Schema PrimalEnterpriceDB
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `project` DEFAULT CHARACTER SET utf8 ;
-USE `project` ;
+CREATE SCHEMA IF NOT EXISTS `PrimalEnterpriceDB` DEFAULT CHARACTER SET utf8 ;
+USE `PrimalEnterpriceDB` ;
 
 -- -----------------------------------------------------
--- Table `project`.`ACTIVO`
+-- Table `PrimalEnterpriceDB`.`ACTIVO`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `project`.`ACTIVO` ;
+DROP TABLE IF EXISTS `PrimalEnterpriceDB`.`ACTIVO` ;
 
-CREATE TABLE IF NOT EXISTS `project`.`ACTIVO` (
+CREATE TABLE IF NOT EXISTS `PrimalEnterpriceDB`.`ACTIVO` (
   `ID_ACTIVO` INT NOT NULL,
   `USUARIO` VARCHAR(25) NOT NULL,
   `NIT` INT NOT NULL,
@@ -32,27 +32,27 @@ CREATE TABLE IF NOT EXISTS `project`.`ACTIVO` (
   INDEX `FK_ACTIVO_VENDE_FACTURA` (`ID_FACTURA` ASC) VISIBLE,
   CONSTRAINT `FK_ACTIVO_PROVEE2_PROVEEDO`
     FOREIGN KEY (`NIT`)
-    REFERENCES `project`.`PROVEEDOR` (`NIT`)
+    REFERENCES `PrimalEnterpriceDB`.`PROVEEDOR` (`NIT`)
     ON DELETE restrict
     ON UPDATE restrict,
   CONSTRAINT `FK_ACTIVO_REGISTRA3_USUARIO`
     FOREIGN KEY (`USUARIO`)
-    REFERENCES `project`.`USUARIO` (`USUARIO`)
+    REFERENCES `PrimalEnterpriceDB`.`USUARIO` (`USUARIO`)
     ON DELETE restrict
     ON UPDATE restrict,
   CONSTRAINT `FK_ACTIVO_VENDE_FACTURA`
     FOREIGN KEY (`ID_FACTURA`)
-    REFERENCES `project`.`FACTURA` (`ID_FACTURA`)
+    REFERENCES `PrimalEnterpriceDB`.`FACTURA` (`ID_FACTURA`)
     ON DELETE restrict
     ON UPDATE restrict);
 
 
 -- -----------------------------------------------------
--- Table `project`.`FACTURA`
+-- Table `PrimalEnterpriceDB`.`FACTURA`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `project`.`FACTURA` ;
+DROP TABLE IF EXISTS `PrimalEnterpriceDB`.`FACTURA` ;
 
-CREATE TABLE IF NOT EXISTS `project`.`FACTURA` (
+CREATE TABLE IF NOT EXISTS `PrimalEnterpriceDB`.`FACTURA` (
   `ID_FACTURA` INT NOT NULL,
   `USUARIO` VARCHAR(25) NOT NULL,
   `LISTA_PRODUCTOS` VARCHAR(255) NOT NULL,
@@ -63,39 +63,39 @@ CREATE TABLE IF NOT EXISTS `project`.`FACTURA` (
   INDEX `FK_FACTURA_REGISTRA5_USUARIO` (`USUARIO` ASC) VISIBLE,
   CONSTRAINT `FK_FACTURA_REGISTRA5_USUARIO`
     FOREIGN KEY (`USUARIO`)
-    REFERENCES `project`.`USUARIO` (`USUARIO`)
+    REFERENCES `PrimalEnterpriceDB`.`USUARIO` (`USUARIO`)
     ON DELETE restrict
     ON UPDATE restrict);
 
 
 -- -----------------------------------------------------
--- Table `project`.`FACTURA_PROVEEDOR`
+-- Table `PrimalEnterpriceDB`.`FACTURA_PROVEEDOR`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `project`.`FACTURA_PROVEEDOR` ;
+DROP TABLE IF EXISTS `PrimalEnterpriceDB`.`FACTURA_PROVEEDOR` ;
 
-CREATE TABLE IF NOT EXISTS `project`.`FACTURA_PROVEEDOR` (
+CREATE TABLE IF NOT EXISTS `PrimalEnterpriceDB`.`FACTURA_PROVEEDOR` (
   `ID_FACTURA` INT NOT NULL,
   `NIT` INT NOT NULL,
   PRIMARY KEY (`ID_FACTURA`, `NIT`),
   INDEX `FK_FACTURA__SE_REGIST_PROVEEDO` (`NIT` ASC) VISIBLE,
   CONSTRAINT `FK_FACTURA__SE_REGIST_FACTURA`
     FOREIGN KEY (`ID_FACTURA`)
-    REFERENCES `project`.`FACTURA` (`ID_FACTURA`)
+    REFERENCES `PrimalEnterpriceDB`.`FACTURA` (`ID_FACTURA`)
     ON DELETE restrict
     ON UPDATE restrict,
   CONSTRAINT `FK_FACTURA__SE_REGIST_PROVEEDO`
     FOREIGN KEY (`NIT`)
-    REFERENCES `project`.`PROVEEDOR` (`NIT`)
+    REFERENCES `PrimalEnterpriceDB`.`PROVEEDOR` (`NIT`)
     ON DELETE restrict
     ON UPDATE restrict);
 
 
 -- -----------------------------------------------------
--- Table `project`.`PRODUCCION`
+-- Table `PrimalEnterpriceDB`.`PRODUCCION`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `project`.`PRODUCCION` ;
+DROP TABLE IF EXISTS `PrimalEnterpriceDB`.`PRODUCCION` ;
 
-CREATE TABLE IF NOT EXISTS `project`.`PRODUCCION` (
+CREATE TABLE IF NOT EXISTS `PrimalEnterpriceDB`.`PRODUCCION` (
   `ID_PRODUCCION` INT NOT NULL,
   `USUARIO` VARCHAR(25) NOT NULL,
   `PRODUCTOS_USADOS` VARCHAR(255) NOT NULL,
@@ -107,39 +107,39 @@ CREATE TABLE IF NOT EXISTS `project`.`PRODUCCION` (
   INDEX `FK_PRODUCCI_REGISTRA4_USUARIO` (`USUARIO` ASC) VISIBLE,
   CONSTRAINT `FK_PRODUCCI_REGISTRA4_USUARIO`
     FOREIGN KEY (`USUARIO`)
-    REFERENCES `project`.`USUARIO` (`USUARIO`)
+    REFERENCES `PrimalEnterpriceDB`.`USUARIO` (`USUARIO`)
     ON DELETE restrict
     ON UPDATE restrict);
 
 
 -- -----------------------------------------------------
--- Table `project`.`PRODUCCION_PRODUCTO`
+-- Table `PrimalEnterpriceDB`.`PRODUCCION_PRODUCTO`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `project`.`PRODUCCION_PRODUCTO` ;
+DROP TABLE IF EXISTS `PrimalEnterpriceDB`.`PRODUCCION_PRODUCTO` ;
 
-CREATE TABLE IF NOT EXISTS `project`.`PRODUCCION_PRODUCTO` (
+CREATE TABLE IF NOT EXISTS `PrimalEnterpriceDB`.`PRODUCCION_PRODUCTO` (
   `ID_PRODUCCION` INT NOT NULL,
   `ID` INT NOT NULL,
   PRIMARY KEY (`ID_PRODUCCION`, `ID`),
   INDEX `FK_PRODUCCI_HACE_PART_PRODUCTO` (`ID` ASC) VISIBLE,
   CONSTRAINT `FK_PRODUCCI_HACE_PART_PRODUCCI`
     FOREIGN KEY (`ID_PRODUCCION`)
-    REFERENCES `project`.`PRODUCCION` (`ID_PRODUCCION`)
+    REFERENCES `PrimalEnterpriceDB`.`PRODUCCION` (`ID_PRODUCCION`)
     ON DELETE restrict
     ON UPDATE restrict,
   CONSTRAINT `FK_PRODUCCI_HACE_PART_PRODUCTO`
     FOREIGN KEY (`ID`)
-    REFERENCES `project`.`PRODUCTO` (`ID`)
+    REFERENCES `PrimalEnterpriceDB`.`PRODUCTO` (`ID`)
     ON DELETE restrict
     ON UPDATE restrict);
 
 
 -- -----------------------------------------------------
--- Table `project`.`PRODUCTO`
+-- Table `PrimalEnterpriceDB`.`PRODUCTO`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `project`.`PRODUCTO` ;
+DROP TABLE IF EXISTS `PrimalEnterpriceDB`.`PRODUCTO` ;
 
-CREATE TABLE IF NOT EXISTS `project`.`PRODUCTO` (
+CREATE TABLE IF NOT EXISTS `PrimalEnterpriceDB`.`PRODUCTO` (
   `ID` INT NOT NULL,
   `USUARIO` VARCHAR(25) NOT NULL,
   `NIT` INT NOT NULL,
@@ -156,44 +156,44 @@ CREATE TABLE IF NOT EXISTS `project`.`PRODUCTO` (
   INDEX `FK_PRODUCTO_REGISTRA1_USUARIO` (`USUARIO` ASC) VISIBLE,
   CONSTRAINT `FK_PRODUCTO_PROVEE_PROVEEDO`
     FOREIGN KEY (`NIT`)
-    REFERENCES `project`.`PROVEEDOR` (`NIT`)
+    REFERENCES `PrimalEnterpriceDB`.`PROVEEDOR` (`NIT`)
     ON DELETE restrict
     ON UPDATE restrict,
   CONSTRAINT `FK_PRODUCTO_REGISTRA1_USUARIO`
     FOREIGN KEY (`USUARIO`)
-    REFERENCES `project`.`USUARIO` (`USUARIO`)
+    REFERENCES `PrimalEnterpriceDB`.`USUARIO` (`USUARIO`)
     ON DELETE restrict
     ON UPDATE restrict);
 
 
 -- -----------------------------------------------------
--- Table `project`.`PRODUCTO_FACTURA`
+-- Table `PrimalEnterpriceDB`.`PRODUCTO_FACTURA`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `project`.`PRODUCTO_FACTURA` ;
+DROP TABLE IF EXISTS `PrimalEnterpriceDB`.`PRODUCTO_FACTURA` ;
 
-CREATE TABLE IF NOT EXISTS `project`.`PRODUCTO_FACTURA` (
+CREATE TABLE IF NOT EXISTS `PrimalEnterpriceDB`.`PRODUCTO_FACTURA` (
   `ID_FACTURA` INT NOT NULL,
   `ID` INT NOT NULL,
   PRIMARY KEY (`ID_FACTURA`, `ID`),
   INDEX `FK_PRODUCTO_REGISTRA__PRODUCTO` (`ID` ASC) VISIBLE,
   CONSTRAINT `FK_PRODUCTO_REGISTRA__FACTURA`
     FOREIGN KEY (`ID_FACTURA`)
-    REFERENCES `project`.`FACTURA` (`ID_FACTURA`)
+    REFERENCES `PrimalEnterpriceDB`.`FACTURA` (`ID_FACTURA`)
     ON DELETE restrict
     ON UPDATE restrict,
   CONSTRAINT `FK_PRODUCTO_REGISTRA__PRODUCTO`
     FOREIGN KEY (`ID`)
-    REFERENCES `project`.`PRODUCTO` (`ID`)
+    REFERENCES `PrimalEnterpriceDB`.`PRODUCTO` (`ID`)
     ON DELETE restrict
     ON UPDATE restrict);
 
 
 -- -----------------------------------------------------
--- Table `project`.`PROVEEDOR`
+-- Table `PrimalEnterpriceDB`.`PROVEEDOR`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `project`.`PROVEEDOR` ;
+DROP TABLE IF EXISTS `PrimalEnterpriceDB`.`PROVEEDOR` ;
 
-CREATE TABLE IF NOT EXISTS `project`.`PROVEEDOR` (
+CREATE TABLE IF NOT EXISTS `PrimalEnterpriceDB`.`PROVEEDOR` (
   `NIT` INT NOT NULL,
   `USUARIO` VARCHAR(25) NOT NULL,
   `NOMBRE_PROVEEDOR` VARCHAR(255) NOT NULL,
@@ -204,17 +204,17 @@ CREATE TABLE IF NOT EXISTS `project`.`PROVEEDOR` (
   INDEX `FK_PROVEEDO_REGISTRA2_USUARIO` (`USUARIO` ASC) VISIBLE,
   CONSTRAINT `FK_PROVEEDO_REGISTRA2_USUARIO`
     FOREIGN KEY (`USUARIO`)
-    REFERENCES `project`.`USUARIO` (`USUARIO`)
+    REFERENCES `PrimalEnterpriceDB`.`USUARIO` (`USUARIO`)
     ON DELETE restrict
     ON UPDATE restrict);
 
 
 -- -----------------------------------------------------
--- Table `project`.`USUARIO`
+-- Table `PrimalEnterpriceDB`.`USUARIO`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `project`.`USUARIO` ;
+DROP TABLE IF EXISTS `PrimalEnterpriceDB`.`USUARIO` ;
 
-CREATE TABLE IF NOT EXISTS `project`.`USUARIO` (
+CREATE TABLE IF NOT EXISTS `PrimalEnterpriceDB`.`USUARIO` (
   `USUARIO` VARCHAR(25) NOT NULL,
   `CEDULA` INT NOT NULL,
   `RANGO` VARCHAR(255) NOT NULL,

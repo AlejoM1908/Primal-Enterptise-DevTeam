@@ -409,6 +409,47 @@ BEGIN
 END|
 DELIMITER ;
 
+-- -----------------------------------------------------
+-- View getProductions
+-- -----------------------------------------------------
+DROP VIEW IF EXISTS getProductions;
+
+CREATE VIEW getProductions AS SELECT
+	ID_PRODUCCION AS id,
+    ESTADO_PRODUCCION AS estado,
+    FECHA_COMIENZO AS fecha_comienzo,
+    FECHA_FINALIZACION AS fecha_finalizacion,
+    TIPO_DE_PRODUCCION AS tipo,
+    PRODUCTOS_USADOS AS productos
+FROM produccion;    
+
+
+-- -----------------------------------------------------
+-- Stored Procedure 'productionsList' for filtering by paramether
+-- -----------------------------------------------------
+DROP PROCEDURE IF EXISTS productionsList;
+DELIMITER |
+
+CREATE PROCEDURE productionsList(
+	IN paramether VARCHAR(45),
+    IN search VARCHAR(100)
+)
+BEGIN
+	SELECT * FROM getProductions WHERE CASE paramether
+		WHEN 'estado' THEN
+			estado = search
+		WHEN 'fecha_comienzo' THEN
+			fecha_comienzo = search
+		WHEN 'fecha_finalizacion' THEN
+			fecha_finalizacion = search
+		WHEN 'tipo' THEN
+			tipo = search
+		ELSE
+			id IS NOT NULL
+		END;
+END|
+DELIMITER ;
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

@@ -22,6 +22,7 @@ public class DBConnection{
     public void getConnection(){
         if (conn != null){
             System.out.println("La conexión ya ha sido establecida");
+            return;
         }
 
         try{

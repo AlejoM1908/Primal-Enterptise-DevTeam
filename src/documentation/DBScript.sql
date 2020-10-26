@@ -8,17 +8,23 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema project
+-- Schema PrimalEnterpriceDB
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `project` DEFAULT CHARACTER SET utf8 ;
-USE `project` ;
+CREATE SCHEMA IF NOT EXISTS `PrimalEnterpriceDB` DEFAULT CHARACTER SET utf8 ;
+USE `PrimalEnterpriceDB` ;
 
 -- -----------------------------------------------------
--- Table `project`.`ACTIVO`
+-- PrimalEnterpriceDB Principal User
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `project`.`ACTIVO` ;
+CREATE USER IF NOT EXISTS 'Admin'@'localhost' IDENTIFIED BY 'HTNT^256FbzNNO6eInk$';
+GRANT ALL ON PrimalEnterpriceDB.* TO 'Admin'@'localhost';
 
-CREATE TABLE IF NOT EXISTS `project`.`ACTIVO` (
+-- -----------------------------------------------------
+-- Table `PrimalEnterpriceDB`.`ACTIVO`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `PrimalEnterpriceDB`.`ACTIVO` ;
+
+CREATE TABLE IF NOT EXISTS `PrimalEnterpriceDB`.`ACTIVO` (
   `ID_ACTIVO` INT NOT NULL,
   `USUARIO` VARCHAR(25) NOT NULL,
   `NIT` INT NOT NULL,
@@ -32,27 +38,27 @@ CREATE TABLE IF NOT EXISTS `project`.`ACTIVO` (
   INDEX `FK_ACTIVO_VENDE_FACTURA` (`ID_FACTURA` ASC) VISIBLE,
   CONSTRAINT `FK_ACTIVO_PROVEE2_PROVEEDO`
     FOREIGN KEY (`NIT`)
-    REFERENCES `project`.`PROVEEDOR` (`NIT`)
+    REFERENCES `PrimalEnterpriceDB`.`PROVEEDOR` (`NIT`)
     ON DELETE restrict
     ON UPDATE restrict,
   CONSTRAINT `FK_ACTIVO_REGISTRA3_USUARIO`
     FOREIGN KEY (`USUARIO`)
-    REFERENCES `project`.`USUARIO` (`USUARIO`)
+    REFERENCES `PrimalEnterpriceDB`.`USUARIO` (`USUARIO`)
     ON DELETE restrict
     ON UPDATE restrict,
   CONSTRAINT `FK_ACTIVO_VENDE_FACTURA`
     FOREIGN KEY (`ID_FACTURA`)
-    REFERENCES `project`.`FACTURA` (`ID_FACTURA`)
+    REFERENCES `PrimalEnterpriceDB`.`FACTURA` (`ID_FACTURA`)
     ON DELETE restrict
     ON UPDATE restrict);
 
 
 -- -----------------------------------------------------
--- Table `project`.`FACTURA`
+-- Table `PrimalEnterpriceDB`.`FACTURA`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `project`.`FACTURA` ;
+DROP TABLE IF EXISTS `PrimalEnterpriceDB`.`FACTURA` ;
 
-CREATE TABLE IF NOT EXISTS `project`.`FACTURA` (
+CREATE TABLE IF NOT EXISTS `PrimalEnterpriceDB`.`FACTURA` (
   `ID_FACTURA` INT NOT NULL,
   `USUARIO` VARCHAR(25) NOT NULL,
   `LISTA_PRODUCTOS` VARCHAR(255) NOT NULL,
@@ -63,39 +69,39 @@ CREATE TABLE IF NOT EXISTS `project`.`FACTURA` (
   INDEX `FK_FACTURA_REGISTRA5_USUARIO` (`USUARIO` ASC) VISIBLE,
   CONSTRAINT `FK_FACTURA_REGISTRA5_USUARIO`
     FOREIGN KEY (`USUARIO`)
-    REFERENCES `project`.`USUARIO` (`USUARIO`)
+    REFERENCES `PrimalEnterpriceDB`.`USUARIO` (`USUARIO`)
     ON DELETE restrict
     ON UPDATE restrict);
 
 
 -- -----------------------------------------------------
--- Table `project`.`FACTURA_PROVEEDOR`
+-- Table `PrimalEnterpriceDB`.`FACTURA_PROVEEDOR`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `project`.`FACTURA_PROVEEDOR` ;
+DROP TABLE IF EXISTS `PrimalEnterpriceDB`.`FACTURA_PROVEEDOR` ;
 
-CREATE TABLE IF NOT EXISTS `project`.`FACTURA_PROVEEDOR` (
+CREATE TABLE IF NOT EXISTS `PrimalEnterpriceDB`.`FACTURA_PROVEEDOR` (
   `ID_FACTURA` INT NOT NULL,
   `NIT` INT NOT NULL,
   PRIMARY KEY (`ID_FACTURA`, `NIT`),
   INDEX `FK_FACTURA__SE_REGIST_PROVEEDO` (`NIT` ASC) VISIBLE,
   CONSTRAINT `FK_FACTURA__SE_REGIST_FACTURA`
     FOREIGN KEY (`ID_FACTURA`)
-    REFERENCES `project`.`FACTURA` (`ID_FACTURA`)
+    REFERENCES `PrimalEnterpriceDB`.`FACTURA` (`ID_FACTURA`)
     ON DELETE restrict
     ON UPDATE restrict,
   CONSTRAINT `FK_FACTURA__SE_REGIST_PROVEEDO`
     FOREIGN KEY (`NIT`)
-    REFERENCES `project`.`PROVEEDOR` (`NIT`)
+    REFERENCES `PrimalEnterpriceDB`.`PROVEEDOR` (`NIT`)
     ON DELETE restrict
     ON UPDATE restrict);
 
 
 -- -----------------------------------------------------
--- Table `project`.`PRODUCCION`
+-- Table `PrimalEnterpriceDB`.`PRODUCCION`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `project`.`PRODUCCION` ;
+DROP TABLE IF EXISTS `PrimalEnterpriceDB`.`PRODUCCION` ;
 
-CREATE TABLE IF NOT EXISTS `project`.`PRODUCCION` (
+CREATE TABLE IF NOT EXISTS `PrimalEnterpriceDB`.`PRODUCCION` (
   `ID_PRODUCCION` INT NOT NULL,
   `USUARIO` VARCHAR(25) NOT NULL,
   `PRODUCTOS_USADOS` VARCHAR(255) NOT NULL,
@@ -107,39 +113,39 @@ CREATE TABLE IF NOT EXISTS `project`.`PRODUCCION` (
   INDEX `FK_PRODUCCI_REGISTRA4_USUARIO` (`USUARIO` ASC) VISIBLE,
   CONSTRAINT `FK_PRODUCCI_REGISTRA4_USUARIO`
     FOREIGN KEY (`USUARIO`)
-    REFERENCES `project`.`USUARIO` (`USUARIO`)
+    REFERENCES `PrimalEnterpriceDB`.`USUARIO` (`USUARIO`)
     ON DELETE restrict
     ON UPDATE restrict);
 
 
 -- -----------------------------------------------------
--- Table `project`.`PRODUCCION_PRODUCTO`
+-- Table `PrimalEnterpriceDB`.`PRODUCCION_PRODUCTO`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `project`.`PRODUCCION_PRODUCTO` ;
+DROP TABLE IF EXISTS `PrimalEnterpriceDB`.`PRODUCCION_PRODUCTO` ;
 
-CREATE TABLE IF NOT EXISTS `project`.`PRODUCCION_PRODUCTO` (
+CREATE TABLE IF NOT EXISTS `PrimalEnterpriceDB`.`PRODUCCION_PRODUCTO` (
   `ID_PRODUCCION` INT NOT NULL,
   `ID` INT NOT NULL,
   PRIMARY KEY (`ID_PRODUCCION`, `ID`),
   INDEX `FK_PRODUCCI_HACE_PART_PRODUCTO` (`ID` ASC) VISIBLE,
   CONSTRAINT `FK_PRODUCCI_HACE_PART_PRODUCCI`
     FOREIGN KEY (`ID_PRODUCCION`)
-    REFERENCES `project`.`PRODUCCION` (`ID_PRODUCCION`)
+    REFERENCES `PrimalEnterpriceDB`.`PRODUCCION` (`ID_PRODUCCION`)
     ON DELETE restrict
     ON UPDATE restrict,
   CONSTRAINT `FK_PRODUCCI_HACE_PART_PRODUCTO`
     FOREIGN KEY (`ID`)
-    REFERENCES `project`.`PRODUCTO` (`ID`)
+    REFERENCES `PrimalEnterpriceDB`.`PRODUCTO` (`ID`)
     ON DELETE restrict
     ON UPDATE restrict);
 
 
 -- -----------------------------------------------------
--- Table `project`.`PRODUCTO`
+-- Table `PrimalEnterpriceDB`.`PRODUCTO`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `project`.`PRODUCTO` ;
+DROP TABLE IF EXISTS `PrimalEnterpriceDB`.`PRODUCTO` ;
 
-CREATE TABLE IF NOT EXISTS `project`.`PRODUCTO` (
+CREATE TABLE IF NOT EXISTS `PrimalEnterpriceDB`.`PRODUCTO` (
   `ID` INT NOT NULL,
   `USUARIO` VARCHAR(25) NOT NULL,
   `NIT` INT NOT NULL,
@@ -156,44 +162,44 @@ CREATE TABLE IF NOT EXISTS `project`.`PRODUCTO` (
   INDEX `FK_PRODUCTO_REGISTRA1_USUARIO` (`USUARIO` ASC) VISIBLE,
   CONSTRAINT `FK_PRODUCTO_PROVEE_PROVEEDO`
     FOREIGN KEY (`NIT`)
-    REFERENCES `project`.`PROVEEDOR` (`NIT`)
+    REFERENCES `PrimalEnterpriceDB`.`PROVEEDOR` (`NIT`)
     ON DELETE restrict
     ON UPDATE restrict,
   CONSTRAINT `FK_PRODUCTO_REGISTRA1_USUARIO`
     FOREIGN KEY (`USUARIO`)
-    REFERENCES `project`.`USUARIO` (`USUARIO`)
+    REFERENCES `PrimalEnterpriceDB`.`USUARIO` (`USUARIO`)
     ON DELETE restrict
     ON UPDATE restrict);
 
 
 -- -----------------------------------------------------
--- Table `project`.`PRODUCTO_FACTURA`
+-- Table `PrimalEnterpriceDB`.`PRODUCTO_FACTURA`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `project`.`PRODUCTO_FACTURA` ;
+DROP TABLE IF EXISTS `PrimalEnterpriceDB`.`PRODUCTO_FACTURA` ;
 
-CREATE TABLE IF NOT EXISTS `project`.`PRODUCTO_FACTURA` (
+CREATE TABLE IF NOT EXISTS `PrimalEnterpriceDB`.`PRODUCTO_FACTURA` (
   `ID_FACTURA` INT NOT NULL,
   `ID` INT NOT NULL,
   PRIMARY KEY (`ID_FACTURA`, `ID`),
   INDEX `FK_PRODUCTO_REGISTRA__PRODUCTO` (`ID` ASC) VISIBLE,
   CONSTRAINT `FK_PRODUCTO_REGISTRA__FACTURA`
     FOREIGN KEY (`ID_FACTURA`)
-    REFERENCES `project`.`FACTURA` (`ID_FACTURA`)
+    REFERENCES `PrimalEnterpriceDB`.`FACTURA` (`ID_FACTURA`)
     ON DELETE restrict
     ON UPDATE restrict,
   CONSTRAINT `FK_PRODUCTO_REGISTRA__PRODUCTO`
     FOREIGN KEY (`ID`)
-    REFERENCES `project`.`PRODUCTO` (`ID`)
+    REFERENCES `PrimalEnterpriceDB`.`PRODUCTO` (`ID`)
     ON DELETE restrict
     ON UPDATE restrict);
 
 
 -- -----------------------------------------------------
--- Table `project`.`PROVEEDOR`
+-- Table `PrimalEnterpriceDB`.`PROVEEDOR`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `project`.`PROVEEDOR` ;
+DROP TABLE IF EXISTS `PrimalEnterpriceDB`.`PROVEEDOR` ;
 
-CREATE TABLE IF NOT EXISTS `project`.`PROVEEDOR` (
+CREATE TABLE IF NOT EXISTS `PrimalEnterpriceDB`.`PROVEEDOR` (
   `NIT` INT NOT NULL,
   `USUARIO` VARCHAR(25) NOT NULL,
   `NOMBRE_PROVEEDOR` VARCHAR(255) NOT NULL,
@@ -204,17 +210,17 @@ CREATE TABLE IF NOT EXISTS `project`.`PROVEEDOR` (
   INDEX `FK_PROVEEDO_REGISTRA2_USUARIO` (`USUARIO` ASC) VISIBLE,
   CONSTRAINT `FK_PROVEEDO_REGISTRA2_USUARIO`
     FOREIGN KEY (`USUARIO`)
-    REFERENCES `project`.`USUARIO` (`USUARIO`)
+    REFERENCES `PrimalEnterpriceDB`.`USUARIO` (`USUARIO`)
     ON DELETE restrict
     ON UPDATE restrict);
 
 
 -- -----------------------------------------------------
--- Table `project`.`USUARIO`
+-- Table `PrimalEnterpriceDB`.`USUARIO`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `project`.`USUARIO` ;
+DROP TABLE IF EXISTS `PrimalEnterpriceDB`.`USUARIO` ;
 
-CREATE TABLE IF NOT EXISTS `project`.`USUARIO` (
+CREATE TABLE IF NOT EXISTS `PrimalEnterpriceDB`.`USUARIO` (
   `USUARIO` VARCHAR(25) NOT NULL,
   `CEDULA` INT NOT NULL,
   `RANGO` VARCHAR(255) NOT NULL,
@@ -224,6 +230,225 @@ CREATE TABLE IF NOT EXISTS `project`.`USUARIO` (
   `DIRECCION_CASA` VARCHAR(255) NULL DEFAULT NULL,
   `NOMBRE_USUARIO` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`USUARIO`));
+  
+  
+-- -----------------------------------------------------
+-- View getUsers
+-- -----------------------------------------------------
+DROP VIEW IF EXISTS getUsers;
+
+CREATE VIEW getUsers AS SELECT 
+	USUARIO AS usuario,
+    RANGO AS rango,
+    NOMBRE_USUARIO AS nombre,
+	CEDULA AS cedula, 
+    NUMERO_CEL AS celular,
+    EMAIL_USUARIO AS email,
+    DIRECCION_CASA AS direccion
+FROM usuario;
+  
+  
+-- -----------------------------------------------------
+-- Stored Procedure 'userList' for filtering by paramether
+-- -----------------------------------------------------
+DROP PROCEDURE IF EXISTS userList;
+DELIMITER |
+
+CREATE PROCEDURE userList(
+	IN paramether VARCHAR(45),
+    IN search VARCHAR(100)
+)
+BEGIN
+	SELECT * FROM getUsers WHERE CASE paramether
+		WHEN 'cedula' THEN
+			cedula = search
+		WHEN 'celular' THEN
+			celular = search
+		WHEN 'email' THEN
+			email = search
+		WHEN 'dirección' THEN
+			direccion = search
+		WHEN 'nombre' THEN
+			nombre = search
+		ELSE
+			usuario IS NOT NULL
+		END;
+END|
+DELIMITER ;
+
+
+-- -----------------------------------------------------
+-- View getProducts
+-- -----------------------------------------------------
+DROP VIEW IF EXISTS getProducts;
+
+CREATE VIEW getProducts AS SELECT
+	ID AS id,
+    NOMBRE_PRODUCTO AS nombre,
+    MARCA_PRODUCTO AS marca,
+    TIPO_DE_PRODUCTO AS tipo,
+    CANTIDAD AS cantidad,
+    LUGAR_ALMACENAMIENTO AS ubicacion,
+    NIT AS nit,
+    DESCRIPCION_PRODUCTO AS descripcion
+FROM producto;    
+
+
+-- -----------------------------------------------------
+-- Stored Procedure 'productList' for filtering by paramether
+-- -----------------------------------------------------
+DROP PROCEDURE IF EXISTS productList;
+DELIMITER |
+
+CREATE PROCEDURE productList(
+	IN paramether VARCHAR(45),
+    IN search VARCHAR(100)
+)
+BEGIN
+	SELECT * FROM getProducts WHERE CASE paramether
+		WHEN 'nombre' THEN
+			nombre = search
+		WHEN 'marca' THEN
+			marca = search
+		WHEN 'tipo' THEN
+			tipo = search
+		WHEN 'cantidad' THEN
+			cantidad = search
+		WHEN 'ubicacion' THEN
+			ubicacion <= search
+		WHEN 'nit' THEN
+			nit = search
+		ELSE
+			id IS NOT NULL
+		END;
+END|
+DELIMITER ;
+
+
+-- -----------------------------------------------------
+-- View getProviders
+-- -----------------------------------------------------
+DROP VIEW IF EXISTS getProviders;
+
+CREATE VIEW getProviders AS SELECT
+	NIT AS nit,
+    NOMBRE_PROVEEDOR AS nombre,
+    EMAIL_PROVEEDOR AS email,
+    DIRECCION_TIENDA AS direccion,
+    TELEFONO AS telefono
+FROM proveedor;    
+
+
+-- -----------------------------------------------------
+-- Stored Procedure 'providerList' for filtering by paramether
+-- -----------------------------------------------------
+DROP PROCEDURE IF EXISTS providerList;
+DELIMITER |
+
+CREATE PROCEDURE providerList(
+	IN paramether VARCHAR(45),
+    IN search VARCHAR(100)
+)
+BEGIN
+	SELECT * FROM getProviders WHERE CASE paramether
+		WHEN 'nombre' THEN
+			nombre = search
+		WHEN 'email' THEN
+			email = search
+		WHEN 'direccion' THEN
+			direccion = search
+		WHEN 'telefono' THEN
+			telefono = search
+		WHEN 'nit' THEN
+			nit = search
+		ELSE
+			nit IS NOT NULL
+		END;
+END|
+DELIMITER ;
+
+
+-- -----------------------------------------------------
+-- View getActives
+-- -----------------------------------------------------
+DROP VIEW IF EXISTS getActives;
+
+CREATE VIEW getActives AS SELECT
+	ID_ACTIVO AS id,
+    NOMBRE_ACTIVO AS nombre,
+    ESTADO_ACTIVO AS estado,
+    NIT AS nit,
+    ID_FACTURA AS factura,
+    DESCRIPCION_ACTIVO AS descripcion
+FROM activo;    
+
+
+-- -----------------------------------------------------
+-- Stored Procedure 'activesList' for filtering by paramether
+-- -----------------------------------------------------
+DROP PROCEDURE IF EXISTS activesList;
+DELIMITER |
+
+CREATE PROCEDURE activesList(
+	IN paramether VARCHAR(45),
+    IN search VARCHAR(100)
+)
+BEGIN
+	SELECT * FROM getActives WHERE CASE paramether
+		WHEN 'nombre' THEN
+			nombre = search
+		WHEN 'estado' THEN
+			estado = search
+		WHEN 'nit' THEN
+			nit = search
+		WHEN 'factura' THEN
+			factura = search
+		ELSE
+			id IS NOT NULL
+		END;
+END|
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- View getProductions
+-- -----------------------------------------------------
+DROP VIEW IF EXISTS getProductions;
+
+CREATE VIEW getProductions AS SELECT
+	ID_PRODUCCION AS id,
+    ESTADO_PRODUCCION AS estado,
+    FECHA_COMIENZO AS fecha_comienzo,
+    FECHA_FINALIZACION AS fecha_finalizacion,
+    TIPO_DE_PRODUCCION AS tipo,
+    PRODUCTOS_USADOS AS productos
+FROM produccion;    
+
+
+-- -----------------------------------------------------
+-- Stored Procedure 'productionsList' for filtering by paramether
+-- -----------------------------------------------------
+DROP PROCEDURE IF EXISTS productionsList;
+DELIMITER |
+
+CREATE PROCEDURE productionsList(
+	IN paramether VARCHAR(45),
+    IN search VARCHAR(100)
+)
+BEGIN
+	SELECT * FROM getProductions WHERE CASE paramether
+		WHEN 'estado' THEN
+			estado = search
+		WHEN 'fecha_comienzo' THEN
+			fecha_comienzo = search
+		WHEN 'fecha_finalizacion' THEN
+			fecha_finalizacion = search
+		WHEN 'tipo' THEN
+			tipo = search
+		ELSE
+			id IS NOT NULL
+		END;
+END|
+DELIMITER ;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

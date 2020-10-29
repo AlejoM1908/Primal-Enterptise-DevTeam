@@ -451,6 +451,113 @@ END|
 DELIMITER ;
 
 
+-- -----------------------------------------------------
+-- Stored Procedure 'InsertarUsr' for creating new Users
+-- -----------------------------------------------------
+DROP PROCEDURE IF EXISTS InsertarUsr;
+DELIMITER |
+
+CREATE PROCEDURE InsertarUsr 
+(IN nombreUsr VARCHAR(255), 
+IN numCed int, 
+IN rang VARCHAR(255),
+IN Contr VARCHAR(25),
+IN Num_Cel int,
+IN Email_Usr VARCHAR(255),
+IN Direcc_Casa VARCHAR(255),
+IN Usr VARCHAR(255))
+
+BEGIN
+	INSERT INTO usuario VALUES (numCed,rang,Contr,Num_Cel,Email_Usr,Direcc_Casa,Usr);  
+END|
+DELIMITER ;
+
+
+-- -----------------------------------------------------
+-- Stored Procedure 'InsertarProv' for creating new providers
+-- -----------------------------------------------------
+DROP PROCEDURE IF EXISTS InsertarProv;
+DELIMITER |
+
+CREATE PROCEDURE InsertarProv 
+(IN nombreProv VARCHAR(255), 
+IN Nit_num int,IN Num_tel int,
+IN Email_Prov VARCHAR(255),
+IN Direcc_Tie VARCHAR(255),
+IN Usr VARCHAR(255))
+
+BEGIN
+	INSERT INTO proveedor VALUES (Nit_num,Usr,nombreProv,Direcc_Tie,Num_tel,Email_Prov);  
+END|
+DELIMITER ;
+
+
+-- -----------------------------------------------------
+-- Stored Procedure 'Busq_Rol' for filtering by Rol
+-- -----------------------------------------------------
+DROP PROCEDURE IF EXISTS Busq_Rol;
+DELIMITER |
+
+CREATE PROCEDURE Busq_Rol 
+(IN rang VARCHAR(255) )
+BEGIN
+	SELECT * FROM usuario WHERE RANGO=rang;
+END|
+DELIMITER ;
+
+
+-- -----------------------------------------------------
+-- Stored Procedure 'Busq_Individual' for view each user individually
+-- -----------------------------------------------------
+DROP PROCEDURE IF EXISTS Busq_Individual;
+DELIMITER |
+
+CREATE PROCEDURE Busq_Individual 
+(IN Usr VARCHAR(255) )
+BEGIN
+	SELECT * FROM usuario WHERE USUARIO=Usr;
+END|
+DELIMITER ;
+
+
+-- -----------------------------------------------------
+-- Stored Procedure 'eliminar_usr' for delete users Individually
+-- -----------------------------------------------------
+DROP PROCEDURE IF EXISTS eliminar_usr;
+DELIMITER |
+
+CREATE PROCEDURE eliminar_usr 
+(IN Usr varchar(255) )
+BEGIN
+	delete from usuario
+    where USUARIO=Usr;
+END|
+DELIMITER ;
+
+
+-- -----------------------------------------------------
+-- Stored Procedure 'disminucion_inventario' for update products Individually
+-- -----------------------------------------------------
+DROP PROCEDURE IF EXISTS disminucion_inventario;
+DELIMITER |
+
+CREATE PROCEDURE disminucion_inventario 
+(IN Num_items int,
+IN ID_item int )
+BEGIN
+	DECLARE inventario int DEFAULT 0;
+	select CANTIDAD 
+    into inventario
+    from producto
+    where ID_item=producto.ID;
+    if inventario-Num_items>=0 then
+    update producto set CANTIDAD = inventario-Num_items
+    where ID_item=producto.ID;
+    end if;
+    
+END|
+DELIMITER ;
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

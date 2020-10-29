@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package lib.ui.views;
+package lib.ui;
 
 /**
  *
@@ -119,7 +119,7 @@ public class MainApp extends javax.swing.JFrame {
         );
 
         getContentPane().add(mainPanel);
-        mainPanel.setBounds(0, 0, 1361, 768);
+        mainPanel.setBounds(0, 0, 0, 0);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

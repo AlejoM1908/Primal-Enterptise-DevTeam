@@ -1,28 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+//Java imports
 package lib.ui;
+import javax.swing.JPanel;
 
-/**
- *
- * @author danie
- */
+//Proyect imports
+import lib.ui.loginView.loginView;
+
 public class MainApp extends javax.swing.JFrame {
+    private JPanel login = new loginView();
 
-    /**
-     * Creates new form MainApp
-     */
     public MainApp() {
         initComponents();
         this.setVisible(true);
+        this.setSize(1360, 768);
+        this.setResizable(false);
         this.setLocationRelativeTo(null);
-        this.mainPanel.setVisible(true);
-        this.appBar.setVisible(true);
-        this.appPanel.setVisible(true);
-        this.buttonBar.setVisible(false);
-        this.appContent.setVisible(false);
+        
+        this.getContentPane().removeAll();
+        this.getContentPane().add(this.login);
+        this.login.setVisible(true);
     }
 
     /**
@@ -41,7 +36,6 @@ public class MainApp extends javax.swing.JFrame {
         appContent = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(null);
 
         mainPanel.setBackground(new java.awt.Color(255, 0, 255));
 
@@ -55,7 +49,7 @@ public class MainApp extends javax.swing.JFrame {
         );
         appBarLayout.setVerticalGroup(
             appBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
+            .addGap(0, 60, Short.MAX_VALUE)
         );
 
         appPanel.setBackground(new java.awt.Color(0, 255, 255));
@@ -66,11 +60,11 @@ public class MainApp extends javax.swing.JFrame {
         buttonBar.setLayout(buttonBarLayout);
         buttonBarLayout.setHorizontalGroup(
             buttonBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 270, Short.MAX_VALUE)
+            .addGap(0, 300, Short.MAX_VALUE)
         );
         buttonBarLayout.setVerticalGroup(
             buttonBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 728, Short.MAX_VALUE)
+            .addGap(0, 708, Short.MAX_VALUE)
         );
 
         appContent.setBackground(new java.awt.Color(0, 0, 255));
@@ -79,7 +73,7 @@ public class MainApp extends javax.swing.JFrame {
         appContent.setLayout(appContentLayout);
         appContentLayout.setHorizontalGroup(
             appContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1091, Short.MAX_VALUE)
+            .addGap(0, 1060, Short.MAX_VALUE)
         );
         appContentLayout.setVerticalGroup(
             appContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,8 +112,7 @@ public class MainApp extends javax.swing.JFrame {
                 .addComponent(appPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(mainPanel);
-        mainPanel.setBounds(0, 0, 0, 0);
+        getContentPane().add(mainPanel, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

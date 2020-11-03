@@ -7,7 +7,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 DROP SCHEMA IF EXISTS `PrimalEnterpriceDB` ;
 
-CREATE SCHEMA IF NOT EXISTS `PrimalEnterpriceDB` DEFAULT CHARACTER SET utf8 ;
+CREATE SCHEMA IF NOT EXISTS `PrimalEnterpriceDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `PrimalEnterpriceDB` ;
 
 -- -----------------------------------------------------
@@ -190,7 +190,7 @@ CREATE TABLE IF NOT EXISTS `PrimalEnterpriceDB`.`productos` (
 DROP TABLE IF EXISTS `PrimalEnterpriceDB`.`proveedores` ;
 
 CREATE TABLE IF NOT EXISTS `PrimalEnterpriceDB`.`proveedores` (
-  `pve_nit` INT NULL,
+  `pve_nit` INT NOT NULL,
   `pve_usuario` VARCHAR(25) NOT NULL,
   `pve_telefono_id` INT NOT NULL,
   `pve_nombre` VARCHAR(80) NOT NULL,
@@ -217,7 +217,7 @@ CREATE TABLE IF NOT EXISTS `PrimalEnterpriceDB`.`proveedores` (
 DROP TABLE IF EXISTS `PrimalEnterpriceDB`.`telefonos` ;
 
 CREATE TABLE IF NOT EXISTS `PrimalEnterpriceDB`.`telefonos` (
-  `tel_id` INT NULL AUTO_INCREMENT,
+  `tel_id` INT NOT NULL AUTO_INCREMENT,
   `tel_telefono` INT NOT NULL,
   PRIMARY KEY (`tel_id`),
   UNIQUE INDEX `tel_telefono_UNIQUE` (`tel_telefono` ASC) VISIBLE)
@@ -230,10 +230,10 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `PrimalEnterpriceDB`.`usuarios` ;
 
 CREATE TABLE IF NOT EXISTS `PrimalEnterpriceDB`.`usuarios` (
-  `usr_usuario` VARCHAR(25) NULL,
+  `usr_usuario` VARCHAR(25) NOT NULL,
   `usr_telefonos_id` INT NOT NULL,
   `usr_rango` VARCHAR(40) NOT NULL,
-  `usr_contraseña` VARCHAR(40) NOT NULL,
+  `usr_contrasena` VARCHAR(40) NOT NULL,
   `usr_email` VARCHAR(100) NOT NULL,
   `usr_nombre` VARCHAR(80) NOT NULL,
   `usr_direccion` VARCHAR(100) NULL,
@@ -269,14 +269,14 @@ DROP VIEW IF EXISTS `PrimalEnterpriceDB`.`vw_getUsers` ;
 USE `PrimalEnterpriceDB`;
 CREATE  OR REPLACE VIEW vw_getUsers AS SELECT 
 	usr_usuario AS usuario,
-    usr_telefono_id AS telefono_id,
-    usr_contraseña AS contraseña,
+    usr_telefonos_id AS telefono_id,
+    usr_contrasena AS contrasena,
     usr_Rango AS rango,
     usr_nombre AS nombre,
 	usr_cedula AS cedula,
     usr_email AS email,
     usr_direccion AS direccion
-FROM usuario;
+FROM usuarios;
 
 -- -----------------------------------------------------
 -- View `PrimalEnterpriceDB`.`vw_getProducts`
@@ -296,7 +296,7 @@ CREATE  OR REPLACE VIEW vw_getProducts AS SELECT
     pru_lugar_almacenamiento AS ubicacion,
     pru_descripcion AS descripcion,
     pru_fecha_caducidad AS fecha_caducidad
-FROM producto;
+FROM productos;
 
 -- -----------------------------------------------------
 -- View `PrimalEnterpriceDB`.`vw_getProviders`
@@ -311,7 +311,7 @@ CREATE  OR REPLACE VIEW vw_getProviders AS SELECT
     pve_nombre AS nombre,
     pve_email AS email,
     pve_direccion AS direccion
-FROM proveedor;
+FROM proveedores;
 
 -- -----------------------------------------------------
 -- View `PrimalEnterpriceDB`.`vw_getActives`
@@ -509,20 +509,264 @@ BEGIN
 	ELSEIF valor = 1 THEN
 		select SHA1(userPass) INTO pass;
         
-        IF (SELECT COUNT(*) FROM vw_getUsers WHERE usuario = username AND contraseña = pass) = 0 THEN
+        IF (SELECT COUNT(*) FROM vw_getUsers WHERE usuario = username AND contrasena = pass) = 0 THEN
 			select 1 AS 'error';
 		ELSE
 			SELECT 
             2 AS 'error',
             NOMBRE_USUARIO AS nombre,
             RANGO AS rango
-            FROM vw_getUsers WHERE usuario = username AND contraseña = pass;
+            FROM vw_getUsers WHERE usuario = username AND contrasena = pass;
         END IF;
     END IF;
 END$$
 
 DELIMITER ;
 
+-- -----------------------------------------------------
+-- procedure registrarActivo
+-- -----------------------------------------------------
+
+USE `PrimalEnterpriceDB`;
+DROP procedure IF EXISTS `PrimalEnterpriceDB`.`registrarActivo`;
+
+DELIMITER $$
+USE `PrimalEnterpriceDB`$$
+CREATE PROCEDURE `registrarActivo`(
+	`p_id` INT,
+    `p_usuario` VARCHAR(25),
+    `p_nit` INT,
+    `p_idFactura` INT,
+    `p_descripcion` VARCHAR(255),
+	`p_estado` VARCHAR(255),
+    `p_nombre` VARCHAR(255)
+)
+BEGIN
+	INSERT INTO activo
+    VALUES(p_id,p_usuario,p_nit,p_idFactura,p_descripcion,p_estado,p_nombre);
+END$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure registrarProducto
+-- -----------------------------------------------------
+
+USE `PrimalEnterpriceDB`;
+DROP procedure IF EXISTS `PrimalEnterpriceDB`.`registrarProducto`;
+
+DELIMITER $$
+USE `PrimalEnterpriceDB`$$
+CREATE PROCEDURE `registrarProducto`(
+	`p_id` INT,
+    `p_usuario` VARCHAR(255),
+    `p_nit` VARCHAR(255),
+    `p_marca` VARCHAR(255),
+    `p_tipo` VARCHAR(255),
+    `p_cantidad` INT,
+    `p_metodoAlm` VARCHAR(255),
+    `p_lugarAlm` VARCHAR(255),
+    `p_fechaCad` DATE,
+    `p_nombre` VARCHAR(255),
+    `p_descripcion` VARCHAR(255)
+)
+BEGIN
+	INSERT INTO producto
+    VALUES(p_id,p_usuario,p_nit,p_marca,p_tipo,p_cantidad,p_metodoAlm,p_lugarAlm,p_fechaCad,p_nombre,p_descripcion);
+END$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure buscarActivo
+-- -----------------------------------------------------
+
+USE `PrimalEnterpriceDB`;
+DROP procedure IF EXISTS `PrimalEnterpriceDB`.`buscarActivo`;
+
+DELIMITER $$
+USE `PrimalEnterpriceDB`$$
+CREATE PROCEDURE `buscarActivo`(
+	`p_busqueda` VARCHAR(255),
+    `p_atributo` VARCHAR(255)
+)
+BEGIN
+	IF `p_atributo` = "nombre" THEN
+		SELECT nombre_activo, descripcion_activo, estado_activo
+		FROM activo
+		WHERE nombre_activo LIKE CONCAT('%', `p_busqueda`, '%');
+	ELSEIF `p_atributo` = "descripcion" THEN
+		SELECT nombre_activo, descripcion_activo, estado_activo
+		FROM activo
+		WHERE descripcion_activo LIKE CONCAT('%', `p_busqueda`, '%');
+	ELSEIF `p_atributo` = "estado" THEN
+		SELECT nombre_activo, descripcion_activo, estado_activo
+		FROM activo
+		WHERE estado_activo LIKE CONCAT('%', `p_busqueda`, '%');
+    END IF;
+END$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure verInfoActivo
+-- -----------------------------------------------------
+
+USE `PrimalEnterpriceDB`;
+DROP procedure IF EXISTS `PrimalEnterpriceDB`.`verInfoActivo`;
+
+DELIMITER $$
+USE `PrimalEnterpriceDB`$$
+CREATE PROCEDURE `verInfoActivo`(
+	`p_id` INT
+)
+BEGIN
+	SELECT nombre_activo,descripcion_activo,estado_activo,fecha AS fecha_compra
+    FROM activo NATURAL JOIN factura
+    WHERE id_activo = p_id;
+END$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure verInfoProducto
+-- -----------------------------------------------------
+
+USE `PrimalEnterpriceDB`;
+DROP procedure IF EXISTS `PrimalEnterpriceDB`.`verInfoProducto`;
+
+DELIMITER $$
+USE `PrimalEnterpriceDB`$$
+CREATE PROCEDURE `verInfoProducto`(
+	`p_id` INT
+)
+BEGIN
+	SELECT nombre_producto,descripcion_producto,tipo_producto,cantidad,metodo_almacenamiento,lugar_almacenamiento,fecha_caducidad,fecha AS fecha_compra
+    FROM producto NATURAL JOIN producto_factura NATURAL JOIN factura
+    WHERE id = p_id;
+END$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure buscarProducto
+-- -----------------------------------------------------
+
+USE `PrimalEnterpriceDB`;
+DROP procedure IF EXISTS `PrimalEnterpriceDB`.`buscarProducto`;
+
+DELIMITER $$
+USE `PrimalEnterpriceDB`$$
+CREATE PROCEDURE `buscarProducto`(
+	`p_busqueda` VARCHAR(255),
+    `p_atributo` VARCHAR(255)
+)
+BEGIN
+	IF `p_atributo` = "nombre" THEN
+		SELECT nombre_producto,tipo_producto,cantidad,nombre_proveedor
+		FROM producto NATURAL JOIN proveedor
+		WHERE nombre_producto LIKE CONCAT('%', `p_busqueda`, '%');
+	ELSEIF `p_atributo` = "tipo" THEN
+		SELECT nombre_producto,tipo_producto,cantidad,nombre_proveedor
+		FROM producto NATURAL JOIN proveedor
+		WHERE tipo_producto LIKE CONCAT('%', `p_busqueda`, '%');
+	ELSEIF `p_atributo` = "nombre proveedor" THEN
+		SELECT nombre_producto,tipo_producto,cantidad,nombre_proveedor
+		FROM producto NATURAL JOIN proveedor
+		WHERE nombre_proveedor LIKE CONCAT('%', `p_busqueda`, '%');
+    END IF;	
+END$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure editarDatosUsuario
+-- -----------------------------------------------------
+
+USE `PrimalEnterpriceDB`;
+DROP procedure IF EXISTS `PrimalEnterpriceDB`.`editar_datos_usuario`;
+
+DELIMITER $$
+USE `PrimalEnterpriceDB`$$
+CREATE PROCEDURE `editar_datos_usuario`(
+	`contrasena_nueva` VARCHAR(25),
+    `email` VARCHAR(255),
+    `telefono` INT,
+    `nombre` VARCHAR(255),
+    `usuario_actual` VARCHAR(255)
+)
+BEGIN
+	UPDATE usuario
+    SET nombre_usuario = `nombre`, contrasena = sha1(`contrasena_nueva`), email_usuario = `email`, numero_cel = `telefono`
+    WHERE usuario = `usuario_actual`;
+END$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure verificarDatosRepetidosUsuario
+-- -----------------------------------------------------
+
+USE `PrimalEnterpriceDB`;
+DROP procedure IF EXISTS `PrimalEnterpriceDB`.`verificarDatosRepetidosUsuario`;
+
+DELIMITER $$
+USE `PrimalEnterpriceDB`$$
+CREATE PROCEDURE `verificarDatosRepetidosUsuario`(
+	`p_usuario` VARCHAR(25),
+    `p_cedula` INT,
+    `p_email` VARCHAR(25)
+)
+BEGIN
+	SELECT *
+    FROM usuario
+    WHERE usuario.usuario = p_usuario OR usuario.cedula = p_cedula OR usuario.email_usuario = p_email;
+END$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure verificarInicioSesion
+-- -----------------------------------------------------
+
+USE `PrimalEnterpriceDB`;
+DROP procedure IF EXISTS `PrimalEnterpriceDB`.`verificarInicioSesion`;
+
+DELIMITER $$
+USE `PrimalEnterpriceDB`$$
+CREATE PROCEDURE `verificarInicioSesion`(
+	`p_usuario` VARCHAR(25),
+    `p_contrasena` VARCHAR(25)
+)
+BEGIN
+	SELECT *
+    FROM usuario
+    WHERE usuario.usuario = p_usuario AND usuario.contrasena = p_contrasena;
+END$$
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- View `PrimalEnterpriceDB`.`productos_baja_cantidad`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `PrimalEnterpriceDB`.`productos_baja_cantidad`;
+DROP VIEW IF EXISTS `PrimalEnterpriceDB`.`productos_baja_cantidad` ;
+USE `PrimalEnterpriceDB`;
+CREATE OR REPLACE VIEW `productos_baja_cantidad` AS 
+SELECT `productos`.`pru_nombre` AS `nombre_producto`,`productos`.`pru_cantidad` AS `cantidad`,`productos`.`pru_id` AS `id` 
+FROM `productos` 
+WHERE (`productos`.`pru_cantidad` <= 5);
+
+-- -----------------------------------------------------
+-- View `PrimalEnterpriceDB`.`productos_por_vencer`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `PrimalEnterpriceDB`.`productos_por_vencer`;
+DROP VIEW IF EXISTS `PrimalEnterpriceDB`.`productos_por_vencer` ;
+USE `PrimalEnterpriceDB`;
+CREATE OR REPLACE VIEW `productos_por_vencer` AS 
+SELECT `productos`.`pru_nombre` AS `nombre_producto`,`productos`.`pru_id` AS `id`,`productos`.`pru_fecha_caducidad` AS `fecha_caducidad`,(to_days(`productos`.`pru_fecha_caducidad`) - to_days(now())) AS `diff` 
+FROM `productos` 
+WHERE (((to_days(`productos`.`pru_fecha_caducidad`) - to_days(now())) < 5) and (`productos`.`pru_fecha_caducidad` is not null)) 
+ORDER BY (to_days(`productos`.`pru_fecha_caducidad`) - to_days(now()));
 
 SET SQL_MODE = '';
 DROP USER IF EXISTS Admin;

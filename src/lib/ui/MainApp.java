@@ -14,6 +14,7 @@ import lib.ui.Inventory.InventoryModel;
 import lib.ui.Inventory.InventoryView;
 import lib.ui.MainMenu.MainMenuController;
 import lib.ui.MainMenu.MainMenuView;
+import lib.ui.UsersList.UsersListController;
 
 /**
  *
@@ -29,11 +30,11 @@ public class MainApp extends javax.swing.JFrame {
         this.setSize(1360, 768);
         this.setLocationRelativeTo(null);
         
-        
+        /*
         MainMenuController mainMenuController = new MainMenuController(new User("miguel", 12455, "jefe", "123", 13131, "miguel@gmail", "Calle 123", "Miguel Bolaños"));
         appContent.add(mainMenuController.getView());
         mainMenuController.getView().setVisible(true);
-        
+        */
         
         /*
         EditAccountController editAccountControler = new EditAccountController(new User("miguel", 12455, "jefe", "123", 13131, "miguel@gmail", "Calle 123", "Miguel Bolaños"));
@@ -46,6 +47,10 @@ public class MainApp extends javax.swing.JFrame {
         appContent.add(inventoryController.getView());
         inventoryController.getView().setVisible(true);
         */
+        
+        UsersListController usersListController = new UsersListController();
+        appContent.add(usersListController.getView());
+        usersListController.getView().setVisible(true);
     }
 
     /**

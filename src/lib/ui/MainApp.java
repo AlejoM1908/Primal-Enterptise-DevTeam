@@ -5,6 +5,16 @@
  */
 package lib.ui;
 
+import java.sql.SQLException;
+import lib.models.User;
+import lib.ui.EditAccount.EditAccountController;
+import lib.ui.EditAccount.EditAccountView;
+import lib.ui.Inventory.InventoryController;
+import lib.ui.Inventory.InventoryModel;
+import lib.ui.Inventory.InventoryView;
+import lib.ui.MainMenu.MainMenuController;
+import lib.ui.MainMenu.MainMenuView;
+
 /**
  *
  * @author danie
@@ -14,15 +24,28 @@ public class MainApp extends javax.swing.JFrame {
     /**
      * Creates new form MainApp
      */
-    public MainApp() {
+    public MainApp() throws SQLException {
         initComponents();
-        this.setVisible(true);
+        this.setSize(1360, 768);
         this.setLocationRelativeTo(null);
-        this.mainPanel.setVisible(true);
-        this.appBar.setVisible(true);
-        this.appPanel.setVisible(true);
-        this.buttonBar.setVisible(false);
-        this.appContent.setVisible(false);
+        
+        
+        MainMenuController mainMenuController = new MainMenuController(new User("miguel", 12455, "jefe", "123", 13131, "miguel@gmail", "Calle 123", "Miguel Bolaños"));
+        appContent.add(mainMenuController.getView());
+        mainMenuController.getView().setVisible(true);
+        
+        
+        /*
+        EditAccountController editAccountControler = new EditAccountController(new User("miguel", 12455, "jefe", "123", 13131, "miguel@gmail", "Calle 123", "Miguel Bolaños"));
+        appContent.add(editAccountControler.getView());
+        editAccountControler.getView().setVisible(true);
+        */
+        
+        /*
+        InventoryController inventoryController = new InventoryController();
+        appContent.add(inventoryController.getView());
+        inventoryController.getView().setVisible(true);
+        */
     }
 
     /**
@@ -41,7 +64,7 @@ public class MainApp extends javax.swing.JFrame {
         appContent = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new java.awt.CardLayout());
 
         mainPanel.setBackground(new java.awt.Color(255, 0, 255));
 
@@ -74,17 +97,7 @@ public class MainApp extends javax.swing.JFrame {
         );
 
         appContent.setBackground(new java.awt.Color(0, 0, 255));
-
-        javax.swing.GroupLayout appContentLayout = new javax.swing.GroupLayout(appContent);
-        appContent.setLayout(appContentLayout);
-        appContentLayout.setHorizontalGroup(
-            appContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1091, Short.MAX_VALUE)
-        );
-        appContentLayout.setVerticalGroup(
-            appContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        appContent.setLayout(new java.awt.CardLayout());
 
         javax.swing.GroupLayout appPanelLayout = new javax.swing.GroupLayout(appPanel);
         appPanel.setLayout(appPanelLayout);
@@ -92,8 +105,9 @@ public class MainApp extends javax.swing.JFrame {
             appPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(appPanelLayout.createSequentialGroup()
                 .addComponent(buttonBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(appContent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(appContent, javax.swing.GroupLayout.PREFERRED_SIZE, 1091, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
         appPanelLayout.setVerticalGroup(
             appPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,8 +132,7 @@ public class MainApp extends javax.swing.JFrame {
                 .addComponent(appPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(mainPanel);
-        mainPanel.setBounds(0, 0, 0, 0);
+        getContentPane().add(mainPanel, "card2");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -154,7 +167,11 @@ public class MainApp extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainApp().setVisible(true);
+                try {
+                    new MainApp().setVisible(true);
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
             }
         });
     }

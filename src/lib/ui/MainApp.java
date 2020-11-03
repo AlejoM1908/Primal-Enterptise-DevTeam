@@ -5,14 +5,13 @@ import javax.swing.JPanel;
 //Proyect imports
 import lib.ui.loginView.loginView;
 import lib.ui.registroUsr.registroUsr;
-import lib.ui.individualProd.prodIndividual;
+
 import lib.ui.registroProd.registroProd;
 import lib.utils.AppColors;
 
 
 public class MainApp extends javax.swing.JFrame {
     private JPanel registro = new registroUsr();
-    private JPanel prodindv = new prodIndividual();
     private JPanel registro_prod = new registroProd();
     private AppColors color = new AppColors();
 
@@ -128,21 +127,22 @@ public class MainApp extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ButtonPanelLayout.createSequentialGroup()
                 .addComponent(LoginButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(ButtonPanelLayout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ButtonPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(56, 56, 56))
+                .addGroup(ButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ButtonPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(56, 56, 56))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ButtonPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(53, 53, 53))))
         );
         ButtonPanelLayout.setVerticalGroup(
             ButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ButtonPanelLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addGap(34, 34, 34)
                 .addComponent(jLabel2)
-                .addGap(43, 43, 43)
+                .addGap(42, 42, 42)
                 .addComponent(LoginButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
                 .addComponent(LoginButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)

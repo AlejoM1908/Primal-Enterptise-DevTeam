@@ -72,4 +72,10 @@ public class DBConnection{
         stat = null;
         System.out.println("La conexión ha sido terminada con: " + DBName);
     }
+
+    public Connection getConn() {
+        return conn;
+    }
+    
+    
 }

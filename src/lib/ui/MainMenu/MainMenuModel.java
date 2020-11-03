@@ -27,7 +27,6 @@ public class MainMenuModel {
     
     public ArrayList<QuantityAlertPanel> fillQuantityPanels() throws SQLException{
         ArrayList<QuantityAlertPanel> arr = new ArrayList<>();
-        quantityAlerts.next();
         while(quantityAlerts.next()){
             String name = quantityAlerts.getString(1);
             int quantity = quantityAlerts.getInt(2);
@@ -40,7 +39,6 @@ public class MainMenuModel {
     
     public ArrayList<DateAlertPanel> fillDatePanels() throws SQLException{
         ArrayList<DateAlertPanel> arr = new ArrayList<>();
-        dateAlerts.next();
         while(dateAlerts.next()){
             String name = dateAlerts.getString(1);
             Date expDate = dateAlerts.getDate(3);

@@ -24,7 +24,7 @@ public class InventoryModel {
     public void fillTable() throws SQLException{
         DBConnection conn = new DBConnection();
         conn.getConnection();
-        ResultSet result = conn.executeQuery("SELECT nombre_producto, marca_producto, tipo_de_producto, cantidad, fecha_caducidad FROM producto;");
+        ResultSet result = conn.executeQuery("SELECT pru_nombre, pru_marca, pru_tipo, pru_cantidad, pru_fecha_caducidad FROM productos;");
         conn.endCOnnection();
         
         DefaultTableModel model = (DefaultTableModel) view.getJtInventory().getModel();

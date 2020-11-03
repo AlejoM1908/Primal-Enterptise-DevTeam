@@ -7,6 +7,7 @@ package lib.ui;
 
 import java.sql.SQLException;
 import lib.models.User;
+import lib.ui.AssetRegistration.AssetRegistrationController;
 import lib.ui.EditAccount.EditAccountController;
 import lib.ui.EditAccount.EditAccountView;
 import lib.ui.Inventory.InventoryController;
@@ -30,6 +31,10 @@ public class MainApp extends javax.swing.JFrame {
         this.setSize(1360, 768);
         this.setLocationRelativeTo(null);
         
+        AssetRegistrationController controller = new AssetRegistrationController();
+        appContent.add(controller.getView());
+        controller.getView().setVisible(true);
+        
         /*
         MainMenuController mainMenuController = new MainMenuController(new User("miguel", 12455, "jefe", "123", 13131, "miguel@gmail", "Calle 123", "Miguel Bolaños"));
         appContent.add(mainMenuController.getView());
@@ -47,10 +52,11 @@ public class MainApp extends javax.swing.JFrame {
         appContent.add(inventoryController.getView());
         inventoryController.getView().setVisible(true);
         */
-        
+        /*
         UsersListController usersListController = new UsersListController();
         appContent.add(usersListController.getView());
         usersListController.getView().setVisible(true);
+        */
     }
 
     /**

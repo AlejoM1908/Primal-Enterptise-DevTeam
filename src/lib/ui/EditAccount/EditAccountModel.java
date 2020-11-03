@@ -41,14 +41,13 @@ public class EditAccountModel {
     }
     
     public void updateUserInfo(){
-        String name = view.getJtxtName().getText();
-        String email = view.getJtxtEmail().getText();
+        String name = "\"" + view.getJtxtName().getText() + "\"";
+        String email = "\"" + view.getJtxtEmail().getText() + "\"";
         int number = Integer.parseInt(view.getJtxtNumber().getText());
-        String password = String.valueOf(view.getJpfPassword().getPassword());
+        String password = "\"" + String.valueOf(view.getJpfPassword().getPassword()) + "\"";
         DBConnection conn = new DBConnection();
         conn.getConnection();
-        //conn.executeQuery("CALL editar_datos_usuario(" + password +", " +  email +", " 
-                           //+ number +", " +  name +", " +  usuario +", " +  ");");
+        //conn.executeQuery("CALL editar_datos_usuario(" + password +", " +  email +", " + number +", " +  name +", " +  usuario +", " +  ");");
         conn.getConnection();
         
         

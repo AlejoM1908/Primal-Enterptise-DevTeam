@@ -54,6 +54,15 @@ public class AssetRegistrationController implements ActionListener, MouseListene
         }
     }
 
+    public AssetRegistrationModel getModel() {
+        return model;
+    }
+
+    public AssetRegistrationView getView() {
+        return view;
+    }
+
+    
     @Override
     public void mouseClicked(MouseEvent me) {
         //DIRIGIR A VENTANA

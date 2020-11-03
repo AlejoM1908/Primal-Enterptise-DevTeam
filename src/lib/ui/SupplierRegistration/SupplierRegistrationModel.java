@@ -63,11 +63,11 @@ public class SupplierRegistrationModel {
     public void registerSupplier(){
         DBConnection conn = new DBConnection();
         conn.getConnection();
-        String name = view.getJtxtName().getText();
-        String nit = view.getJtxtNit().getText();
-        String address = view.getJtxtAddress().getText();
-        String email = view.getJtxtEmail().getText();
-        String phoneNumber = view.getJtxtPhoneNumber().getText();
+        String name = "\"" + view.getJtxtName().getText() + "\"";
+        int nit = Integer.parseInt(view.getJtxtNit().getText());
+        String address = "\"" + view.getJtxtAddress().getText() + "\"";
+        String email = "\"" + view.getJtxtEmail().getText() + "\"";
+        int phoneNumber = Integer.parseInt(view.getJtxtPhoneNumber().getText());
         conn.executeQuery("CALL InsProv(" + name + "," + nit + "," 
                          + phoneNumber + "," + email + "," + address + "," + "user" + "," + ");");
         conn.endCOnnection();

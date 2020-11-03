@@ -1,10 +1,12 @@
-/*
+    /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package lib.ui.AssetRegistration;
 
+import com.mysql.cj.xdevapi.PreparableStatement;
+import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import lib.app.DBConnection;
@@ -50,18 +52,20 @@ public class AssetRegistrationModel {
         return false;
     }
     
-    public void registerAsset(){
-        String name = view.getJtxtName().getText();
-        String brand = view.getJtxtBrand().getText();
+    public void registerAsset() throws SQLException{
+        String name = "\"" + view.getJtxtName().getText() + "\"";
+        String brand = "\"" + view.getJtxtBrand().getText() + "\"";
         int nit = Integer.parseInt(view.getJtxtNit().getText());
         int quantity = Integer.parseInt(view.getJtxtQuantity().getText());
         int ticket = Integer.parseInt(view.getJtxtTicket().getText());
-        String desc = view.getJtxtaDesc().getText();
-        String status = view.getJcbStatus().getSelectedItem().toString();
+        String desc = "\"" + view.getJtxtaDesc().getText() + "\"";
+        String status = "\"" + view.getJcbStatus().getSelectedItem().toString() + "\"";
         
         DBConnection conn = new DBConnection();
         conn.getConnection();
-        //conn.executeQuery("CALL registrarActivo(" + id + "," + user + "," + nit + "," + ticket + "," + desc + "," + status + "," + name + "," + ");");
+        //CallableStatement stat = conn.getConn().prepareStatement("CALL registrarActivo(" + Integer.toString(10) + "," + "miguel" + "," + nit + "," + ticket + "," + desc + "," + status + "," + name + ");");
+        
+        conn.executeQuery("CALL registrarActivo(" + Integer.toString(10) + "," + "\""+"miguel"+"\"" + "," + nit + "," + ticket + "," + desc + "," + status + "," + name + ");");
         conn.endCOnnection();
     }
     
@@ -69,7 +73,7 @@ public class AssetRegistrationModel {
         int nit = Integer.parseInt(this.view.getJtxtNit().getText());
         DBConnection conn = new DBConnection();
         conn.getConnection();
-        ResultSet result = conn.executeQuery("SELECT COUNT(nit) FROM activo WHERE nit = " + Integer.toString(nit) + ";");
+        ResultSet result = conn.executeQuery("SELECT COUNT(pve_nit) FROM proveedores WHERE pve_nit = " + Integer.toString(nit) + ";");
         conn.endCOnnection();
         result.next();
         return result.getInt(1) == 0;   

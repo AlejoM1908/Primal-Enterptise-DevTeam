@@ -12,7 +12,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 DROP SCHEMA IF EXISTS `PrimalEnterpriceDB` ;
 
-CREATE SCHEMA IF NOT EXISTS `PrimalEnterpriceDB` DEFAULT CHARACTER SET utf8 ;
+CREATE SCHEMA IF NOT EXISTS `PrimalEnterpriceDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `PrimalEnterpriceDB` ;
 
 -- -----------------------------------------------------
@@ -217,6 +217,7 @@ DROP TABLE IF EXISTS `PrimalEnterpriceDB`.`telefonos` ;
 
 CREATE TABLE IF NOT EXISTS `PrimalEnterpriceDB`.`telefonos` (
   `tel_id` INT NOT NULL AUTO_INCREMENT,
+
   `tel_usuario` VARCHAR(25) NOT NULL,
   `tel_proveedor` INT NOT NULL,
   `tel_telefono` INT NOT NULL,
@@ -449,6 +450,7 @@ END$$
 DELIMITER ;
 
 -- -----------------------------------------------------
+
 -- View `PrimalEnterpriceDB`.`vw_getProductions`
 -- -----------------------------------------------------
 DROP VIEW IF EXISTS `PrimalEnterpriceDB`.`vw_getProductions` ;
@@ -519,6 +521,7 @@ CREATE  OR REPLACE VIEW vw_getActives AS SELECT
     act_marca AS marca,
     act_descripcion AS descripcion
 FROM activos;
+
 
 SET SQL_MODE = '';
 DROP USER IF EXISTS Admin;

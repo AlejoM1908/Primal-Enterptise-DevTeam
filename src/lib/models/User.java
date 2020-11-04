@@ -2,6 +2,7 @@
 package lib.models;
 
 public class  User{
+
     private String user;
     private int idCard;
     private String range;
@@ -86,4 +87,5 @@ public class  User{
     public void setHomeAdress(String homeAdress) {
         this.homeAdress = homeAdress;
     }
+
 }

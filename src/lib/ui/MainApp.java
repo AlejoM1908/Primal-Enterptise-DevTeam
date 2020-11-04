@@ -9,10 +9,8 @@ import lib.ui.loginView.LoginModel;
 import lib.ui.loginView.LoginController;
 
 public class MainApp extends javax.swing.JFrame {
-    private LoginView logView = new LoginView();
-    private LoginModel logModel = new LoginModel();
-    private LoginController logController = new LoginController(logView,logModel);
-    private testView testview = new testView();
+  
+    private JPanel login = new loginView();
 
     public MainApp() {
         initComponents();
@@ -20,10 +18,11 @@ public class MainApp extends javax.swing.JFrame {
         this.setSize(1360, 768);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+
         this.getContentPane().add(this.logView);
         this.mainPanel.setVisible(false);
         this.logView.setVisible(true);
-        
+
     }
 
     /**
@@ -54,6 +53,7 @@ public class MainApp extends javax.swing.JFrame {
         appButtons.setLayout(new java.awt.CardLayout());
 
         appContent.setBackground(new java.awt.Color(51, 51, 255));
+
         appContent.setLayout(new java.awt.CardLayout());
 
         javax.swing.GroupLayout appPanelLayout = new javax.swing.GroupLayout(appPanel);
@@ -61,9 +61,11 @@ public class MainApp extends javax.swing.JFrame {
         appPanelLayout.setHorizontalGroup(
             appPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(appPanelLayout.createSequentialGroup()
+
                 .addComponent(appButtons, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(appContent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+
         );
         appPanelLayout.setVerticalGroup(
             appPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,7 +128,8 @@ public class MainApp extends javax.swing.JFrame {
                 try {
                     new MainApp().setVisible(true);
                 } catch (SQLException ex) {
-                    Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
+
+                    System.out.println(ex.getMessage());
                 }
             }
         });

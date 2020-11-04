@@ -6,14 +6,14 @@
 package lib.ui;
 
 import javax.swing.JPanel;
-import lib.ui.loginView.loginView;
+import lib.ui.loginView.LoginView;
 
 /**
  *
  * @author Fredy AGP
  */
 public class Login extends javax.swing.JFrame {
-private JPanel login = new loginView();
+private JPanel login = new LoginView();
     /**
      * Creates new form Login
      */

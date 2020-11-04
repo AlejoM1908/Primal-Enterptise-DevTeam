@@ -3,7 +3,6 @@ package lib.ui;
 import javax.swing.JPanel;
 
 //Proyect imports
-import lib.ui.loginView.loginView;
 import lib.ui.registroUsr.registroUsr;
 
 import lib.ui.registroProd.registroProd;

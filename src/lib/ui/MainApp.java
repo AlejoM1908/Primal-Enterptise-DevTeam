@@ -3,9 +3,7 @@ package lib.ui;
 import javax.swing.JPanel;
 
 //Proyect imports
-import lib.ui.loginView.loginView;
 import lib.ui.registroUsr.registroUsr;
-
 import lib.ui.registroProd.registroProd;
 import lib.utils.AppColors;
 
@@ -52,7 +50,6 @@ public class MainApp extends javax.swing.JFrame {
         setResizable(false);
 
         ButtonPanel.setBackground(color.menuBotonesColor());
-
         jLabel1.setFont(new java.awt.Font("Leelawadee UI", 0, 28)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(240, 240, 240));
         jLabel1.setText("Administración");

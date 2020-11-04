@@ -1,15 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+//Java imports
 package lib.models;
 
-/**
- *
- * @author user
- */
-public class User {
+public class  User{
+
     private String user;
     private int idCard;
     private String range;
@@ -20,7 +13,7 @@ public class User {
     private String name;
 
     public User(String user, int idCard, String range, String contraseña, 
-            int celNumber, String email, String homeAdress, String name) {
+            int celNumber, String email, String homeAdress, String name){
         this.user = user;
         this.idCard = idCard;
         this.range = range;
@@ -94,8 +87,5 @@ public class User {
     public void setHomeAdress(String homeAdress) {
         this.homeAdress = homeAdress;
     }
-    
-    
-    
-    
+
 }

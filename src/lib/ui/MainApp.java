@@ -1,62 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+//Java imports
 package lib.ui;
+import javax.swing.JPanel;
 
-import java.sql.SQLException;
-import lib.models.User;
-import lib.ui.AssetRegistration.AssetRegistrationController;
-import lib.ui.EditAccount.EditAccountController;
-import lib.ui.EditAccount.EditAccountView;
-import lib.ui.Inventory.InventoryController;
-import lib.ui.Inventory.InventoryModel;
-import lib.ui.Inventory.InventoryView;
-import lib.ui.MainMenu.MainMenuController;
-import lib.ui.MainMenu.MainMenuView;
-import lib.ui.UsersList.UsersListController;
+//Proyect imports
+import lib.ui.loginView.loginView;
 
-/**
- *
- * @author danie
- */
 public class MainApp extends javax.swing.JFrame {
-
-    /**
-     * Creates new form MainApp
-     */
-    public MainApp() throws SQLException {
+    private JPanel login = new loginView();
+    
+    public MainApp() {
         initComponents();
+        this.setVisible(true);
         this.setSize(1360, 768);
+        this.setResizable(false);
         this.setLocationRelativeTo(null);
-        
-        AssetRegistrationController controller = new AssetRegistrationController();
-        appContent.add(controller.getView());
-        controller.getView().setVisible(true);
-        
-        /*
-        MainMenuController mainMenuController = new MainMenuController(new User("miguel", 12455, "jefe", "123", 13131, "miguel@gmail", "Calle 123", "Miguel Bolaños"));
-        appContent.add(mainMenuController.getView());
-        mainMenuController.getView().setVisible(true);
-        */
-        
-        /*
-        EditAccountController editAccountControler = new EditAccountController(new User("miguel", 12455, "jefe", "123", 13131, "miguel@gmail", "Calle 123", "Miguel Bolaños"));
-        appContent.add(editAccountControler.getView());
-        editAccountControler.getView().setVisible(true);
-        */
-        
-        /*
-        InventoryController inventoryController = new InventoryController();
-        appContent.add(inventoryController.getView());
-        inventoryController.getView().setVisible(true);
-        */
-        /*
-        UsersListController usersListController = new UsersListController();
-        appContent.add(usersListController.getView());
-        usersListController.getView().setVisible(true);
-        */
+       
     }
 
     /**
@@ -89,7 +47,7 @@ public class MainApp extends javax.swing.JFrame {
         );
         appBarLayout.setVerticalGroup(
             appBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
+            .addGap(0, 60, Short.MAX_VALUE)
         );
 
         appPanel.setBackground(new java.awt.Color(0, 255, 255));
@@ -100,14 +58,15 @@ public class MainApp extends javax.swing.JFrame {
         buttonBar.setLayout(buttonBarLayout);
         buttonBarLayout.setHorizontalGroup(
             buttonBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 270, Short.MAX_VALUE)
+            .addGap(0, 300, Short.MAX_VALUE)
         );
         buttonBarLayout.setVerticalGroup(
             buttonBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 728, Short.MAX_VALUE)
+            .addGap(0, 708, Short.MAX_VALUE)
         );
 
         appContent.setBackground(new java.awt.Color(0, 0, 255));
+      
         appContent.setLayout(new java.awt.CardLayout());
 
         javax.swing.GroupLayout appPanelLayout = new javax.swing.GroupLayout(appPanel);
@@ -142,7 +101,7 @@ public class MainApp extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(appPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
+      
         getContentPane().add(mainPanel, "card2");
 
         pack();

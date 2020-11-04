@@ -12,7 +12,7 @@ public class AppColors {
     
     public Color textColor(){ return _textColor;}
     public Color buttonColor(){ return _buttonColor;}
-    public Color hyperlinkolor(){ return _hyperlinksColor;}
+    public Color hyperlinkColor(){ return _hyperlinksColor;}
     public Color borderColor(){return _borderColor;}
     public Color mainSideBarColor(){return _mainSideBarColor;}
     public Color secondSideBarColor(){return _secondSideBarColor;}

@@ -9,6 +9,8 @@ public class AppColors {
     private Color _borderColor = new Color(70,91,200);
     private Color _mainSideBarColor = new Color(29,35,69);
     private Color _secondSideBarColor = new Color(173,183,240);
+    private Color _menuBotonesColor = new Color(29,35,69);
+    private Color _menuBotones_botonColor = new Color(220,224,249);
     
     public Color textColor(){ return _textColor;}
     public Color buttonColor(){ return _buttonColor;}
@@ -16,4 +18,6 @@ public class AppColors {
     public Color borderColor(){return _borderColor;}
     public Color mainSideBarColor(){return _mainSideBarColor;}
     public Color secondSideBarColor(){return _secondSideBarColor;}
+    public Color menuBotonesColor(){return _menuBotonesColor;}
+    public Color menuBotones_botonColor(){return _menuBotones_botonColor;}
 }

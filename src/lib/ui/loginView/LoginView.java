@@ -1,14 +1,13 @@
 //Java imports
 package lib.ui.loginView;
-
-import java.awt.event.ActionListener;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import lib.utils.AppColors;
 
-public class loginView extends javax.swing.JPanel {
+public class LoginView extends javax.swing.JPanel {
     private AppColors color = new AppColors();
     
-    public loginView() {
+    public LoginView() {
         initComponents();
         
     }
@@ -25,16 +24,16 @@ public class loginView extends javax.swing.JPanel {
         loginPanel = new javax.swing.JPanel();
         optionsPanel = new javax.swing.JPanel();
         userLabel = new javax.swing.JLabel();
+        userField = new javax.swing.JTextField();
         userSeparator = new javax.swing.JSeparator();
         passwordLabel = new javax.swing.JLabel();
+        passwordField = new javax.swing.JPasswordField();
         passwordSeparator = new javax.swing.JSeparator();
         LoginButton = new javax.swing.JLabel();
         forgotPasswordButton = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
         titleLabel = new javax.swing.JLabel();
         newUserLabel = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        newUserButton = new javax.swing.JLabel();
         imagePanel = new javax.swing.JPanel();
         image = new javax.swing.JLabel();
 
@@ -48,12 +47,20 @@ public class loginView extends javax.swing.JPanel {
         userLabel.setForeground(color.textColor());
         userLabel.setText("Usuario :");
 
+        userField.setFont(new java.awt.Font("Ancizar Sans", 0, 20)); // NOI18N
+        userField.setForeground(color.textColor());
+        userField.setBorder(null);
+
         userSeparator.setForeground(color.borderColor());
 
         passwordLabel.setBackground(new java.awt.Color(255, 255, 255));
         passwordLabel.setFont(new java.awt.Font("Ancizar Sans", 0, 28)); // NOI18N
         passwordLabel.setForeground(color.textColor());
         passwordLabel.setText("Contraseña :");
+
+        passwordField.setFont(new java.awt.Font("Ancizar Sans", 0, 20)); // NOI18N
+        passwordField.setForeground(color.textColor());
+        passwordField.setBorder(null);
 
         passwordSeparator.setForeground(color.borderColor());
 
@@ -62,7 +69,7 @@ public class loginView extends javax.swing.JPanel {
         LoginButton.setForeground(new java.awt.Color(255, 255, 255));
         LoginButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LoginButton.setText("iniciar");
-        LoginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        LoginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         LoginButton.setOpaque(true);
 
         forgotPasswordButton.setBackground(new java.awt.Color(255, 255, 255));
@@ -70,14 +77,6 @@ public class loginView extends javax.swing.JPanel {
         forgotPasswordButton.setForeground(color.hyperlinkColor());
         forgotPasswordButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         forgotPasswordButton.setText("¿Olvidaste tu contraseña?");
-
-        jTextField1.setFont(new java.awt.Font("Ancizar Sans", 0, 20)); // NOI18N
-        jTextField1.setForeground(color.textColor());
-        jTextField1.setBorder(null);
-
-        jPasswordField1.setFont(new java.awt.Font("Ancizar Sans", 0, 20)); // NOI18N
-        jPasswordField1.setForeground(color.textColor());
-        jPasswordField1.setBorder(null);
 
         javax.swing.GroupLayout optionsPanelLayout = new javax.swing.GroupLayout(optionsPanel);
         optionsPanel.setLayout(optionsPanelLayout);
@@ -89,11 +88,11 @@ public class loginView extends javax.swing.JPanel {
                     .addComponent(forgotPasswordButton)
                     .addComponent(LoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(optionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTextField1)
+                        .addComponent(userField)
                         .addComponent(userLabel)
                         .addComponent(passwordLabel)
                         .addComponent(userSeparator)
-                        .addComponent(jPasswordField1)
+                        .addComponent(passwordField)
                         .addComponent(passwordSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(33, 33, 33))
         );
@@ -103,13 +102,13 @@ public class loginView extends javax.swing.JPanel {
                 .addGap(21, 21, 21)
                 .addComponent(userLabel)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(userField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(userSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
                 .addComponent(passwordLabel)
                 .addGap(18, 18, 18)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(passwordSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
@@ -128,9 +127,9 @@ public class loginView extends javax.swing.JPanel {
         newUserLabel.setForeground(color.textColor());
         newUserLabel.setText("¿Eres un usuario nuevo?");
 
-        jLabel1.setFont(new java.awt.Font("Ancizar Sans", 0, 28)); // NOI18N
-        jLabel1.setForeground(color.hyperlinkColor());
-        jLabel1.setText("Registrate");
+        newUserButton.setFont(new java.awt.Font("Ancizar Sans", 0, 28)); // NOI18N
+        newUserButton.setForeground(color.hyperlinkColor());
+        newUserButton.setText("Registrate");
 
         javax.swing.GroupLayout loginPanelLayout = new javax.swing.GroupLayout(loginPanel);
         loginPanel.setLayout(loginPanelLayout);
@@ -142,7 +141,7 @@ public class loginView extends javax.swing.JPanel {
                     .addGroup(loginPanelLayout.createSequentialGroup()
                         .addComponent(newUserLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1))
+                        .addComponent(newUserButton))
                     .addComponent(optionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(titleLabel))
                 .addContainerGap(100, Short.MAX_VALUE))
@@ -150,15 +149,15 @@ public class loginView extends javax.swing.JPanel {
         loginPanelLayout.setVerticalGroup(
             loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanelLayout.createSequentialGroup()
-                .addGap(64, 64, 64)
+                .addContainerGap(73, Short.MAX_VALUE)
                 .addComponent(titleLabel)
-                .addGap(55, 55, 55)
+                .addGap(45, 45, 45)
                 .addComponent(optionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(newUserLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(55, 55, 55))
+                    .addComponent(newUserButton))
+                .addGap(68, 68, 68))
         );
 
         imagePanel.setBackground(new java.awt.Color(255, 255, 255));
@@ -173,8 +172,9 @@ public class loginView extends javax.swing.JPanel {
         );
         imagePanelLayout.setVerticalGroup(
             imagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-
-            .addComponent(image, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(imagePanelLayout.createSequentialGroup()
+                .addComponent(image, javax.swing.GroupLayout.PREFERRED_SIZE, 708, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -183,31 +183,45 @@ public class loginView extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(loginPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, 0)
                 .addComponent(imagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(loginPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(imagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(loginPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(imagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     
-    public void addLoginListener(ActionListener listenForLoginButton){
-        
+    public JLabel getLoginButton(){
+        return this.LoginButton;
+    }
+    
+    public JLabel getForgotPasswordButton(){
+        return this.forgotPasswordButton;
+    }
+    
+    public JLabel getNewUserButton(){
+        return this.newUserButton;
     }
 
     public String getUserName(){
-        return "";
+        return this.userField.getText();
     }
 
     public String getPassword(){
-        return "";
+        return String.valueOf(this.passwordField.getPassword());
     }
     
     public void displayErrorMessage(int errorNum){
         switch (errorNum){
+            case -1:
+                JOptionPane.showMessageDialog(this, 
+                        "Algo ocurrio mal con la base de datos, intente nuevamnete");
+                break;
             case 0:
                 JOptionPane.showMessageDialog(this, 
                         "El usuario no existe o se ingreso incorrectamnte, intente nuevamnete");
@@ -215,6 +229,14 @@ public class loginView extends javax.swing.JPanel {
             case 1:
                 JOptionPane.showMessageDialog(this, 
                         "La contraseña ingresada no es correcta, intente nuevamnte");
+                break;
+            case 2:
+                JOptionPane.showMessageDialog(this, 
+                        "Ingreso al sistema satisfactorio!!");
+                break;
+            case 3:
+                JOptionPane.showMessageDialog(this, 
+                        "Los campos no pueden estar vacios, intente nuevamnte");
                 break;
         }
     }
@@ -224,15 +246,15 @@ public class loginView extends javax.swing.JPanel {
     private javax.swing.JLabel forgotPasswordButton;
     private javax.swing.JLabel image;
     private javax.swing.JPanel imagePanel;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel loginPanel;
+    private javax.swing.JLabel newUserButton;
     private javax.swing.JLabel newUserLabel;
     private javax.swing.JPanel optionsPanel;
+    private javax.swing.JPasswordField passwordField;
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JSeparator passwordSeparator;
     private javax.swing.JLabel titleLabel;
+    private javax.swing.JTextField userField;
     private javax.swing.JLabel userLabel;
     private javax.swing.JSeparator userSeparator;
     // End of variables declaration//GEN-END:variables

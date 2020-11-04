@@ -1,39 +1,28 @@
 //Java imports
 package lib.ui;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JPanel;
 
 //Proyect imports
-import lib.ui.loginView.loginView;
-import lib.ui.TestView.testeo;
-import lib.ui.consultProductView.ConsultProductController;
-import lib.ui.userAdministrationMenuView.AdministrationMenuController;
-import lib.ui.userAdministrationMenuView.AdministrationMenuView;
+import lib.ui.loginView.LoginView;
+import lib.ui.test.testView;
+import lib.ui.loginView.LoginModel;
+import lib.ui.loginView.LoginController;
 
 public class MainApp extends javax.swing.JFrame {
-    private JPanel login = new loginView();
+    private LoginView logView = new LoginView();
+    private LoginModel logModel = new LoginModel();
+    private LoginController logController = new LoginController(logView,logModel);
+    private testView testview = new testView();
 
-    public MainApp() throws SQLException {
+    public MainApp() {
         initComponents();
         this.setVisible(true);
         this.setSize(1360, 768);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
-        
-        
-      /*
-        AdministrationMenuController administrationMenuController = new AdministrationMenuController();
-        appContent.add(administrationMenuController.getView());
-        administrationMenuController.getView().setVisible(true);
-       */
-      
-      
-       ConsultProductController consultProductController = new ConsultProductController();
-       appContent.add(consultProductController.getView());
-       consultProductController.getView().setVisible(true);
-       
+        this.getContentPane().add(this.logView);
+        this.mainPanel.setVisible(false);
+        this.logView.setVisible(true);
         
     }
 
@@ -48,46 +37,59 @@ public class MainApp extends javax.swing.JFrame {
 
         ButtonPanel = new javax.swing.JPanel();
         appBar = new javax.swing.JPanel();
+        appPanel = new javax.swing.JPanel();
+        appButtons = new javax.swing.JPanel();
         appContent = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1360, 786));
-        setMinimumSize(new java.awt.Dimension(1360, 786));
-        setUndecorated(true);
-        setResizable(false);
+        getContentPane().setLayout(new java.awt.CardLayout());
 
-        ButtonPanel.setBackground(new java.awt.Color(255, 0, 51));
-        ButtonPanel.setLayout(new java.awt.CardLayout());
-
+        mainPanel.setBackground(new java.awt.Color(255, 51, 255));
         appBar.setBackground(new java.awt.Color(51, 255, 51));
         appBar.setLayout(new java.awt.CardLayout());
 
-        appContent.setBackground(new java.awt.Color(0, 51, 255));
-        appContent.setMaximumSize(new java.awt.Dimension(1060, 708));
-        appContent.setMinimumSize(new java.awt.Dimension(1060, 708));
-        appContent.setPreferredSize(new java.awt.Dimension(1060, 708));
+        appPanel.setBackground(new java.awt.Color(51, 255, 255));
+
+        appButtons.setBackground(new java.awt.Color(255, 51, 51));
+        appButtons.setLayout(new java.awt.CardLayout());
+
+        appContent.setBackground(new java.awt.Color(51, 51, 255));
         appContent.setLayout(new java.awt.CardLayout());
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(ButtonPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(appContent, javax.swing.GroupLayout.PREFERRED_SIZE, 1060, javax.swing.GroupLayout.PREFERRED_SIZE))
+        javax.swing.GroupLayout appPanelLayout = new javax.swing.GroupLayout(appPanel);
+        appPanel.setLayout(appPanelLayout);
+        appPanelLayout.setHorizontalGroup(
+            appPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(appPanelLayout.createSequentialGroup()
+                .addComponent(appButtons, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(appContent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        appPanelLayout.setVerticalGroup(
+            appPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(appButtons, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
+            .addComponent(appContent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
+        mainPanel.setLayout(mainPanelLayout);
+        mainPanelLayout.setHorizontalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(appPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(appBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(appBar, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+        mainPanelLayout.setVerticalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addComponent(appBar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(ButtonPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(appContent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
+
+        getContentPane().add(mainPanel, "card2");
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -137,6 +139,11 @@ public class MainApp extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel ButtonPanel;
     private javax.swing.JPanel appBar;
+    private javax.swing.JPanel appButtons;
     private javax.swing.JPanel appContent;
+
+    private javax.swing.JPanel appPanel;
+    private javax.swing.JPanel mainPanel;
+
     // End of variables declaration//GEN-END:variables
 }

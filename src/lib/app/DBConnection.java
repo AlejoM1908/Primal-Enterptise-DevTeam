@@ -12,6 +12,7 @@ public class DBConnection{
     private String DBName = "PrimalEnterpriceDB";
     private String user = "root";
     private String password = "4550Niki!";
+
     private String url = "jdbc:mysql://localhost:3306/"+DBName+"?useUnicode=true&use"+
         "JDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 

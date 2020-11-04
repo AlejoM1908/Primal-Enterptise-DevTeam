@@ -19,6 +19,10 @@ public class MainApp extends javax.swing.JFrame {
         this.setResizable(false);
         this.setLocationRelativeTo(null);
 
+        this.getContentPane().add(this.logView);
+        this.mainPanel.setVisible(false);
+        this.logView.setVisible(true);
+
     }
 
     /**
@@ -30,7 +34,7 @@ public class MainApp extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        mainPanel = new javax.swing.JPanel();
+        ButtonPanel = new javax.swing.JPanel();
         appBar = new javax.swing.JPanel();
         appPanel = new javax.swing.JPanel();
         appButtons = new javax.swing.JPanel();
@@ -40,7 +44,6 @@ public class MainApp extends javax.swing.JFrame {
         getContentPane().setLayout(new java.awt.CardLayout());
 
         mainPanel.setBackground(new java.awt.Color(255, 51, 255));
-
         appBar.setBackground(new java.awt.Color(51, 255, 51));
         appBar.setLayout(new java.awt.CardLayout());
 
@@ -82,11 +85,13 @@ public class MainApp extends javax.swing.JFrame {
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addComponent(appBar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(appPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(ButtonPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(appContent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
-        getContentPane().add(mainPanel, "card2");
 
+        getContentPane().add(mainPanel, "card2");
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -123,6 +128,7 @@ public class MainApp extends javax.swing.JFrame {
                 try {
                     new MainApp().setVisible(true);
                 } catch (SQLException ex) {
+
                     System.out.println(ex.getMessage());
                 }
             }
@@ -134,10 +140,13 @@ public class MainApp extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel ButtonPanel;
     private javax.swing.JPanel appBar;
     private javax.swing.JPanel appButtons;
     private javax.swing.JPanel appContent;
+
     private javax.swing.JPanel appPanel;
     private javax.swing.JPanel mainPanel;
+
     // End of variables declaration//GEN-END:variables
 }

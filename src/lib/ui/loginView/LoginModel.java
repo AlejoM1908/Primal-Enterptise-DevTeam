@@ -15,7 +15,7 @@ public class LoginModel {
     private int error = -1;
     
     public void login(String user, String password){
-        if (user == "" || password == ""){
+        if (user.compareTo("") == 0 || password.compareTo("") == 0){
             this.error = 3;
             return;
         }
@@ -65,14 +65,18 @@ public class LoginModel {
     }
     
     public String getUserName(){
-        return userName;
+        return this.userName;
     }
     
     public String getRange(){
-        return range;
+        return this.range;
     }
 
     public int getError(){
-        return error;
+        return this.error;
+    }
+    
+    public User getUser(){
+        return this.loggedUser;
     }
 }

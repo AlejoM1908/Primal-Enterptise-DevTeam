@@ -1,5 +1,5 @@
 //Java imports
-package lib.ui;
+package lib.ui.MainApp;
 import javax.swing.JPanel;
 
 //Proyect imports
@@ -9,14 +9,14 @@ import lib.ui.registroProd.registroProd;
 import lib.utils.AppColors;
 
 
-public class MainApp extends javax.swing.JFrame {
+public class MainAppView extends javax.swing.JFrame {
     private JPanel registro = new registroUsr();
     private JPanel registro_prod = new registroProd();
     private AppColors color = new AppColors();
 
-    public MainApp() {
+    public MainAppView() {
         initComponents();
-        this.setVisible(true);
+        
         this.setSize(1360, 768);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
@@ -45,7 +45,6 @@ public class MainApp extends javax.swing.JFrame {
         appContent = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1360, 786));
         setMinimumSize(new java.awt.Dimension(1360, 786));
         setUndecorated(true);
         setResizable(false);
@@ -220,20 +219,21 @@ public class MainApp extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainApp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainAppView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainApp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainAppView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainApp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainAppView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainApp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainAppView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainApp().setVisible(true);
+                new MainAppView().setVisible(true);
             }
         });
     }

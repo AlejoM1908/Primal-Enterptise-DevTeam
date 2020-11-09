@@ -127,7 +127,7 @@ public class LoginView extends javax.swing.JPanel {
         loginPanelLayout.setVerticalGroup(
             loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanelLayout.createSequentialGroup()
-                .addContainerGap(83, Short.MAX_VALUE)
+                .addContainerGap(111, Short.MAX_VALUE)
                 .addComponent(titleLabel)
                 .addGap(66, 66, 66)
                 .addComponent(optionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -136,7 +136,7 @@ public class LoginView extends javax.swing.JPanel {
 
         imagePanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/images/loginImage_708x680px.png"))); // NOI18N
+        image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/images/loginImage_680x708px.png"))); // NOI18N
 
         javax.swing.GroupLayout imagePanelLayout = new javax.swing.GroupLayout(imagePanel);
         imagePanel.setLayout(imagePanelLayout);

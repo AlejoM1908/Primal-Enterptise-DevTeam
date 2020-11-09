@@ -11,7 +11,5 @@ public class LoginAppModel {
     private LoginModel loginModel = new LoginModel();
     private LoginController loginController;
 
-    public LoginAppModel(LoginAppController loginAppController) {
-        this.loginController = new LoginController(loginView, loginModel, loginAppController);
-    }
+    
 }

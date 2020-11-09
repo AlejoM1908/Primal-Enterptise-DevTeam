@@ -1,6 +1,7 @@
 //Java imports
 package lib.ui;
 import javax.swing.JPanel;
+import lib.app.Backups;
 
 //Proyect imports
 import lib.ui.registroUsr.registroUsr;
@@ -13,6 +14,7 @@ public class MainApp extends javax.swing.JFrame {
     private JPanel registro = new registroUsr();
     private JPanel registro_prod = new registroProd();
     private AppColors color = new AppColors();
+    private Backups back=new Backups();
 
     public MainApp() {
         initComponents();
@@ -41,6 +43,7 @@ public class MainApp extends javax.swing.JFrame {
         LoginButton2 = new javax.swing.JLabel();
         LoginButton4 = new javax.swing.JLabel();
         LoginButton5 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         appBar = new javax.swing.JPanel();
         appContent = new javax.swing.JPanel();
 
@@ -115,6 +118,13 @@ public class MainApp extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setText("Backup Guardar");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout ButtonPanelLayout = new javax.swing.GroupLayout(ButtonPanel);
         ButtonPanel.setLayout(ButtonPanelLayout);
         ButtonPanelLayout.setHorizontalGroup(
@@ -124,9 +134,6 @@ public class MainApp extends javax.swing.JFrame {
             .addComponent(LoginButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(LoginButton5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ButtonPanelLayout.createSequentialGroup()
-                .addComponent(LoginButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ButtonPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(ButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ButtonPanelLayout.createSequentialGroup()
@@ -135,6 +142,13 @@ public class MainApp extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ButtonPanelLayout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(53, 53, 53))))
+            .addGroup(ButtonPanelLayout.createSequentialGroup()
+                .addGroup(ButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LoginButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(ButtonPanelLayout.createSequentialGroup()
+                        .addGap(127, 127, 127)
+                        .addComponent(jLabel3)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         ButtonPanelLayout.setVerticalGroup(
             ButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,7 +167,9 @@ public class MainApp extends javax.swing.JFrame {
                 .addComponent(LoginButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(LoginButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(26, 26, 26))
         );
 
         appBar.setBackground(new java.awt.Color(51, 255, 51));
@@ -203,6 +219,11 @@ public class MainApp extends javax.swing.JFrame {
         appContent.setVisible(true);;
     }//GEN-LAST:event_LoginButton4MouseClicked
 
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        // TODO add your handling code here:
+        back.Restaurar("primalEnterpricedb", "root", "fool9411");
+    }//GEN-LAST:event_jLabel3MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -251,5 +272,6 @@ public class MainApp extends javax.swing.JFrame {
     private javax.swing.JPanel appContent;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }

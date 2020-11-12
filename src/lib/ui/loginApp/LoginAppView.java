@@ -2,10 +2,8 @@
 package lib.ui.loginApp;
 
 //Proyect imports
+import lib.ui.MainBar.MainBarView;
 import lib.ui.loginView.LoginView;
-import lib.ui.loginView.LoginController;
-import lib.ui.loginView.LoginModel;
-import lib.models.User;
 
 public class LoginAppView extends javax.swing.JFrame {
     
@@ -93,9 +91,14 @@ public class LoginAppView extends javax.swing.JFrame {
         });
     }
 
-    private void setLogin(LoginView loginView){
+    protected void setLogin(LoginView loginView){
         this.appContent.add(loginView);
         loginView.setVisible(true);
+    }
+    
+    protected void setBar(MainBarView mainBarView){
+        this.appBar.add(mainBarView);
+        mainBarView.setVisible(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

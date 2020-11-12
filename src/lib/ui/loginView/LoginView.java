@@ -31,6 +31,7 @@ public class LoginView extends javax.swing.JPanel {
         passwordSeparator = new javax.swing.JSeparator();
         LoginButton = new javax.swing.JLabel();
         titleLabel = new javax.swing.JLabel();
+        titleLogo = new javax.swing.JLabel();
         imagePanel = new javax.swing.JPanel();
         image = new javax.swing.JLabel();
 
@@ -40,29 +41,29 @@ public class LoginView extends javax.swing.JPanel {
         optionsPanel.setBorder(javax.swing.BorderFactory.createLineBorder(color.borderColor()));
 
         userLabel.setBackground(new java.awt.Color(255, 255, 255));
-        userLabel.setFont(new java.awt.Font("Ancizar Sans", 0, 28)); // NOI18N
+        userLabel.setFont(new java.awt.Font("Leelawadee UI", 0, 28)); // NOI18N
         userLabel.setForeground(color.textColor());
         userLabel.setText("Usuario :");
 
-        userField.setFont(new java.awt.Font("Ancizar Sans", 0, 20)); // NOI18N
+        userField.setFont(new java.awt.Font("Leelawadee UI", 0, 20)); // NOI18N
         userField.setForeground(color.textColor());
         userField.setBorder(null);
 
         userSeparator.setForeground(color.borderColor());
 
         passwordLabel.setBackground(new java.awt.Color(255, 255, 255));
-        passwordLabel.setFont(new java.awt.Font("Ancizar Sans", 0, 28)); // NOI18N
+        passwordLabel.setFont(new java.awt.Font("Leelawadee UI", 0, 28)); // NOI18N
         passwordLabel.setForeground(color.textColor());
         passwordLabel.setText("Contraseña :");
 
-        passwordField.setFont(new java.awt.Font("Ancizar Sans", 0, 20)); // NOI18N
+        passwordField.setFont(new java.awt.Font("Leelawadee UI", 0, 20)); // NOI18N
         passwordField.setForeground(color.textColor());
         passwordField.setBorder(null);
 
         passwordSeparator.setForeground(color.borderColor());
 
         LoginButton.setBackground(color.buttonColor());
-        LoginButton.setFont(new java.awt.Font("Ancizar Sans", 0, 32)); // NOI18N
+        LoginButton.setFont(new java.awt.Font("Leelawadee UI", 0, 32)); // NOI18N
         LoginButton.setForeground(new java.awt.Color(255, 255, 255));
         LoginButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LoginButton.setText("iniciar");
@@ -101,37 +102,44 @@ public class LoginView extends javax.swing.JPanel {
                 .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(passwordSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addComponent(LoginButton)
                 .addGap(35, 35, 35))
         );
 
         titleLabel.setBackground(new java.awt.Color(255, 255, 255));
-        titleLabel.setFont(new java.awt.Font("Ancizar Sans", 0, 56)); // NOI18N
+        titleLabel.setFont(new java.awt.Font("Leelawadee UI", 0, 56)); // NOI18N
         titleLabel.setForeground(color.textColor());
-        titleLabel.setText("Primal Enterprise");
+        titleLabel.setText("rimal Enterprise");
+
+        titleLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/images/AppLogo_100x100Px.png"))); // NOI18N
 
         javax.swing.GroupLayout loginPanelLayout = new javax.swing.GroupLayout(loginPanel);
         loginPanel.setLayout(loginPanelLayout);
         loginPanelLayout.setHorizontalGroup(
             loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanelLayout.createSequentialGroup()
-                .addContainerGap(102, Short.MAX_VALUE)
-                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(optionsPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanelLayout.createSequentialGroup()
-                        .addComponent(titleLabel)
-                        .addGap(45, 45, 45)))
-                .addGap(98, 98, 98))
+            .addGroup(loginPanelLayout.createSequentialGroup()
+                .addGap(96, 96, 96)
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(loginPanelLayout.createSequentialGroup()
+                        .addComponent(titleLogo)
+                        .addGap(0, 0, 0)
+                        .addComponent(titleLabel))
+                    .addComponent(optionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
         loginPanelLayout.setVerticalGroup(
             loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanelLayout.createSequentialGroup()
-                .addContainerGap(111, Short.MAX_VALUE)
-                .addComponent(titleLabel)
+            .addGroup(loginPanelLayout.createSequentialGroup()
                 .addGap(66, 66, 66)
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(titleLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanelLayout.createSequentialGroup()
+                        .addComponent(titleLogo)
+                        .addGap(10, 10, 10)))
+                .addGap(55, 55, 55)
                 .addComponent(optionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(91, 91, 91))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         imagePanel.setBackground(new java.awt.Color(255, 255, 255));
@@ -216,6 +224,7 @@ public class LoginView extends javax.swing.JPanel {
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JSeparator passwordSeparator;
     private javax.swing.JLabel titleLabel;
+    private javax.swing.JLabel titleLogo;
     private javax.swing.JTextField userField;
     private javax.swing.JLabel userLabel;
     private javax.swing.JSeparator userSeparator;

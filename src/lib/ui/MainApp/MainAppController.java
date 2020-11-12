@@ -1,12 +1,28 @@
 //Java imports
 package lib.ui.MainApp;
 
-public class MainAppController {
-    private MainAppView mainAppView = new MainAppView();
-    private MainAppModel mainAppModel = new MainAppModel();
+//Proyect imports
+import javax.swing.JFrame;
+import lib.Main;
+import lib.models.User;
 
-    public MainAppController(MainAppView mainAppView, MainAppModel mainAppModel) {
+public class MainAppController {
+    private MainAppView mainAppView;
+    private MainAppModel mainAppModel;
+    private Main rootComponent;
+
+    public MainAppController(MainAppView mainAppView, MainAppModel mainAppModel, User loggedUser, Main main) {
         this.mainAppView = mainAppView;
         this.mainAppModel = mainAppModel;
+        this.rootComponent = main;
+        this.mainAppModel.setLoggedUser(loggedUser);
+    }
+    
+    public void minimizeFrame(){
+        this.mainAppView.setState(JFrame.ICONIFIED);
+    }
+    
+    public void endProgram(){
+        this.rootComponent.endProgram();
     }
 }

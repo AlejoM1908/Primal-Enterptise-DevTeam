@@ -8,8 +8,8 @@ import java.awt.event.MouseListener;
 import lib.ui.loginApp.LoginAppController;
 
 public class LoginController{
-    private LoginView view;
-    private LoginModel model;
+    private final LoginView view;
+    private final LoginModel model;
 
     public LoginController(LoginView view, LoginModel model, LoginAppController rootComponent){
         this.view = view;
@@ -19,10 +19,9 @@ public class LoginController{
     }
     
     class LoginListener implements MouseListener{
-        private LoginView view;
-        private LoginModel model;
-        private LoginAppController rootComponent;
-        private int clickCount;
+        private final LoginView view;
+        private final LoginModel model;
+        private final LoginAppController rootComponent;
 
         public LoginListener(LoginView view, LoginModel model, LoginAppController rootComponent) {
             this.view = view;
@@ -32,9 +31,7 @@ public class LoginController{
         
         @Override
         public void mouseClicked(MouseEvent me){
-            String user,password = "";
-            clickCount++;
-            System.out.println(clickCount);
+            String user,password;
 
             try{
                 user = view.getUserName();

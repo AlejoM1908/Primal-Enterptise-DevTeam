@@ -2,6 +2,8 @@
 package lib.ui.loginApp;
 
 //Proyect imports
+import java.awt.Dimension;
+import javax.swing.ImageIcon;
 import lib.ui.MainBar.MainBarView;
 import lib.ui.loginView.LoginView;
 
@@ -13,6 +15,9 @@ public class LoginAppView extends javax.swing.JFrame {
         this.setSize(1360, 768);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+        
+        this.setIconImage(new ImageIcon(getClass().getResource("/lib/images/AppLogo_100x100Px.png")).getImage());
+        this.appBar.setPreferredSize(new Dimension(1360,60));
     }
 
     /**
@@ -29,28 +34,39 @@ public class LoginAppView extends javax.swing.JFrame {
         appContent = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1360, 786));
+        setMaximumSize(new java.awt.Dimension(1360, 770));
+        setMinimumSize(new java.awt.Dimension(1360, 770));
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(1360, 770));
+
+        appPrincipal.setMaximumSize(new java.awt.Dimension(1360, 768));
+        appPrincipal.setMinimumSize(new java.awt.Dimension(1360, 768));
 
         appBar.setBackground(new java.awt.Color(51, 255, 51));
+        appBar.setMaximumSize(new java.awt.Dimension(1360, 60));
+        appBar.setMinimumSize(new java.awt.Dimension(1360, 60));
+        appBar.setPreferredSize(new java.awt.Dimension(1360, 60));
         appBar.setLayout(new java.awt.CardLayout());
 
         appContent.setBackground(new java.awt.Color(51, 255, 255));
+        appContent.setMaximumSize(new java.awt.Dimension(1360, 710));
+        appContent.setMinimumSize(new java.awt.Dimension(1360, 710));
+        appContent.setPreferredSize(new java.awt.Dimension(1360, 710));
         appContent.setLayout(new java.awt.CardLayout());
 
         javax.swing.GroupLayout appPrincipalLayout = new javax.swing.GroupLayout(appPrincipal);
         appPrincipal.setLayout(appPrincipalLayout);
         appPrincipalLayout.setHorizontalGroup(
             appPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(appContent, javax.swing.GroupLayout.DEFAULT_SIZE, 1360, Short.MAX_VALUE)
-            .addComponent(appBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(appContent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(appBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         appPrincipalLayout.setVerticalGroup(
             appPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(appPrincipalLayout.createSequentialGroup()
-                .addComponent(appBar, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
+                .addComponent(appBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(appContent, javax.swing.GroupLayout.PREFERRED_SIZE, 708, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(appContent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         getContentPane().add(appPrincipal, java.awt.BorderLayout.CENTER);

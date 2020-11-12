@@ -40,4 +40,8 @@ public class LoginAppController {
     public void endProgram(){
         this.rootComponent.endProgram();
     }
+    
+    public void updatePosition(int posX, int posY){
+        this.loginAppView.setLocation(posX, posY);
+    }
 }

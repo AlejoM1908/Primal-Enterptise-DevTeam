@@ -1,10 +1,11 @@
 //Java imports
 package lib.ui.MainBar;
-
 import java.awt.Cursor;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+
+//Proyect imports
 import lib.models.User;
 import lib.ui.MainApp.MainAppController;
 import lib.ui.loginApp.LoginAppController;

@@ -35,7 +35,15 @@ public class LoginView extends javax.swing.JPanel {
         imagePanel = new javax.swing.JPanel();
         image = new javax.swing.JLabel();
 
+        setBorder(javax.swing.BorderFactory.createLineBorder(this.color.borderColor()));
+        setMaximumSize(new java.awt.Dimension(1360, 708));
+        setMinimumSize(new java.awt.Dimension(1360, 708));
+        setPreferredSize(new java.awt.Dimension(1360, 708));
+
         loginPanel.setBackground(new java.awt.Color(255, 255, 255));
+        loginPanel.setMaximumSize(new java.awt.Dimension(680, 708));
+        loginPanel.setMinimumSize(new java.awt.Dimension(680, 708));
+        loginPanel.setRequestFocusEnabled(false);
 
         optionsPanel.setBackground(new java.awt.Color(255, 255, 255));
         optionsPanel.setBorder(javax.swing.BorderFactory.createLineBorder(color.borderColor()));
@@ -143,6 +151,8 @@ public class LoginView extends javax.swing.JPanel {
         );
 
         imagePanel.setBackground(new java.awt.Color(255, 255, 255));
+        imagePanel.setMaximumSize(new java.awt.Dimension(680, 708));
+        imagePanel.setMinimumSize(new java.awt.Dimension(680, 708));
 
         image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/images/loginImage_680x708px.png"))); // NOI18N
 
@@ -166,7 +176,7 @@ public class LoginView extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(loginPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(loginPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(imagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -176,7 +186,7 @@ public class LoginView extends javax.swing.JPanel {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(loginPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(imagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(imagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 

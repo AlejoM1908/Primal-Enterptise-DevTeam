@@ -11,12 +11,12 @@ import lib.ui.loginView.LoginModel;
 import lib.ui.loginView.LoginView;
 
 public class LoginAppModel {
-    private LoginView loginView = new LoginView();
-    private LoginModel loginModel = new LoginModel();
+    private final LoginView loginView = new LoginView();
+    private final LoginModel loginModel = new LoginModel();
     private LoginController loginController;
     
-    private MainBarView mainBarView = new MainBarView();
-    private MainBarModel mainBarModel = new MainBarModel();
+    private final MainBarView mainBarView = new MainBarView();
+    private final MainBarModel mainBarModel = new MainBarModel();
     private MainBarController mainBarController;
     private Main rootComponent;
 
@@ -24,11 +24,11 @@ public class LoginAppModel {
         this.loginController = loginController;
     }
     
-    public void setMainBarController(MainBarController mainBarController){
+    protected void setMainBarController(MainBarController mainBarController){
         this.mainBarController = mainBarController;
     }
     
-    public void setRootComponent (Main rootComponent){
+    protected void setRootComponent (Main rootComponent){
         this.rootComponent = rootComponent;
     }
     

@@ -1,6 +1,8 @@
 //Java imports
 package lib.ui.MainApp;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import lib.ui.MainBar.MainBarView;
 
 //Proyect imports
 import lib.ui.registroUsr.registroUsr;
@@ -21,7 +23,7 @@ public class MainAppView extends javax.swing.JFrame {
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         
-        
+        this.setIconImage(new ImageIcon(getClass().getResource("/lib/images/AppLogo_100x100Px.png")).getImage());
     }
 
     /**
@@ -45,11 +47,16 @@ public class MainAppView extends javax.swing.JFrame {
         appContent = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1360, 786));
+        setMaximumSize(new java.awt.Dimension(1360, 768));
+        setMinimumSize(new java.awt.Dimension(1360, 768));
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(1360, 768));
         setResizable(false);
 
         ButtonPanel.setBackground(color.menuBotonesColor());
+        ButtonPanel.setMaximumSize(new java.awt.Dimension(300, 708));
+        ButtonPanel.setMinimumSize(new java.awt.Dimension(300, 708));
+        ButtonPanel.setPreferredSize(new java.awt.Dimension(300, 708));
 
         jLabel1.setFont(new java.awt.Font("Leelawadee UI", 0, 28)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(240, 240, 240));
@@ -152,13 +159,20 @@ public class MainAppView extends javax.swing.JFrame {
                 .addComponent(LoginButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(LoginButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         appBar.setBackground(new java.awt.Color(51, 255, 51));
+        appBar.setMaximumSize(new java.awt.Dimension(1360, 60));
+        appBar.setMinimumSize(new java.awt.Dimension(1360, 60));
+        appBar.setPreferredSize(new java.awt.Dimension(1360, 60));
+        appBar.setRequestFocusEnabled(false);
         appBar.setLayout(new java.awt.CardLayout());
 
         appContent.setBackground(new java.awt.Color(0, 51, 255));
+        appContent.setMaximumSize(new java.awt.Dimension(1060, 708));
+        appContent.setMinimumSize(new java.awt.Dimension(1060, 708));
+        appContent.setPreferredSize(new java.awt.Dimension(1060, 708));
         appContent.setLayout(new java.awt.CardLayout());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -168,7 +182,7 @@ public class MainAppView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(ButtonPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(appContent, javax.swing.GroupLayout.DEFAULT_SIZE, 1060, Short.MAX_VALUE))
+                .addComponent(appContent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(appBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -178,8 +192,7 @@ public class MainAppView extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(ButtonPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(appContent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(appContent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         pack();
@@ -236,6 +249,11 @@ public class MainAppView extends javax.swing.JFrame {
                 new MainAppView().setVisible(true);
             }
         });
+    }
+    
+    protected void setMainBar(MainBarView mainBarView){
+        this.appBar.add(mainBarView);
+        mainBarView.setVisible(true);
     }
     
  

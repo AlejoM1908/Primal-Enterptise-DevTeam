@@ -1,7 +1,10 @@
 //Java imports
 package lib.ui.MainBar;
 
+import java.awt.Dimension;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import lib.models.User;
 import lib.utils.AppColors;
 
 public class MainBarView extends javax.swing.JPanel {
@@ -28,6 +31,7 @@ public class MainBarView extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createLineBorder(this.color.borderColor()));
+        setMaximumSize(new java.awt.Dimension(1360, 60));
 
         titleLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/images/AppLogo_50x50Px.png"))); // NOI18N
 
@@ -40,10 +44,13 @@ public class MainBarView extends javax.swing.JPanel {
         MinimizeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/images/MinimizeButton_50x50Px.png"))); // NOI18N
 
         UserLabel.setFont(new java.awt.Font("Leelawadee UI", 0, 20)); // NOI18N
-        UserLabel.setText("Registrado como:");
+        UserLabel.setForeground(this.color.textColor());
+        UserLabel.setText("Ingresaste como:");
 
         UserName.setFont(new java.awt.Font("Leelawadee UI", 0, 20)); // NOI18N
         UserName.setForeground(this.color.textColor());
+        UserName.setMaximumSize(new java.awt.Dimension(200, 30));
+        UserName.setMinimumSize(new java.awt.Dimension(200, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -54,36 +61,46 @@ public class MainBarView extends javax.swing.JPanel {
                 .addComponent(titleLogo)
                 .addGap(0, 0, 0)
                 .addComponent(TitleLabel)
-                .addGap(249, 249, 249)
+                .addGap(243, 243, 243)
                 .addComponent(UserLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(7, 7, 7)
                 .addComponent(UserName, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 359, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 358, Short.MAX_VALUE)
                 .addComponent(MinimizeButton)
-                .addGap(18, 18, 18)
+                .addGap(20, 20, 20)
                 .addComponent(ExitButton)
-                .addGap(20, 20, 20))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 3, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(4, 4, 4)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(titleLogo)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(ExitButton)
-                        .addComponent(MinimizeButton))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(UserName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(TitleLabel)
-                            .addComponent(UserLabel))))
-                .addGap(5, 5, 5))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(MinimizeButton)
+                            .addComponent(ExitButton))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(UserName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(UserLabel))
+                            .addComponent(TitleLabel))))
+                .addGap(4, 4, 4))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    protected void hideUserLabel(){
+        this.UserLabel.setText("");
+    }
+    
+    protected void setUserName(User loggedUser){
+        this.UserName.setText(loggedUser.getName());
+    }
+    
     public JLabel getMinimizingButton() {return this.MinimizeButton;}
     public JLabel getCloseButton() {return this.ExitButton;}
+    public JPanel getMainBarView() {return this;}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ExitButton;

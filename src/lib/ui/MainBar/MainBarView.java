@@ -1,7 +1,6 @@
 //Java imports
 package lib.ui.MainBar;
 
-import java.awt.Dimension;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import lib.models.User;

@@ -1,8 +1,11 @@
 //Java imports
 package lib.ui.MainApp;
+import java.awt.Component;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import lib.ui.EditAccount.EditAccountView;
 import lib.ui.MainBar.MainBarView;
+import lib.ui.MainMenu.MainMenuView;
 
 //Proyect imports
 import lib.ui.registroUsr.registroUsr;
@@ -50,7 +53,6 @@ public class MainAppView extends javax.swing.JFrame {
         setMaximumSize(new java.awt.Dimension(1360, 768));
         setMinimumSize(new java.awt.Dimension(1360, 768));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1360, 768));
         setResizable(false);
 
         ButtonPanel.setBackground(color.menuBotonesColor());
@@ -254,6 +256,25 @@ public class MainAppView extends javax.swing.JFrame {
     protected void setMainBar(MainBarView mainBarView){
         this.appBar.add(mainBarView);
         mainBarView.setVisible(true);
+    }
+    
+    public void setMainMenu(MainMenuView mainMenuView){
+        for(Component c : this.appContent.getComponents()){
+            c.setVisible(false);
+        }
+        this.appContent.removeAll();
+        this.appContent.add(mainMenuView);
+        mainMenuView.setVisible(true);
+    }
+    
+    public void setEditAccount(EditAccountView editAccountView){
+        for(Component c : this.appContent.getComponents()){
+            c.setVisible(false);
+        }
+        this.appContent.removeAll();
+        
+        this.appContent.add(editAccountView);
+        editAccountView.setVisible(true);
     }
     
  

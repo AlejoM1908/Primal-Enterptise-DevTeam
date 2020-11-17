@@ -23,7 +23,9 @@ public class Main {
     public static void main(String[] args){
         Main main = new Main();
         
-        main.moveToLogin();
+        //main.moveToLogin();
+        main.moveToMainApp(new User("Admin",0,"admin","b69948501d89b5aff7726b649a27264bcd139dc1",
+                -1,"None","None","Admin"));
     }
     
     public void moveToLogin(){

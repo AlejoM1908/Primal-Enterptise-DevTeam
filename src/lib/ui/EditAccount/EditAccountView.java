@@ -21,17 +21,14 @@ import lib.models.User;
  */
 public class EditAccountView extends javax.swing.JPanel {
     
-    private User user;
-    
     /**
      * Creates new form EditAccountView
      */
-    public EditAccountView(User user) {
-        this.user = user;
+    public EditAccountView() {
         initComponents();
     }
     
-    private void fillInfo(){
+    public void fillInfo(User user){
         jtxtName.setText(user.getName());
         jtxtNumber.setText(Integer.toString(user.getCelNumber()));
         jtxtEmail.setText(user.getEmail());
@@ -63,6 +60,10 @@ public class EditAccountView extends javax.swing.JPanel {
 
     public JLabel getJlEdit() {
         return jlEdit;
+    }
+
+    public JLabel getJlReturn() {
+        return jlReturn;
     }
 
     

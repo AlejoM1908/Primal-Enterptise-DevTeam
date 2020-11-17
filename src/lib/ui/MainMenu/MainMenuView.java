@@ -10,6 +10,8 @@ import java.awt.Dimension;
 import java.awt.Image;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BoxLayout;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -24,19 +26,17 @@ import lib.models.User;
  */
 public class MainMenuView extends javax.swing.JPanel {
     
-    private User user;
     
     /**
      * Creates new form MainMenuView
      */
-    public MainMenuView(User user) throws SQLException {
-        this.user = user;
+    public MainMenuView() {
         initComponents();
         
-        fillInfo();
     }
     
-    private void fillInfo() throws SQLException{
+    public void fillInfo(User user){
+        
         jlNameUser.setText(user.getName());
         jlEmailUser.setText(user.getEmail());
         jlRangeUser.setText(user.getRange());
@@ -49,20 +49,28 @@ public class MainMenuView extends javax.swing.JPanel {
         listPanel.setLayout(new BoxLayout(listPanel, BoxLayout.Y_AXIS));
         
         MainMenuModel model = new MainMenuModel();
-        ArrayList<DateAlertPanel> dateAlerts = model.fillDatePanels();
-        ArrayList<QuantityAlertPanel> quantityAlerts = model.fillQuantityPanels();
+        ArrayList<DateAlertPanel> dateAlerts = null;
+        try {
+            dateAlerts = model.fillDatePanels();
+        } catch (SQLException ex) {
+            Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ArrayList<QuantityAlertPanel> quantityAlerts = null;
+        try {
+            quantityAlerts = model.fillQuantityPanels();
+        } catch (SQLException ex) {
+            Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         for(DateAlertPanel panel : dateAlerts){
             listPanel.add(panel);
             panel.setVisible(true);
         }
-        System.out.println(jScrollAlerts.getComponentCount());
         
         for(QuantityAlertPanel panel : quantityAlerts){
             listPanel.add(panel);
             panel.setVisible(true);
         }
-        System.out.println(listPanel.getComponentCount());
         
         jScrollAlerts.setBackground(new Color(255, 255, 255));
         jScrollAlerts.setViewportView(listPanel);

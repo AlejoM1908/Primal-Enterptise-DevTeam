@@ -22,7 +22,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="88" max="32767" attributes="0"/>
+              <EmptySpace pref="115" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="jlTitle" min="-2" max="-2" attributes="0"/>
@@ -30,7 +30,7 @@
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="jlUserImage" min="-2" pref="362" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jlPassword" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jlNumber" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -299,7 +299,7 @@
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="/*ImageIcon img1 = new ImageIcon(getClass().getResource(&quot;/documentation/Imagenes/Boton de Atras.png&quot;));&#xa;Icon icon1 = new ImageIcon(img1.getImage().getScaledInstance(jlUserImage.getWidth(), jlUserImage.getHeight(), Image.SCALE_SMOOTH));&#xa;jlUserImage.setIcon(icon1);*/"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="ImageIcon img4 = new ImageIcon(getClass().getResource(&quot;/documentation/Imagenes/Foto usuario.png&quot;));&#xa;Icon icon4 = new ImageIcon(img4.getImage().getScaledInstance(jlUserImage.getWidth(), jlUserImage.getHeight(), Image.SCALE_SMOOTH));&#xa;jlUserImage.setIcon(icon4);"/>
         <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jlUserImage.setSize(new java.awt.Dimension(362,362));"/>
       </AuxValues>
     </Component>

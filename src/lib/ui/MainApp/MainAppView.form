@@ -72,12 +72,12 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="LoginButton2" alignment="1" max="32767" attributes="0"/>
-              <Component id="LoginButton1" alignment="1" max="32767" attributes="0"/>
-              <Component id="LoginButton" alignment="1" max="32767" attributes="0"/>
-              <Component id="LoginButton5" alignment="1" max="32767" attributes="0"/>
+              <Component id="jlMainMenu" alignment="1" max="32767" attributes="0"/>
+              <Component id="jlInventory" alignment="1" max="32767" attributes="0"/>
+              <Component id="jlProductions" alignment="1" max="32767" attributes="0"/>
+              <Component id="jlAdminUsers" alignment="1" max="32767" attributes="0"/>
               <Group type="102" alignment="1" attributes="0">
-                  <Component id="LoginButton4" min="-2" pref="300" max="-2" attributes="0"/>
+                  <Component id="jlAdminProducts" min="-2" pref="300" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
@@ -101,17 +101,17 @@
                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                  <Component id="LoginButton2" min="-2" pref="68" max="-2" attributes="0"/>
+                  <Component id="jlMainMenu" min="-2" pref="68" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                  <Component id="LoginButton1" min="-2" pref="68" max="-2" attributes="0"/>
+                  <Component id="jlInventory" min="-2" pref="68" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                  <Component id="LoginButton" min="-2" pref="68" max="-2" attributes="0"/>
+                  <Component id="jlProductions" min="-2" pref="68" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                  <Component id="LoginButton5" min="-2" pref="68" max="-2" attributes="0"/>
+                  <Component id="jlAdminUsers" min="-2" pref="68" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="LoginButton4" min="-2" pref="68" max="-2" attributes="0"/>
+                  <Component id="jlAdminProducts" min="-2" pref="68" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -140,7 +140,7 @@
             <Property name="text" type="java.lang.String" value="Menu Principal"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="LoginButton">
+        <Component class="javax.swing.JLabel" name="jlProductions">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="color.menuBotones_botonColor()" type="code"/>
@@ -162,7 +162,7 @@
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="LoginButton1">
+        <Component class="javax.swing.JLabel" name="jlInventory">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="color.menuBotones_botonColor()" type="code"/>
@@ -184,7 +184,7 @@
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="LoginButton2">
+        <Component class="javax.swing.JLabel" name="jlMainMenu">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="color.menuBotones_botonColor()" type="code"/>
@@ -206,7 +206,7 @@
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="LoginButton4">
+        <Component class="javax.swing.JLabel" name="jlAdminProducts">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="color.menuBotones_botonColor()" type="code"/>
@@ -228,10 +228,10 @@
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="LoginButton4MouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jlAdminProductsMouseClicked"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="LoginButton5">
+        <Component class="javax.swing.JLabel" name="jlAdminUsers">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="color.menuBotones_botonColor()" type="code"/>
@@ -252,9 +252,6 @@
             </Property>
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="LoginButton5MouseClicked"/>
-          </Events>
         </Component>
       </SubComponents>
     </Container>

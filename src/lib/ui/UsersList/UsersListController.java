@@ -9,6 +9,9 @@ import java.awt.Cursor;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import lib.ui.MainApp.MainAppController;
 
 /**
  *
@@ -18,10 +21,15 @@ public class UsersListController implements MouseListener{
     private UsersListModel model;
     private UsersListView view;
 
-    public UsersListController() throws SQLException {
-        this.view = new UsersListView();
-        this.model = new UsersListModel(view);
-        this.model.fillTable();
+    public UsersListController(UsersListView view, UsersListModel model, MainAppController rootComponent) {
+        this.view = view;
+        this.model = model;
+        this.model.setRootComponent(rootComponent);
+        try {
+            this.model.fillTable();
+        } catch (SQLException ex) {
+            Logger.getLogger(UsersListController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.view.getJlAddUser().addMouseListener(this);
     }
 

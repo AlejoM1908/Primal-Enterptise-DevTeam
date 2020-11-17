@@ -8,14 +8,18 @@ package lib.ui.userAdministrationMenuView;
 import java.awt.Cursor;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import lib.ui.MainApp.MainAppController;
+import lib.ui.UsersList.UsersListView;
 
 public class AdministrationMenuController implements MouseListener {
     private AdministrationMenuModel model;
     private AdministrationMenuView view;
 
-    public AdministrationMenuController() {
-        this.view = new AdministrationMenuView();
-        this.model = new AdministrationMenuModel();
+    public AdministrationMenuController(AdministrationMenuView view, AdministrationMenuModel model,
+                                        MainAppController rootComponent) {
+        this.view = view;
+        this.model = model;
+        this.model.setRootComponent(rootComponent);
         
         this.view.getAddUserslb().addMouseListener(this);
         this.view.getUsersListlb().addMouseListener(this);
@@ -40,6 +44,9 @@ public class AdministrationMenuController implements MouseListener {
             //DIRIGIR A VENTANA AGREGAR USUARIO
         }else if (me.getSource() == view.getUsersListlb()){
             //DIRIGIR A VENTANA LISTA DE USUARIOS
+            System.out.println("lista");
+            UsersListView usersListView = this.model.getRootComponent().getMainAppModel().getUsersListView();
+            this.model.getRootComponent().getMainAppView().setusersList(usersListView);
         }else if(me.getSource() == view.getRolesCreationlb()){
             //DIRIGIR A VENTANA CREACION DE ROLES
         }

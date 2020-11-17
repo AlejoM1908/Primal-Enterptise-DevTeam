@@ -2,15 +2,18 @@
 package lib.ui.MainApp;
 import java.awt.Component;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import lib.ui.EditAccount.EditAccountView;
 import lib.ui.MainBar.MainBarView;
 import lib.ui.MainMenu.MainMenuView;
+import lib.ui.UsersList.UsersListView;
 
 //Proyect imports
 import lib.ui.registroUsr.registroUsr;
 
 import lib.ui.registroProd.registroProd;
+import lib.ui.userAdministrationMenuView.AdministrationMenuView;
 import lib.utils.AppColors;
 
 
@@ -29,6 +32,28 @@ public class MainAppView extends javax.swing.JFrame {
         this.setIconImage(new ImageIcon(getClass().getResource("/lib/images/AppLogo_100x100Px.png")).getImage());
     }
 
+    public JLabel getJlAdminProducts() {
+        return jlAdminProducts;
+    }
+
+    public JLabel getJlAdminUsers() {
+        return jlAdminUsers;
+    }
+
+    public JLabel getJlInventory() {
+        return jlInventory;
+    }
+
+    public JLabel getJlMainMenu() {
+        return jlMainMenu;
+    }
+
+    public JLabel getJlProductions() {
+        return jlProductions;
+    }
+    
+    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -41,11 +66,11 @@ public class MainAppView extends javax.swing.JFrame {
         ButtonPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        LoginButton = new javax.swing.JLabel();
-        LoginButton1 = new javax.swing.JLabel();
-        LoginButton2 = new javax.swing.JLabel();
-        LoginButton4 = new javax.swing.JLabel();
-        LoginButton5 = new javax.swing.JLabel();
+        jlProductions = new javax.swing.JLabel();
+        jlInventory = new javax.swing.JLabel();
+        jlMainMenu = new javax.swing.JLabel();
+        jlAdminProducts = new javax.swing.JLabel();
+        jlAdminUsers = new javax.swing.JLabel();
         appBar = new javax.swing.JPanel();
         appContent = new javax.swing.JPanel();
 
@@ -68,71 +93,66 @@ public class MainAppView extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(240, 240, 240));
         jLabel2.setText("Menu Principal");
 
-        LoginButton.setBackground(color.menuBotones_botonColor());
-        LoginButton.setFont(new java.awt.Font("Ancizar Sans", 0, 28)); // NOI18N
-        LoginButton.setForeground(color.menuBotonesColor());
-        LoginButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        LoginButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/images/Icono Producicones.png"))); // NOI18N
-        LoginButton.setText("Producciones");
-        LoginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        LoginButton.setOpaque(true);
+        jlProductions.setBackground(color.menuBotones_botonColor());
+        jlProductions.setFont(new java.awt.Font("Ancizar Sans", 0, 28)); // NOI18N
+        jlProductions.setForeground(color.menuBotonesColor());
+        jlProductions.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlProductions.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/images/Icono Producicones.png"))); // NOI18N
+        jlProductions.setText("Producciones");
+        jlProductions.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlProductions.setOpaque(true);
 
-        LoginButton1.setBackground(color.menuBotones_botonColor());
-        LoginButton1.setFont(new java.awt.Font("Ancizar Sans", 0, 28)); // NOI18N
-        LoginButton1.setForeground(color.menuBotonesColor());
-        LoginButton1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        LoginButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/images/Icono Inventario.png"))); // NOI18N
-        LoginButton1.setText("Inventario");
-        LoginButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        LoginButton1.setOpaque(true);
+        jlInventory.setBackground(color.menuBotones_botonColor());
+        jlInventory.setFont(new java.awt.Font("Ancizar Sans", 0, 28)); // NOI18N
+        jlInventory.setForeground(color.menuBotonesColor());
+        jlInventory.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlInventory.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/images/Icono Inventario.png"))); // NOI18N
+        jlInventory.setText("Inventario");
+        jlInventory.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlInventory.setOpaque(true);
 
-        LoginButton2.setBackground(color.menuBotones_botonColor());
-        LoginButton2.setFont(new java.awt.Font("Ancizar Sans", 0, 28)); // NOI18N
-        LoginButton2.setForeground(color.menuBotonesColor());
-        LoginButton2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        LoginButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/images/Icono Lobby.png"))); // NOI18N
-        LoginButton2.setText("Pagina Principal");
-        LoginButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        LoginButton2.setOpaque(true);
+        jlMainMenu.setBackground(color.menuBotones_botonColor());
+        jlMainMenu.setFont(new java.awt.Font("Ancizar Sans", 0, 28)); // NOI18N
+        jlMainMenu.setForeground(color.menuBotonesColor());
+        jlMainMenu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlMainMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/images/Icono Lobby.png"))); // NOI18N
+        jlMainMenu.setText("Pagina Principal");
+        jlMainMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlMainMenu.setOpaque(true);
 
-        LoginButton4.setBackground(color.menuBotones_botonColor());
-        LoginButton4.setFont(new java.awt.Font("Ancizar Sans", 0, 16)); // NOI18N
-        LoginButton4.setForeground(color.menuBotonesColor());
-        LoginButton4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        LoginButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/images/Icono Configuracion.png"))); // NOI18N
-        LoginButton4.setText("Administrar Activos/Productos");
-        LoginButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        LoginButton4.setOpaque(true);
-        LoginButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+        jlAdminProducts.setBackground(color.menuBotones_botonColor());
+        jlAdminProducts.setFont(new java.awt.Font("Ancizar Sans", 0, 16)); // NOI18N
+        jlAdminProducts.setForeground(color.menuBotonesColor());
+        jlAdminProducts.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlAdminProducts.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/images/Icono Configuracion.png"))); // NOI18N
+        jlAdminProducts.setText("Administrar Activos/Productos");
+        jlAdminProducts.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlAdminProducts.setOpaque(true);
+        jlAdminProducts.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                LoginButton4MouseClicked(evt);
+                jlAdminProductsMouseClicked(evt);
             }
         });
 
-        LoginButton5.setBackground(color.menuBotones_botonColor());
-        LoginButton5.setFont(new java.awt.Font("Ancizar Sans", 0, 24)); // NOI18N
-        LoginButton5.setForeground(color.menuBotonesColor());
-        LoginButton5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        LoginButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/images/Admministar Usuarios.png"))); // NOI18N
-        LoginButton5.setText("Administrar Usuarios");
-        LoginButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        LoginButton5.setOpaque(true);
-        LoginButton5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                LoginButton5MouseClicked(evt);
-            }
-        });
+        jlAdminUsers.setBackground(color.menuBotones_botonColor());
+        jlAdminUsers.setFont(new java.awt.Font("Ancizar Sans", 0, 24)); // NOI18N
+        jlAdminUsers.setForeground(color.menuBotonesColor());
+        jlAdminUsers.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlAdminUsers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/images/Admministar Usuarios.png"))); // NOI18N
+        jlAdminUsers.setText("Administrar Usuarios");
+        jlAdminUsers.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlAdminUsers.setOpaque(true);
 
         javax.swing.GroupLayout ButtonPanelLayout = new javax.swing.GroupLayout(ButtonPanel);
         ButtonPanel.setLayout(ButtonPanelLayout);
         ButtonPanelLayout.setHorizontalGroup(
             ButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(LoginButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(LoginButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(LoginButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(LoginButton5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jlMainMenu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jlInventory, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jlProductions, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jlAdminUsers, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ButtonPanelLayout.createSequentialGroup()
-                .addComponent(LoginButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jlAdminProducts, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ButtonPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -150,17 +170,17 @@ public class MainAppView extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addComponent(jLabel2)
                 .addGap(42, 42, 42)
-                .addComponent(LoginButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jlMainMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
-                .addComponent(LoginButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jlInventory, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
-                .addComponent(LoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jlProductions, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(jLabel1)
                 .addGap(29, 29, 29)
-                .addComponent(LoginButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jlAdminUsers, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
-                .addComponent(LoginButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jlAdminProducts, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -200,22 +220,13 @@ public class MainAppView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void LoginButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginButton5MouseClicked
-        // TODO add your handling code here:
-        appContent.setVisible(false);
-        appContent.removeAll();
-        appContent.add(registro);
-        appContent.setVisible(true);
-        
-    }//GEN-LAST:event_LoginButton5MouseClicked
-
-    private void LoginButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginButton4MouseClicked
+    private void jlAdminProductsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAdminProductsMouseClicked
         // TODO add your handling code here:
         appContent.setVisible(false);
         appContent.removeAll();
         appContent.add(registro_prod);
         appContent.setVisible(true);;
-    }//GEN-LAST:event_LoginButton4MouseClicked
+    }//GEN-LAST:event_jlAdminProductsMouseClicked
 
     /**
      * @param args the command line arguments
@@ -277,18 +288,38 @@ public class MainAppView extends javax.swing.JFrame {
         editAccountView.setVisible(true);
     }
     
+    public void setAdministrationMenu(AdministrationMenuView adminMenuView){
+        for(Component c : this.appContent.getComponents()){
+            c.setVisible(false);
+        }
+        this.appContent.removeAll();
+        
+        this.appContent.add(adminMenuView);
+        adminMenuView.setVisible(true);
+    }
+    
+    public void setusersList(UsersListView usersListView){
+        for(Component c : this.appContent.getComponents()){
+            c.setVisible(false);
+        }
+        this.appContent.removeAll();
+        
+        this.appContent.add(usersListView);
+        usersListView.setVisible(true);
+    }
+    
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel ButtonPanel;
-    private javax.swing.JLabel LoginButton;
-    private javax.swing.JLabel LoginButton1;
-    private javax.swing.JLabel LoginButton2;
-    private javax.swing.JLabel LoginButton4;
-    private javax.swing.JLabel LoginButton5;
     private javax.swing.JPanel appBar;
     private javax.swing.JPanel appContent;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jlAdminProducts;
+    private javax.swing.JLabel jlAdminUsers;
+    private javax.swing.JLabel jlInventory;
+    private javax.swing.JLabel jlMainMenu;
+    private javax.swing.JLabel jlProductions;
     // End of variables declaration//GEN-END:variables
 }

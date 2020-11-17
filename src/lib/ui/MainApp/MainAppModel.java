@@ -2,15 +2,24 @@
 package lib.ui.MainApp;
 
 import lib.models.User;
+import lib.ui.AssetRegistration.AssetRegistrationController;
+import lib.ui.AssetRegistration.AssetRegistrationModel;
+import lib.ui.AssetRegistration.AssetRegistrationView;
 import lib.ui.EditAccount.EditAccountController;
 import lib.ui.EditAccount.EditAccountModel;
 import lib.ui.EditAccount.EditAccountView;
+import lib.ui.Inventory.InventoryController;
+import lib.ui.Inventory.InventoryModel;
+import lib.ui.Inventory.InventoryView;
 import lib.ui.MainBar.MainBarController;
 import lib.ui.MainBar.MainBarModel;
 import lib.ui.MainBar.MainBarView;
 import lib.ui.MainMenu.MainMenuController;
 import lib.ui.MainMenu.MainMenuModel;
 import lib.ui.MainMenu.MainMenuView;
+import lib.ui.SupplierRegistration.SupplierRegistrationController;
+import lib.ui.SupplierRegistration.SupplierRegistrationModel;
+import lib.ui.SupplierRegistration.SupplierRegistrationView;
 import lib.ui.UsersList.UsersListController;
 import lib.ui.UsersList.UsersListModel;
 import lib.ui.UsersList.UsersListView;
@@ -40,6 +49,18 @@ public class MainAppModel {
     private final UsersListView usersListView = new UsersListView();
     private final UsersListModel usersListModel = new UsersListModel(usersListView);
     private UsersListController usersListController;
+    
+    private final AssetRegistrationView assetRegistrationView = new AssetRegistrationView();
+    private final AssetRegistrationModel assetRegistrationModel = new AssetRegistrationModel(assetRegistrationView);
+    private AssetRegistrationController assetRegistrationController;
+    
+    private final InventoryView inventoryView = new InventoryView();
+    private final InventoryModel inventoryModel = new InventoryModel(inventoryView);
+    private InventoryController inventoryController;
+    
+    private final SupplierRegistrationView supplierRegistrationView = new SupplierRegistrationView();
+    private final SupplierRegistrationModel supplierRegistrationModel = new SupplierRegistrationModel(supplierRegistrationView);
+    private SupplierRegistrationController supplierRegistrationController;
     
     public User getLoggedUser(){
         return this.loggedUser;
@@ -103,5 +124,43 @@ public class MainAppModel {
     public void setUsersListController(UsersListController usersListController) {
         this.usersListController = usersListController;
     }
+
+    public AssetRegistrationView getAssetRegistrationView() {
+        return assetRegistrationView;
+    }
+
+    public AssetRegistrationModel getAssetRegistrationModel() {
+        return assetRegistrationModel;
+    }
+
+    public void setAssetRegistrationController(AssetRegistrationController assetRegistrationController) {
+        this.assetRegistrationController = assetRegistrationController;
+    }
+
+    public InventoryView getInventoryView() {
+        return inventoryView;
+    }
+
+    public InventoryModel getInventoryModel() {
+        return inventoryModel;
+    }
+
+    public void setInventoryController(InventoryController inventoryController) {
+        this.inventoryController = inventoryController;
+    }
+
+    public SupplierRegistrationView getSupplierRegistrationView() {
+        return supplierRegistrationView;
+    }
+
+    public SupplierRegistrationModel getSupplierRegistrationModel() {
+        return supplierRegistrationModel;
+    }
+
+    public void setSupplierRegistrationController(SupplierRegistrationController supplierRegistrationController) {
+        this.supplierRegistrationController = supplierRegistrationController;
+    }
+    
+    
     
 }

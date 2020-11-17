@@ -8,6 +8,7 @@ package lib.ui.SupplierRegistration;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 /**
@@ -46,6 +47,10 @@ public class SupplierRegistrationView extends javax.swing.JPanel {
 
     public JTextField getJtxtPhoneNumber() {
         return jtxtPhoneNumber;
+    }
+
+    public JLabel getJlReturn() {
+        return jlReturn;
     }
     
     

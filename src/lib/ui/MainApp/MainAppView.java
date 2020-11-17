@@ -4,9 +4,12 @@ import java.awt.Component;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import lib.ui.AssetRegistration.AssetRegistrationView;
 import lib.ui.EditAccount.EditAccountView;
+import lib.ui.Inventory.InventoryView;
 import lib.ui.MainBar.MainBarView;
 import lib.ui.MainMenu.MainMenuView;
+import lib.ui.SupplierRegistration.SupplierRegistrationView;
 import lib.ui.UsersList.UsersListView;
 
 //Proyect imports
@@ -298,7 +301,7 @@ public class MainAppView extends javax.swing.JFrame {
         adminMenuView.setVisible(true);
     }
     
-    public void setusersList(UsersListView usersListView){
+    public void setUsersList(UsersListView usersListView){
         for(Component c : this.appContent.getComponents()){
             c.setVisible(false);
         }
@@ -308,6 +311,35 @@ public class MainAppView extends javax.swing.JFrame {
         usersListView.setVisible(true);
     }
     
+    public void setAssetRegistration(AssetRegistrationView assetRegistrationView){
+        for(Component c : this.appContent.getComponents()){
+            c.setVisible(false);
+        }
+        this.appContent.removeAll();
+        
+        this.appContent.add(assetRegistrationView);
+        assetRegistrationView.setVisible(true);
+    }
+    
+    public void setInventory(InventoryView inventoryView){
+        for(Component c : this.appContent.getComponents()){
+            c.setVisible(false);
+        }
+        this.appContent.removeAll();
+        
+        this.appContent.add(inventoryView);
+        inventoryView.setVisible(true);
+    }
+    
+    public void setSupplierRegistration(SupplierRegistrationView supplierRegistrationView){
+        for(Component c : this.appContent.getComponents()){
+            c.setVisible(false);
+        }
+        this.appContent.removeAll();
+        
+        this.appContent.add(supplierRegistrationView);
+        supplierRegistrationView.setVisible(true);
+    }
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

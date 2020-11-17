@@ -12,6 +12,8 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import lib.ui.MainApp.MainAppController;
+import lib.ui.MainMenu.MainMenuView;
+import lib.ui.userAdministrationMenuView.AdministrationMenuView;
 
 /**
  *
@@ -31,11 +33,17 @@ public class UsersListController implements MouseListener{
             Logger.getLogger(UsersListController.class.getName()).log(Level.SEVERE, null, ex);
         }
         this.view.getJlAddUser().addMouseListener(this);
+        this.view.getJlReturn().addMouseListener(this);
     }
 
     @Override
     public void mouseClicked(MouseEvent me) {
-        
+        if(me.getSource() == this.view.getJlAddUser()){
+            //REDIRIGIR A CREACION DE USUARIO
+        }else if(me.getSource() == this.view.getJlReturn()){
+            AdministrationMenuView administrationMenuView = this.model.getRootComponent().getMainAppModel().getAdministrationMenuView();
+            this.model.getRootComponent().getMainAppView().setAdministrationMenu(administrationMenuView);
+        }
     }
 
     @Override
@@ -51,6 +59,7 @@ public class UsersListController implements MouseListener{
     @Override
     public void mouseEntered(MouseEvent me) {
         this.view.getJlAddUser().setCursor(new Cursor(Cursor.HAND_CURSOR));
+        this.view.getJlReturn().setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
 
     @Override

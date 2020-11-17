@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
 import lib.app.DBConnection;
+import lib.ui.MainApp.MainAppController;
 
 /**
  *
@@ -16,6 +17,8 @@ import lib.app.DBConnection;
  */
 public class InventoryModel {
     private InventoryView view;
+    
+    private MainAppController rootComponent;
 
     public InventoryModel(InventoryView view) {
         this.view = view;
@@ -40,6 +43,14 @@ public class InventoryModel {
 
     public void setView(InventoryView view) {
         this.view = view;
+    }
+
+    public MainAppController getRootComponent() {
+        return rootComponent;
+    }
+
+    public void setRootComponent(MainAppController rootComponent) {
+        this.rootComponent = rootComponent;
     }
     
     

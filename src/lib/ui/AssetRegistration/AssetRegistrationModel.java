@@ -10,6 +10,7 @@ import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import lib.app.DBConnection;
+import lib.ui.MainApp.MainAppController;
 
 /**
  *
@@ -17,6 +18,8 @@ import lib.app.DBConnection;
  */
 public class AssetRegistrationModel {
     private AssetRegistrationView view;
+    
+    private MainAppController rootComponent;
 
     public AssetRegistrationModel(AssetRegistrationView view) {
         this.view = view;
@@ -79,4 +82,14 @@ public class AssetRegistrationModel {
         return result.getInt(1) == 0;   
         
     }
+
+    public MainAppController getRootComponent() {
+        return rootComponent;
+    }
+
+    public void setRootComponent(MainAppController rootComponent) {
+        this.rootComponent = rootComponent;
+    }
+    
+    
 }

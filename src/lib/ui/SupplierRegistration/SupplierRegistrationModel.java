@@ -8,6 +8,7 @@ package lib.ui.SupplierRegistration;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import lib.app.DBConnection;
+import lib.ui.MainApp.MainAppController;
 
 /**
  *
@@ -16,6 +17,8 @@ import lib.app.DBConnection;
 public class SupplierRegistrationModel {
     
     private SupplierRegistrationView view;
+    
+    private MainAppController rootComponent;
 
     public SupplierRegistrationModel(SupplierRegistrationView view) {
         this.view = view;
@@ -72,4 +75,22 @@ public class SupplierRegistrationModel {
                          + phoneNumber + "," + email + "," + address + "," + "user" + "," + ");");
         conn.endCOnnection();
     }
+
+    public SupplierRegistrationView getView() {
+        return view;
+    }
+
+    public void setView(SupplierRegistrationView view) {
+        this.view = view;
+    }
+
+    public MainAppController getRootComponent() {
+        return rootComponent;
+    }
+
+    public void setRootComponent(MainAppController rootComponent) {
+        this.rootComponent = rootComponent;
+    }
+    
+    
 }

@@ -44,9 +44,8 @@ public class AdministrationMenuController implements MouseListener {
             //DIRIGIR A VENTANA AGREGAR USUARIO
         }else if (me.getSource() == view.getUsersListlb()){
             //DIRIGIR A VENTANA LISTA DE USUARIOS
-            System.out.println("lista");
             UsersListView usersListView = this.model.getRootComponent().getMainAppModel().getUsersListView();
-            this.model.getRootComponent().getMainAppView().setusersList(usersListView);
+            this.model.getRootComponent().getMainAppView().setUsersList(usersListView);
         }else if(me.getSource() == view.getRolesCreationlb()){
             //DIRIGIR A VENTANA CREACION DE ROLES
         }

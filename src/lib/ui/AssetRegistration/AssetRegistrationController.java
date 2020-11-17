@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import lib.ui.MainApp.MainAppController;
 
 /**
  *
@@ -23,9 +24,10 @@ public class AssetRegistrationController implements ActionListener, MouseListene
     private AssetRegistrationModel model;
     private AssetRegistrationView view;
 
-    public AssetRegistrationController() {
-        this.view = new AssetRegistrationView();
-        this.model = new AssetRegistrationModel(view);
+    public AssetRegistrationController(AssetRegistrationModel model, AssetRegistrationView view, MainAppController rootComponent) {
+        this.view = view;
+        this.model = model;
+        this.model.setRootComponent(rootComponent);
         this.view.getBtnRegister().addActionListener(this);
         this.view.getJlReturn().addMouseListener(this);
     }

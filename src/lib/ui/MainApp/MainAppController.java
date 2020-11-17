@@ -7,9 +7,12 @@ import java.awt.event.MouseListener;
 import javax.swing.JFrame;
 import lib.Main;
 import lib.models.User;
+import lib.ui.AssetRegistration.AssetRegistrationController;
 import lib.ui.EditAccount.EditAccountController;
+import lib.ui.Inventory.InventoryController;
 import lib.ui.MainBar.MainBarController;
 import lib.ui.MainMenu.MainMenuController;
+import lib.ui.SupplierRegistration.SupplierRegistrationController;
 import lib.ui.UsersList.UsersListController;
 import lib.ui.userAdministrationMenuView.AdministrationMenuController;
 import lib.ui.userAdministrationMenuView.AdministrationMenuView;
@@ -30,6 +33,9 @@ public class MainAppController implements MouseListener{
         this.mainAppModel.setEditAccountController(new EditAccountController(this.mainAppModel.getEditAccountModel(), this.mainAppModel.getEditAccountView(), loggedUser, this));
         this.mainAppModel.setAdministrationMenuController(new AdministrationMenuController(this.mainAppModel.getAdministrationMenuView(), this.mainAppModel.getAdministrationMenuModel(), this));
         this.mainAppModel.setUsersListController(new UsersListController(this.mainAppModel.getUsersListView(), this.mainAppModel.getUsersListModel(), this));
+        this.mainAppModel.setAssetRegistrationController(new AssetRegistrationController(this.mainAppModel.getAssetRegistrationModel(), this.mainAppModel.getAssetRegistrationView(), this));
+        this.mainAppModel.setInventoryController(new InventoryController(this.mainAppModel.getInventoryView(), this.mainAppModel.getInventoryModel(), this));
+        this.mainAppModel.setSupplierRegistrationController(new SupplierRegistrationController(this.mainAppModel.getSupplierRegistrationModel(), this.mainAppModel.getSupplierRegistrationView(), this));
         
         this.mainAppView.setMainBar(this.mainAppModel.getMainBarView());
         this.mainAppView.setMainMenu(this.mainAppModel.getMainMenuView());

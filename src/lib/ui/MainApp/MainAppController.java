@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import lib.Main;
 import lib.models.User;
 import lib.ui.MainBar.MainBarController;
+import lib.ui.buttonBar.ButtonBarController;
 
 public class MainAppController {
     private final MainAppView mainAppView;
@@ -19,8 +20,10 @@ public class MainAppController {
         this.mainAppModel.setLoggedUser(loggedUser);
         
         this.mainAppModel.setMainBarController(new MainBarController(this.mainAppModel.getMainBarView(), this.mainAppModel.getMainBarModel(), loggedUser, this));
-        
+        this.mainAppModel.setButtonBarController(new ButtonBarController(this.mainAppModel.getButtonBarView(), this.mainAppModel.getButtonBarModel(), this));
+
         this.mainAppView.setMainBar(this.mainAppModel.getMainBarView());
+        this.mainAppView.setButtonBar(this.mainAppModel.getButtonBarView());
     }
     
     public void minimizeFrame(){

@@ -28,32 +28,32 @@ public class ButtonBarView extends javax.swing.JPanel {
         usersButton = new javax.swing.JLabel();
         activesButton = new javax.swing.JLabel();
 
-        setBackground(this.color.buttonsBarColor());
+        setBackground(this.color.menuBotonesColor());
 
         buttonsTitle.setFont(new java.awt.Font("Leelawadee UI", 0, 28)); // NOI18N
         buttonsTitle.setForeground(new java.awt.Color(255, 255, 255));
         buttonsTitle.setText("Menu Principal");
 
-        homeButton.setBackground(this.color.menuButtonColor());
+        homeButton.setBackground(this.color.menuBotones_botonColor());
         homeButton.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
-        homeButton.setForeground(this.color.buttonsBarColor());
+        homeButton.setForeground(this.color.menuBotonesColor());
         homeButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         homeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/images/HomeIcon_65x60Px.png"))); // NOI18N
         homeButton.setText("  Pagina Principal");
         homeButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         homeButton.setOpaque(true);
 
-        inventoryButton.setBackground(this.color.menuButtonColor());
+        inventoryButton.setBackground(this.color.menuBotones_botonColor());
         inventoryButton.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
-        inventoryButton.setForeground(this.color.buttonsBarColor());
+        inventoryButton.setForeground(this.color.menuBotonesColor());
         inventoryButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/images/InventoryIcon_65x60Px.png"))); // NOI18N
         inventoryButton.setText("  Inventario");
         inventoryButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         inventoryButton.setOpaque(true);
 
-        productionButton.setBackground(this.color.menuButtonColor());
+        productionButton.setBackground(this.color.menuBotones_botonColor());
         productionButton.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
-        productionButton.setForeground(this.color.buttonsBarColor());
+        productionButton.setForeground(this.color.menuBotonesColor());
         productionButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/images/ProductionIcon_65x60Px.png"))); // NOI18N
         productionButton.setText("  Producciones");
         productionButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -63,17 +63,17 @@ public class ButtonBarView extends javax.swing.JPanel {
         buttonsTitle_2.setForeground(new java.awt.Color(255, 255, 255));
         buttonsTitle_2.setText("Administración");
 
-        usersButton.setBackground(this.color.menuButtonColor());
+        usersButton.setBackground(this.color.menuBotones_botonColor());
         usersButton.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
-        usersButton.setForeground(this.color.buttonsBarColor());
+        usersButton.setForeground(this.color.menuBotonesColor());
         usersButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/images/UserIcon_65x60Px.png"))); // NOI18N
         usersButton.setText("  Usuarios");
         usersButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         usersButton.setOpaque(true);
 
-        activesButton.setBackground(this.color.menuButtonColor());
+        activesButton.setBackground(this.color.menuBotones_botonColor());
         activesButton.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
-        activesButton.setForeground(this.color.buttonsBarColor());
+        activesButton.setForeground(this.color.menuBotonesColor());
         activesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/images/ConfigIcon_65x60Px.png"))); // NOI18N
         activesButton.setText("  Activos/Productos");
         activesButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));

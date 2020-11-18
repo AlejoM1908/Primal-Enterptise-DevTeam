@@ -50,11 +50,6 @@ public class MainAppController implements MouseListener{
 
         this.mainAppView.setMainMenu(this.mainAppModel.getMainMenuView());
         
-        this.mainAppView.getJlMainMenu().addMouseListener(this);
-        this.mainAppView.getJlInventory().addMouseListener(this);
-        this.mainAppView.getJlProductions().addMouseListener(this);
-        this.mainAppView.getJlAdminUsers().addMouseListener(this);
-        this.mainAppView.getJlAdminProducts().addMouseListener(this);
 
         this.mainAppView.setButtonBar(this.mainAppModel.getButtonBarView());
 
@@ -82,19 +77,7 @@ public class MainAppController implements MouseListener{
 
     @Override
     public void mouseClicked(MouseEvent me) {
-        if(me.getSource() == mainAppView.getJlMainMenu()){
-            this.mainAppView.setMainMenu(this.mainAppModel.getMainMenuView());
-            
-        }else if(me.getSource() == mainAppView.getJlInventory()){
-            
-        }else if(me.getSource() == mainAppView.getJlProductions()){
-            
-        }else if(me.getSource() == mainAppView.getJlAdminUsers()){
-            AdministrationMenuView adminView = this.mainAppModel.getAdministrationMenuView();
-            this.mainAppView.setAdministrationMenu(adminView);
-        }else if(me.getSource() == mainAppView.getJlAdminProducts()){
-            
-        }
+        
     }
 
     @Override

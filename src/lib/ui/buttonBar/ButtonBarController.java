@@ -7,6 +7,7 @@ import java.awt.event.MouseListener;
 
 //Proyect imports
 import lib.ui.MainApp.MainAppController;
+import lib.ui.userAdministrationMenuView.AdministrationMenuView;
 
 public class ButtonBarController {
     private ButtonBarView buttonBarView;
@@ -36,7 +37,7 @@ public class ButtonBarController {
         @Override
         public void mouseClicked(MouseEvent me) {
             if (me.getSource() == this.view.getHomeButton()){
-                
+                this.rootComponent.getMainAppView().setMainMenu(this.rootComponent.getMainAppModel().getMainMenuView());
             }
             else if (me.getSource() == this.view.getInventoryButton()){
                 
@@ -45,7 +46,8 @@ public class ButtonBarController {
                 
             }
             else if (me.getSource() == this.view.getUsersButton()){
-                
+                AdministrationMenuView adminView = this.rootComponent.getMainAppModel().getAdministrationMenuView();
+                this.rootComponent.getMainAppView().setAdministrationMenu(adminView);
             }
             else if (me.getSource() == this.view.getActivesButton()){
                 

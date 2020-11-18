@@ -2,7 +2,6 @@
 package lib.ui.MainApp;
 import java.awt.Component;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import lib.ui.AssetRegistration.AssetRegistrationView;
 import lib.ui.EditAccount.EditAccountView;
@@ -12,12 +11,10 @@ import lib.ui.MainMenu.MainMenuView;
 import lib.ui.SupplierRegistration.SupplierRegistrationView;
 import lib.ui.UsersList.UsersListView;
 import lib.ui.buttonBar.ButtonBarView;
-
 //Proyect imports
 import lib.ui.registroUsr.registroUsr;
 import lib.ui.registroProd.registroProd;
 import lib.ui.userAdministrationMenuView.AdministrationMenuView;
-import lib.utils.AppColors;
 
 
 public class MainAppView extends javax.swing.JFrame {
@@ -34,28 +31,6 @@ public class MainAppView extends javax.swing.JFrame {
         this.setIconImage(new ImageIcon(getClass().getResource("/lib/images/AppLogo_100x100Px.png")).getImage());
     }
 
-    public JLabel getJlAdminProducts() {
-        return jlAdminProducts;
-    }
-
-    public JLabel getJlAdminUsers() {
-        return jlAdminUsers;
-    }
-
-    public JLabel getJlInventory() {
-        return jlInventory;
-    }
-
-    public JLabel getJlMainMenu() {
-        return jlMainMenu;
-    }
-
-    public JLabel getJlProductions() {
-        return jlProductions;
-    }
-    
-    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -66,13 +41,6 @@ public class MainAppView extends javax.swing.JFrame {
     private void initComponents() {
 
         ButtonPanel = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jlProductions = new javax.swing.JLabel();
-        jlInventory = new javax.swing.JLabel();
-        jlMainMenu = new javax.swing.JLabel();
-        jlAdminProducts = new javax.swing.JLabel();
-        jlAdminUsers = new javax.swing.JLabel();
         appBar = new javax.swing.JPanel();
         appContent = new javax.swing.JPanel();
 
@@ -86,105 +54,7 @@ public class MainAppView extends javax.swing.JFrame {
         ButtonPanel.setMaximumSize(new java.awt.Dimension(300, 708));
         ButtonPanel.setMinimumSize(new java.awt.Dimension(300, 708));
         ButtonPanel.setPreferredSize(new java.awt.Dimension(300, 708));
-
-        jLabel1.setFont(new java.awt.Font("Leelawadee UI", 0, 28)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(240, 240, 240));
-        jLabel1.setText("Administración");
-
-        jLabel2.setFont(new java.awt.Font("Leelawadee UI", 0, 28)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(240, 240, 240));
-        jLabel2.setText("Menu Principal");
-
-        jlProductions.setBackground(color.menuBotones_botonColor());
-        jlProductions.setFont(new java.awt.Font("Ancizar Sans", 0, 28)); // NOI18N
-        jlProductions.setForeground(color.menuBotonesColor());
-        jlProductions.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlProductions.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/images/Icono Producicones.png"))); // NOI18N
-        jlProductions.setText("Producciones");
-        jlProductions.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jlProductions.setOpaque(true);
-
-        jlInventory.setBackground(color.menuBotones_botonColor());
-        jlInventory.setFont(new java.awt.Font("Ancizar Sans", 0, 28)); // NOI18N
-        jlInventory.setForeground(color.menuBotonesColor());
-        jlInventory.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlInventory.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/images/Icono Inventario.png"))); // NOI18N
-        jlInventory.setText("Inventario");
-        jlInventory.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jlInventory.setOpaque(true);
-
-        jlMainMenu.setBackground(color.menuBotones_botonColor());
-        jlMainMenu.setFont(new java.awt.Font("Ancizar Sans", 0, 28)); // NOI18N
-        jlMainMenu.setForeground(color.menuBotonesColor());
-        jlMainMenu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlMainMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/images/Icono Lobby.png"))); // NOI18N
-        jlMainMenu.setText("Pagina Principal");
-        jlMainMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jlMainMenu.setOpaque(true);
-
-        jlAdminProducts.setBackground(color.menuBotones_botonColor());
-        jlAdminProducts.setFont(new java.awt.Font("Ancizar Sans", 0, 16)); // NOI18N
-        jlAdminProducts.setForeground(color.menuBotonesColor());
-        jlAdminProducts.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlAdminProducts.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/images/Icono Configuracion.png"))); // NOI18N
-        jlAdminProducts.setText("Administrar Activos/Productos");
-        jlAdminProducts.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jlAdminProducts.setOpaque(true);
-        jlAdminProducts.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlAdminProductsMouseClicked(evt);
-            }
-        });
-
-        jlAdminUsers.setBackground(color.menuBotones_botonColor());
-        jlAdminUsers.setFont(new java.awt.Font("Ancizar Sans", 0, 24)); // NOI18N
-        jlAdminUsers.setForeground(color.menuBotonesColor());
-        jlAdminUsers.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlAdminUsers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/images/Admministar Usuarios.png"))); // NOI18N
-        jlAdminUsers.setText("Administrar Usuarios");
-        jlAdminUsers.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jlAdminUsers.setOpaque(true);
-
-        javax.swing.GroupLayout ButtonPanelLayout = new javax.swing.GroupLayout(ButtonPanel);
-        ButtonPanel.setLayout(ButtonPanelLayout);
-        ButtonPanelLayout.setHorizontalGroup(
-            ButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jlMainMenu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jlInventory, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jlProductions, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jlAdminUsers, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ButtonPanelLayout.createSequentialGroup()
-                .addComponent(jlAdminProducts, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ButtonPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(ButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ButtonPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(56, 56, 56))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ButtonPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(53, 53, 53))))
-        );
-        ButtonPanelLayout.setVerticalGroup(
-            ButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ButtonPanelLayout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jLabel2)
-                .addGap(42, 42, 42)
-                .addComponent(jlMainMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
-                .addComponent(jlInventory, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addComponent(jlProductions, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(jLabel1)
-                .addGap(29, 29, 29)
-                .addComponent(jlAdminUsers, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(jlAdminProducts, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        ButtonPanel.setLayout(new java.awt.CardLayout());
 
         appBar.setBackground(new java.awt.Color(51, 255, 51));
         appBar.setMaximumSize(new java.awt.Dimension(1360, 60));
@@ -221,14 +91,6 @@ public class MainAppView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jlAdminProductsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAdminProductsMouseClicked
-        // TODO add your handling code here:
-        appContent.setVisible(false);
-        appContent.removeAll();
-        appContent.add(registro_prod);
-        appContent.setVisible(true);;
-    }//GEN-LAST:event_jlAdminProductsMouseClicked
 
     /**
      * @param args the command line arguments
@@ -344,18 +206,12 @@ public class MainAppView extends javax.swing.JFrame {
         this.appContent.add(supplierRegistrationView);
         supplierRegistrationView.setVisible(true);
     }
+    
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel ButtonPanel;
     private javax.swing.JPanel appBar;
     private javax.swing.JPanel appContent;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jlAdminProducts;
-    private javax.swing.JLabel jlAdminUsers;
-    private javax.swing.JLabel jlInventory;
-    private javax.swing.JLabel jlMainMenu;
-    private javax.swing.JLabel jlProductions;
     // End of variables declaration//GEN-END:variables
 }

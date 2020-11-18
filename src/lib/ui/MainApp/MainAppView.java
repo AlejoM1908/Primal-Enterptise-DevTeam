@@ -11,10 +11,10 @@ import lib.ui.MainBar.MainBarView;
 import lib.ui.MainMenu.MainMenuView;
 import lib.ui.SupplierRegistration.SupplierRegistrationView;
 import lib.ui.UsersList.UsersListView;
+import lib.ui.buttonBar.ButtonBarView;
 
 //Proyect imports
 import lib.ui.registroUsr.registroUsr;
-
 import lib.ui.registroProd.registroProd;
 import lib.ui.userAdministrationMenuView.AdministrationMenuView;
 import lib.utils.AppColors;
@@ -23,7 +23,6 @@ import lib.utils.AppColors;
 public class MainAppView extends javax.swing.JFrame {
     private JPanel registro = new registroUsr();
     private JPanel registro_prod = new registroProd();
-    private AppColors color = new AppColors();
 
     public MainAppView() {
         initComponents();
@@ -83,7 +82,7 @@ public class MainAppView extends javax.swing.JFrame {
         setUndecorated(true);
         setResizable(false);
 
-        ButtonPanel.setBackground(color.menuBotonesColor());
+        ButtonPanel.setBackground(new java.awt.Color(255, 51, 51));
         ButtonPanel.setMaximumSize(new java.awt.Dimension(300, 708));
         ButtonPanel.setMinimumSize(new java.awt.Dimension(300, 708));
         ButtonPanel.setPreferredSize(new java.awt.Dimension(300, 708));
@@ -270,6 +269,11 @@ public class MainAppView extends javax.swing.JFrame {
     protected void setMainBar(MainBarView mainBarView){
         this.appBar.add(mainBarView);
         mainBarView.setVisible(true);
+    }
+
+    protected void setButtonBar(ButtonBarView buttonBarView){
+        this.ButtonPanel.add(buttonBarView);
+        buttonBarView.setVisible(true);
     }
     
     public void setMainMenu(MainMenuView mainMenuView){

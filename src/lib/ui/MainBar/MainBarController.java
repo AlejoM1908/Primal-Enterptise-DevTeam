@@ -21,10 +21,10 @@ public class MainBarController {
         
         this.mainBarView.hideUserLabel();
         
-        this.mainBarView.getCloseButton().addMouseListener(new BarListener(mainBarView, mainBarModel, rootComponent, point));
-        this.mainBarView.getMinimizingButton().addMouseListener(new BarListener(mainBarView, mainBarModel, rootComponent, point));
-        this.mainBarView.getMainBarView().addMouseListener(new BarListener(mainBarView, mainBarModel, rootComponent, point));
-        this.mainBarView.getMainBarView().addMouseMotionListener(new BarMotionListener(mainBarView, mainBarModel, rootComponent, point));
+        this.mainBarView.getCloseButton().addMouseListener(new BarListener(mainBarView, rootComponent, point));
+        this.mainBarView.getMinimizingButton().addMouseListener(new BarListener(mainBarView, rootComponent, point));
+        this.mainBarView.getMainBarView().addMouseListener(new BarListener(mainBarView, rootComponent, point));
+        this.mainBarView.getMainBarView().addMouseMotionListener(new BarMotionListener(rootComponent, point));
     }
     
     public MainBarController(MainBarView mainBarView, MainBarModel mainBarModel, User user, MainAppController rootComponent){
@@ -32,30 +32,27 @@ public class MainBarController {
         this.mainBarModel = mainBarModel;
         this.mainBarModel.setLoggedUser(user);
         
-        this.mainBarView.getCloseButton().addMouseListener(new BarListener(mainBarView, mainBarModel, rootComponent, point));
-        this.mainBarView.getMinimizingButton().addMouseListener(new BarListener(mainBarView, mainBarModel, rootComponent, point));
-        this.mainBarView.getMainBarView().addMouseListener(new BarListener(mainBarView, mainBarModel, rootComponent, point));
-        this.mainBarView.getMainBarView().addMouseMotionListener(new BarMotionListener(mainBarView, mainBarModel, rootComponent, point));
+        this.mainBarView.getCloseButton().addMouseListener(new BarListener(mainBarView, rootComponent, point));
+        this.mainBarView.getMinimizingButton().addMouseListener(new BarListener(mainBarView, rootComponent, point));
+        this.mainBarView.getMainBarView().addMouseListener(new BarListener(mainBarView, rootComponent, point));
+        this.mainBarView.getMainBarView().addMouseMotionListener(new BarMotionListener(rootComponent, point));
         this.mainBarView.setUserName(this.mainBarModel.getLoggedUser());
     }
     
     class BarListener implements MouseListener{
         private final MainBarView view;
-        private final MainBarModel model;
         private LoginAppController rootLoginComponent;
         private MainAppController rootAppComponent;
         Point point;
 
-        public BarListener(MainBarView view, MainBarModel model, LoginAppController rootComponent, Point point) {
+        public BarListener(MainBarView view, LoginAppController rootComponent, Point point) {
             this.view = view;
-            this.model = model;
             this.rootLoginComponent = rootComponent;
             this.point = point;
         }
         
-        public BarListener(MainBarView view, MainBarModel model, MainAppController rootComponent, Point point) {
+        public BarListener(MainBarView view, MainAppController rootComponent, Point point) {
             this.view = view;
-            this.model = model;
             this.rootAppComponent = rootComponent;
             this.point = point;
         }
@@ -104,22 +101,16 @@ public class MainBarController {
     }
     
     class BarMotionListener implements MouseMotionListener{
-        private final MainBarView view;
-        private final MainBarModel model;
         private LoginAppController rootLoginComponent;
         private MainAppController rootAppComponent;
         Point point;
         
-        public BarMotionListener(MainBarView view, MainBarModel model, LoginAppController rootComponent, Point point) {
-            this.view = view;
-            this.model = model;
+        public BarMotionListener(LoginAppController rootComponent, Point point) {
             this.rootLoginComponent = rootComponent;
             this.point = point;
         }
         
-        public BarMotionListener(MainBarView view, MainBarModel model, MainAppController rootComponent, Point point) {
-            this.view = view;
-            this.model = model;
+        public BarMotionListener(MainAppController rootComponent, Point point) {
             this.rootAppComponent = rootComponent;
             this.point = point;
         }

@@ -11,11 +11,15 @@ import lib.ui.AssetRegistration.AssetRegistrationController;
 import lib.ui.EditAccount.EditAccountController;
 import lib.ui.Inventory.InventoryController;
 import lib.ui.MainBar.MainBarController;
+
 import lib.ui.MainMenu.MainMenuController;
 import lib.ui.SupplierRegistration.SupplierRegistrationController;
 import lib.ui.UsersList.UsersListController;
 import lib.ui.userAdministrationMenuView.AdministrationMenuController;
 import lib.ui.userAdministrationMenuView.AdministrationMenuView;
+
+import lib.ui.buttonBar.ButtonBarController;
+
 
 public class MainAppController implements MouseListener{
     private final MainAppView mainAppView;
@@ -29,6 +33,7 @@ public class MainAppController implements MouseListener{
         this.mainAppModel.setLoggedUser(loggedUser);
         
         this.mainAppModel.setMainBarController(new MainBarController(this.mainAppModel.getMainBarView(), this.mainAppModel.getMainBarModel(), loggedUser, this));
+
         this.mainAppModel.setMainMenuController(new MainMenuController(this.mainAppModel.getMainMenuView(), mainAppModel.getMainMenuModel(), loggedUser, this));
         this.mainAppModel.setEditAccountController(new EditAccountController(this.mainAppModel.getEditAccountModel(), this.mainAppModel.getEditAccountView(), loggedUser, this));
         this.mainAppModel.setAdministrationMenuController(new AdministrationMenuController(this.mainAppModel.getAdministrationMenuView(), this.mainAppModel.getAdministrationMenuModel(), this));
@@ -37,7 +42,12 @@ public class MainAppController implements MouseListener{
         this.mainAppModel.setInventoryController(new InventoryController(this.mainAppModel.getInventoryView(), this.mainAppModel.getInventoryModel(), this));
         this.mainAppModel.setSupplierRegistrationController(new SupplierRegistrationController(this.mainAppModel.getSupplierRegistrationModel(), this.mainAppModel.getSupplierRegistrationView(), this));
         
+
+        this.mainAppModel.setButtonBarController(new ButtonBarController(this.mainAppModel.getButtonBarView(), this.mainAppModel.getButtonBarModel(), this));
+
+
         this.mainAppView.setMainBar(this.mainAppModel.getMainBarView());
+
         this.mainAppView.setMainMenu(this.mainAppModel.getMainMenuView());
         
         this.mainAppView.getJlMainMenu().addMouseListener(this);
@@ -45,6 +55,9 @@ public class MainAppController implements MouseListener{
         this.mainAppView.getJlProductions().addMouseListener(this);
         this.mainAppView.getJlAdminUsers().addMouseListener(this);
         this.mainAppView.getJlAdminProducts().addMouseListener(this);
+
+        this.mainAppView.setButtonBar(this.mainAppModel.getButtonBarView());
+
     }
     
     public void minimizeFrame(){

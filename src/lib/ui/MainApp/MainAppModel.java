@@ -5,6 +5,9 @@ import lib.models.User;
 import lib.ui.AssetRegistration.AssetRegistrationController;
 import lib.ui.AssetRegistration.AssetRegistrationModel;
 import lib.ui.AssetRegistration.AssetRegistrationView;
+import lib.ui.AssetsReport.AssetsReportController;
+import lib.ui.AssetsReport.AssetsReportModel;
+import lib.ui.AssetsReport.AssetsReportView;
 import lib.ui.EditAccount.EditAccountController;
 import lib.ui.EditAccount.EditAccountModel;
 import lib.ui.EditAccount.EditAccountView;
@@ -17,6 +20,12 @@ import lib.ui.MainBar.MainBarView;
 import lib.ui.MainMenu.MainMenuController;
 import lib.ui.MainMenu.MainMenuModel;
 import lib.ui.MainMenu.MainMenuView;
+import lib.ui.ProductionsReport.ProductionsReportController;
+import lib.ui.ProductionsReport.ProductionsReportModel;
+import lib.ui.ProductionsReport.ProductionsReportView;
+import lib.ui.ReportsMenu.ReportsMenuController;
+import lib.ui.ReportsMenu.ReportsMenuModel;
+import lib.ui.ReportsMenu.ReportsMenuView;
 import lib.ui.SupplierRegistration.SupplierRegistrationController;
 import lib.ui.SupplierRegistration.SupplierRegistrationModel;
 import lib.ui.SupplierRegistration.SupplierRegistrationView;
@@ -66,6 +75,18 @@ public class MainAppModel {
     private final SupplierRegistrationView supplierRegistrationView = new SupplierRegistrationView();
     private final SupplierRegistrationModel supplierRegistrationModel = new SupplierRegistrationModel(supplierRegistrationView);
     private SupplierRegistrationController supplierRegistrationController;
+    
+    private final AssetsReportView assetsReportView = new AssetsReportView();
+    private final AssetsReportModel assetsReportModel = new AssetsReportModel(assetsReportView);
+    private AssetsReportController assetsReportController;
+    
+    private final ReportsMenuView reportsMenuView = new ReportsMenuView();
+    private final ReportsMenuModel reportsMenuModel = new ReportsMenuModel();
+    private ReportsMenuController reportsMenuController;
+    
+    private final ProductionsReportView productionsReportView = new ProductionsReportView();
+    private final ProductionsReportModel productionsReportModel = new ProductionsReportModel(productionsReportView);
+    private ProductionsReportController productionsReportController;
 
 
     private final ButtonBarView buttonBarView = new ButtonBarView();
@@ -176,6 +197,43 @@ public class MainAppModel {
     public void setSupplierRegistrationController(SupplierRegistrationController supplierRegistrationController) {
         this.supplierRegistrationController = supplierRegistrationController;
     }
+
+    public AssetsReportView getAssetsReportView() {
+        return assetsReportView;
+    }
+
+    public AssetsReportModel getAssetsReportModel() {
+        return assetsReportModel;
+    }
+
+    public void setAssetsReportController(AssetsReportController assetsReportController) {
+        this.assetsReportController = assetsReportController;
+    }
+
+    public ReportsMenuView getReportsMenuView() {
+        return reportsMenuView;
+    }
+
+    public ReportsMenuModel getReportsMenuModel() {
+        return reportsMenuModel;
+    }
+
+    public void setReportsMenuController(ReportsMenuController reportsMenuController) {
+        this.reportsMenuController = reportsMenuController;
+    }
+
+    public ProductionsReportView getProductionsReportView() {
+        return productionsReportView;
+    }
+
+    public ProductionsReportModel getProductionsReportModel() {
+        return productionsReportModel;
+    }
+
+    public void setProductionsReportController(ProductionsReportController productionsReportController) {
+        this.productionsReportController = productionsReportController;
+    }
+    
     
     
     

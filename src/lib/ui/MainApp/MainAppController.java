@@ -8,11 +8,14 @@ import javax.swing.JFrame;
 import lib.Main;
 import lib.models.User;
 import lib.ui.AssetRegistration.AssetRegistrationController;
+import lib.ui.AssetsReport.AssetsReportController;
 import lib.ui.EditAccount.EditAccountController;
 import lib.ui.Inventory.InventoryController;
 import lib.ui.MainBar.MainBarController;
 
 import lib.ui.MainMenu.MainMenuController;
+import lib.ui.ProductionsReport.ProductionsReportController;
+import lib.ui.ReportsMenu.ReportsMenuController;
 import lib.ui.SupplierRegistration.SupplierRegistrationController;
 import lib.ui.UsersList.UsersListController;
 import lib.ui.userAdministrationMenuView.AdministrationMenuController;
@@ -41,8 +44,10 @@ public class MainAppController implements MouseListener{
         this.mainAppModel.setAssetRegistrationController(new AssetRegistrationController(this.mainAppModel.getAssetRegistrationModel(), this.mainAppModel.getAssetRegistrationView(), this));
         this.mainAppModel.setInventoryController(new InventoryController(this.mainAppModel.getInventoryView(), this.mainAppModel.getInventoryModel(), this));
         this.mainAppModel.setSupplierRegistrationController(new SupplierRegistrationController(this.mainAppModel.getSupplierRegistrationModel(), this.mainAppModel.getSupplierRegistrationView(), this));
+        this.mainAppModel.setAssetsReportController(new AssetsReportController(this.mainAppModel.getAssetsReportModel(), this.mainAppModel.getAssetsReportView(), this));
+        this.mainAppModel.setReportsMenuController(new ReportsMenuController(this.mainAppModel.getReportsMenuModel(), this.mainAppModel.getReportsMenuView(), this));
+        this.mainAppModel.setProductionsReportController(new ProductionsReportController(this.mainAppModel.getProductionsReportView(), this.mainAppModel.getProductionsReportModel(), this));
         
-
         this.mainAppModel.setButtonBarController(new ButtonBarController(this.mainAppModel.getButtonBarView(), this.mainAppModel.getButtonBarModel(), this));
 
 

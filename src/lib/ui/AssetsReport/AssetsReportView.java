@@ -5,6 +5,13 @@
  */
 package lib.ui.AssetsReport;
 
+import java.awt.Dimension;
+import java.awt.Image;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
 /**
  *
  * @author user
@@ -18,6 +25,16 @@ public class AssetsReportView extends javax.swing.JPanel {
         initComponents();
     }
 
+    public JPanel getjPanelGraphic() {
+        return jPanelGraphic;
+    }
+
+    public JLabel getJlReturn() {
+        return jlReturn;
+    }
+    
+    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,19 +44,77 @@ public class AssetsReportView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jlReturn = new javax.swing.JLabel();
+        jlTitle = new javax.swing.JLabel();
+        jPanelGraphic = new javax.swing.JPanel();
+
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        jlReturn.setSize(new Dimension(68,68));
+        jlReturn.setMaximumSize(new java.awt.Dimension(68, 68));
+        jlReturn.setMinimumSize(new java.awt.Dimension(68, 68));
+        jlReturn.setPreferredSize(new java.awt.Dimension(68, 68));
+        ImageIcon img2 = new ImageIcon(getClass().getResource("/documentation/Imagenes/Boton de Atras.png"));
+        Icon icon2 = new ImageIcon(img2.getImage().getScaledInstance(jlReturn.getWidth(), jlReturn.getHeight(), Image.SCALE_SMOOTH));
+        jlReturn.setIcon(icon2);
+
+        jlTitle.setFont(new java.awt.Font("Leelawadee UI", 1, 26)); // NOI18N
+        jlTitle.setForeground(new java.awt.Color(79, 84, 110));
+        jlTitle.setText("Estado de los activos");
+
+        javax.swing.GroupLayout jPanelGraphicLayout = new javax.swing.GroupLayout(jPanelGraphic);
+        jPanelGraphic.setLayout(jPanelGraphicLayout);
+        jPanelGraphicLayout.setHorizontalGroup(
+            jPanelGraphicLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 987, Short.MAX_VALUE)
+        );
+        jPanelGraphicLayout.setVerticalGroup(
+            jPanelGraphicLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 504, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(jlReturn, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(327, 327, 327)
+                        .addComponent(jlTitle))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(jPanelGraphic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jlReturn, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addComponent(jlTitle)))
+                .addGap(38, 38, 38)
+                .addComponent(jPanelGraphic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(74, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSave;
+    private javax.swing.JButton btnSave1;
+    private javax.swing.JButton btnSave2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanelGraphic;
+    private javax.swing.JLabel jlReturn;
+    private javax.swing.JLabel jlTitle;
     // End of variables declaration//GEN-END:variables
 }

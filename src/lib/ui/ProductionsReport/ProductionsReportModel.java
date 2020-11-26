@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import lib.app.DBConnection;
+import lib.ui.MainApp.MainAppController;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -25,12 +26,14 @@ import org.jfree.data.general.DefaultPieDataset;
  */
 public class ProductionsReportModel {
     private ProductionsReportView view;
+    
+    private MainAppController rootComponent;
 
     public ProductionsReportModel(ProductionsReportView view) {
         this.view = view;
     }
     
-    public void generateGraphic(){
+    public void generateGraphic(String graphicType, String filter){
         DBConnection conn = new DBConnection();
         conn.getConnection();
         ResultSet result;
@@ -44,7 +47,7 @@ public class ProductionsReportModel {
         conn.endCOnnection();
         
         JFreeChart chart;
-        if(true){//Por estado o tipo(PieChart)
+        if(graphicType.equals("torta")){//Por estado o tipo(PieChart)
             DefaultPieDataset set = new DefaultPieDataset();
             try {
                 while(result.next()){
@@ -55,7 +58,7 @@ public class ProductionsReportModel {
             }
             
             String title;
-            if(true){
+            if(filter.equals("estado")){
                 title = "Estado actual de las producciones";
             }else{
                 title = "Tipos de producciones";
@@ -63,7 +66,12 @@ public class ProductionsReportModel {
             chart = ChartFactory.createPieChart3D(title, set);
 
             ChartPanel chartPanel = new ChartPanel(chart);
-        }else if(true){//Por cantidad de insumos (BarChart) 
+            
+            this.view.getjPanelGraphic().removeAll();
+            this.view.getjPanelGraphic().add(chartPanel);
+            this.view.getjPanelGraphic().updateUI();
+            
+        }else if(graphicType.equals("barras")){//Por cantidad de insumos (BarChart) 
             DefaultCategoryDataset set = new DefaultCategoryDataset();
         
             try {
@@ -80,6 +88,10 @@ public class ProductionsReportModel {
             plot.setRangeGridlinePaint(Color.black);
 
             ChartPanel chartPanel = new ChartPanel(chart);
+            
+            this.view.getjPanelGraphic().removeAll();
+            this.view.getjPanelGraphic().add(chartPanel);
+            this.view.getjPanelGraphic().updateUI();
         }
         
         
@@ -98,6 +110,14 @@ public class ProductionsReportModel {
 
     public void setView(ProductionsReportView view) {
         this.view = view;
+    }
+
+    public void setRootComponent(MainAppController rootComponent) {
+        this.rootComponent = rootComponent;
+    }
+
+    public MainAppController getRootComponent() {
+        return rootComponent;
     }
     
     

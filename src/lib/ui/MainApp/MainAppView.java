@@ -4,10 +4,13 @@ import java.awt.Component;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import lib.ui.AssetRegistration.AssetRegistrationView;
+import lib.ui.AssetsReport.AssetsReportView;
 import lib.ui.EditAccount.EditAccountView;
 import lib.ui.Inventory.InventoryView;
 import lib.ui.MainBar.MainBarView;
 import lib.ui.MainMenu.MainMenuView;
+import lib.ui.ProductionsReport.ProductionsReportView;
+import lib.ui.ReportsMenu.ReportsMenuView;
 import lib.ui.SupplierRegistration.SupplierRegistrationView;
 import lib.ui.UsersList.UsersListView;
 import lib.ui.buttonBar.ButtonBarView;
@@ -207,7 +210,35 @@ public class MainAppView extends javax.swing.JFrame {
         supplierRegistrationView.setVisible(true);
     }
     
- 
+    public void setAssetsReport(AssetsReportView assetsReportView){
+        for(Component c : this.appContent.getComponents()){
+            c.setVisible(false);
+        }
+        this.appContent.removeAll();
+        
+        this.appContent.add(assetsReportView);
+        assetsReportView.setVisible(true);
+    }
+    
+    public void setReportsMenu(ReportsMenuView reportsMenuView){
+        for(Component c : this.appContent.getComponents()){
+            c.setVisible(false);
+        }
+        this.appContent.removeAll();
+        
+        this.appContent.add(reportsMenuView);
+        reportsMenuView.setVisible(true);
+    }
+    
+    public void setProductionsReport(ProductionsReportView productionsReportView){
+        for(Component c : this.appContent.getComponents()){
+            c.setVisible(false);
+        }
+        this.appContent.removeAll();
+        
+        this.appContent.add(productionsReportView);
+        productionsReportView.setVisible(true);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel ButtonPanel;

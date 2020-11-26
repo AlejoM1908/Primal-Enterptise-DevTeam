@@ -62,9 +62,9 @@ public class ProductionsReportController implements MouseListener, ActionListene
         if(ae.getSource() == this.view.getBtnStatus()){
             this.model.generateGraphic("torta", "estado");
         }else if(ae.getSource() == this.view.getBtnType()){
-            this.model.generateGraphic("torta", "");
+            this.model.generateGraphic("torta", "tipo");
         }else if(ae.getSource() == this.view.getBtnAmount()){
-            this.model.generateGraphic("barras", "");
+            this.model.generateGraphic("barras", "cantidad");
         }
     }
     

@@ -7,6 +7,7 @@ import java.awt.event.MouseListener;
 
 //Proyect imports
 import lib.ui.MainApp.MainAppController;
+import lib.ui.ReportsMenu.ReportsMenuView;
 import lib.ui.userAdministrationMenuView.AdministrationMenuView;
 
 public class ButtonBarController {
@@ -22,6 +23,7 @@ public class ButtonBarController {
         this.buttonBarView.getProductionButton().addMouseListener(new ButtonBarListener(buttonBarView, rootComponent));
         this.buttonBarView.getUsersButton().addMouseListener(new ButtonBarListener(buttonBarView, rootComponent));
         this.buttonBarView.getActivesButton().addMouseListener(new ButtonBarListener(buttonBarView, rootComponent));
+        this.buttonBarView.getReportsButton().addMouseListener(new ButtonBarListener(buttonBarView, rootComponent));
                         
     }
     
@@ -52,6 +54,10 @@ public class ButtonBarController {
             else if (me.getSource() == this.view.getActivesButton()){
                 
             }
+            else if (me.getSource() == this.view.getReportsButton()){
+                ReportsMenuView reportsMenuView = this.rootComponent.getMainAppModel().getReportsMenuView();
+                this.rootComponent.getMainAppView().setReportsMenu(reportsMenuView);
+            }
         }
 
         @Override
@@ -71,6 +77,7 @@ public class ButtonBarController {
             this.view.getProductionButton().setCursor(new Cursor(Cursor.HAND_CURSOR));
             this.view.getUsersButton().setCursor(new Cursor(Cursor.HAND_CURSOR));
             this.view.getActivesButton().setCursor(new Cursor(Cursor.HAND_CURSOR));
+            this.view.getReportsButton().setCursor(new Cursor(Cursor.HAND_CURSOR));
         }
 
         @Override

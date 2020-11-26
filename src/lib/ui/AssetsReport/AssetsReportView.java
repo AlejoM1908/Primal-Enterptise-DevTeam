@@ -7,10 +7,17 @@ package lib.ui.AssetsReport;
 
 import java.awt.Dimension;
 import java.awt.Image;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import lib.app.DBConnection;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.general.DefaultPieDataset;
 
 /**
  *
@@ -23,7 +30,9 @@ public class AssetsReportView extends javax.swing.JPanel {
      */
     public AssetsReportView() {
         initComponents();
+        
     }
+    
 
     public JPanel getjPanelGraphic() {
         return jPanelGraphic;
@@ -62,16 +71,7 @@ public class AssetsReportView extends javax.swing.JPanel {
         jlTitle.setForeground(new java.awt.Color(79, 84, 110));
         jlTitle.setText("Estado de los activos");
 
-        javax.swing.GroupLayout jPanelGraphicLayout = new javax.swing.GroupLayout(jPanelGraphic);
-        jPanelGraphic.setLayout(jPanelGraphicLayout);
-        jPanelGraphicLayout.setHorizontalGroup(
-            jPanelGraphicLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 987, Short.MAX_VALUE)
-        );
-        jPanelGraphicLayout.setVerticalGroup(
-            jPanelGraphicLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 504, Short.MAX_VALUE)
-        );
+        jPanelGraphic.setLayout(new javax.swing.BoxLayout(jPanelGraphic, javax.swing.BoxLayout.LINE_AXIS));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -85,8 +85,8 @@ public class AssetsReportView extends javax.swing.JPanel {
                         .addGap(327, 327, 327)
                         .addComponent(jlTitle))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(jPanelGraphic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(44, 44, 44)
+                        .addComponent(jPanelGraphic, javax.swing.GroupLayout.PREFERRED_SIZE, 993, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(48, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -99,20 +99,14 @@ public class AssetsReportView extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(75, 75, 75)
                         .addComponent(jlTitle)))
-                .addGap(38, 38, 38)
-                .addComponent(jPanelGraphic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanelGraphic, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(81, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnSave;
-    private javax.swing.JButton btnSave1;
-    private javax.swing.JButton btnSave2;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanelGraphic;
     private javax.swing.JLabel jlReturn;
     private javax.swing.JLabel jlTitle;

@@ -44,9 +44,9 @@ public class AssetsReportModel {
         JFreeChart chart = ChartFactory.createPieChart3D("Estado actual de los activos", set);
         
         ChartPanel chartPanel = new ChartPanel(chart);
-        
         this.view.getjPanelGraphic().removeAll();
         this.view.getjPanelGraphic().add(chartPanel);
+        
         this.view.getjPanelGraphic().updateUI();
         
     }

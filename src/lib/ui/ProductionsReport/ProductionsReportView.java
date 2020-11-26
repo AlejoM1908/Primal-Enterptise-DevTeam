@@ -81,16 +81,7 @@ public class ProductionsReportView extends javax.swing.JPanel {
         jlTitle.setForeground(new java.awt.Color(79, 84, 110));
         jlTitle.setText("Reporte de producciones");
 
-        javax.swing.GroupLayout jPanelGraphicLayout = new javax.swing.GroupLayout(jPanelGraphic);
-        jPanelGraphic.setLayout(jPanelGraphicLayout);
-        jPanelGraphicLayout.setHorizontalGroup(
-            jPanelGraphicLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 984, Short.MAX_VALUE)
-        );
-        jPanelGraphicLayout.setVerticalGroup(
-            jPanelGraphicLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 515, Short.MAX_VALUE)
-        );
+        jPanelGraphic.setLayout(new javax.swing.BoxLayout(jPanelGraphic, javax.swing.BoxLayout.LINE_AXIS));
 
         jPanel1.setBackground(new java.awt.Color(20, 56, 197));
         jPanel1.setToolTipText("");
@@ -184,8 +175,8 @@ public class ProductionsReportView extends javax.swing.JPanel {
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(49, 49, 49)
-                        .addComponent(jPanelGraphic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(52, Short.MAX_VALUE))
+                        .addComponent(jPanelGraphic, javax.swing.GroupLayout.PREFERRED_SIZE, 976, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -198,7 +189,7 @@ public class ProductionsReportView extends javax.swing.JPanel {
                         .addGap(76, 76, 76)
                         .addComponent(jlTitle)))
                 .addGap(18, 18, 18)
-                .addComponent(jPanelGraphic, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanelGraphic, javax.swing.GroupLayout.DEFAULT_SIZE, 515, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -224,11 +215,9 @@ public class ProductionsReportView extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAmount;
     private javax.swing.JButton btnStatus;
-    private javax.swing.JButton btnStatus2;
     private javax.swing.JButton btnType;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanelGraphic;
     private javax.swing.JLabel jlReturn;

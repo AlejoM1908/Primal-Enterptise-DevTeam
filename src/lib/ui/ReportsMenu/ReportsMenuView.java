@@ -36,9 +36,6 @@ public class ReportsMenuView extends javax.swing.JPanel {
         return jlProductionsReport;
     }
 
-    public JLabel getJlReturn() {
-        return jlReturn;
-    }
     
     
 
@@ -51,34 +48,58 @@ public class ReportsMenuView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jlReturn = new javax.swing.JLabel();
         jlTitle = new javax.swing.JLabel();
         jlAssetsReport = new javax.swing.JLabel();
         jlProductionsReport = new javax.swing.JLabel();
         jlMoneyReport = new javax.swing.JLabel();
+        jlAssets = new javax.swing.JLabel();
+        jlProductions = new javax.swing.JLabel();
+        jlMoney = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
-
-        jlReturn.setSize(new Dimension(68,68));
-        jlReturn.setMaximumSize(new java.awt.Dimension(68, 68));
-        jlReturn.setMinimumSize(new java.awt.Dimension(68, 68));
-        jlReturn.setPreferredSize(new java.awt.Dimension(68, 68));
-        ImageIcon img2 = new ImageIcon(getClass().getResource("/documentation/Imagenes/Boton de Atras.png"));
-        Icon icon2 = new ImageIcon(img2.getImage().getScaledInstance(jlReturn.getWidth(), jlReturn.getHeight(), Image.SCALE_SMOOTH));
-        jlReturn.setIcon(icon2);
 
         jlTitle.setFont(new java.awt.Font("Leelawadee UI", 1, 26)); // NOI18N
         jlTitle.setForeground(new java.awt.Color(79, 84, 110));
         jlTitle.setText("Informes");
 
-        jlAssetsReport.setText("ACTIVOS");
-        jlAssetsReport.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jlAssetsReport.setSize(new Dimension(153, 152));
+        jlAssetsReport.setMaximumSize(new java.awt.Dimension(153, 152));
+        jlAssetsReport.setMinimumSize(new java.awt.Dimension(153, 152));
+        jlAssetsReport.setPreferredSize(new java.awt.Dimension(153, 152));
+        ImageIcon img = new ImageIcon(getClass().getResource("/documentation/Imagenes/Icono Informes Activos.png"));
+        Icon icon = new ImageIcon(img.getImage().getScaledInstance(jlAssetsReport.getWidth(), jlAssetsReport.getHeight(), Image.SCALE_SMOOTH));
+        jlAssetsReport.setIcon(icon);
 
-        jlProductionsReport.setText("PRODUCCIONES");
-        jlProductionsReport.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jlProductionsReport.setSize(new Dimension(153, 152));
+        jlProductionsReport.setMaximumSize(new java.awt.Dimension(153, 152));
+        jlProductionsReport.setMinimumSize(new java.awt.Dimension(153, 152));
+        jlProductionsReport.setPreferredSize(new java.awt.Dimension(153, 152));
+        ImageIcon img3 = new ImageIcon(getClass().getResource("/documentation/Imagenes/Icono Informes Producciones.png"));
+        Icon icon3 = new ImageIcon(img3.getImage().getScaledInstance(jlProductionsReport.getWidth(), jlProductionsReport.getHeight(), Image.SCALE_SMOOTH));
+        jlProductionsReport.setIcon(icon3);
 
-        jlMoneyReport.setText("FLUJO DE CAJA");
-        jlMoneyReport.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jlMoneyReport.setSize(new Dimension(153, 152));
+        jlMoneyReport.setMaximumSize(new java.awt.Dimension(153, 152));
+        jlMoneyReport.setMinimumSize(new java.awt.Dimension(153, 152));
+        jlMoneyReport.setPreferredSize(new java.awt.Dimension(153, 152));
+        ImageIcon img4 = new ImageIcon(getClass().getResource("/documentation/Imagenes/Icono Informe Flujo de Caja.png"));
+        Icon icon4 = new ImageIcon(img4.getImage().getScaledInstance(jlMoneyReport.getWidth(), jlMoneyReport.getHeight(), Image.SCALE_SMOOTH));
+        jlMoneyReport.setIcon(icon4);
+
+        jlAssets.setBackground(new java.awt.Color(79, 84, 110));
+        jlAssets.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        jlAssets.setForeground(new java.awt.Color(79, 84, 110));
+        jlAssets.setText("Activos");
+
+        jlProductions.setBackground(new java.awt.Color(79, 84, 110));
+        jlProductions.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        jlProductions.setForeground(new java.awt.Color(79, 84, 110));
+        jlProductions.setText("Producciones");
+
+        jlMoney.setBackground(new java.awt.Color(79, 84, 110));
+        jlMoney.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        jlMoney.setForeground(new java.awt.Color(79, 84, 110));
+        jlMoney.setText("Flujo de caja");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -87,44 +108,56 @@ public class ReportsMenuView extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jlReturn, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(486, 486, 486)
                         .addComponent(jlTitle))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(466, 466, 466)
+                        .addComponent(jlMoneyReport, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(312, 312, 312)
                         .addComponent(jlAssetsReport, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(155, 155, 155)
                         .addComponent(jlProductionsReport, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(466, 466, 466)
-                        .addComponent(jlMoneyReport, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(357, 357, 357)
+                        .addComponent(jlAssets)
+                        .addGap(219, 219, 219)
+                        .addComponent(jlProductions)))
                 .addContainerGap(312, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jlMoney)
+                .addGap(487, 487, 487))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jlReturn, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addGap(120, 120, 120)
                 .addComponent(jlTitle)
                 .addGap(58, 58, 58)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlAssetsReport, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlProductionsReport, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlAssets)
+                    .addComponent(jlProductions))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addComponent(jlMoneyReport, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(154, 154, 154))
+                .addGap(18, 18, 18)
+                .addComponent(jlMoney)
+                .addGap(111, 111, 111))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jlAssets;
     private javax.swing.JLabel jlAssetsReport;
+    private javax.swing.JLabel jlMoney;
     private javax.swing.JLabel jlMoneyReport;
+    private javax.swing.JLabel jlProductions;
     private javax.swing.JLabel jlProductionsReport;
-    private javax.swing.JLabel jlReturn;
     private javax.swing.JLabel jlTitle;
     // End of variables declaration//GEN-END:variables
 }

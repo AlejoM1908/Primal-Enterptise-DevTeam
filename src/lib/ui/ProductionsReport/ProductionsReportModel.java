@@ -36,12 +36,12 @@ public class ProductionsReportModel {
     public void generateGraphic(String graphicType, String filter){
         DBConnection conn = new DBConnection();
         conn.getConnection();
-        ResultSet result;
-        if(true){//Por estado
+        ResultSet result = null;
+        if(graphicType.equals("torta") && filter.equals("estado")){//Por estado
             result = conn.executeQuery("SELECT prd_estado, COUNT(prd_estado) cantidad FROM producciones GROUP BY prd_estado;");
-        }else if(true){//Por tipo
+        }else if(graphicType.equals("torta") && filter.equals("tipo")){//Por tipo
             result = conn.executeQuery("SELECT prd_tipo, COUNT(prd_tipo) cantidad FROM producciones GROUP BY prd_tipo;");
-        }else{//Por cantidad de insumos
+        }else if(graphicType.equals("barras") && filter.equals("cantidad")) {//Por cantidad de insumos
             result = conn.executeQuery("SELECT prp_produccion_id, COUNT(prp_producto_id) cantidad FROM produccion_producto GROUP BY prp_produccion_id;");
         }
         conn.endCOnnection();
@@ -57,10 +57,10 @@ public class ProductionsReportModel {
                 System.out.println(ex.getMessage());
             }
             
-            String title;
+            String title = "";
             if(filter.equals("estado")){
                 title = "Estado actual de las producciones";
-            }else{
+            }else if(filter.equals("tipo")){
                 title = "Tipos de producciones";
             }
             chart = ChartFactory.createPieChart3D(title, set);
@@ -82,7 +82,7 @@ public class ProductionsReportModel {
                 System.out.println(ex.getMessage());
             }
 
-            chart = ChartFactory.createBarChart("Cantidad de insumos por producción", 
+            chart = ChartFactory.createBarChart3D("Cantidad de insumos por producción", 
                     "ID producción", "Cantidad", set, PlotOrientation.VERTICAL, true, true, true);
             CategoryPlot plot = chart.getCategoryPlot();
             plot.setRangeGridlinePaint(Color.black);

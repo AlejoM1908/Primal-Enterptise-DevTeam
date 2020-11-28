@@ -14,6 +14,9 @@ import lib.ui.EditAccount.EditAccountView;
 import lib.ui.Inventory.InventoryController;
 import lib.ui.Inventory.InventoryModel;
 import lib.ui.Inventory.InventoryView;
+import lib.ui.InventoryMenu.InventoryMenuController;
+import lib.ui.InventoryMenu.InventoryMenuModel;
+import lib.ui.InventoryMenu.InventoryMenuView;
 import lib.ui.MainBar.MainBarController;
 import lib.ui.MainBar.MainBarModel;
 import lib.ui.MainBar.MainBarView;
@@ -87,6 +90,10 @@ public class MainAppModel {
     private final ProductionsReportView productionsReportView = new ProductionsReportView();
     private final ProductionsReportModel productionsReportModel = new ProductionsReportModel(productionsReportView);
     private ProductionsReportController productionsReportController;
+    
+    private final InventoryMenuView inventoryMenuView = new InventoryMenuView();
+    private final InventoryMenuModel inventoryMenuModel = new InventoryMenuModel(inventoryMenuView);
+    private InventoryMenuController inventoryMenuController;
 
 
     private final ButtonBarView buttonBarView = new ButtonBarView();
@@ -232,6 +239,18 @@ public class MainAppModel {
 
     public void setProductionsReportController(ProductionsReportController productionsReportController) {
         this.productionsReportController = productionsReportController;
+    }
+
+    public InventoryMenuView getInventoryMenuView() {
+        return inventoryMenuView;
+    }
+
+    public InventoryMenuModel getInventoryMenuModel() {
+        return inventoryMenuModel;
+    }
+
+    public void setInventoryMenuController(InventoryMenuController inventoryMenuController) {
+        this.inventoryMenuController = inventoryMenuController;
     }
     
     

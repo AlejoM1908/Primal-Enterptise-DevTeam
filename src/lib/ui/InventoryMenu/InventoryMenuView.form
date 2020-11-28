@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <Properties>
+    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+    </Property>
+  </Properties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="410" max="-2" attributes="0"/>
+                      <Component id="jlTitle" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="455" max="-2" attributes="0"/>
+                      <Component id="jlRegisterProduct" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="437" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jlRegister" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="jlList" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jlProductsList" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace pref="429" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
+              <Component id="jlTitle" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+              <Component id="jlRegisterProduct" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jlRegister" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jlProductsList" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jlList" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="163" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="jlTitle">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Leelawadee UI" size="26" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="6e" green="54" red="4f" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Men&#xfa; del inventario"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jlRegisterProduct">
+      <Properties>
+        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[153, 152]"/>
+        </Property>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[153, 152]"/>
+        </Property>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[153, 152]"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="ImageIcon img = new ImageIcon(getClass().getResource(&quot;/documentation/Imagenes/Icono Registro de Productos.png&quot;));&#xa;Icon icon = new ImageIcon(img.getImage().getScaledInstance(jlRegisterProduct.getWidth(), jlRegisterProduct.getHeight(), Image.SCALE_SMOOTH));&#xa;jlRegisterProduct.setIcon(icon);"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jlRegisterProduct.setSize(new Dimension(153, 152));"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jlRegister">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="6e" green="54" red="4f" type="rgb"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Leelawadee UI" size="18" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="6e" green="54" red="4f" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Registro de productos"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jlProductsList">
+      <Properties>
+        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[153, 152]"/>
+        </Property>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[153, 152]"/>
+        </Property>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[153, 152]"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="ImageIcon img1 = new ImageIcon(getClass().getResource(&quot;/documentation/Imagenes/Icono Lista de Productos.png&quot;));&#xa;Icon icon1 = new ImageIcon(img1.getImage().getScaledInstance(jlProductsList.getWidth(), jlProductsList.getHeight(), Image.SCALE_SMOOTH));&#xa;jlProductsList.setIcon(icon1);"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jlProductsList.setSize(new Dimension(153, 152));"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jlList">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="6e" green="54" red="4f" type="rgb"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Leelawadee UI" size="18" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="6e" green="54" red="4f" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Lista de productos"/>
+      </Properties>
+    </Component>
+  </SubComponents>
+</Form>

@@ -7,6 +7,7 @@ import lib.ui.AssetRegistration.AssetRegistrationView;
 import lib.ui.AssetsReport.AssetsReportView;
 import lib.ui.EditAccount.EditAccountView;
 import lib.ui.Inventory.InventoryView;
+import lib.ui.InventoryMenu.InventoryMenuView;
 import lib.ui.MainBar.MainBarView;
 import lib.ui.MainMenu.MainMenuView;
 import lib.ui.ProductionsReport.ProductionsReportView;
@@ -238,6 +239,16 @@ public class MainAppView extends javax.swing.JFrame {
         
         this.appContent.add(productionsReportView);
         productionsReportView.setVisible(true);
+    }
+    
+    public void setInventoryMenu(InventoryMenuView inventoryMenuView){
+        for(Component c : this.appContent.getComponents()){
+            c.setVisible(false);
+        }
+        this.appContent.removeAll();
+        
+        this.appContent.add(inventoryMenuView);
+        inventoryMenuView.setVisible(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

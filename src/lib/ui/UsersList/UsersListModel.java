@@ -35,10 +35,11 @@ public class UsersListModel {
     public void fillTable() throws SQLException{
         DBConnection conn = new DBConnection();
         conn.getConnection();
-        ResultSet result = conn.executeQuery("SELECT * FROM usuarios NATURAL JOIN telefonos;");
+        ResultSet result = conn.executeQuery("SELECT * FROM usuarios JOIN telefonos WHERE usuarios.usr_usuario = telefonos.tel_usuario;");
         conn.endCOnnection();
         
         DefaultTableModel model = (DefaultTableModel) view.getJtUsers().getModel();
+        
         while(result.next()){
             String name = result.getString(5);
             String user = result.getString(1);

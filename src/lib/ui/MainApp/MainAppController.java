@@ -11,6 +11,7 @@ import lib.ui.AssetRegistration.AssetRegistrationController;
 import lib.ui.AssetsReport.AssetsReportController;
 import lib.ui.EditAccount.EditAccountController;
 import lib.ui.Inventory.InventoryController;
+import lib.ui.InventoryMenu.InventoryMenuController;
 import lib.ui.MainBar.MainBarController;
 
 import lib.ui.MainMenu.MainMenuController;
@@ -47,6 +48,7 @@ public class MainAppController implements MouseListener{
         this.mainAppModel.setAssetsReportController(new AssetsReportController(this.mainAppModel.getAssetsReportModel(), this.mainAppModel.getAssetsReportView(), this));
         this.mainAppModel.setReportsMenuController(new ReportsMenuController(this.mainAppModel.getReportsMenuModel(), this.mainAppModel.getReportsMenuView(), this));
         this.mainAppModel.setProductionsReportController(new ProductionsReportController(this.mainAppModel.getProductionsReportView(), this.mainAppModel.getProductionsReportModel(), this));
+        this.mainAppModel.setInventoryMenuController(new InventoryMenuController(this.mainAppModel.getInventoryMenuModel(), this.mainAppModel.getInventoryMenuView(), this));
         
         this.mainAppModel.setButtonBarController(new ButtonBarController(this.mainAppModel.getButtonBarView(), this.mainAppModel.getButtonBarModel(), this));
 

@@ -11,6 +11,7 @@ import java.awt.event.MouseListener;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 import lib.ui.MainApp.MainAppController;
 import lib.ui.MainMenu.MainMenuView;
 import lib.ui.userAdministrationMenuView.AdministrationMenuView;
@@ -34,6 +35,7 @@ public class UsersListController implements MouseListener{
         }
         this.view.getJlAddUser().addMouseListener(this);
         this.view.getJlReturn().addMouseListener(this);
+        this.view.getJlDeleteUser().addMouseListener(this);
     }
 
     @Override
@@ -43,6 +45,14 @@ public class UsersListController implements MouseListener{
         }else if(me.getSource() == this.view.getJlReturn()){
             AdministrationMenuView administrationMenuView = this.model.getRootComponent().getMainAppModel().getAdministrationMenuView();
             this.model.getRootComponent().getMainAppView().setAdministrationMenu(administrationMenuView);
+        }else if(me.getSource() == this.view.getJlDeleteUser()){
+            int row = this.view.getJtUsers().getSelectedRow();
+            if(row != -1){
+                DefaultTableModel tableModel = (DefaultTableModel) this.view.getJtUsers().getModel();
+                String user = tableModel.getValueAt(row, 1).toString();
+                //ELIMINAR USUARIO
+            }
+            
         }
     }
 
@@ -60,6 +70,7 @@ public class UsersListController implements MouseListener{
     public void mouseEntered(MouseEvent me) {
         this.view.getJlAddUser().setCursor(new Cursor(Cursor.HAND_CURSOR));
         this.view.getJlReturn().setCursor(new Cursor(Cursor.HAND_CURSOR));
+        this.view.getJlDeleteUser().setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
 
     @Override

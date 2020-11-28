@@ -260,6 +260,16 @@ public class MainAppView extends javax.swing.JFrame {
         this.appContent.add(registerProductView);
         registerProductView.setVisible(true);
     }
+    
+    public void setRegisterUser(registroUsr registerUserView){
+        for(Component c : this.appContent.getComponents()){
+            c.setVisible(false);
+        }
+        this.appContent.removeAll();
+        
+        this.appContent.add(registerUserView);
+        registerUserView.setVisible(true);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel ButtonPanel;

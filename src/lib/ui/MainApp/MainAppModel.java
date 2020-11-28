@@ -45,6 +45,9 @@ import lib.ui.buttonBar.ButtonBarView;
 import lib.ui.registroProd.prodController;
 import lib.ui.registroProd.prodModel;
 import lib.ui.registroProd.registroProd;
+import lib.ui.registroUsr.registroUsr;
+import lib.ui.registroUsr.registroUsrController;
+import lib.ui.registroUsr.registroUsrModel;
 
 
 public class MainAppModel {
@@ -101,6 +104,10 @@ public class MainAppModel {
     private final registroProd registerProductView = new registroProd();
     private final prodModel registerProductModel = new prodModel(registerProductView);
     private prodController registerProductController;
+    
+    private final registroUsr registerUserView = new registroUsr();
+    private final registroUsrModel registerUserModel = new registroUsrModel(registerUserView);
+    private registroUsrController registerUserController;
 
 
     private final ButtonBarView buttonBarView = new ButtonBarView();
@@ -270,6 +277,18 @@ public class MainAppModel {
 
     public void setRegisterProductController(prodController registerProductController) {
         this.registerProductController = registerProductController;
+    }
+
+    public registroUsr getRegisterUserView() {
+        return registerUserView;
+    }
+
+    public registroUsrModel getRegisterUserModel() {
+        return registerUserModel;
+    }
+
+    public void setRegisterUserController(registroUsrController registerUserController) {
+        this.registerUserController = registerUserController;
     }
     
     

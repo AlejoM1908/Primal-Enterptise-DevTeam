@@ -25,10 +25,6 @@ public class UsersListView extends javax.swing.JPanel {
         initComponents();
     }
 
-    public JLabel getJlAddUser() {
-        return jlAddUser;
-    }
-
     public JTable getJtUsers() {
         return jtUsers;
     }
@@ -55,7 +51,6 @@ public class UsersListView extends javax.swing.JPanel {
         jlTitle = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtUsers = new javax.swing.JTable();
-        jlAddUser = new javax.swing.JLabel();
         jlReturn = new javax.swing.JLabel();
         jlDeleteUser = new javax.swing.JLabel();
 
@@ -100,14 +95,6 @@ public class UsersListView extends javax.swing.JPanel {
             jtUsers.getColumnModel().getColumn(6).setResizable(false);
         }
 
-        jlAddUser.setSize(new Dimension(68,68));
-        jlAddUser.setMaximumSize(new java.awt.Dimension(68, 68));
-        jlAddUser.setMinimumSize(new java.awt.Dimension(68, 68));
-        jlAddUser.setPreferredSize(new java.awt.Dimension(68, 68));
-        ImageIcon img = new ImageIcon(getClass().getResource("/documentation/Imagenes/Icono Adicionar.png"));
-        Icon icon = new ImageIcon(img.getImage().getScaledInstance(jlAddUser.getWidth(), jlAddUser.getHeight(), Image.SCALE_SMOOTH));
-        jlAddUser.setIcon(icon);
-
         jlReturn.setSize(new Dimension(68,68));
         jlReturn.setMaximumSize(new java.awt.Dimension(68, 68));
         jlReturn.setMinimumSize(new java.awt.Dimension(68, 68));
@@ -133,16 +120,14 @@ public class UsersListView extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(162, 162, 162)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 760, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(47, 47, 47)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jlAddUser, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jlDeleteUser, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(42, 42, 42)
+                        .addComponent(jlDeleteUser, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addComponent(jlReturn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(327, 327, 327)
                         .addComponent(jlTitle)))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,9 +144,7 @@ public class UsersListView extends javax.swing.JPanel {
                         .addGap(47, 47, 47)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(136, 136, 136)
-                        .addComponent(jlAddUser, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(68, 68, 68)
+                        .addGap(177, 177, 177)
                         .addComponent(jlDeleteUser, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(141, Short.MAX_VALUE))
         );
@@ -170,7 +153,6 @@ public class UsersListView extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel jlAddUser;
     private javax.swing.JLabel jlDeleteUser;
     private javax.swing.JLabel jlReturn;
     private javax.swing.JLabel jlTitle;

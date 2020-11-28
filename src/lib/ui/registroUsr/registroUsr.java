@@ -5,7 +5,9 @@
  */
 package lib.ui.registroUsr;
 
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import lib.utils.AppColors;
 import lib.ui.registroUsr.registroUsrController;
 
@@ -21,6 +23,52 @@ private AppColors color = new AppColors();
     public registroUsr() {
         initComponents();
     }
+
+    public JLabel getAtrasButton() {
+        return atrasButton;
+    }
+
+    public JTextField getCedulaTF() {
+        return cedulaTF;
+    }
+
+    public JTextField getContraseñaTF() {
+        return contraseñaTF;
+    }
+
+    public JTextField getDireccionTF() {
+        return direccionTF;
+    }
+
+    public JTextField getEmailTF() {
+        return emailTF;
+    }
+
+    public JTextField getNombreTF() {
+        return nombreTF;
+    }
+
+    public JTextField getNombreUsuarioTF() {
+        return nombreUsuarioTF;
+    }
+
+    public JTextField getRangoTF() {
+        return rangoTF;
+    }
+
+    public JLabel getRegistrarB() {
+        return registrarB;
+    }
+
+    public JLabel getRegresarB() {
+        return regresarB;
+    }
+
+    public JTextField getTelefonoTF() {
+        return telefonoTF;
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -55,15 +103,10 @@ private AppColors color = new AppColors();
         setBackground(new java.awt.Color(255, 255, 255));
 
         regresarB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/images/Boton de Atras(2).png"))); // NOI18N
-        regresarB.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                regresarBMouseClicked(evt);
-            }
-        });
 
         jLabel2.setFont(new java.awt.Font("Leelawadee UI", 0, 20)); // NOI18N
         jLabel2.setForeground(color.textColor());
-        jLabel2.setText("Nombre:");
+        jLabel2.setText("Usuario:");
 
         jLabel3.setFont(new java.awt.Font("Leelawadee UI", 0, 20)); // NOI18N
         jLabel3.setForeground(color.textColor());
@@ -146,17 +189,12 @@ private AppColors color = new AppColors();
         });
 
         registrarB.setBackground(color.buttonColor());
-        registrarB.setFont(new java.awt.Font("Ancizar Sans", 0, 32)); // NOI18N
+        registrarB.setFont(new java.awt.Font("Leelawadee UI", 0, 32)); // NOI18N
         registrarB.setForeground(new java.awt.Color(255, 255, 255));
         registrarB.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         registrarB.setText("Registrar");
         registrarB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         registrarB.setOpaque(true);
-        registrarB.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                registrarBMouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -286,29 +324,6 @@ private AppColors color = new AppColors();
     private void nombreUsuarioTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreUsuarioTFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nombreUsuarioTFActionPerformed
-
-    private void regresarBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresarBMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_regresarBMouseClicked
-
-    private void registrarBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarBMouseClicked
-        // TODO add your handling code here:
-        int indicador;
-        registroUsrController regis = new registroUsrController();
-        indicador=regis.registrados("\""+nombreTF.getText()+"\"",
-                                    "\""+emailTF.getText()+"\"","\""+direccionTF.getText()+"\"","\""+rangoTF.getText()+"\"","\""+nombreUsuarioTF.getText()+"\"",
-                                    "\""+contraseñaTF.getText()+"\"",cedulaTF.getText(),telefonoTF.getText());
-        if(indicador==0)
-        {
-            JOptionPane.showMessageDialog(this, 
-                        "Datos Incorrectos Igrese nuevamente");
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(this, 
-                        "Usuario Registrado Correctamente");
-        }
-    }//GEN-LAST:event_registrarBMouseClicked
 
  
     // Variables declaration - do not modify//GEN-BEGIN:variables

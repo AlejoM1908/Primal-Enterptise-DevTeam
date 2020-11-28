@@ -24,6 +24,7 @@ import lib.ui.userAdministrationMenuView.AdministrationMenuView;
 
 import lib.ui.buttonBar.ButtonBarController;
 import lib.ui.registroProd.prodController;
+import lib.ui.registroUsr.registroUsrController;
 
 
 public class MainAppController implements MouseListener{
@@ -51,6 +52,7 @@ public class MainAppController implements MouseListener{
         this.mainAppModel.setProductionsReportController(new ProductionsReportController(this.mainAppModel.getProductionsReportView(), this.mainAppModel.getProductionsReportModel(), this));
         this.mainAppModel.setInventoryMenuController(new InventoryMenuController(this.mainAppModel.getInventoryMenuModel(), this.mainAppModel.getInventoryMenuView(), this));
         this.mainAppModel.setRegisterProductController(new prodController(this.mainAppModel.getRegisterProductModel(), this.getMainAppModel().getRegisterProductView(), this));
+        this.mainAppModel.setRegisterUserController(new registroUsrController(this.mainAppModel.getRegisterUserView(), this.mainAppModel.getRegisterUserModel(), this));
         
         this.mainAppModel.setButtonBarController(new ButtonBarController(this.mainAppModel.getButtonBarView(), this.mainAppModel.getButtonBarModel(), this));
 

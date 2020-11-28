@@ -10,6 +10,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import lib.ui.MainApp.MainAppController;
 import lib.ui.UsersList.UsersListView;
+import lib.ui.registroUsr.registroUsr;
 
 public class AdministrationMenuController implements MouseListener {
     private AdministrationMenuModel model;
@@ -41,7 +42,8 @@ public class AdministrationMenuController implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent me) {
         if(me.getSource() == view.getAddUserslb()){
-            //DIRIGIR A VENTANA AGREGAR USUARIO
+            registroUsr registerUserView = this.model.getRootComponent().getMainAppModel().getRegisterUserView();
+            this.model.getRootComponent().getMainAppView().setRegisterUser(registerUserView);
         }else if (me.getSource() == view.getUsersListlb()){
             //DIRIGIR A VENTANA LISTA DE USUARIOS
             UsersListView usersListView = this.model.getRootComponent().getMainAppModel().getUsersListView();

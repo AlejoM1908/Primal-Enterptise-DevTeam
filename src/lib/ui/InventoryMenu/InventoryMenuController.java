@@ -10,6 +10,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import lib.ui.Inventory.InventoryView;
 import lib.ui.MainApp.MainAppController;
+import lib.ui.registroProd.registroProd;
 
 /**
  *
@@ -34,7 +35,8 @@ public class InventoryMenuController implements MouseListener{
             InventoryView inventoryView = this.model.getRootComponent().getMainAppModel().getInventoryView();
             this.model.getRootComponent().getMainAppView().setInventory(inventoryView);
         }else if(me.getSource() == this.view.getJlRegisterProduct()){
-            //REDIRIGIR A REGISTRO PROD
+            registroProd registerProductView = this.model.getRootComponent().getMainAppModel().getRegisterProductView();
+            this.model.getRootComponent().getMainAppView().setRegisterProduct(registerProductView);
         }
     }
 

@@ -42,6 +42,9 @@ import lib.ui.userAdministrationMenuView.AdministrationMenuView;
 import lib.ui.buttonBar.ButtonBarController;
 import lib.ui.buttonBar.ButtonBarModel;
 import lib.ui.buttonBar.ButtonBarView;
+import lib.ui.registroProd.prodController;
+import lib.ui.registroProd.prodModel;
+import lib.ui.registroProd.registroProd;
 
 
 public class MainAppModel {
@@ -94,6 +97,10 @@ public class MainAppModel {
     private final InventoryMenuView inventoryMenuView = new InventoryMenuView();
     private final InventoryMenuModel inventoryMenuModel = new InventoryMenuModel(inventoryMenuView);
     private InventoryMenuController inventoryMenuController;
+    
+    private final registroProd registerProductView = new registroProd();
+    private final prodModel registerProductModel = new prodModel(registerProductView);
+    private prodController registerProductController;
 
 
     private final ButtonBarView buttonBarView = new ButtonBarView();
@@ -251,6 +258,18 @@ public class MainAppModel {
 
     public void setInventoryMenuController(InventoryMenuController inventoryMenuController) {
         this.inventoryMenuController = inventoryMenuController;
+    }
+
+    public registroProd getRegisterProductView() {
+        return registerProductView;
+    }
+
+    public prodModel getRegisterProductModel() {
+        return registerProductModel;
+    }
+
+    public void setRegisterProductController(prodController registerProductController) {
+        this.registerProductController = registerProductController;
     }
     
     

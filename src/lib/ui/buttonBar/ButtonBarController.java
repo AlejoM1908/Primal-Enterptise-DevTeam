@@ -4,6 +4,7 @@ package lib.ui.buttonBar;
 import java.awt.Cursor;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import lib.ui.InventoryMenu.InventoryMenuView;
 
 //Proyect imports
 import lib.ui.MainApp.MainAppController;
@@ -42,7 +43,8 @@ public class ButtonBarController {
                 this.rootComponent.getMainAppView().setMainMenu(this.rootComponent.getMainAppModel().getMainMenuView());
             }
             else if (me.getSource() == this.view.getInventoryButton()){
-                
+                InventoryMenuView inventoryMenuView = this.rootComponent.getMainAppModel().getInventoryMenuView();
+                this.rootComponent.getMainAppView().setInventoryMenu(inventoryMenuView);
             }
             else if (me.getSource() == this.view.getProductionButton()){
                 

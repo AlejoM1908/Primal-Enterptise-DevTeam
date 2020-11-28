@@ -66,9 +66,9 @@ public class AssetRegistrationModel {
         
         DBConnection conn = new DBConnection();
         conn.getConnection();
-        //CallableStatement stat = conn.getConn().prepareStatement("CALL registrarActivo(" + Integer.toString(10) + "," + "miguel" + "," + nit + "," + ticket + "," + desc + "," + status + "," + name + ");");
         
-        conn.executeQuery("CALL registrarActivo(" + Integer.toString(10) + "," + "\""+"miguel"+"\"" + "," + nit + "," + ticket + "," + desc + "," + status + "," + name + ");");
+        
+        conn.executeQuery("CALL registrarActivo(" + Integer.toString(10) + "," + "\""+ this.rootComponent.getMainAppModel().getLoggedUser().getUser() +"\"" + "," + nit + "," + ticket + "," + desc + "," + status + "," + name + ");");
         conn.endCOnnection();
     }
     

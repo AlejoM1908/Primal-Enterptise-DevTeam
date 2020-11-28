@@ -8,44 +8,85 @@ package lib.ui.registroProd;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import lib.app.DBConnection;
+import lib.ui.MainApp.MainAppController;
 
 /**
  *
  * @author Fredy AGP
  */
 public class prodModel {
+
     private DBConnection conn = new DBConnection();
-    
-    public int registro_prod(String nombre, String marca,String tipo,int nit,int cantidad, String metodo,String lugar,String fecha,String usr,String descrip){
-        int retornador=0;   
-        try
-        {
+
+    private registroProd registroProdView;
+
+    private MainAppController rootComponent;
+
+    public prodModel(registroProd registroProdView) {
+        this.registroProdView = registroProdView;
+    }
+
+    public int registro_prod(String nombre, String marca, String tipo, int nit, int cantidad, String metodo, String lugar, String fecha, String usr, String descrip) {
+        int retornador = 0;
+        try {
             startConnection();
-            conn.executeQuery("INSERT INTO productos VALUES("+"null"+usr+","+ Integer.toString(nit) +","+ marca +","+ tipo +","+ Integer.toString(cantidad) +","+ metodo+","+lugar+","+nombre+","+descrip+", STR_TO_DATE("+fecha+", '%Y-%m-%d'));");
+            conn.executeQuery("CALL registerProduct("+ usr + "," + Integer.toString(nit) + "," + marca + "," + tipo + "," + Integer.toString(cantidad) + "," + metodo + "," + lugar + "," + nombre + "," + descrip + ", STR_TO_DATE(" + fecha + ", '%Y-%m-%d'));");
             ResultSet result = conn.executeQuery("select pru_nombre from productos ");
-            if(result.next()==false)
-            {
-                retornador=0;
-            }
-            else
-            {
-                retornador=1;
+            if (result.next() == false) {
+                retornador = 0;
+            } else {
+                retornador = 1;
             }
             endConnection();
+        } catch (SQLException e) {
+            System.out.println("Ha ocurrido una SQLExeption: " + e.getMessage());
         }
-        catch(SQLException e)
-        {
-            System.out.println("Ha ocurrido una SQLExeption: " + e.getMessage());   
-        }
-           return retornador;
+        return retornador;
     }
     
- private void startConnection(){
+    public int registrados(String nombre, String marca, String tipo, String nit, String cantidad, String metodo, String lugar, String fecha, String usr, String descrip) {
+        int registro_retorno;
+        int num_nit;
+        int num_cantidad;
+        try {
+            num_nit = Integer.parseInt(nit);
+
+        } catch (NumberFormatException ex) {
+            return 0;
+        }
+        try {
+            num_cantidad = Integer.parseInt(cantidad);
+
+        } catch (NumberFormatException ex) {
+            return 0;
+        }
+        registro_retorno = registro_prod(nombre, marca, tipo, num_nit, num_cantidad, metodo, lugar, fecha, usr, descrip);
+        return registro_retorno;
+    }
+
+    private void startConnection() {
         conn.getConnection();
     }
- private void endConnection(){
+
+    private void endConnection() {
         conn.endCOnnection();
     }
-}
- 
 
+    public registroProd getRegistroProdView() {
+        return registroProdView;
+    }
+
+    public void setRegistroProdView(registroProd registroProdView) {
+        this.registroProdView = registroProdView;
+    }
+
+    public MainAppController getRootComponent() {
+        return rootComponent;
+    }
+
+    public void setRootComponent(MainAppController rootComponent) {
+        this.rootComponent = rootComponent;
+    }
+    
+    
+}

@@ -35,7 +35,7 @@ public class UsersListModel {
     public void fillTable() throws SQLException{
         DBConnection conn = new DBConnection();
         conn.getConnection();
-        ResultSet result = conn.executeQuery("SELECT * FROM usuarios JOIN telefonos WHERE usuarios.usr_usuario = telefonos.tel_usuario;");
+        ResultSet result = conn.executeQuery("SELECT * FROM usuarios JOIN telefonos WHERE usuarios.usr_usuario = telefonos.tel_usuario AND usr_estado != 3;");
         conn.endCOnnection();
         
         DefaultTableModel model = (DefaultTableModel) view.getJtUsers().getModel();

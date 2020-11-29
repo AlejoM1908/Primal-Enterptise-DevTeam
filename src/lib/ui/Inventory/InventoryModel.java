@@ -27,12 +27,12 @@ public class InventoryModel {
     public void fillTable() throws SQLException{
         DBConnection conn = new DBConnection();
         conn.getConnection();
-        ResultSet result = conn.executeQuery("SELECT pru_nombre, pru_marca, pru_tipo, pru_cantidad, pru_fecha_caducidad FROM productos;");
+        ResultSet result = conn.executeQuery("SELECT pru_nombre, pru_marca, pru_tipo, pru_cantidad, pru_fecha_caducidad, pru_id FROM productos WHERE pru_estado != 2;");
         conn.endCOnnection();
         
         DefaultTableModel model = (DefaultTableModel) view.getJtInventory().getModel();
         while(result.next()){
-            model.addRow(new Object[]{"", result.getString(1), result.getString(2), result.getString(3), result.getString(4), result.getString(5)});
+            model.addRow(new Object[]{"", result.getString(1), result.getString(2), result.getString(3), result.getString(4), result.getString(5), result.getInt(6)});
         }
         view.updateUI();
     }

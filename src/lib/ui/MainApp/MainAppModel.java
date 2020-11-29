@@ -42,6 +42,9 @@ import lib.ui.userAdministrationMenuView.AdministrationMenuView;
 import lib.ui.buttonBar.ButtonBarController;
 import lib.ui.buttonBar.ButtonBarModel;
 import lib.ui.buttonBar.ButtonBarView;
+import lib.ui.consultProductView.ConsultProductController;
+import lib.ui.consultProductView.ConsultProductModel;
+import lib.ui.consultProductView.ConsultProductView;
 import lib.ui.registroProd.prodController;
 import lib.ui.registroProd.prodModel;
 import lib.ui.registroProd.registroProd;
@@ -108,6 +111,10 @@ public class MainAppModel {
     private final registroUsr registerUserView = new registroUsr();
     private final registroUsrModel registerUserModel = new registroUsrModel(registerUserView);
     private registroUsrController registerUserController;
+    
+    private final ConsultProductView consultProductView = new ConsultProductView();
+    private final ConsultProductModel consultProductModel = new ConsultProductModel(consultProductView);
+    private ConsultProductController consultProductController;
 
 
     private final ButtonBarView buttonBarView = new ButtonBarView();
@@ -289,6 +296,18 @@ public class MainAppModel {
 
     public void setRegisterUserController(registroUsrController registerUserController) {
         this.registerUserController = registerUserController;
+    }
+
+    public ConsultProductView getConsultProductView() {
+        return consultProductView;
+    }
+
+    public ConsultProductModel getConsultProductModel() {
+        return consultProductModel;
+    }
+
+    public void setConsultProductController(ConsultProductController consultProductController) {
+        this.consultProductController = consultProductController;
     }
     
     

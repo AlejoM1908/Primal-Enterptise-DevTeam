@@ -81,14 +81,14 @@ public class InventoryView extends javax.swing.JPanel {
 
             },
             new String [] {
-                "", "Nombre", "Marca", "Tipo", "Cantidad", "Fecha caducidad"
+                "", "Nombre", "Marca", "Tipo", "Cantidad", "Fecha caducidad", "ID"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Integer.class
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -107,6 +107,7 @@ public class InventoryView extends javax.swing.JPanel {
             jtInventory.getColumnModel().getColumn(3).setResizable(false);
             jtInventory.getColumnModel().getColumn(4).setResizable(false);
             jtInventory.getColumnModel().getColumn(5).setResizable(false);
+            jtInventory.getColumnModel().getColumn(6).setResizable(false);
         }
 
         jlAddProduct.setSize(new Dimension(68,68));

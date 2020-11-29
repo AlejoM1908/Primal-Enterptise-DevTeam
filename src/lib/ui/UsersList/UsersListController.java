@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
+import lib.app.DBConnection;
 import lib.ui.MainApp.MainAppController;
 import lib.ui.MainMenu.MainMenuView;
 import lib.ui.userAdministrationMenuView.AdministrationMenuView;
@@ -48,7 +49,10 @@ public class UsersListController implements MouseListener{
             if(row != -1){
                 DefaultTableModel tableModel = (DefaultTableModel) this.view.getJtUsers().getModel();
                 String user = tableModel.getValueAt(row, 1).toString();
-                //ELIMINAR USUARIO
+                DBConnection conn = new DBConnection();
+                conn.getConnection();
+                conn.executeQuery("CALL deleteUser(" + "\"" + user + "\"" + ");");
+                conn.endCOnnection();
             }
             
         }

@@ -74,7 +74,7 @@ public class LoginView extends javax.swing.JPanel {
         LoginButton.setFont(new java.awt.Font("Leelawadee UI", 0, 32)); // NOI18N
         LoginButton.setForeground(new java.awt.Color(255, 255, 255));
         LoginButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        LoginButton.setText("iniciar");
+        LoginButton.setText("Iniciar sesión");
         LoginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         LoginButton.setOpaque(true);
 
@@ -85,7 +85,7 @@ public class LoginView extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, optionsPanelLayout.createSequentialGroup()
                 .addContainerGap(25, Short.MAX_VALUE)
                 .addGroup(optionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(LoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(optionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(userField)
                         .addComponent(userLabel)

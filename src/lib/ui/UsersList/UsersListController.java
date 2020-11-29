@@ -11,6 +11,7 @@ import java.awt.event.MouseListener;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import lib.app.DBConnection;
 import lib.ui.MainApp.MainAppController;
@@ -53,6 +54,9 @@ public class UsersListController implements MouseListener{
                 conn.getConnection();
                 conn.executeQuery("CALL deleteUser(" + "\"" + user + "\"" + ");");
                 conn.endCOnnection();
+                tableModel.removeRow(row);
+                this.view.updateUI();
+                JOptionPane.showMessageDialog(this.view, "Se ha eliminado ese usuario", "", JOptionPane.INFORMATION_MESSAGE);
             }
             
         }

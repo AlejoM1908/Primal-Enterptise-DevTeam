@@ -40,6 +40,7 @@ public class ButtonBarController {
         @Override
         public void mouseClicked(MouseEvent me) {
             if (me.getSource() == this.view.getHomeButton()){
+                this.rootComponent.getMainAppModel().getMainMenuView().fillInfo(this.rootComponent.getMainAppModel().getLoggedUser());
                 this.rootComponent.getMainAppView().setMainMenu(this.rootComponent.getMainAppModel().getMainMenuView());
             }
             else if (me.getSource() == this.view.getInventoryButton()){

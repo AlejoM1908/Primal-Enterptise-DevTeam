@@ -7,6 +7,8 @@ package lib.ui.UsersList;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import lib.app.DBConnection;
 import lib.ui.MainApp.MainAppController;
@@ -57,6 +59,19 @@ public class UsersListModel {
                                       address});
         }
         view.updateUI();
+    }
+    
+    public void updateTable(){
+        DefaultTableModel model = (DefaultTableModel) view.getJtUsers().getModel();
+        int rowCount = model.getRowCount();
+        for(int i = 0; i < rowCount; i++){
+            model.removeRow(0);
+        }
+        try {
+            fillTable();
+        } catch (SQLException ex) {
+            Logger.getLogger(UsersListModel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public MainAppController getRootComponent() {

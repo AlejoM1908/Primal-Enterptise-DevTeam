@@ -44,14 +44,18 @@ public class AdministrationMenuController implements MouseListener {
     public void mouseClicked(MouseEvent me) {
         if(me.getSource() == view.getAddUserslb()){
             registroUsr registerUserView = this.model.getRootComponent().getMainAppModel().getRegisterUserView();
+            this.model.getRootComponent().getMainAppModel().getRegisterUserModel().clearFields();
             this.model.getRootComponent().getMainAppView().setRegisterUser(registerUserView);
         }else if (me.getSource() == view.getUsersListlb()){
             UsersListView usersListView = this.model.getRootComponent().getMainAppModel().getUsersListView();
+            this.model.getRootComponent().getMainAppModel().getUsersListModel().updateTable();
+            usersListView.updateUI();
             this.model.getRootComponent().getMainAppView().setUsersList(usersListView);
         }else if(me.getSource() == view.getRolesCreationlb()){
             //DIRIGIR A VENTANA CREACION DE ROLES
         }else if(me.getSource() == view.getJlSupplier()){
             SupplierRegistrationView supplierRegistrationView = this.model.getRootComponent().getMainAppModel().getSupplierRegistrationView();
+            this.model.getRootComponent().getMainAppModel().getSupplierRegistrationModel().clearFields();
             this.model.getRootComponent().getMainAppView().setSupplierRegistration(supplierRegistrationView);
         }
     }

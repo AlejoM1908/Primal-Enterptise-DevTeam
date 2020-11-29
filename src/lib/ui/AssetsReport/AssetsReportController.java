@@ -23,7 +23,6 @@ public class AssetsReportController implements MouseListener{
         this.model = model;
         this.view = view;
         this.model.setRootComponent(rootComponent);
-        this.model.generateGraphic();
         this.view.getJlReturn().addMouseListener(this);
     }
 

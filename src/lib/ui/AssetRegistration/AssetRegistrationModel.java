@@ -82,6 +82,16 @@ public class AssetRegistrationModel {
         return result.getInt(1) == 0;   
         
     }
+    
+    public void clearFields(){
+        this.view.getJtxtBrand().setText("");
+        this.view.getJtxtName().setText("");
+        this.view.getJtxtNit().setText("");
+        this.view.getJtxtQuantity().setText("");
+        this.view.getJtxtTicket().setText("");
+        this.view.getJtxtaDesc().setText("");
+        this.view.getJcbStatus().setSelectedIndex(0);
+    }
 
     public MainAppController getRootComponent() {
         return rootComponent;

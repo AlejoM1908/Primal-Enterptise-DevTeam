@@ -63,6 +63,19 @@ public class prodModel {
         registro_retorno = registro_prod(nombre, marca, tipo, num_nit, num_cantidad, metodo, lugar, fecha, usr, descrip);
         return registro_retorno;
     }
+    
+    public void clearFields(){
+        this.registroProdView.getNombreTF().setText("");
+        this.registroProdView.getMarcaTF().setText("");
+        this.registroProdView.getTipolTF().setText("");
+        this.registroProdView.getNitTF().setText("");
+        this.registroProdView.getAlmacenamientoTF().setText("");
+        this.registroProdView.getLugarTF().setText("");
+        this.registroProdView.getDescripcionTF().setText("");
+        this.registroProdView.getAnoCB().setSelectedIndex(0);
+        this.registroProdView.getMesCB().setSelectedIndex(0);
+        this.registroProdView.getDiaCB().setSelectedIndex(0);
+    }
 
     private void startConnection() {
         conn.getConnection();

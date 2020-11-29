@@ -33,7 +33,7 @@
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="137" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
@@ -63,10 +63,10 @@
                           <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="107" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="contraseñaTF" min="-2" pref="286" max="-2" attributes="0"/>
-                          <Component id="nombreUsuarioTF" min="-2" pref="286" max="-2" attributes="0"/>
+                          <Component id="nombreUsuarioTF" alignment="1" min="-2" pref="286" max="-2" attributes="0"/>
+                          <Component id="contraseñaTF" alignment="1" min="-2" pref="286" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -75,7 +75,7 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
               <Component id="registrarB" min="-2" pref="150" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="436" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="419" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -157,7 +157,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
           <Connection code="color.textColor()" type="code"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Usuario:"/>
+        <Property name="text" type="java.lang.String" value="Nombre:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
@@ -234,7 +234,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
           <Connection code="color.textColor()" type="code"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Nombre de Usuario:"/>
+        <Property name="text" type="java.lang.String" value="Usuario:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="emailTF">

@@ -39,6 +39,17 @@ public class registroUsrModel {
         }
 
     }
+    
+    public void clearFields(){
+        this.registroUsrView.getNombreTF().setText("");
+        this.registroUsrView.getCedulaTF().setText("");
+        this.registroUsrView.getEmailTF().setText("");
+        this.registroUsrView.getTelefonoTF().setText("");
+        this.registroUsrView.getDireccionTF().setText("");
+        this.registroUsrView.getRangoTF().setText("");
+        this.registroUsrView.getNombreUsuarioTF().setText("");
+        this.registroUsrView.getContraseñaTF().setText("");
+    }
 
     public registroUsr getRegistroUsrView() {
         return registroUsrView;

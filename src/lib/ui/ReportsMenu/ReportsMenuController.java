@@ -43,6 +43,7 @@ public class ReportsMenuController implements MouseListener {
     public void mouseClicked(MouseEvent me) {
         if(me.getSource() == this.view.getJlAssetsReport()){
             AssetsReportView assetsReportView = this.model.getRootComponent().getMainAppModel().getAssetsReportView();
+            this.model.getRootComponent().getMainAppModel().getAssetsReportModel().generateGraphic();
             this.model.getRootComponent().getMainAppView().setAssetsReport(assetsReportView);
         }else if(me.getSource() == this.view.getJlMoneyReport()){
             //REDIRIGIR A REPORTE DE FLUJO DE CAJA

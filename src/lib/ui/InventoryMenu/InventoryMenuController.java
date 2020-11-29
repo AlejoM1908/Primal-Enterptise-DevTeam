@@ -33,9 +33,11 @@ public class InventoryMenuController implements MouseListener{
     public void mouseClicked(MouseEvent me) {
         if(me.getSource() == this.view.getJlProductsList()){
             InventoryView inventoryView = this.model.getRootComponent().getMainAppModel().getInventoryView();
+            this.model.getRootComponent().getMainAppModel().getInventoryModel().updateTable();
             this.model.getRootComponent().getMainAppView().setInventory(inventoryView);
         }else if(me.getSource() == this.view.getJlRegisterProduct()){
             registroProd registerProductView = this.model.getRootComponent().getMainAppModel().getRegisterProductView();
+            this.model.getRootComponent().getMainAppModel().getRegisterProductModel().clearFields();
             this.model.getRootComponent().getMainAppView().setRegisterProduct(registerProductView);
         }
     }

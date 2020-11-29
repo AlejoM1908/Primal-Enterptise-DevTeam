@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import lib.app.DBConnection;
 import lib.ui.InventoryMenu.InventoryMenuView;
 import lib.ui.MainApp.MainAppController;
 import lib.ui.consultProductView.ConsultProductController;
@@ -37,15 +38,13 @@ public class InventoryController implements MouseListener {
             Logger.getLogger(InventoryController.class.getName()).log(Level.SEVERE, null, ex);
         }
         this.view.getJlEdit().addMouseListener(this);
-        this.view.getJlAddProduct().addMouseListener(this);
         this.view.getJlReturn().addMouseListener(this);
+        this.view.getJlDeleteProduct().addMouseListener(this);
     }
 
     @Override
     public void mouseClicked(MouseEvent me) {
-        if (me.getSource() == view.getJlAddProduct()) {
-            //DIRIGIR A REGISTRAR PRODUCTO
-        } else if (me.getSource() == view.getJlEdit()) {
+        if (me.getSource() == view.getJlEdit()) {
             int row = this.view.getJtInventory().getSelectedRow();
             int id = -1;
             if (row != -1) {
@@ -66,6 +65,19 @@ public class InventoryController implements MouseListener {
         } else if (me.getSource() == view.getJlReturn()) {
             InventoryMenuView inventoryMenuView = this.model.getRootComponent().getMainAppModel().getInventoryMenuView();
             this.model.getRootComponent().getMainAppView().setInventoryMenu(inventoryMenuView);
+        } else if (me.getSource() == view.getJlDeleteProduct()){
+            int row = this.view.getJtInventory().getSelectedRow();
+            if(row != -1){
+                DefaultTableModel tableModel = (DefaultTableModel) this.view.getJtInventory().getModel();
+                int id = (int) tableModel.getValueAt(row, 6);
+                DBConnection conn = new DBConnection();
+                conn.getConnection();
+                conn.executeQuery("CALL deleteProduct(" + Integer.toString(id) + ");");
+                conn.endCOnnection();
+                tableModel.removeRow(row);
+                this.view.updateUI();
+                JOptionPane.showMessageDialog(this.view, "Se ha eliminado ese producto", "", JOptionPane.INFORMATION_MESSAGE);
+            }
         }
     }
 
@@ -83,8 +95,6 @@ public class InventoryController implements MouseListener {
     public void mouseEntered(MouseEvent me) {
 
         view.getJlEdit().setCursor(new Cursor(Cursor.HAND_CURSOR));
-
-        view.getJlAddProduct().setCursor(new Cursor(Cursor.HAND_CURSOR));
 
         view.getJlReturn().setCursor(new Cursor(Cursor.HAND_CURSOR));
 

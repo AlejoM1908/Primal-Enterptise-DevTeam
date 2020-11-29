@@ -32,16 +32,16 @@ public class InventoryView extends javax.swing.JPanel {
         return jtInventory;
     }
 
-    public JLabel getJlAddProduct() {
-        return jlAddProduct;
-    }
-
     public JLabel getJlEdit() {
         return jlEdit;
     }
 
     public JLabel getJlReturn() {
         return jlReturn;
+    }
+
+    public JLabel getJlDeleteProduct() {
+        return jlDeleteProduct;
     }
     
     
@@ -59,8 +59,8 @@ public class InventoryView extends javax.swing.JPanel {
         jlTitle = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtInventory = new JTable(new DefaultTableModel(new Object[]{"", "Nombre", "Marca", "Tipo", "Fecha de caducidad", "Cantidad"},0));
-        jlAddProduct = new javax.swing.JLabel();
         jlEdit = new javax.swing.JLabel();
+        jlDeleteProduct = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -110,14 +110,6 @@ public class InventoryView extends javax.swing.JPanel {
             jtInventory.getColumnModel().getColumn(6).setResizable(false);
         }
 
-        jlAddProduct.setSize(new Dimension(68,68));
-        jlAddProduct.setMaximumSize(new java.awt.Dimension(68, 68));
-        jlAddProduct.setMinimumSize(new java.awt.Dimension(68, 68));
-        jlAddProduct.setPreferredSize(new java.awt.Dimension(68, 68));
-        ImageIcon img = new ImageIcon(getClass().getResource("/documentation/Imagenes/Icono Adicionar.png"));
-        Icon icon = new ImageIcon(img.getImage().getScaledInstance(jlAddProduct.getWidth(), jlAddProduct.getHeight(), Image.SCALE_SMOOTH));
-        jlAddProduct.setIcon(icon);
-
         jlEdit.setSize(new Dimension(68,68));
         jlEdit.setMaximumSize(new java.awt.Dimension(68, 68));
         jlEdit.setMinimumSize(new java.awt.Dimension(68, 68));
@@ -125,6 +117,14 @@ public class InventoryView extends javax.swing.JPanel {
         ImageIcon img3 = new ImageIcon(getClass().getResource("/documentation/Imagenes/Icono Editar.png"));
         Icon icon3 = new ImageIcon(img3.getImage().getScaledInstance(jlEdit.getWidth(), jlEdit.getHeight(), Image.SCALE_SMOOTH));
         jlEdit.setIcon(icon3);
+
+        jlDeleteProduct.setSize(new Dimension(68,68));
+        jlDeleteProduct.setMaximumSize(new java.awt.Dimension(68, 68));
+        jlDeleteProduct.setMinimumSize(new java.awt.Dimension(68, 68));
+        jlDeleteProduct.setPreferredSize(new java.awt.Dimension(68, 68));
+        ImageIcon img4 = new ImageIcon(getClass().getResource("/documentation/Imagenes/Icono Eliminar Usuario.png"));
+        Icon icon4 = new ImageIcon(img4.getImage().getScaledInstance(jlDeleteProduct.getWidth(), jlDeleteProduct.getHeight(), Image.SCALE_SMOOTH));
+        jlDeleteProduct.setIcon(icon4);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -140,11 +140,11 @@ public class InventoryView extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(104, 104, 104)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 826, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
+                        .addGap(35, 35, 35)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jlAddProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jlEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(51, Short.MAX_VALUE))
+                            .addComponent(jlEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlDeleteProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,10 +161,10 @@ public class InventoryView extends javax.swing.JPanel {
                         .addGap(30, 30, 30)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 489, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(174, 174, 174)
-                        .addComponent(jlAddProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addComponent(jlEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(153, 153, 153)
+                        .addComponent(jlEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(jlDeleteProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(92, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -172,7 +172,7 @@ public class InventoryView extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel jlAddProduct;
+    private javax.swing.JLabel jlDeleteProduct;
     private javax.swing.JLabel jlEdit;
     private javax.swing.JLabel jlReturn;
     private javax.swing.JLabel jlTitle;

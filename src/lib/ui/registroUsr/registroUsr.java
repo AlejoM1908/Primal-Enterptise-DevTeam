@@ -106,7 +106,7 @@ private AppColors color = new AppColors();
 
         jLabel2.setFont(new java.awt.Font("Leelawadee UI", 0, 20)); // NOI18N
         jLabel2.setForeground(color.textColor());
-        jLabel2.setText("Usuario:");
+        jLabel2.setText("Nombre:");
 
         jLabel3.setFont(new java.awt.Font("Leelawadee UI", 0, 20)); // NOI18N
         jLabel3.setForeground(color.textColor());
@@ -134,7 +134,7 @@ private AppColors color = new AppColors();
 
         jLabel9.setFont(new java.awt.Font("Leelawadee UI", 0, 20)); // NOI18N
         jLabel9.setForeground(color.textColor());
-        jLabel9.setText("Nombre de Usuario:");
+        jLabel9.setText("Usuario:");
 
         emailTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -210,7 +210,7 @@ private AppColors color = new AppColors();
                 .addGap(336, 336, 336))
             .addGroup(layout.createSequentialGroup()
                 .addGap(137, 137, 137)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addComponent(jLabel7)
@@ -234,15 +234,15 @@ private AppColors color = new AppColors();
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
                             .addComponent(jLabel8))
-                        .addGap(107, 107, 107)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(contraseñaTF, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nombreUsuarioTF, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(nombreUsuarioTF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(contraseñaTF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(registrarB, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(436, 436, 436))
+                .addGap(419, 419, 419))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

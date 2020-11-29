@@ -75,6 +75,14 @@ public class SupplierRegistrationModel {
                          + phoneNumber + "," + email + "," + address + "," + this.rootComponent.getMainAppModel().getLoggedUser().getUser() + ");");
         conn.endCOnnection();
     }
+    
+    public void clearFields(){
+        this.view.getJtxtAddress().setText("");
+        this.view.getJtxtEmail().setText("");
+        this.view.getJtxtName().setText("");
+        this.view.getJtxtNit().setText("");
+        this.view.getJtxtPhoneNumber().setText("");
+    }
 
     public SupplierRegistrationView getView() {
         return view;

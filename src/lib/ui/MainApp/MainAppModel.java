@@ -1,6 +1,7 @@
 //Java imports
 package lib.ui.MainApp;
 
+//Proyect imports
 import lib.models.User;
 import lib.ui.AssetRegistration.AssetRegistrationController;
 import lib.ui.AssetRegistration.AssetRegistrationModel;
@@ -26,10 +27,12 @@ import lib.ui.UsersList.UsersListView;
 import lib.ui.userAdministrationMenuView.AdministrationMenuController;
 import lib.ui.userAdministrationMenuView.AdministrationMenuModel;
 import lib.ui.userAdministrationMenuView.AdministrationMenuView;
-
 import lib.ui.buttonBar.ButtonBarController;
 import lib.ui.buttonBar.ButtonBarModel;
 import lib.ui.buttonBar.ButtonBarView;
+import lib.ui.productionSubmenu.ProductionSubmenuController;
+import lib.ui.productionSubmenu.ProductionSubmenuModel;
+import lib.ui.productionSubmenu.ProductionSubmenuView;
 
 
 public class MainAppModel {
@@ -66,7 +69,10 @@ public class MainAppModel {
     private final SupplierRegistrationView supplierRegistrationView = new SupplierRegistrationView();
     private final SupplierRegistrationModel supplierRegistrationModel = new SupplierRegistrationModel(supplierRegistrationView);
     private SupplierRegistrationController supplierRegistrationController;
-
+    
+    private final ProductionSubmenuView productionSubmenuView = new ProductionSubmenuView();
+    private final ProductionSubmenuModel productionSubmenuModel = new ProductionSubmenuModel();
+    private ProductionSubmenuController productionSubmenuController;
 
     private final ButtonBarView buttonBarView = new ButtonBarView();
     private final ButtonBarModel buttonBarModel = new ButtonBarModel();
@@ -177,13 +183,17 @@ public class MainAppModel {
         this.supplierRegistrationController = supplierRegistrationController;
     }
     
+    public void setProductionSubmenuController(ProductionSubmenuController productionSubmenuController){
+        this.productionSubmenuController = productionSubmenuController;
+    }
     
-    
-
     public MainBarController getMainBarController() {return this.mainBarController;}
-
+    
     public ButtonBarView getButtonBarView() {return this.buttonBarView;}
     public ButtonBarModel getButtonBarModel() {return this.buttonBarModel;}
     public ButtonBarController getButtonBarController() {return this.buttonBarController;}
-
+    
+    public ProductionSubmenuView getProductionSubmenuView() {return this.productionSubmenuView;}
+    public ProductionSubmenuModel getProductionSubmenuModel() {return this.productionSubmenuModel;}
+    public ProductionSubmenuController getProductionSubmenuController() {return this.productionSubmenuController;}
 }

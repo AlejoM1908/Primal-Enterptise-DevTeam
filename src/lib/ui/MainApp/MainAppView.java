@@ -11,6 +11,7 @@ import lib.ui.MainMenu.MainMenuView;
 import lib.ui.SupplierRegistration.SupplierRegistrationView;
 import lib.ui.UsersList.UsersListView;
 import lib.ui.buttonBar.ButtonBarView;
+import lib.ui.productionSubmenu.ProductionSubmenuView;
 //Proyect imports
 import lib.ui.registroUsr.registroUsr;
 import lib.ui.registroProd.registroProd;
@@ -205,6 +206,16 @@ public class MainAppView extends javax.swing.JFrame {
         
         this.appContent.add(supplierRegistrationView);
         supplierRegistrationView.setVisible(true);
+    }
+    
+    public void setProductionSubmenuView(ProductionSubmenuView productionSubmenuView){
+        for(Component c : this.appContent.getComponents()){
+            c.setVisible(false);
+        }
+        this.appContent.removeAll();
+        
+        this.appContent.add(productionSubmenuView);
+        productionSubmenuView.setVisible(true);
     }
     
  

@@ -25,16 +25,16 @@ public class UsersListView extends javax.swing.JPanel {
         initComponents();
     }
 
-    public JLabel getJlAddUser() {
-        return jlAddUser;
-    }
-
     public JTable getJtUsers() {
         return jtUsers;
     }
 
     public JLabel getJlReturn() {
         return jlReturn;
+    }
+
+    public JLabel getJlDeleteUser() {
+        return jlDeleteUser;
     }
     
     
@@ -51,8 +51,8 @@ public class UsersListView extends javax.swing.JPanel {
         jlTitle = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtUsers = new javax.swing.JTable();
-        jlAddUser = new javax.swing.JLabel();
         jlReturn = new javax.swing.JLabel();
+        jlDeleteUser = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -60,6 +60,7 @@ public class UsersListView extends javax.swing.JPanel {
         jlTitle.setForeground(new java.awt.Color(79, 84, 110));
         jlTitle.setText("Usuarios registrados");
 
+        jtUsers.setFont(new java.awt.Font("Leelawadee UI", 0, 11)); // NOI18N
         jtUsers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -94,14 +95,6 @@ public class UsersListView extends javax.swing.JPanel {
             jtUsers.getColumnModel().getColumn(6).setResizable(false);
         }
 
-        jlAddUser.setSize(new Dimension(68,68));
-        jlAddUser.setMaximumSize(new java.awt.Dimension(68, 68));
-        jlAddUser.setMinimumSize(new java.awt.Dimension(68, 68));
-        jlAddUser.setPreferredSize(new java.awt.Dimension(68, 68));
-        ImageIcon img = new ImageIcon(getClass().getResource("/documentation/Imagenes/Icono Adicionar.png"));
-        Icon icon = new ImageIcon(img.getImage().getScaledInstance(jlAddUser.getWidth(), jlAddUser.getHeight(), Image.SCALE_SMOOTH));
-        jlAddUser.setIcon(icon);
-
         jlReturn.setSize(new Dimension(68,68));
         jlReturn.setMaximumSize(new java.awt.Dimension(68, 68));
         jlReturn.setMinimumSize(new java.awt.Dimension(68, 68));
@@ -110,22 +103,31 @@ public class UsersListView extends javax.swing.JPanel {
         Icon icon2 = new ImageIcon(img2.getImage().getScaledInstance(jlReturn.getWidth(), jlReturn.getHeight(), Image.SCALE_SMOOTH));
         jlReturn.setIcon(icon2);
 
+        jlDeleteUser.setSize(new Dimension(68,68));
+        jlDeleteUser.setMaximumSize(new java.awt.Dimension(68, 68));
+        jlDeleteUser.setMinimumSize(new java.awt.Dimension(68, 68));
+        jlDeleteUser.setPreferredSize(new java.awt.Dimension(68, 68));
+        ImageIcon img3 = new ImageIcon(getClass().getResource("/documentation/Imagenes/Icono Eliminar Usuario.png"));
+        Icon icon3 = new ImageIcon(img3.getImage().getScaledInstance(jlDeleteUser.getWidth(), jlDeleteUser.getHeight(), Image.SCALE_SMOOTH));
+        jlDeleteUser.setIcon(icon3);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(162, 162, 162)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 760, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
-                .addComponent(jlAddUser, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jlReturn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(327, 327, 327)
-                .addComponent(jlTitle)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(162, 162, 162)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 760, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42)
+                        .addComponent(jlDeleteUser, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jlReturn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(327, 327, 327)
+                        .addComponent(jlTitle)))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,8 +144,8 @@ public class UsersListView extends javax.swing.JPanel {
                         .addGap(47, 47, 47)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(208, 208, 208)
-                        .addComponent(jlAddUser, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(177, 177, 177)
+                        .addComponent(jlDeleteUser, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(141, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -151,7 +153,7 @@ public class UsersListView extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel jlAddUser;
+    private javax.swing.JLabel jlDeleteUser;
     private javax.swing.JLabel jlReturn;
     private javax.swing.JLabel jlTitle;
     private javax.swing.JTable jtUsers;

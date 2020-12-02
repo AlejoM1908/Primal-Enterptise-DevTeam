@@ -27,6 +27,7 @@ public class ButtonBarView extends javax.swing.JPanel {
         buttonsTitle_2 = new javax.swing.JLabel();
         usersButton = new javax.swing.JLabel();
         activesButton = new javax.swing.JLabel();
+        reportsButton = new javax.swing.JLabel();
 
         setBackground(this.color.menuBotonesColor());
 
@@ -79,6 +80,14 @@ public class ButtonBarView extends javax.swing.JPanel {
         activesButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         activesButton.setOpaque(true);
 
+        reportsButton.setBackground(this.color.menuBotones_botonColor());
+        reportsButton.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
+        reportsButton.setForeground(this.color.menuBotonesColor());
+        reportsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/images/ProductionIcon_65x60Px.png"))); // NOI18N
+        reportsButton.setText("  Informes");
+        reportsButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        reportsButton.setOpaque(true);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -89,27 +98,29 @@ public class ButtonBarView extends javax.swing.JPanel {
             .addComponent(usersButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(buttonsTitle)
-                        .addGap(53, 53, 53))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(buttonsTitle_2)
-                        .addGap(56, 56, 56))))
+                .addComponent(buttonsTitle_2)
+                .addGap(56, 56, 56))
             .addComponent(activesButton, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(57, 57, 57)
+                .addComponent(buttonsTitle)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(reportsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addGap(27, 27, 27)
                 .addComponent(buttonsTitle)
-                .addGap(42, 42, 42)
-                .addComponent(homeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
-                .addComponent(inventoryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addComponent(productionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(homeButton)
+                .addGap(18, 18, 18)
+                .addComponent(inventoryButton)
+                .addGap(18, 18, 18)
+                .addComponent(productionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(reportsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(buttonsTitle_2)
                 .addGap(29, 29, 29)
                 .addComponent(usersButton, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -124,6 +135,7 @@ public class ButtonBarView extends javax.swing.JPanel {
     protected JLabel getProductionButton() {return this.productionButton;}
     protected JLabel getUsersButton() {return this.usersButton;}
     protected JLabel getActivesButton() {return this.activesButton;}
+    protected JLabel getReportsButton() {return this.reportsButton;}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel activesButton;
@@ -132,6 +144,7 @@ public class ButtonBarView extends javax.swing.JPanel {
     private javax.swing.JLabel homeButton;
     private javax.swing.JLabel inventoryButton;
     private javax.swing.JLabel productionButton;
+    private javax.swing.JLabel reportsButton;
     private javax.swing.JLabel usersButton;
     // End of variables declaration//GEN-END:variables
 }

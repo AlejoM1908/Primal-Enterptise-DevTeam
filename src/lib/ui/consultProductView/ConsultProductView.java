@@ -9,6 +9,7 @@ import java.awt.Dimension;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -44,9 +45,10 @@ public class ConsultProductView extends javax.swing.JPanel {
         tipoInfolb = new javax.swing.JLabel();
         cantidadInfolb = new javax.swing.JLabel();
         almacenamientoInfolb = new javax.swing.JLabel();
-        descripcionInfolb = new javax.swing.JLabel();
         fechaCaducidadInfolb = new javax.swing.JLabel();
         atraslb = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtxtaDescripcion = new javax.swing.JTextArea();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(1060, 708));
@@ -91,9 +93,6 @@ public class ConsultProductView extends javax.swing.JPanel {
         almacenamientoInfolb.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
         almacenamientoInfolb.setText("jLabel1");
 
-        descripcionInfolb.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        descripcionInfolb.setText("jLabel1");
-
         fechaCaducidadInfolb.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
         fechaCaducidadInfolb.setText("jLabel1");
 
@@ -105,6 +104,13 @@ public class ConsultProductView extends javax.swing.JPanel {
         Icon fondo3 = new ImageIcon(backButton .getImage().getScaledInstance(atraslb.getWidth(),atraslb.getHeight(),Image.SCALE_SMOOTH));
         atraslb.setIcon(fondo3);
         atraslb.setPreferredSize(new java.awt.Dimension(66, 69));
+
+        jtxtaDescripcion.setEditable(false);
+        jtxtaDescripcion.setColumns(20);
+        jtxtaDescripcion.setFont(new java.awt.Font("Leelawadee UI", 0, 13)); // NOI18N
+        jtxtaDescripcion.setLineWrap(true);
+        jtxtaDescripcion.setRows(5);
+        jScrollPane1.setViewportView(jtxtaDescripcion);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -133,13 +139,13 @@ public class ConsultProductView extends javax.swing.JPanel {
                         .addComponent(almacenamientoInfolb, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(descripcionlb)
-                        .addGap(18, 18, 18)
-                        .addComponent(descripcionInfolb, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(caducidadlb)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(fechaCaducidadInfolb, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(176, Short.MAX_VALUE))
+                .addContainerGap(91, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(44, 44, 44)
                 .addComponent(atraslb, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -173,15 +179,15 @@ public class ConsultProductView extends javax.swing.JPanel {
                             .addComponent(lugarAlmacenamientolb)
                             .addComponent(almacenamientoInfolb, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(43, 43, 43)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(descripcionlb)
-                            .addComponent(descripcionInfolb))
-                        .addGap(45, 45, 45)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(caducidadlb)
-                            .addComponent(fechaCaducidadInfolb)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(descripcionlb)))
                     .addComponent(iconoProductolb, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(201, Short.MAX_VALUE))
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(caducidadlb)
+                    .addComponent(fechaCaducidadInfolb))
+                .addContainerGap(148, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -192,10 +198,11 @@ public class ConsultProductView extends javax.swing.JPanel {
     private javax.swing.JLabel caducidadlb;
     private javax.swing.JLabel cantidadInfolb;
     private javax.swing.JLabel cantidadlb;
-    private javax.swing.JLabel descripcionInfolb;
     private javax.swing.JLabel descripcionlb;
     private javax.swing.JLabel fechaCaducidadInfolb;
     private javax.swing.JLabel iconoProductolb;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jtxtaDescripcion;
     private javax.swing.JLabel lugarAlmacenamientolb;
     private javax.swing.JLabel nombreInfolb;
     private javax.swing.JLabel nombrelb;
@@ -224,9 +231,11 @@ public class ConsultProductView extends javax.swing.JPanel {
         return lugarAlmacenamientolb;
     }
 
-    public javax.swing.JLabel getDescripcionInfolb() {
-        return descripcionInfolb;
+    public JTextArea getJtxtaDescripcion() {
+        return jtxtaDescripcion;
     }
+
+    
 
     public javax.swing.JLabel getFechaCaducidadInfolb() {
         return fechaCaducidadInfolb;

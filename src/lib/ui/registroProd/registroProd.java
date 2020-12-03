@@ -5,7 +5,9 @@
  */
 package lib.ui.registroProd;
 
-import javax.swing.JOptionPane;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 import lib.utils.AppColors;
 
 /**
@@ -20,6 +22,60 @@ private AppColors color = new AppColors();
     public registroProd() {
         initComponents();
     }
+
+    public JLabel getRegistrarB() {
+        return registrarB;
+    }
+
+    public JLabel getRegresarB() {
+        return regresarB;
+    }
+
+    public JTextField getCantidadTF() {
+        return cantidadTF;
+    }
+
+    public JTextField getDescripcionTF() {
+        return descripcionTF;
+    }
+
+    public JTextField getLugarTF() {
+        return lugarTF;
+    }
+
+    public JTextField getMarcaTF() {
+        return marcaTF;
+    }
+
+    public JTextField getNitTF() {
+        return nitTF;
+    }
+
+    public JTextField getNombreTF() {
+        return nombreTF;
+    }
+
+    public JTextField getTipolTF() {
+        return tipolTF;
+    }
+
+    public JTextField getAlmacenamientoTF() {
+        return almacenamientoTF;
+    }
+
+    public JComboBox<String> getAnoCB() {
+        return anoCB;
+    }
+
+    public JComboBox<String> getDiaCB() {
+        return diaCB;
+    }
+
+    public JComboBox<String> getMesCB() {
+        return mesCB;
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -114,11 +170,6 @@ private AppColors color = new AppColors();
         jLabel10.setText("Registro de Productos");
 
         regresarB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/images/Boton de Atras(2).png"))); // NOI18N
-        regresarB.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                regresarBMouseClicked(evt);
-            }
-        });
 
         marcaTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -156,28 +207,29 @@ private AppColors color = new AppColors();
         jLabel11.setText("Fecha de Vencimiento");
 
         registrarB.setBackground(color.buttonColor());
-        registrarB.setFont(new java.awt.Font("Ancizar Sans", 0, 32)); // NOI18N
+        registrarB.setFont(new java.awt.Font("Leelawadee UI", 0, 32)); // NOI18N
         registrarB.setForeground(new java.awt.Color(255, 255, 255));
         registrarB.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         registrarB.setText("Registrar");
         registrarB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         registrarB.setOpaque(true);
-        registrarB.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                registrarBMouseClicked(evt);
-            }
-        });
 
+        anoCB.setFont(new java.awt.Font("Leelawadee UI", 0, 11)); // NOI18N
         anoCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030", " " }));
 
+        diaCB.setFont(new java.awt.Font("Leelawadee UI", 0, 11)); // NOI18N
         diaCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
 
+        mesCB.setFont(new java.awt.Font("Leelawadee UI", 0, 11)); // NOI18N
         mesCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", " " }));
 
+        jLabel1.setFont(new java.awt.Font("Leelawadee UI", 0, 11)); // NOI18N
         jLabel1.setText("Año");
 
+        jLabel12.setFont(new java.awt.Font("Leelawadee UI", 0, 11)); // NOI18N
         jLabel12.setText("Mes");
 
+        jLabel13.setFont(new java.awt.Font("Leelawadee UI", 0, 11)); // NOI18N
         jLabel13.setText("Dia");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -255,7 +307,7 @@ private AppColors color = new AppColors();
                     .addComponent(jLabel10))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel11)
@@ -330,10 +382,6 @@ private AppColors color = new AppColors();
         // TODO add your handling code here:
     }//GEN-LAST:event_tipolTFActionPerformed
 
-    private void regresarBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresarBMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_regresarBMouseClicked
-
     private void marcaTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marcaTFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_marcaTFActionPerformed
@@ -345,29 +393,6 @@ private AppColors color = new AppColors();
     private void nitTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nitTFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nitTFActionPerformed
-
-    private void registrarBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarBMouseClicked
-        // TODO add your handling code here:
-        int indicador;
-        String fecha ="\""+anoCB.getSelectedItem().toString()+"-"+mesCB.getSelectedItem().toString()+"-"+diaCB.getSelectedItem().toString()+"\"";
-        String usr="Pepito";
-       prodController regis = new prodController ();
-       indicador=regis.registrados("\""+nombreTF.getText()+"\"","\""+marcaTF.getText()+"\"",
-               "\""+tipolTF.getText()+"\"",nitTF.getText(),cantidadTF.getText(),"\""+almacenamientoTF.getText()+"\"",
-               "\""+lugarTF.getText()+"\"",fecha,"\""+usr+"\"","\""+descripcionTF.getText()+"\"");
-       
-       if(indicador!=1)
-        {
-            JOptionPane.showMessageDialog(this, 
-                        "Datos Incorrectos Igrese nuevamente");
-        }
-        
-        {
-            JOptionPane.showMessageDialog(this, 
-                        "Producto Registrado Correctamente");
-        }
-        
-    }//GEN-LAST:event_registrarBMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

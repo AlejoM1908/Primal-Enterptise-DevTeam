@@ -8,9 +8,17 @@ package lib.ui.consultProductView;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import lib.app.DBConnection;
+import lib.ui.MainApp.MainAppController;
 
 
 public class ConsultProductModel {
+    
+    
+    private MainAppController rootComponent;
+
+    public void setRootComponent(MainAppController rootComponent) {
+        this.rootComponent = rootComponent;
+    }
     
     private ConsultProductView view ; 
 
@@ -18,11 +26,11 @@ public class ConsultProductModel {
         this.view = view;
     }
     
-    public void fillInfoProduct () throws SQLException{
+    public void fillInfoProduct (int productId) throws SQLException{
     
       DBConnection conection = new DBConnection();
       conection.getConnection();
-      ResultSet resultInfo = conection.executeQuery("CALL verinfoproducto(1)");
+      ResultSet resultInfo = conection.executeQuery("CALL productInfo("+ Integer.toString(productId)+");");
       conection.endCOnnection();
       resultInfo.next();
       String nombreInfo = resultInfo.getString(1) ;
@@ -35,10 +43,21 @@ public class ConsultProductModel {
       view.getTipoInfolb().setText(tipoInfo);
       view.getCantidadInfolb().setText(cantidadInfo);
       view.getAlmacenamientoInfolb().setText(almacenamientoInfo);
-      view.getDescripcionInfolb().setText(descripcionInfo);
+      view.getJtxtaDescripcion().setText(descripcionInfo);
       view.getFechaCaducidadInfolb().setText(fechaCaducidadInfo);
     
     }
-    
+
+    public void setView(ConsultProductView view) {
+        this.view = view;
+    }
+
+    public MainAppController getRootComponent() {
+        return rootComponent;
+    }
+
+    public ConsultProductView getView() {
+        return view;
+    }
     
 }

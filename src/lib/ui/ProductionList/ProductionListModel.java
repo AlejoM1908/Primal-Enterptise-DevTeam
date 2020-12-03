@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
 import lib.app.DBConnection;
+import lib.ui.MainMenu.MainMenuController;
 
 /**
  *
@@ -13,7 +14,7 @@ import lib.app.DBConnection;
 public class ProductionListModel {
     
     private ProductionListView view;
-  
+    private MainMenuController root;
 
     public ProductionListModel(ProductionListView view) {
         this.view = view;

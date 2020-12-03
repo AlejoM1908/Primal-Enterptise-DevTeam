@@ -5,25 +5,31 @@
  */
 package lib.ui.SupplierRegistration;
 
+import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import lib.ui.MainApp.MainAppController;
 
 /**
  *
  * @author user
  */
-public class SupplierRegistrationController implements ActionListener{
+public class SupplierRegistrationController implements ActionListener, MouseListener{
     private SupplierRegistrationModel model;
     private SupplierRegistrationView view;
 
-    public SupplierRegistrationController(SupplierRegistrationModel model, SupplierRegistrationView view) {
+    public SupplierRegistrationController(SupplierRegistrationModel model, SupplierRegistrationView view, MainAppController rootComponent) {
         this.model = model;
         this.view = view;
+        this.model.setRootComponent(rootComponent);
         this.view.btnRegister.addActionListener(this);
+        this.view.getJlReturn().addMouseListener(this);
     }
     
     
@@ -66,6 +72,31 @@ public class SupplierRegistrationController implements ActionListener{
                 }
             }
         }
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent me) {
+        
+    }
+
+    @Override
+    public void mousePressed(MouseEvent me) {
+        
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent me) {
+        
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent me) {
+        this.view.getJlReturn().setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }
+
+    @Override
+    public void mouseExited(MouseEvent me) {
+        
     }
     
     

@@ -7,6 +7,8 @@ package lib.ui.EditAccount;
 
 import javax.swing.JOptionPane;
 import lib.app.DBConnection;
+import lib.models.User;
+import lib.ui.MainApp.MainAppController;
 
 /**
  *
@@ -15,6 +17,10 @@ import lib.app.DBConnection;
 public class EditAccountModel {
     
     private EditAccountView view;
+    
+    private User user;
+    
+    private MainAppController rootComponent;
 
     public EditAccountModel(EditAccountView view) {
         this.view = view;
@@ -43,11 +49,12 @@ public class EditAccountModel {
     public void updateUserInfo(){
         String name = "\"" + view.getJtxtName().getText() + "\"";
         String email = "\"" + view.getJtxtEmail().getText() + "\"";
-        int number = Integer.parseInt(view.getJtxtNumber().getText());
+        String loggedUser = "\"" + user.getUser() + "\"";
+        String number = "\"" + view.getJtxtNumber().getText() + "\"";
         String password = "\"" + String.valueOf(view.getJpfPassword().getPassword()) + "\"";
         DBConnection conn = new DBConnection();
         conn.getConnection();
-        //conn.executeQuery("CALL editar_datos_usuario(" + password +", " +  email +", " + number +", " +  name +", " +  usuario +", " +  ");");
+        conn.executeQuery("CALL editUserData(" + password +", " +  email +", " + number +", " +  name +", " +  loggedUser + ");");
         conn.getConnection();
         
         
@@ -59,6 +66,22 @@ public class EditAccountModel {
 
     public void setView(EditAccountView view) {
         this.view = view;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public MainAppController getRootComponent() {
+        return rootComponent;
+    }
+
+    public void setRootComponent(MainAppController rootComponent) {
+        this.rootComponent = rootComponent;
     }
     
     

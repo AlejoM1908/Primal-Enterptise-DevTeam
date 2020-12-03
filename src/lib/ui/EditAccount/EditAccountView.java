@@ -21,17 +21,14 @@ import lib.models.User;
  */
 public class EditAccountView extends javax.swing.JPanel {
     
-    private User user;
-    
     /**
      * Creates new form EditAccountView
      */
-    public EditAccountView(User user) {
-        this.user = user;
+    public EditAccountView() {
         initComponents();
     }
     
-    private void fillInfo(){
+    public void fillInfo(User user){
         jtxtName.setText(user.getName());
         jtxtNumber.setText(Integer.toString(user.getCelNumber()));
         jtxtEmail.setText(user.getEmail());
@@ -63,6 +60,10 @@ public class EditAccountView extends javax.swing.JPanel {
 
     public JLabel getJlEdit() {
         return jlEdit;
+    }
+
+    public JLabel getJlReturn() {
+        return jlReturn;
     }
 
     
@@ -162,9 +163,9 @@ public class EditAccountView extends javax.swing.JPanel {
         jlUserImage.setMaximumSize(new java.awt.Dimension(362, 362));
         jlUserImage.setMinimumSize(new java.awt.Dimension(362, 362));
         jlUserImage.setPreferredSize(new java.awt.Dimension(362, 362));
-        /*ImageIcon img1 = new ImageIcon(getClass().getResource("/documentation/Imagenes/Boton de Atras.png"));
-        Icon icon1 = new ImageIcon(img1.getImage().getScaledInstance(jlUserImage.getWidth(), jlUserImage.getHeight(), Image.SCALE_SMOOTH));
-        jlUserImage.setIcon(icon1);*/
+        ImageIcon img4 = new ImageIcon(getClass().getResource("/documentation/Imagenes/Foto usuario.png"));
+        Icon icon4 = new ImageIcon(img4.getImage().getScaledInstance(jlUserImage.getWidth(), jlUserImage.getHeight(), Image.SCALE_SMOOTH));
+        jlUserImage.setIcon(icon4);
 
         jPanel1.setBackground(new java.awt.Color(20, 56, 197));
         jPanel1.setToolTipText("");
@@ -203,14 +204,14 @@ public class EditAccountView extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(88, Short.MAX_VALUE)
+                .addContainerGap(115, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jlTitle)
                         .addGap(441, 441, 441))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jlUserImage, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(95, 95, 95)
+                        .addGap(68, 68, 68)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jlPassword)
                             .addComponent(jlNumber)

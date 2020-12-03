@@ -10,6 +10,8 @@ import java.awt.Dimension;
 import java.awt.Image;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BoxLayout;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -17,53 +19,63 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import lib.models.User;
 
-
 /**
  *
  * @author user
  */
 public class MainMenuView extends javax.swing.JPanel {
-    
-    private User user;
-    
+
     /**
      * Creates new form MainMenuView
      */
-    public MainMenuView(User user) throws SQLException {
-        this.user = user;
+    public MainMenuView() {
         initComponents();
-        
-        fillInfo();
+
     }
-    
-    private void fillInfo() throws SQLException{
+
+    public void fillInfo(User user) {
+
         jlNameUser.setText(user.getName());
         jlEmailUser.setText(user.getEmail());
         jlRangeUser.setText(user.getRange());
         jlIdUser.setText(Integer.toString(user.getIdCard()));
-        
+
         this.repaint();
         
+        fillPanels();
+
+    }
+
+
+    private void fillPanels() {
         JPanel listPanel = new JPanel();
         listPanel.setBackground(Color.WHITE);
         listPanel.setLayout(new BoxLayout(listPanel, BoxLayout.Y_AXIS));
-        
+
         MainMenuModel model = new MainMenuModel();
-        ArrayList<DateAlertPanel> dateAlerts = model.fillDatePanels();
-        ArrayList<QuantityAlertPanel> quantityAlerts = model.fillQuantityPanels();
-        
-        for(DateAlertPanel panel : dateAlerts){
+        ArrayList<DateAlertPanel> dateAlerts = null;
+        try {
+            dateAlerts = model.fillDatePanels();
+        } catch (SQLException ex) {
+            Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ArrayList<QuantityAlertPanel> quantityAlerts = null;
+        try {
+            quantityAlerts = model.fillQuantityPanels();
+        } catch (SQLException ex) {
+            Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        for (DateAlertPanel panel : dateAlerts) {
             listPanel.add(panel);
             panel.setVisible(true);
         }
-        System.out.println(jScrollAlerts.getComponentCount());
-        
-        for(QuantityAlertPanel panel : quantityAlerts){
+
+        for (QuantityAlertPanel panel : quantityAlerts) {
             listPanel.add(panel);
             panel.setVisible(true);
         }
-        System.out.println(listPanel.getComponentCount());
-        
+
         jScrollAlerts.setBackground(new Color(255, 255, 255));
         jScrollAlerts.setViewportView(listPanel);
         jScrollAlerts.updateUI();
@@ -72,8 +84,6 @@ public class MainMenuView extends javax.swing.JPanel {
     public JLabel getJlImage() {
         return jlImage;
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.

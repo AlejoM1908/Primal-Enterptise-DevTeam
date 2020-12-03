@@ -8,6 +8,7 @@ package lib.ui.SupplierRegistration;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import lib.app.DBConnection;
+import lib.ui.MainApp.MainAppController;
 
 /**
  *
@@ -16,6 +17,8 @@ import lib.app.DBConnection;
 public class SupplierRegistrationModel {
     
     private SupplierRegistrationView view;
+    
+    private MainAppController rootComponent;
 
     public SupplierRegistrationModel(SupplierRegistrationView view) {
         this.view = view;
@@ -48,9 +51,9 @@ public class SupplierRegistrationModel {
     public boolean validateNit(int nitEntered) throws SQLException{
         DBConnection conn = new DBConnection();
         conn.getConnection();
-        ResultSet result = conn.executeQuery("SELECT COUNT(nit)"
-                                           + "FROM proveedor"
-                                           + "WHERE nit = " + Integer.toString(nitEntered) + ";");
+        ResultSet result = conn.executeQuery("SELECT COUNT(pve_nit)"
+                                           + "FROM proveedores"
+                                           + "WHERE pve_nit = " + Integer.toString(nitEntered) + ";");
         result.next();
         if(result.getInt(1) > 0){
             conn.endCOnnection();
@@ -68,8 +71,34 @@ public class SupplierRegistrationModel {
         String address = "\"" + view.getJtxtAddress().getText() + "\"";
         String email = "\"" + view.getJtxtEmail().getText() + "\"";
         int phoneNumber = Integer.parseInt(view.getJtxtPhoneNumber().getText());
-        conn.executeQuery("CALL InsProv(" + name + "," + nit + "," 
-                         + phoneNumber + "," + email + "," + address + "," + "user" + "," + ");");
+        conn.executeQuery("CALL insertProvider(" + name + "," + nit + "," 
+                         + phoneNumber + "," + email + "," + address + "," + this.rootComponent.getMainAppModel().getLoggedUser().getUser() + ");");
         conn.endCOnnection();
     }
+    
+    public void clearFields(){
+        this.view.getJtxtAddress().setText("");
+        this.view.getJtxtEmail().setText("");
+        this.view.getJtxtName().setText("");
+        this.view.getJtxtNit().setText("");
+        this.view.getJtxtPhoneNumber().setText("");
+    }
+
+    public SupplierRegistrationView getView() {
+        return view;
+    }
+
+    public void setView(SupplierRegistrationView view) {
+        this.view = view;
+    }
+
+    public MainAppController getRootComponent() {
+        return rootComponent;
+    }
+
+    public void setRootComponent(MainAppController rootComponent) {
+        this.rootComponent = rootComponent;
+    }
+    
+    
 }

@@ -8,6 +8,7 @@ package lib.ui.SupplierRegistration;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 /**
@@ -22,9 +23,7 @@ public class SupplierRegistrationView extends javax.swing.JPanel {
     public SupplierRegistrationView() {
         initComponents();
         
-        ImageIcon img1 = new ImageIcon(getClass().getResource("/documentation/Imagenes/Boton de Atras.png"));
-        Icon icon1 = new ImageIcon(img1.getImage().getScaledInstance(jlReturn.getWidth(), jlReturn.getHeight(), Image.SCALE_SMOOTH));
-        jlReturn.setIcon(icon1);
+       
         this.repaint();
     }
 
@@ -46,6 +45,10 @@ public class SupplierRegistrationView extends javax.swing.JPanel {
 
     public JTextField getJtxtPhoneNumber() {
         return jtxtPhoneNumber;
+    }
+
+    public JLabel getJlReturn() {
+        return jlReturn;
     }
     
     
@@ -75,6 +78,14 @@ public class SupplierRegistrationView extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
+
+        jlReturn.setSize(new java.awt.Dimension(68, 68));
+        jlReturn.setMaximumSize(new java.awt.Dimension(68, 68));
+        jlReturn.setMinimumSize(new java.awt.Dimension(68, 68));
+        jlReturn.setPreferredSize(new java.awt.Dimension(68, 68));
+        ImageIcon img1 = new ImageIcon(getClass().getResource("/documentation/Imagenes/Boton de Atras.png"));
+        Icon icon1 = new ImageIcon(img1.getImage().getScaledInstance(jlReturn.getWidth(), jlReturn.getHeight(), Image.SCALE_SMOOTH));
+        jlReturn.setIcon(icon1);
 
         jLabel1.setFont(new java.awt.Font("Leelawadee UI", 0, 22)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(79, 84, 110));

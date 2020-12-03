@@ -7,8 +7,11 @@ package lib.ui.UsersList;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import lib.app.DBConnection;
+import lib.ui.MainApp.MainAppController;
 
 /**
  *
@@ -16,6 +19,8 @@ import lib.app.DBConnection;
  */
 public class UsersListModel {
     private UsersListView view;
+    
+    private MainAppController rootComponent;
 
     public UsersListModel(UsersListView view) {
         this.view = view;
@@ -32,14 +37,50 @@ public class UsersListModel {
     public void fillTable() throws SQLException{
         DBConnection conn = new DBConnection();
         conn.getConnection();
-        ResultSet result = conn.executeQuery("SELECT * FROM usuarios JOIN telefonos WHERE usr_telefonos_id = tel_id;");
+        ResultSet result = conn.executeQuery("SELECT * FROM usuarios JOIN telefonos WHERE usuarios.usr_usuario = telefonos.tel_usuario AND usr_estado != 3;");
         conn.endCOnnection();
         
         DefaultTableModel model = (DefaultTableModel) view.getJtUsers().getModel();
+        
         while(result.next()){
-            model.addRow(new Object[]{result.getString(6), result.getString(1), Integer.parseInt(result.getString(8))
-                    , Integer.parseInt(result.getString(10)), result.getString(3), result.getString(5), result.getString(7)});
+            String name = result.getString(5);
+            String user = result.getString(1);
+            int id = result.getInt(7);
+            int tel = result.getInt(11);
+            String range = result.getString(2);
+            String email = result.getString(4);
+            String address = result.getString(6);
+            model.addRow(new Object[]{name,
+                                      user,
+                                      id,
+                                      tel,
+                                      range,
+                                      email,
+                                      address});
         }
         view.updateUI();
     }
+    
+    public void updateTable(){
+        DefaultTableModel model = (DefaultTableModel) view.getJtUsers().getModel();
+        int rowCount = model.getRowCount();
+        for(int i = 0; i < rowCount; i++){
+            model.removeRow(0);
+        }
+        try {
+            fillTable();
+        } catch (SQLException ex) {
+            Logger.getLogger(UsersListModel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public MainAppController getRootComponent() {
+        return rootComponent;
+    }
+
+    public void setRootComponent(MainAppController rootComponent) {
+        this.rootComponent = rootComponent;
+    }
+    
+    
 }

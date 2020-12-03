@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
  * @author Fredy AGP
  */
 public class Backups {
-    
+   
     public void Guardar(String nombre_db,String user,String pass)
     {
         try {

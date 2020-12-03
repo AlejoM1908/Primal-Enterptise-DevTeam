@@ -6,21 +6,27 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import lib.app.DBConnection;
+import lib.models.User;
+import lib.ui.MainApp.MainAppController;
 
 public class MainMenuModel {
     private ResultSet quantityAlerts;
     private ResultSet dateAlerts;
+    
+    private User user;
+    
+    private MainAppController rootComponent;
 
     public MainMenuModel() {
         DBConnection conn = new DBConnection();
         //System.out.println("query 0");
         conn.getConnection();
-        quantityAlerts = conn.executeQuery("SELECT * FROM productos_baja_cantidad");
+        quantityAlerts = conn.executeQuery("SELECT * FROM productlowamount");
         //System.out.println("query 1");
         conn.endCOnnection();
         
         conn.getConnection();
-        dateAlerts = conn.executeQuery("SELECT * FROM productos_por_vencer");
+        dateAlerts = conn.executeQuery("SELECT * FROM productstoexpire");
         //System.out.println("query 2");
         conn.endCOnnection();
     }
@@ -65,6 +71,20 @@ public class MainMenuModel {
         this.dateAlerts = dateAlerts;
     }
 
-    
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setRootComponent(MainAppController rootComponent) {
+        this.rootComponent = rootComponent;
+    }
+
+    public MainAppController getRootComponent() {
+        return rootComponent;
+    }
     
 }

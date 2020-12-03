@@ -32,6 +32,10 @@ public class UsersListView extends javax.swing.JPanel {
     public JTable getJtUsers() {
         return jtUsers;
     }
+
+    public JLabel getJlReturn() {
+        return jlReturn;
+    }
     
     
 
@@ -48,6 +52,7 @@ public class UsersListView extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jtUsers = new javax.swing.JTable();
         jlAddUser = new javax.swing.JLabel();
+        jlReturn = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -97,26 +102,41 @@ public class UsersListView extends javax.swing.JPanel {
         Icon icon = new ImageIcon(img.getImage().getScaledInstance(jlAddUser.getWidth(), jlAddUser.getHeight(), Image.SCALE_SMOOTH));
         jlAddUser.setIcon(icon);
 
+        jlReturn.setSize(new Dimension(68,68));
+        jlReturn.setMaximumSize(new java.awt.Dimension(68, 68));
+        jlReturn.setMinimumSize(new java.awt.Dimension(68, 68));
+        jlReturn.setPreferredSize(new java.awt.Dimension(68, 68));
+        ImageIcon img2 = new ImageIcon(getClass().getResource("/documentation/Imagenes/Boton de Atras.png"));
+        Icon icon2 = new ImageIcon(img2.getImage().getScaledInstance(jlReturn.getWidth(), jlReturn.getHeight(), Image.SCALE_SMOOTH));
+        jlReturn.setIcon(icon2);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(419, 419, 419)
-                .addComponent(jlTitle)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(162, 162, 162)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 760, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addComponent(jlAddUser, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(47, 47, 47))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jlReturn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(327, 327, 327)
+                .addComponent(jlTitle)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(77, 77, 77)
-                .addComponent(jlTitle)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(77, 77, 77)
+                        .addComponent(jlTitle))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jlReturn, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(47, 47, 47)
@@ -132,6 +152,7 @@ public class UsersListView extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel jlAddUser;
+    private javax.swing.JLabel jlReturn;
     private javax.swing.JLabel jlTitle;
     private javax.swing.JTable jtUsers;
     // End of variables declaration//GEN-END:variables

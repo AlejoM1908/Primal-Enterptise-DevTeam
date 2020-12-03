@@ -489,9 +489,9 @@ CREATE PROCEDURE insertUser(
 )
 BEGIN
 	DECLARE pass VARCHAR(40);
-    INSERT INTO telefonos VALUES (NULL,usuario,NULL,telefono);
 	SET pass = SHA1(contrasena);
-    INSERT INTO usuarios VALUES (usuario,rango,contrasena,email,nombre,direccion,cedula);  
+    INSERT INTO usuarios VALUES (usuario,rango,pass,email,nombre,direccion,cedula);  
+    INSERT INTO telefonos VALUES (NULL,usuario,NULL,telefono);
 END$$
 
 DELIMITER ;

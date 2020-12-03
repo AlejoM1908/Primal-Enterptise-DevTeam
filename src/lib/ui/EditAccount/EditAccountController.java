@@ -12,6 +12,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
 import lib.models.User;
+import lib.ui.MainApp.MainAppController;
+import lib.ui.MainMenu.MainMenuView;
 
 /**
  *
@@ -21,11 +23,15 @@ public class EditAccountController implements ActionListener, MouseListener{
     private EditAccountModel model;
     private EditAccountView view;
 
-    public EditAccountController(User user) {
-        this.view = new  EditAccountView(user);
-        this.model = new EditAccountModel(view);
+    public EditAccountController(EditAccountModel model, EditAccountView view, User user, MainAppController rootComponent) {
+        this.view = view;
+        this.model = model;
+        this.model.setUser(user);
+        this.model.setRootComponent(rootComponent);
+        this.model.getView().fillInfo(user);
         this.view.getJlEdit().addMouseListener(this);
         this.view.getBtnSave().addActionListener(this);
+        this.view.getJlReturn().addMouseListener(this);
     }
 
     public EditAccountModel getModel() {
@@ -53,7 +59,14 @@ public class EditAccountController implements ActionListener, MouseListener{
 
     @Override
     public void mouseClicked(MouseEvent me) {
-        this.view.getJpfPassword().setEditable(true);
+        if(me.getSource() == this.view.getJlEdit()){
+            this.view.getJpfPassword().setEditable(true);
+            
+        }else if(me.getSource() == this.view.getJlReturn()){
+            MainMenuView mainMenuView = this.model.getRootComponent().getMainAppModel().getMainMenuView();
+            this.model.getRootComponent().getMainAppView().setMainMenu(mainMenuView);
+        }
+        
     }
 
     @Override
@@ -69,6 +82,7 @@ public class EditAccountController implements ActionListener, MouseListener{
     @Override
     public void mouseEntered(MouseEvent me) {
         this.view.getJlEdit().setCursor(new Cursor(Cursor.HAND_CURSOR));
+        this.view.getJlReturn().setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
 
     @Override

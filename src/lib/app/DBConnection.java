@@ -9,9 +9,9 @@ import java.sql.SQLException;
 
 public class DBConnection{
     //DB connection variables
-    private String DBName = "primalEnterpricedb";
-    private String user = "admin";
-    private String password = "b69948501d89b5aff7726b649a27264bcd139dc1";
+    private String DBName = "primalenterpriceDB";
+    private String user = "Admin";
+    private String password = "HTNT^256FbzNNO6eInk$";
 
     private String url = "jdbc:mysql://localhost:3306/"+DBName+"?useUnicode=true&use"+
         "JDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";

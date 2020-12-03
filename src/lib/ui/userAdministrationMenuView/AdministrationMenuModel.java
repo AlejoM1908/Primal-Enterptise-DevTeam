@@ -5,10 +5,22 @@
  */
 package lib.ui.userAdministrationMenuView;
 
+import lib.ui.MainApp.MainAppController;
+
 
 public class AdministrationMenuModel {
-
+    
+    private MainAppController rootComponent;
+    
     public AdministrationMenuModel() {
+    }
+
+    public MainAppController getRootComponent() {
+        return rootComponent;
+    }
+
+    public void setRootComponent(MainAppController rootComponent) {
+        this.rootComponent = rootComponent;
     }
     
     

@@ -9,13 +9,28 @@ package lib.ui.registroUsr;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import lib.app.DBConnection;
+import lib.ui.MainApp.MainAppController;
+import lib.ui.registroUsr.registroUsr;
 
 /**
  *
  * @author Fredy AGP
  */
 public class registroUsrModel {
+    private registroUsr view;
     private DBConnection conn = new DBConnection();
+    private MainAppController rootComponent;
+    
+    public registroUsrModel() {
+    }
+
+    public registroUsr getView() {
+        return view;
+    }
+
+    public void setView(registroUsr view) {
+        this.view = view;
+    }
     
     public void registro(String usuario,int cedula,String rang,String password, String email, int telefono, String direccion,String nombre){
         try
@@ -42,6 +57,12 @@ public class registroUsrModel {
     }
  private void endConnection(){
         conn.endCOnnection();
+    }
+ public MainAppController getRootComponent() {
+        return rootComponent;
+    }
+ public void setRootComponent(MainAppController rootComponent) {
+        this.rootComponent = rootComponent;
     }
 }
  

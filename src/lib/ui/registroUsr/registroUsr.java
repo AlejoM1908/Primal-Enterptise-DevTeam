@@ -5,9 +5,11 @@
  */
 package lib.ui.registroUsr;
 
+import java.awt.Cursor;
 import javax.swing.JOptionPane;
 import lib.utils.AppColors;
 import lib.ui.registroUsr.registroUsrController;
+import lib.ui.userAdministrationMenuView.AdministrationMenuView;
 
 /**
  *
@@ -15,6 +17,7 @@ import lib.ui.registroUsr.registroUsrController;
  */
 public class registroUsr extends javax.swing.JPanel {
 private AppColors color = new AppColors();
+private AdministrationMenuView administrationMenuView = new AdministrationMenuView();
     /**
      * Creates new form registroUsr
      */
@@ -58,6 +61,9 @@ private AppColors color = new AppColors();
         regresarB.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 regresarBMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                regresarBMouseEntered(evt);
             }
         });
 
@@ -288,7 +294,7 @@ private AppColors color = new AppColors();
     }//GEN-LAST:event_nombreUsuarioTFActionPerformed
 
     private void regresarBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresarBMouseClicked
-        // TODO add your handling code here:
+        // TODO add your handling code here    
     }//GEN-LAST:event_regresarBMouseClicked
 
     private void registrarBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarBMouseClicked
@@ -309,6 +315,11 @@ private AppColors color = new AppColors();
                         "Usuario Registrado Correctamente");
         }
     }//GEN-LAST:event_registrarBMouseClicked
+
+    private void regresarBMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresarBMouseEntered
+        // TODO add your handling code here:
+       regresarB.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_regresarBMouseEntered
 
  
     // Variables declaration - do not modify//GEN-BEGIN:variables

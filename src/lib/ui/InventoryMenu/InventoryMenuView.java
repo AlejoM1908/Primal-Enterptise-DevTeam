@@ -32,6 +32,10 @@ public class InventoryMenuView extends javax.swing.JPanel {
         return jlRegisterProduct;
     }
 
+    public JLabel getJlAssetsRegistration() {
+        return jlAssetsRegistration;
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -47,6 +51,8 @@ public class InventoryMenuView extends javax.swing.JPanel {
         jlRegister = new javax.swing.JLabel();
         jlProductsList = new javax.swing.JLabel();
         jlList = new javax.swing.JLabel();
+        jlAssetsRegistration = new javax.swing.JLabel();
+        jlList1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -80,6 +86,19 @@ public class InventoryMenuView extends javax.swing.JPanel {
         jlList.setForeground(new java.awt.Color(79, 84, 110));
         jlList.setText("Lista de productos");
 
+        jlAssetsRegistration.setSize(new Dimension(153, 152));
+        jlAssetsRegistration.setMaximumSize(new java.awt.Dimension(153, 152));
+        jlAssetsRegistration.setMinimumSize(new java.awt.Dimension(153, 152));
+        jlAssetsRegistration.setPreferredSize(new java.awt.Dimension(153, 152));
+        ImageIcon img2 = new ImageIcon(getClass().getResource("/documentation/Imagenes/Icono Registro Activos.png"));
+        Icon icon2 = new ImageIcon(img2.getImage().getScaledInstance(jlAssetsRegistration.getWidth(), jlAssetsRegistration.getHeight(), Image.SCALE_SMOOTH));
+        jlAssetsRegistration.setIcon(icon2);
+
+        jlList1.setBackground(new java.awt.Color(79, 84, 110));
+        jlList1.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        jlList1.setForeground(new java.awt.Color(79, 84, 110));
+        jlList1.setText("Registro de activos");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -90,18 +109,22 @@ public class InventoryMenuView extends javax.swing.JPanel {
                         .addGap(410, 410, 410)
                         .addComponent(jlTitle))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(455, 455, 455)
-                        .addComponent(jlRegisterProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(437, 437, 437)
+                        .addGap(278, 278, 278)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlRegister)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jlList)
-                                    .addComponent(jlProductsList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(429, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addComponent(jlRegisterProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jlRegister))
+                        .addGap(126, 126, 126)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jlList)
+                            .addComponent(jlProductsList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(446, 446, 446)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jlList1)
+                            .addComponent(jlAssetsRegistration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(337, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,20 +132,28 @@ public class InventoryMenuView extends javax.swing.JPanel {
                 .addGap(80, 80, 80)
                 .addComponent(jlTitle)
                 .addGap(40, 40, 40)
-                .addComponent(jlRegisterProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jlRegisterProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jlRegister))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jlProductsList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jlList)))
+                .addGap(47, 47, 47)
+                .addComponent(jlAssetsRegistration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jlRegister)
-                .addGap(18, 18, 18)
-                .addComponent(jlProductsList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jlList)
-                .addContainerGap(163, Short.MAX_VALUE))
+                .addComponent(jlList1)
+                .addContainerGap(134, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jlAssetsRegistration;
     private javax.swing.JLabel jlList;
+    private javax.swing.JLabel jlList1;
     private javax.swing.JLabel jlProductsList;
     private javax.swing.JLabel jlRegister;
     private javax.swing.JLabel jlRegisterProduct;

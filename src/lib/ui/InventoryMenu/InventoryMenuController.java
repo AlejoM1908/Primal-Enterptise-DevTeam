@@ -8,6 +8,7 @@ package lib.ui.InventoryMenu;
 import java.awt.Cursor;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import lib.ui.AssetRegistration.AssetRegistrationView;
 import lib.ui.Inventory.InventoryView;
 import lib.ui.MainApp.MainAppController;
 import lib.ui.registroProd.registroProd;
@@ -27,6 +28,7 @@ public class InventoryMenuController implements MouseListener{
         
         this.view.getJlProductsList().addMouseListener(this);
         this.view.getJlRegisterProduct().addMouseListener(this);
+        this.view.getJlAssetsRegistration().addMouseListener(this);
     }
 
     @Override
@@ -39,6 +41,10 @@ public class InventoryMenuController implements MouseListener{
             registroProd registerProductView = this.model.getRootComponent().getMainAppModel().getRegisterProductView();
             this.model.getRootComponent().getMainAppModel().getRegisterProductModel().clearFields();
             this.model.getRootComponent().getMainAppView().setRegisterProduct(registerProductView);
+        }else if(me.getSource() == this.view.getJlAssetsRegistration()){
+            AssetRegistrationView assetRegistrationView = this.model.getRootComponent().getMainAppModel().getAssetRegistrationView();
+            this.model.getRootComponent().getMainAppModel().getAssetRegistrationModel().clearFields();
+            this.model.getRootComponent().getMainAppView().setAssetRegistration(assetRegistrationView);
         }
     }
 
@@ -56,6 +62,7 @@ public class InventoryMenuController implements MouseListener{
     public void mouseEntered(MouseEvent me) {
         this.view.getJlProductsList().setCursor(new Cursor(Cursor.HAND_CURSOR));
         this.view.getJlRegisterProduct().setCursor(new Cursor(Cursor.HAND_CURSOR));
+        this.view.getJlAssetsRegistration().setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
 
     @Override

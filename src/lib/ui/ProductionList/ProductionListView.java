@@ -32,6 +32,10 @@ public class ProductionListView extends javax.swing.JPanel {
     public JTable getJtProductions() {
         return jtProductions;
     }
+
+    public JLabel getRegresarB() {
+        return regresarB;
+    }
     
     
     

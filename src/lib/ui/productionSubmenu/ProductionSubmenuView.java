@@ -24,11 +24,7 @@ public class ProductionSubmenuView extends javax.swing.JPanel {
         RegisterProductionsButton = new javax.swing.JLabel();
         RegisterProductionsLabel = new javax.swing.JLabel();
         ProductionsListButton = new javax.swing.JLabel();
-        ProductionsListLabel = new javax.swing.JLabel();
-        RegisterProductButton = new javax.swing.JLabel();
         RegisterProductLabel = new javax.swing.JLabel();
-        ProductListButton = new javax.swing.JLabel();
-        ProductListLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createLineBorder(this.colors.borderColor()));
@@ -43,55 +39,29 @@ public class ProductionSubmenuView extends javax.swing.JPanel {
         RegisterProductionsLabel.setFont(new java.awt.Font("Leelawadee UI", 0, 20)); // NOI18N
         RegisterProductionsLabel.setForeground(this.colors.textColor());
         RegisterProductionsLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        RegisterProductionsLabel.setText("Registro de Productos");
+        RegisterProductionsLabel.setText("Registro de Produccciones");
 
         ProductionsListButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/images/ProductionsList_200x200Px.png"))); // NOI18N
         ProductionsListButton.setBorder(javax.swing.BorderFactory.createLineBorder(this.colors.borderColor()));
 
-        ProductionsListLabel.setFont(new java.awt.Font("Leelawadee UI", 0, 20)); // NOI18N
-        ProductionsListLabel.setForeground(this.colors.textColor());
-        ProductionsListLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ProductionsListLabel.setText("Registro de Insumos");
-
-        RegisterProductButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/images/RegisterProductIcon_200x200Px.png"))); // NOI18N
-        RegisterProductButton.setBorder(javax.swing.BorderFactory.createLineBorder(this.colors.borderColor()));
-
         RegisterProductLabel.setFont(new java.awt.Font("Leelawadee UI", 0, 20)); // NOI18N
         RegisterProductLabel.setForeground(this.colors.textColor());
         RegisterProductLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        RegisterProductLabel.setText("Lista de Productos");
-
-        ProductListButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/images/productsList_200x200Px.png"))); // NOI18N
-        ProductListButton.setBorder(javax.swing.BorderFactory.createLineBorder(this.colors.borderColor()));
-
-        ProductListLabel.setFont(new java.awt.Font("Leelawadee UI", 0, 20)); // NOI18N
-        ProductListLabel.setForeground(this.colors.textColor());
-        ProductListLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ProductListLabel.setText("Lista de Insumos");
+        RegisterProductLabel.setText("Lista de Producciones");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(260, 260, 260)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(RegisterProductionsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(RegisterProductionsButton, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(RegisterProductLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(ProductionsListButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ProductListButton, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(ProductionsListLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ProductListLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(RegisterProductButton, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(260, 260, 260))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(363, 363, 363)
-                .addComponent(Title)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(RegisterProductionsButton)
+                    .addComponent(RegisterProductionsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ProductionsListButton)
+                    .addComponent(RegisterProductLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Title))
+                .addContainerGap(364, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,36 +69,22 @@ public class ProductionSubmenuView extends javax.swing.JPanel {
                 .addGap(56, 56, 56)
                 .addComponent(Title)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(RegisterProductionsButton)
-                    .addComponent(RegisterProductButton))
+                .addComponent(RegisterProductionsButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ProductionsListLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(RegisterProductionsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
+                .addComponent(RegisterProductionsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(ProductListButton)
-                    .addComponent(ProductionsListButton))
+                .addComponent(ProductionsListButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ProductListLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(RegisterProductLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
+                .addComponent(RegisterProductLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     public JLabel getRegisterProductionsButton() {return this.RegisterProductionsButton;}
-    public JLabel getRegisterProductButton() {return this.RegisterProductButton;}
     public JLabel getProductionsListButton() {return this.ProductionsListButton;}
-    public JLabel getProductListButton() {return this.ProductListButton;}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel ProductListButton;
-    private javax.swing.JLabel ProductListLabel;
     private javax.swing.JLabel ProductionsListButton;
-    private javax.swing.JLabel ProductionsListLabel;
-    private javax.swing.JLabel RegisterProductButton;
     private javax.swing.JLabel RegisterProductLabel;
     private javax.swing.JLabel RegisterProductionsButton;
     private javax.swing.JLabel RegisterProductionsLabel;

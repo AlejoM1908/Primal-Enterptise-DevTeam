@@ -4,6 +4,9 @@ package lib.ui.ProductionList;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import lib.ui.MainApp.MainAppController;
 
 
 public class ProductionListController implements MouseListener {
@@ -11,10 +14,15 @@ public class ProductionListController implements MouseListener {
     private ProductionListModel model;
     private ProductionListView view;
 
-    public ProductionListController() throws SQLException {
-        this.view = new ProductionListView();
-        this.model = new ProductionListModel(view);
-        this.model.fillTableProductions();
+    public ProductionListController(ProductionListView view, ProductionListModel model, MainAppController rootComponent) {
+        this.view = view;
+        this.model = model;
+        this.model.setRoot(rootComponent);
+        try {
+            this.model.fillTableProductions();
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductionListController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.view.getJlDetailProduction().addMouseListener(this);
     }
     @Override

@@ -5,7 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
 import lib.app.DBConnection;
-import lib.ui.MainMenu.MainMenuController;
+import lib.ui.MainApp.MainAppController;
+
 
 /**
  *
@@ -14,7 +15,15 @@ import lib.ui.MainMenu.MainMenuController;
 public class ProductionListModel {
     
     private ProductionListView view;
-    private MainMenuController root;
+    private MainAppController root;
+
+    public MainAppController getRoot() {
+        return root;
+    }
+
+    public void setRoot(MainAppController root) {
+        this.root = root;
+    }
 
     public ProductionListModel(ProductionListView view) {
         this.view = view;
@@ -31,7 +40,7 @@ public class ProductionListModel {
     public void fillTableProductions() throws SQLException{
         DBConnection conn = new DBConnection();
         conn.getConnection();
-        ResultSet result = conn.executeQuery("SELECT prd_i, prd_estado , prd_tipo FROM producciones;" );
+        ResultSet result = conn.executeQuery("SELECT prd_id, prd_estado , prd_tipo FROM producciones;" );
         conn.endCOnnection();
         
         DefaultTableModel model = (DefaultTableModel) view.getJtProductions().getModel();

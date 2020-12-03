@@ -4,13 +4,8 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
--- -----------------------------------------------------
--- Schema mydb
--- -----------------------------------------------------
--- -----------------------------------------------------
--- Schema primalenterpricedb
--- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `primalenterpricedb` ;
+CREATE SCHEMA IF NOT EXISTS `primalenterpricedb` DEFAULT CHARACTER SET utf8 ;
+USE `primalenterpricedb` ;
 
 -- -----------------------------------------------------
 -- Schema primalenterpricedb
@@ -35,7 +30,6 @@ CREATE TABLE IF NOT EXISTS `primalenterpricedb`.`usuarios` (
   PRIMARY KEY (`usr_usuario`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
-
 
 -- -----------------------------------------------------
 -- Table `primalenterpricedb`.`proveedores`
@@ -167,7 +161,6 @@ ENGINE = InnoDB
 AUTO_INCREMENT = 5
 DEFAULT CHARACTER SET = utf8;
 
-
 -- -----------------------------------------------------
 -- Table `primalenterpricedb`.`productos`
 -- -----------------------------------------------------
@@ -227,7 +220,6 @@ CREATE TABLE IF NOT EXISTS `primalenterpricedb`.`produccion_producto` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
-
 -- -----------------------------------------------------
 -- Table `primalenterpricedb`.`producto_factura`
 -- -----------------------------------------------------
@@ -276,42 +268,10 @@ ENGINE = InnoDB
 AUTO_INCREMENT = 6
 DEFAULT CHARACTER SET = utf8;
 
-USE `primalenterpricedb` ;
+# J1$9P!a6
+INSERT INTO `PrimalEnterpriceDB`.`usuarios` 
+VALUE("Admin","admin","b69948501d89b5aff7726b649a27264bcd139dc1","None","Admin","None",0,1);
 
--- -----------------------------------------------------
--- Placeholder table for view `primalenterpricedb`.`productlowamount`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `primalenterpricedb`.`productlowamount` (`nombre` INT, `cantidad` INT, `id` INT);
-
--- -----------------------------------------------------
--- Placeholder table for view `primalenterpricedb`.`productstoexpire`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `primalenterpricedb`.`productstoexpire` (`nombre` INT, `id` INT, `fecha_caducidad` INT, `diff` INT);
-
--- -----------------------------------------------------
--- Placeholder table for view `primalenterpricedb`.`vw_getactives`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `primalenterpricedb`.`vw_getactives` (`id` INT, `nit` INT, `factura` INT, `nombre` INT, `estado` INT, `marca` INT, `fecha_factura` INT, `descripcion` INT);
-
--- -----------------------------------------------------
--- Placeholder table for view `primalenterpricedb`.`vw_getproductions`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `primalenterpricedb`.`vw_getproductions` (`id` INT, `usuario` INT, `estado` INT, `fecha_comienzo` INT, `fecha_finalizacion` INT, `tipo` INT);
-
--- -----------------------------------------------------
--- Placeholder table for view `primalenterpricedb`.`vw_getproducts`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `primalenterpricedb`.`vw_getproducts` (`id` INT, `usuario` INT, `nit` INT, `nombre_proveedor` INT, `nombre` INT, `marca` INT, `tipo` INT, `cantidad` INT, `metodo_almacenaje` INT, `ubicacion` INT, `descripcion` INT, `fecha_factura` INT, `fecha_caducidad` INT);
-
--- -----------------------------------------------------
--- Placeholder table for view `primalenterpricedb`.`vw_getproviders`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `primalenterpricedb`.`vw_getproviders` (`nit` INT, `telefono` INT, `nombre` INT, `email` INT, `direccion` INT);
-
--- -----------------------------------------------------
--- Placeholder table for view `primalenterpricedb`.`vw_getusers`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `primalenterpricedb`.`vw_getusers` (`usuario` INT, `telefono` INT, `contrasena` INT, `rango` INT, `nombre` INT, `cedula` INT, `email` INT, `direccion` INT);
 
 -- -----------------------------------------------------
 -- procedure ActiveInfo
@@ -513,7 +473,7 @@ BEGIN
 	IF valor = 0 THEN
 		SELECT 0 AS 'error';
 	ELSEIF valor = 1 THEN
-		select SHA1(userPass) INTO pass;
+		SELECT SHA1(userPass) INTO pass;
         
         IF (SELECT COUNT(*) FROM vw_getUsers WHERE usuario = username AND contrasena = pass) = 0 THEN
 			select 1 AS 'error';
@@ -818,6 +778,10 @@ DROP TABLE IF EXISTS `primalenterpricedb`.`vw_getusers`;
 DROP VIEW IF EXISTS `primalenterpricedb`.`vw_getusers` ;
 USE `primalenterpricedb`;
 CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `primalenterpricedb`.`vw_getusers` AS select `primalenterpricedb`.`usuarios`.`usr_usuario` AS `usuario`,`primalenterpricedb`.`telefonos`.`tel_telefono` AS `telefono`,`primalenterpricedb`.`usuarios`.`usr_contrasena` AS `contrasena`,`primalenterpricedb`.`usuarios`.`usr_rango` AS `rango`,`primalenterpricedb`.`usuarios`.`usr_nombre` AS `nombre`,`primalenterpricedb`.`usuarios`.`usr_cedula` AS `cedula`,`primalenterpricedb`.`usuarios`.`usr_email` AS `email`,`primalenterpricedb`.`usuarios`.`usr_direccion` AS `direccion` from (`primalenterpricedb`.`usuarios` left join `primalenterpricedb`.`telefonos` on((`primalenterpricedb`.`telefonos`.`tel_usuario` = `primalenterpricedb`.`usuarios`.`usr_usuario`)));
+
+CREATE USER 'Admin' IDENTIFIED BY 'HTNT^256FbzNNO6eInk$';
+GRANT ALL ON `PrimalEnterpriceDB`.* TO 'Admin';
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

@@ -50,6 +50,7 @@ public class MainApp extends javax.swing.JFrame {
         setResizable(false);
 
         ButtonPanel.setBackground(color.menuBotonesColor());
+
         jLabel1.setFont(new java.awt.Font("Leelawadee UI", 0, 28)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(240, 240, 240));
         jLabel1.setText("Administración");

@@ -45,6 +45,9 @@ import lib.ui.buttonBar.ButtonBarView;
 import lib.ui.consultProductView.ConsultProductController;
 import lib.ui.consultProductView.ConsultProductModel;
 import lib.ui.consultProductView.ConsultProductView;
+import lib.ui.createProduction.CreateProductionController;
+import lib.ui.createProduction.CreateProductionModel;
+import lib.ui.createProduction.CreateProductionView;
 import lib.ui.registroProd.prodController;
 import lib.ui.registroProd.prodModel;
 import lib.ui.registroProd.registroProd;
@@ -115,6 +118,10 @@ public class MainAppModel {
     private final ConsultProductView consultProductView = new ConsultProductView();
     private final ConsultProductModel consultProductModel = new ConsultProductModel(consultProductView);
     private ConsultProductController consultProductController;
+    
+    private final CreateProductionView createProductionView = new CreateProductionView();
+    private final CreateProductionModel createProductionModel = new CreateProductionModel(createProductionView);
+    private CreateProductionController createProductionController;
 
 
     private final ButtonBarView buttonBarView = new ButtonBarView();
@@ -308,6 +315,18 @@ public class MainAppModel {
 
     public void setConsultProductController(ConsultProductController consultProductController) {
         this.consultProductController = consultProductController;
+    }
+
+    public CreateProductionView getCreateProductionView() {
+        return createProductionView;
+    }
+
+    public CreateProductionModel getCreateProductionModel() {
+        return createProductionModel;
+    }
+
+    public void setCreateProductionController(CreateProductionController createProductionController) {
+        this.createProductionController = createProductionController;
     }
     
     

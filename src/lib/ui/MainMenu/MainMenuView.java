@@ -19,35 +19,39 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import lib.models.User;
 
-
 /**
  *
  * @author user
  */
 public class MainMenuView extends javax.swing.JPanel {
-    
-    
+
     /**
      * Creates new form MainMenuView
      */
     public MainMenuView() {
         initComponents();
-        
+
     }
-    
-    public void fillInfo(User user){
-        
+
+    public void fillInfo(User user) {
+
         jlNameUser.setText(user.getName());
         jlEmailUser.setText(user.getEmail());
         jlRangeUser.setText(user.getRange());
         jlIdUser.setText(Integer.toString(user.getIdCard()));
-        
+
         this.repaint();
         
+        fillPanels();
+
+    }
+
+
+    private void fillPanels() {
         JPanel listPanel = new JPanel();
         listPanel.setBackground(Color.WHITE);
         listPanel.setLayout(new BoxLayout(listPanel, BoxLayout.Y_AXIS));
-        
+
         MainMenuModel model = new MainMenuModel();
         ArrayList<DateAlertPanel> dateAlerts = null;
         try {
@@ -61,17 +65,17 @@ public class MainMenuView extends javax.swing.JPanel {
         } catch (SQLException ex) {
             Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        for(DateAlertPanel panel : dateAlerts){
+
+        for (DateAlertPanel panel : dateAlerts) {
             listPanel.add(panel);
             panel.setVisible(true);
         }
-        
-        for(QuantityAlertPanel panel : quantityAlerts){
+
+        for (QuantityAlertPanel panel : quantityAlerts) {
             listPanel.add(panel);
             panel.setVisible(true);
         }
-        
+
         jScrollAlerts.setBackground(new Color(255, 255, 255));
         jScrollAlerts.setViewportView(listPanel);
         jScrollAlerts.updateUI();
@@ -80,8 +84,6 @@ public class MainMenuView extends javax.swing.JPanel {
     public JLabel getJlImage() {
         return jlImage;
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.

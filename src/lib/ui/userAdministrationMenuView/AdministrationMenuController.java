@@ -9,8 +9,10 @@ import java.awt.Cursor;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import lib.ui.MainApp.MainAppController;
+import lib.ui.SupplierRegistration.SupplierRegistrationView;
 import lib.ui.UsersList.UsersListView;
 import lib.ui.registroUsr.registroUsr;
+import lib.ui.EditAccount.EditAccountView;
 
 public class AdministrationMenuController implements MouseListener {
     private AdministrationMenuModel model;
@@ -21,11 +23,11 @@ public class AdministrationMenuController implements MouseListener {
         this.view = view;
         this.model = model;
         this.model.setRootComponent(rootComponent);
-        
+        this.view.setVisibility(rootComponent.getMainAppModel().getLoggedUser());
         this.view.getAddUserslb().addMouseListener(this);
         this.view.getUsersListlb().addMouseListener(this);
         this.view.getRolesCreationlb().addMouseListener(this);
-
+        this.view.getJlSupplier().addMouseListener(this);
     }
     
    
@@ -42,15 +44,36 @@ public class AdministrationMenuController implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent me) {
         if(me.getSource() == view.getAddUserslb()){
-            //DIRIGIR A VENTANA AGREGAR USUARIO
-            registroUsr registro=this.model.getRootComponent().getMainAppModel().getRegistro();
-            this.model.getRootComponent().getMainAppView().setRegistro(registro);
+            if(view.getAddUserslb().isEnabled())
+            {
+                registroUsr registerUserView = this.model.getRootComponent().getMainAppModel().getRegisterUserView();
+                this.model.getRootComponent().getMainAppModel().getRegisterUserModel().clearFields();
+                this.model.getRootComponent().getMainAppView().setRegisterUser(registerUserView);
+            }
         }else if (me.getSource() == view.getUsersListlb()){
-            //DIRIGIR A VENTANA LISTA DE USUARIOS
-            UsersListView usersListView = this.model.getRootComponent().getMainAppModel().getUsersListView();
-            this.model.getRootComponent().getMainAppView().setUsersList(usersListView);
+            if(view.getUsersListlb().isEnabled())
+            {
+                UsersListView usersListView = this.model.getRootComponent().getMainAppModel().getUsersListView();
+                this.model.getRootComponent().getMainAppModel().getUsersListModel().updateTable();
+                usersListView.updateUI();
+                this.model.getRootComponent().getMainAppView().setUsersList(usersListView);
+            }
+            
         }else if(me.getSource() == view.getRolesCreationlb()){
             //DIRIGIR A VENTANA CREACION DE ROLES
+            if(view.getUsersListlb().isEnabled())
+            {
+                EditAccountView editAccountView=this.model.getRootComponent().getMainAppModel().getEditAccountView();
+                this.model.getRootComponent().getMainAppView().setEditAccount(editAccountView);
+            }
+        }else if(me.getSource() == view.getJlSupplier()){
+            if(view.getJlSupplier().isEnabled())
+            {
+                SupplierRegistrationView supplierRegistrationView = this.model.getRootComponent().getMainAppModel().getSupplierRegistrationView();
+                this.model.getRootComponent().getMainAppModel().getSupplierRegistrationModel().clearFields();
+                this.model.getRootComponent().getMainAppView().setSupplierRegistration(supplierRegistrationView);
+            }
+            
         }
     }
 
@@ -70,6 +93,8 @@ public class AdministrationMenuController implements MouseListener {
         view.getUsersListlb().setCursor(new Cursor(Cursor.HAND_CURSOR));
         
         view.getRolesCreationlb().setCursor(new Cursor(Cursor.HAND_CURSOR));
+        
+        view.getJlSupplier().setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
 
     @Override

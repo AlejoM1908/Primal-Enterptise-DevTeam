@@ -66,9 +66,9 @@ public class AssetRegistrationModel {
         
         DBConnection conn = new DBConnection();
         conn.getConnection();
-        //CallableStatement stat = conn.getConn().prepareStatement("CALL registrarActivo(" + Integer.toString(10) + "," + "miguel" + "," + nit + "," + ticket + "," + desc + "," + status + "," + name + ");");
         
-        conn.executeQuery("CALL registrarActivo(" + Integer.toString(10) + "," + "\""+"miguel"+"\"" + "," + nit + "," + ticket + "," + desc + "," + status + "," + name + ");");
+        
+        conn.executeQuery("CALL registrarActivo(" + Integer.toString(10) + "," + "\""+ this.rootComponent.getMainAppModel().getLoggedUser().getUser() +"\"" + "," + nit + "," + ticket + "," + desc + "," + status + "," + name + ");");
         conn.endCOnnection();
     }
     
@@ -81,6 +81,16 @@ public class AssetRegistrationModel {
         result.next();
         return result.getInt(1) == 0;   
         
+    }
+    
+    public void clearFields(){
+        this.view.getJtxtBrand().setText("");
+        this.view.getJtxtName().setText("");
+        this.view.getJtxtNit().setText("");
+        this.view.getJtxtQuantity().setText("");
+        this.view.getJtxtTicket().setText("");
+        this.view.getJtxtaDesc().setText("");
+        this.view.getJcbStatus().setSelectedIndex(0);
     }
 
     public MainAppController getRootComponent() {

@@ -5,16 +5,13 @@
  */
 package lib.ui.AssetsReport;
 
-import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import lib.app.DBConnection;
+import lib.ui.MainApp.MainAppController;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
-import org.jfree.chart.plot.PiePlot;
 import org.jfree.data.general.DefaultPieDataset;
 
 /**
@@ -23,6 +20,8 @@ import org.jfree.data.general.DefaultPieDataset;
  */
 public class AssetsReportModel {
     private AssetsReportView view;
+    
+    private MainAppController rootComponent;
 
     public AssetsReportModel(AssetsReportView view) {
         this.view = view;
@@ -45,11 +44,11 @@ public class AssetsReportModel {
         JFreeChart chart = ChartFactory.createPieChart3D("Estado actual de los activos", set);
         
         ChartPanel chartPanel = new ChartPanel(chart);
-        /*
-        jpanelGrafica.removeAll();
-        jpanelGrafica.add(chartPanel);
-        jpanelGrafica.updateUI();
-        */
+        this.view.getjPanelGraphic().removeAll();
+        this.view.getjPanelGraphic().add(chartPanel);
+        
+        this.view.getjPanelGraphic().updateUI();
+        
     }
 
     public AssetsReportView getView() {
@@ -58,6 +57,14 @@ public class AssetsReportModel {
 
     public void setView(AssetsReportView view) {
         this.view = view;
+    }
+
+    public MainAppController getRootComponent() {
+        return rootComponent;
+    }
+
+    public void setRootComponent(MainAppController rootComponent) {
+        this.rootComponent = rootComponent;
     }
     
     

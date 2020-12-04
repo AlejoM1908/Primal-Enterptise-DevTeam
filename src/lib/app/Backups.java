@@ -6,20 +6,87 @@
 package lib.app;
 
 import java.awt.HeadlessException;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.security.CodeSource;
 import javax.swing.JOptionPane;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Fredy AGP
  */
 public class Backups {
-   
+    
+   public void Preferencias(String nombre_db,String user,String pass)
+   {
+        LocalDate actual = LocalDate.now();
+        LocalDate programacion = actual.plusDays(10);
+        String programacion_futura=programacion.toString();
+        File config = new File("Preferencias.txt");
+        Scanner lector;
+        LocalDate recuperada=LocalDate.now();;
+        if(config.exists())//si el doc existe
+        {
+            try//recupera la fecha almacenada en el doc
+            {
+                lector=new Scanner(config);
+                String fecha="";
+                while(lector.hasNextLine())
+                {
+                    fecha=lector.next();
+                }
+                lector.close();
+                recuperada = LocalDate.parse(fecha);
+            }
+            catch(FileNotFoundException e)
+            {
+                e.printStackTrace();
+            }
+            long result = ChronoUnit.DAYS.between(actual,recuperada);//Busca la diferencia entre la fecha actual y la almacenada
+            if(result<=0)//Si la diferencia de dias es menos o igual a 0, hace backups y refresca la fecha para el proximo
+            {
+                Guardar(nombre_db,user,pass);
+                try
+                {
+                    FileWriter fw = new FileWriter(config);
+                    BufferedWriter bw = new BufferedWriter(fw);
+                    bw.write(programacion_futura);
+                    bw.close();
+                }
+                catch(Exception e)
+                {
+                    e.printStackTrace();
+                }
+            }
+        }
+        else
+        {
+            Guardar(nombre_db,user,pass);
+            try
+            {
+                FileWriter fw = new FileWriter(config);
+                BufferedWriter bw = new BufferedWriter(fw);
+                bw.write(programacion_futura);
+                bw.close();
+            }
+            catch(Exception e)
+            {
+                e.printStackTrace();
+            }
+            
+        }    
+   }
     public void Guardar(String nombre_db,String user,String pass)
     {
         try {
@@ -39,7 +106,7 @@ public class Backups {
 
            //si completo==0, se ejecuto correctamente, si no Tiene algun otro valor
            if (completo == 0) {
-               JOptionPane.showMessageDialog(null,"Backup completado");
+               System.out.println("Backup Exitosos");
            } else {
                JOptionPane.showMessageDialog(null,"Backup fallo");
            }

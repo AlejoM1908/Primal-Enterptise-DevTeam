@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 public class DBConnection{
     //DB connection variables
-    private String DBName = "primalenterpriceDB";
+    private String DBName = "PrimalEnterpriceDB";
     private String user = "Admin";
     private String password = "HTNT^256FbzNNO6eInk$";
 

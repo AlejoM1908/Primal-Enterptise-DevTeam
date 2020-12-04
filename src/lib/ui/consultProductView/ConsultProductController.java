@@ -6,6 +6,10 @@ import java.awt.Cursor;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import lib.ui.Inventory.InventoryView;
+import lib.ui.MainApp.MainAppController;
 
 
 public class ConsultProductController implements MouseListener {
@@ -14,11 +18,11 @@ public class ConsultProductController implements MouseListener {
     private ConsultProductView view;
 
     
-    public ConsultProductController() throws SQLException {
-        this.view = new ConsultProductView();
-        this.model = new ConsultProductModel(view);
+    public ConsultProductController(ConsultProductView view, ConsultProductModel model, MainAppController rootComponent) {
+        this.view = view;
+        this.model = model;
+        this.model.setRootComponent(rootComponent);
         this.view.getAtraslb().addMouseListener(this);
-        model.fillInfoProduct();
 
     }
 
@@ -33,7 +37,8 @@ public class ConsultProductController implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent me) {
        if(me.getSource() == view.getAtraslb()){
-            //DIRIGIR A VENTANA DE LISTA DE PRODUCTOS
+            InventoryView inventoryView = new InventoryView();
+            this.model.getRootComponent().getMainAppView().setInventory(inventoryView);
         }
     }
 

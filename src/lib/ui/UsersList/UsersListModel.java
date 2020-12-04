@@ -7,6 +7,8 @@ package lib.ui.UsersList;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import lib.app.DBConnection;
 import lib.ui.MainApp.MainAppController;
@@ -35,10 +37,11 @@ public class UsersListModel {
     public void fillTable() throws SQLException{
         DBConnection conn = new DBConnection();
         conn.getConnection();
-        ResultSet result = conn.executeQuery("SELECT * FROM usuarios NATURAL JOIN telefonos;");
+        ResultSet result = conn.executeQuery("SELECT * FROM usuarios JOIN telefonos WHERE usuarios.usr_usuario = telefonos.tel_usuario AND usr_estado != 3;");
         conn.endCOnnection();
         
         DefaultTableModel model = (DefaultTableModel) view.getJtUsers().getModel();
+        
         while(result.next()){
             String name = result.getString(5);
             String user = result.getString(1);
@@ -56,6 +59,19 @@ public class UsersListModel {
                                       address});
         }
         view.updateUI();
+    }
+    
+    public void updateTable(){
+        DefaultTableModel model = (DefaultTableModel) view.getJtUsers().getModel();
+        int rowCount = model.getRowCount();
+        for(int i = 0; i < rowCount; i++){
+            model.removeRow(0);
+        }
+        try {
+            fillTable();
+        } catch (SQLException ex) {
+            Logger.getLogger(UsersListModel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public MainAppController getRootComponent() {

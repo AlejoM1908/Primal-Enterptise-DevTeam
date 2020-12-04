@@ -51,9 +51,9 @@ public class SupplierRegistrationModel {
     public boolean validateNit(int nitEntered) throws SQLException{
         DBConnection conn = new DBConnection();
         conn.getConnection();
-        ResultSet result = conn.executeQuery("SELECT COUNT(nit)"
-                                           + "FROM proveedor"
-                                           + "WHERE nit = " + Integer.toString(nitEntered) + ";");
+        ResultSet result = conn.executeQuery("SELECT COUNT(pve_nit)"
+                                           + "FROM proveedores"
+                                           + "WHERE pve_nit = " + Integer.toString(nitEntered) + ";");
         result.next();
         if(result.getInt(1) > 0){
             conn.endCOnnection();
@@ -71,9 +71,17 @@ public class SupplierRegistrationModel {
         String address = "\"" + view.getJtxtAddress().getText() + "\"";
         String email = "\"" + view.getJtxtEmail().getText() + "\"";
         int phoneNumber = Integer.parseInt(view.getJtxtPhoneNumber().getText());
-        conn.executeQuery("CALL InsProv(" + name + "," + nit + "," 
-                         + phoneNumber + "," + email + "," + address + "," + "user" + "," + ");");
+        conn.executeQuery("CALL insertProvider(" + name + "," + nit + "," 
+                         + phoneNumber + "," + email + "," + address + "," + this.rootComponent.getMainAppModel().getLoggedUser().getUser() + ");");
         conn.endCOnnection();
+    }
+    
+    public void clearFields(){
+        this.view.getJtxtAddress().setText("");
+        this.view.getJtxtEmail().setText("");
+        this.view.getJtxtName().setText("");
+        this.view.getJtxtNit().setText("");
+        this.view.getJtxtPhoneNumber().setText("");
     }
 
     public SupplierRegistrationView getView() {

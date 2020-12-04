@@ -15,11 +15,8 @@ public class ProductionSubmenuController {
         this.productionSubmenuView = productionSubmenuView;
         this.productionSubmenuModel = productionSubmenuModel;
         this.productionSubmenuModel.setRootComponent(rootComponent);
-        
         this.productionSubmenuView.getRegisterProductionsButton().addMouseListener(new ProductionSubmenuListener(this.productionSubmenuView, this.productionSubmenuModel));
-        this.productionSubmenuView.getRegisterProductButton().addMouseListener(new ProductionSubmenuListener(this.productionSubmenuView, this.productionSubmenuModel));
         this.productionSubmenuView.getProductionsListButton().addMouseListener(new ProductionSubmenuListener(this.productionSubmenuView, this.productionSubmenuModel));
-        this.productionSubmenuView.getProductListButton().addMouseListener(new ProductionSubmenuListener(this.productionSubmenuView, this.productionSubmenuModel));
     }
     
     private class ProductionSubmenuListener implements MouseListener{
@@ -36,13 +33,7 @@ public class ProductionSubmenuController {
             if (me.getSource() == view.getRegisterProductionsButton()){
                 
             }
-            else if (me.getSource() == view.getRegisterProductButton()){
-                
-            }
             else if (me.getSource() == view.getProductionsListButton()){
-                
-            }
-            else if (me.getSource() == view.getProductListButton()){
                 
             }
         }
@@ -60,9 +51,7 @@ public class ProductionSubmenuController {
         @Override
         public void mouseEntered(MouseEvent me) {
             view.getRegisterProductionsButton().setCursor(new Cursor(Cursor.HAND_CURSOR));
-            view.getRegisterProductButton().setCursor(new Cursor(Cursor.HAND_CURSOR));
             view.getProductionsListButton().setCursor(new Cursor(Cursor.HAND_CURSOR));
-            view.getProductListButton().setCursor(new Cursor(Cursor.HAND_CURSOR));
         }
 
         @Override

@@ -4,14 +4,19 @@ import java.awt.Component;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import lib.ui.AssetRegistration.AssetRegistrationView;
+import lib.ui.AssetsReport.AssetsReportView;
 import lib.ui.EditAccount.EditAccountView;
 import lib.ui.Inventory.InventoryView;
+import lib.ui.InventoryMenu.InventoryMenuView;
 import lib.ui.MainBar.MainBarView;
 import lib.ui.MainMenu.MainMenuView;
+import lib.ui.ProductionsReport.ProductionsReportView;
+import lib.ui.ReportsMenu.ReportsMenuView;
 import lib.ui.SupplierRegistration.SupplierRegistrationView;
 import lib.ui.UsersList.UsersListView;
 import lib.ui.buttonBar.ButtonBarView;
 import lib.ui.productionSubmenu.ProductionSubmenuView;
+import lib.ui.consultProductView.ConsultProductView;
 //Proyect imports
 import lib.ui.registroUsr.registroUsr;
 import lib.ui.registroProd.registroProd;
@@ -178,16 +183,6 @@ public class MainAppView extends javax.swing.JFrame {
         usersListView.setVisible(true);
     }
     
-    public void setRegistro(registroUsr registrousr)
-    {
-         for(Component c : this.appContent.getComponents()){
-            c.setVisible(false);
-        }
-        this.appContent.removeAll();
-        
-        this.appContent.add(registrousr);
-        registrousr.setVisible(true);
-    }
     public void setAssetRegistration(AssetRegistrationView assetRegistrationView){
         for(Component c : this.appContent.getComponents()){
             c.setVisible(false);
@@ -228,7 +223,75 @@ public class MainAppView extends javax.swing.JFrame {
         productionSubmenuView.setVisible(true);
     }
     
- 
+    public void setAssetsReport(AssetsReportView assetsReportView){
+        for(Component c : this.appContent.getComponents()){
+            c.setVisible(false);
+        }
+        this.appContent.removeAll();
+
+        this.appContent.add(assetsReportView);
+        assetsReportView.setVisible(true);
+    }
+    
+    public void setReportsMenu(ReportsMenuView reportsMenuView){
+        for(Component c : this.appContent.getComponents()){
+            c.setVisible(false);
+        }
+        this.appContent.removeAll();
+        
+        this.appContent.add(reportsMenuView);
+        reportsMenuView.setVisible(true);
+    }
+    
+    public void setProductionsReport(ProductionsReportView productionsReportView){
+        for(Component c : this.appContent.getComponents()){
+            c.setVisible(false);
+        }
+        this.appContent.removeAll();
+        
+        this.appContent.add(productionsReportView);
+        productionsReportView.setVisible(true);
+    }
+    
+    public void setInventoryMenu(InventoryMenuView inventoryMenuView){
+        for(Component c : this.appContent.getComponents()){
+            c.setVisible(false);
+        }
+        this.appContent.removeAll();
+        
+        this.appContent.add(inventoryMenuView);
+        inventoryMenuView.setVisible(true);
+    }
+    
+    public void setRegisterProduct(registroProd registerProductView){
+        for(Component c : this.appContent.getComponents()){
+            c.setVisible(false);
+        }
+        this.appContent.removeAll();
+        
+        this.appContent.add(registerProductView);
+        registerProductView.setVisible(true);
+    }
+    
+    public void setRegisterUser(registroUsr registerUserView){
+        for(Component c : this.appContent.getComponents()){
+            c.setVisible(false);
+        }
+        this.appContent.removeAll();
+        
+        this.appContent.add(registerUserView);
+        registerUserView.setVisible(true);
+    }
+    
+    public void setConsultProduct(ConsultProductView consultProductView){
+        for(Component c : this.appContent.getComponents()){
+            c.setVisible(false);
+        }
+        this.appContent.removeAll();
+        
+        this.appContent.add(consultProductView);
+        consultProductView.setVisible(true);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel ButtonPanel;

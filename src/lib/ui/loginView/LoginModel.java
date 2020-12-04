@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import javax.swing.JOptionPane;
-
+import lib.app.Backups;
 
 //Proyect imports
 import lib.app.DBConnection;
@@ -23,6 +23,7 @@ public class LoginModel {
     private int error = -1;
     private List<String> nombres_login=new ArrayList<String>();
     private List<Integer> intentos=new ArrayList<Integer>();
+    private Backups respaldo= new Backups();
     
     public void login(String user, String password){
         if (user.compareTo("") == 0 || password.compareTo("") == 0){
@@ -53,7 +54,7 @@ public class LoginModel {
                         String nombre = result.getString("nombre");
 
                         loggedUser = new User(userName,0,range,password,telefono,email, direccion, nombre);
-
+                        respaldo.Preferencias("primalEnterpricedb","root","fool9411");
                         System.out.println("Ingresado al sistema exitosamente como: " + userName);
                     }
                 }

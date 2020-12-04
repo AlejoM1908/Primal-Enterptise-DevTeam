@@ -6,7 +6,10 @@
 package lib.ui.registroUsr;
 
 import java.awt.Cursor;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import lib.utils.AppColors;
 import lib.ui.registroUsr.registroUsrController;
 import lib.ui.userAdministrationMenuView.AdministrationMenuView;
@@ -24,6 +27,52 @@ private AdministrationMenuView administrationMenuView = new AdministrationMenuVi
     public registroUsr() {
         initComponents();
     }
+
+    public JLabel getAtrasButton() {
+        return atrasButton;
+    }
+
+    public JTextField getCedulaTF() {
+        return cedulaTF;
+    }
+
+    public JTextField getContraseñaTF() {
+        return contraseñaTF;
+    }
+
+    public JTextField getDireccionTF() {
+        return direccionTF;
+    }
+
+    public JTextField getEmailTF() {
+        return emailTF;
+    }
+
+    public JTextField getNombreTF() {
+        return nombreTF;
+    }
+
+    public JTextField getNombreUsuarioTF() {
+        return nombreUsuarioTF;
+    }
+
+    public JComboBox getRangoTF() {
+        return rangoTF;
+    }
+
+    public JLabel getRegistrarB() {
+        return registrarB;
+    }
+
+    public JLabel getRegresarB() {
+        return regresarB;
+    }
+
+    public JTextField getTelefonoTF() {
+        return telefonoTF;
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -51,21 +100,13 @@ private AdministrationMenuView administrationMenuView = new AdministrationMenuVi
         telefonoTF = new javax.swing.JTextField();
         contraseñaTF = new javax.swing.JTextField();
         direccionTF = new javax.swing.JTextField();
-        rangoTF = new javax.swing.JTextField();
         nombreUsuarioTF = new javax.swing.JTextField();
         registrarB = new javax.swing.JLabel();
+        rangoTF = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
         regresarB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/images/Boton de Atras(2).png"))); // NOI18N
-        regresarB.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                regresarBMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                regresarBMouseEntered(evt);
-            }
-        });
 
         jLabel2.setFont(new java.awt.Font("Leelawadee UI", 0, 20)); // NOI18N
         jLabel2.setForeground(color.textColor());
@@ -97,7 +138,7 @@ private AdministrationMenuView administrationMenuView = new AdministrationMenuVi
 
         jLabel9.setFont(new java.awt.Font("Leelawadee UI", 0, 20)); // NOI18N
         jLabel9.setForeground(color.textColor());
-        jLabel9.setText("Nombre de Usuario:");
+        jLabel9.setText("Usuario:");
 
         emailTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -139,12 +180,6 @@ private AdministrationMenuView administrationMenuView = new AdministrationMenuVi
             }
         });
 
-        rangoTF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rangoTFActionPerformed(evt);
-            }
-        });
-
         nombreUsuarioTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nombreUsuarioTFActionPerformed(evt);
@@ -152,15 +187,17 @@ private AdministrationMenuView administrationMenuView = new AdministrationMenuVi
         });
 
         registrarB.setBackground(color.buttonColor());
-        registrarB.setFont(new java.awt.Font("Ancizar Sans", 0, 32)); // NOI18N
+        registrarB.setFont(new java.awt.Font("Leelawadee UI", 0, 32)); // NOI18N
         registrarB.setForeground(new java.awt.Color(255, 255, 255));
         registrarB.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         registrarB.setText("Registrar");
         registrarB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         registrarB.setOpaque(true);
-        registrarB.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                registrarBMouseClicked(evt);
+
+        rangoTF.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Secretario/a", "Administrador de producciones", "Administrador de inventario" }));
+        rangoTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rangoTFActionPerformed(evt);
             }
         });
 
@@ -178,39 +215,38 @@ private AdministrationMenuView administrationMenuView = new AdministrationMenuVi
                 .addGap(336, 336, 336))
             .addGroup(layout.createSequentialGroup()
                 .addGap(137, 137, 137)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(jLabel7)
-                            .addGap(185, 185, 185)
-                            .addComponent(rangoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel5)
-                                .addComponent(jLabel6)
-                                .addComponent(jLabel2))
-                            .addGap(197, 197, 197)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(nombreTF, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(cedulaTF, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(emailTF, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(telefonoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(direccionTF, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(185, 185, 185)
+                        .addComponent(rangoTF, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel2))
+                        .addGap(197, 197, 197)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(nombreTF, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cedulaTF, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(emailTF, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(telefonoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(direccionTF, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
                             .addComponent(jLabel8))
-                        .addGap(107, 107, 107)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(contraseñaTF, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nombreUsuarioTF, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(nombreUsuarioTF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(contraseñaTF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(registrarB, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(436, 436, 436))
+                .addGap(419, 419, 419))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -243,10 +279,10 @@ private AdministrationMenuView administrationMenuView = new AdministrationMenuVi
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel6)
                     .addComponent(direccionTF, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
+                .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel7)
-                    .addComponent(rangoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(rangoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(nombreUsuarioTF, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -285,41 +321,18 @@ private AdministrationMenuView administrationMenuView = new AdministrationMenuVi
         // TODO add your handling code here:
     }//GEN-LAST:event_direccionTFActionPerformed
 
-    private void rangoTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rangoTFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rangoTFActionPerformed
-
     private void nombreUsuarioTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreUsuarioTFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nombreUsuarioTFActionPerformed
-
-    private void regresarBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresarBMouseClicked
-        // TODO add your handling code here    
-    }//GEN-LAST:event_regresarBMouseClicked
-
-    private void registrarBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarBMouseClicked
-        // TODO add your handling code here:
-        int indicador;
-        registroUsrController regis = new registroUsrController();
-        indicador=regis.registrados("\""+nombreTF.getText()+"\"",
-                                    "\""+emailTF.getText()+"\"","\""+direccionTF.getText()+"\"","\""+rangoTF.getText()+"\"","\""+nombreUsuarioTF.getText()+"\"",
-                                    "\""+contraseñaTF.getText()+"\"",cedulaTF.getText(),telefonoTF.getText());
-        if(indicador==0)
-        {
-            JOptionPane.showMessageDialog(this, 
-                        "Datos Incorrectos Igrese nuevamente");
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(this, 
-                        "Usuario Registrado Correctamente");
-        }
-    }//GEN-LAST:event_registrarBMouseClicked
 
     private void regresarBMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresarBMouseEntered
         // TODO add your handling code here:
        regresarB.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }//GEN-LAST:event_regresarBMouseEntered
+
+    private void rangoTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rangoTFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rangoTFActionPerformed
 
  
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -339,7 +352,7 @@ private AdministrationMenuView administrationMenuView = new AdministrationMenuVi
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField nombreTF;
     private javax.swing.JTextField nombreUsuarioTF;
-    private javax.swing.JTextField rangoTF;
+    private javax.swing.JComboBox<String> rangoTF;
     private javax.swing.JLabel registrarB;
     private javax.swing.JLabel regresarB;
     private javax.swing.JTextField telefonoTF;

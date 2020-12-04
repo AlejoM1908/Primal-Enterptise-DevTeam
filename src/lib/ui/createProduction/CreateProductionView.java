@@ -7,6 +7,10 @@ package lib.ui.createProduction;
 
 import java.awt.Dimension;
 import java.awt.Image;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -26,6 +30,23 @@ public class CreateProductionView extends javax.swing.JPanel {
      */
     public CreateProductionView() {
         initComponents();
+        /*jtableProducts.setFocusable(true);
+        jtableProducts.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent ke) {
+                
+            }
+
+            @Override
+            public void keyPressed(KeyEvent ke) {
+                System.out.println("prueba");
+            }
+
+            @Override
+            public void keyReleased(KeyEvent ke) {
+                
+            }
+        });*/
     }
 
     public JButton getJlCreate() {
@@ -144,14 +165,14 @@ public class CreateProductionView extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID", "Nombre", "Marca", "Cantidad"
+                "ID", "Nombre", "Marca", "Stock", "Cantidad"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, true
+                false, false, false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -167,7 +188,7 @@ public class CreateProductionView extends javax.swing.JPanel {
             jtableProducts.getColumnModel().getColumn(0).setResizable(false);
             jtableProducts.getColumnModel().getColumn(0).setPreferredWidth(10);
             jtableProducts.getColumnModel().getColumn(3).setResizable(false);
-            jtableProducts.getColumnModel().getColumn(3).setPreferredWidth(10);
+            jtableProducts.getColumnModel().getColumn(4).setResizable(false);
         }
 
         jlName1.setFont(new java.awt.Font("Leelawadee UI", 0, 22)); // NOI18N
@@ -232,7 +253,6 @@ public class CreateProductionView extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(105, 105, 105)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(306, 306, 306)
                         .addComponent(jlTitle))
@@ -240,7 +260,8 @@ public class CreateProductionView extends javax.swing.JPanel {
                         .addComponent(jlName2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jtxtType, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jlName1))
+                    .addComponent(jlName1)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jlName, javax.swing.GroupLayout.Alignment.TRAILING)

@@ -40,6 +40,7 @@ public class CreateProductionController implements MouseListener, ActionListener
         if(me.getSource() == this.view.getJlReturn()){
             ProductionSubmenuView productionSubmenuView = this.model.getRootComponent().getMainAppModel().getProductionSubmenuView();
             this.model.getRootComponent().getMainAppView().setProductionSubmenuView(productionSubmenuView);
+            
         }
     }
 

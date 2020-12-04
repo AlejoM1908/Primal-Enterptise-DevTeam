@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import lib.ui.MainApp.MainAppController;
+import lib.ui.productionSubmenu.ProductionSubmenuView;
 
 /**
  *
@@ -36,7 +37,10 @@ public class CreateProductionController implements MouseListener, ActionListener
 
     @Override
     public void mouseClicked(MouseEvent me) {
-        //REDIRIGIR A SUBMENU PRODUCCIONES
+        if(me.getSource() == this.view.getJlReturn()){
+            ProductionSubmenuView productionSubmenuView = this.model.getRootComponent().getMainAppModel().getProductionSubmenuView();
+            this.model.getRootComponent().getMainAppView().setProductionSubmenuView(productionSubmenuView);
+        }
     }
 
     @Override

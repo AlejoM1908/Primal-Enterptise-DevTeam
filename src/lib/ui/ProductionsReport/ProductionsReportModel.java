@@ -42,7 +42,7 @@ public class ProductionsReportModel {
         }else if(graphicType.equals("torta") && filter.equals("tipo")){//Por tipo
             result = conn.executeQuery("SELECT prd_tipo, COUNT(prd_tipo) cantidad FROM producciones GROUP BY prd_tipo;");
         }else if(graphicType.equals("barras") && filter.equals("cantidad")) {//Por cantidad de insumos
-            result = conn.executeQuery("SELECT prp_produccion_id, COUNT(prp_producto_id) cantidad FROM produccion_producto GROUP BY prp_produccion_id;");
+            result = conn.executeQuery("SELECT prp_produccion_id, SUM(prp_cantidad_producto) cantidad FROM produccion_producto GROUP BY prp_produccion_id;");
         }
         conn.endCOnnection();
         

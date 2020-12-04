@@ -79,11 +79,12 @@ public class CreateProductionModel {
 
         String type = "\"" + view.getJtxtType().getText() + "\"";
         String user = "\"" + rootComponent.getMainAppModel().getLoggedUser().getUser() + "\"";
+        String status = "\"" + "Nueva" + "\"";
 
         if (checkAmounts()) {
             JOptionPane.showMessageDialog(view, "Hay cantidades incorrectas", "", JOptionPane.WARNING_MESSAGE);
         } else {
-            conn.executeQuery("CALL createProduction(" + startDate + "," + finishDate + "," + type + "," + user + "," + "Nueva" + ");");
+            conn.executeQuery("CALL create_production(" + startDate + "," + finishDate + "," + type + "," + user + "," + status + ");");
             
             ResultSet result = conn.executeQuery("SELECT prd_id FROM producciones ORDER BY prd_id DESC");
             result.next();
@@ -97,6 +98,7 @@ public class CreateProductionModel {
                     conn.executeQuery("CALL link_product_to_production(" + productId + "," + productionId + "," + Integer.toString(amount) + ");");
                 }
             }
+            JOptionPane.showMessageDialog(view, "Producción creada", "", JOptionPane.INFORMATION_MESSAGE);
         }
 
         conn.endCOnnection();
@@ -113,6 +115,8 @@ public class CreateProductionModel {
 
             ResultSet result = conn.executeQuery("SELECT pru_cantidad FROM productos WHERE pru_id = " + Integer.toString(productId) + ";");
             result.next();
+            System.out.println("stock: " + result.getInt(1));
+            System.out.println("cantidad: " + amount);
             if (result.getInt(1) - amount < 0 || result.getInt(1) < 0) {
                 return true;
             }

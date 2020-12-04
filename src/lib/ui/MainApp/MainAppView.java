@@ -15,6 +15,7 @@ import lib.ui.ReportsMenu.ReportsMenuView;
 import lib.ui.SupplierRegistration.SupplierRegistrationView;
 import lib.ui.UsersList.UsersListView;
 import lib.ui.buttonBar.ButtonBarView;
+import lib.ui.productionSubmenu.ProductionSubmenuView;
 import lib.ui.consultProductView.ConsultProductView;
 import lib.ui.createProduction.CreateProductionView;
 //Proyect imports
@@ -213,12 +214,22 @@ public class MainAppView extends javax.swing.JFrame {
         supplierRegistrationView.setVisible(true);
     }
     
-    public void setAssetsReport(AssetsReportView assetsReportView){
+    public void setProductionSubmenuView(ProductionSubmenuView productionSubmenuView){
         for(Component c : this.appContent.getComponents()){
             c.setVisible(false);
         }
         this.appContent.removeAll();
         
+        this.appContent.add(productionSubmenuView);
+        productionSubmenuView.setVisible(true);
+    }
+    
+    public void setAssetsReport(AssetsReportView assetsReportView){
+        for(Component c : this.appContent.getComponents()){
+            c.setVisible(false);
+        }
+        this.appContent.removeAll();
+
         this.appContent.add(assetsReportView);
         assetsReportView.setVisible(true);
     }

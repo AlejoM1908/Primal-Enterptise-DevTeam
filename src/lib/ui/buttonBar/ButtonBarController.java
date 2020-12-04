@@ -48,7 +48,7 @@ public class ButtonBarController {
                 this.rootComponent.getMainAppView().setInventoryMenu(inventoryMenuView);
             }
             else if (me.getSource() == this.view.getProductionButton()){
-                
+                rootComponent.goToProductionSubmenu();
             }
             else if (me.getSource() == this.view.getUsersButton()){
                 AdministrationMenuView adminView = this.rootComponent.getMainAppModel().getAdministrationMenuView();

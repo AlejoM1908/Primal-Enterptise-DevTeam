@@ -23,10 +23,14 @@ import lib.ui.userAdministrationMenuView.AdministrationMenuController;
 import lib.ui.userAdministrationMenuView.AdministrationMenuView;
 
 import lib.ui.buttonBar.ButtonBarController;
+
+import lib.ui.productionSubmenu.ProductionSubmenuController;
+
 import lib.ui.consultProductView.ConsultProductController;
 import lib.ui.createProduction.CreateProductionController;
 import lib.ui.registroProd.prodController;
 import lib.ui.registroUsr.registroUsrController;
+
 
 
 public class MainAppController implements MouseListener{
@@ -49,6 +53,8 @@ public class MainAppController implements MouseListener{
         this.mainAppModel.setAssetRegistrationController(new AssetRegistrationController(this.mainAppModel.getAssetRegistrationModel(), this.mainAppModel.getAssetRegistrationView(), this));
         this.mainAppModel.setInventoryController(new InventoryController(this.mainAppModel.getInventoryView(), this.mainAppModel.getInventoryModel(), this));
         this.mainAppModel.setSupplierRegistrationController(new SupplierRegistrationController(this.mainAppModel.getSupplierRegistrationModel(), this.mainAppModel.getSupplierRegistrationView(), this));
+        this.mainAppModel.setProductionSubmenuController(new ProductionSubmenuController(this.mainAppModel.getProductionSubmenuView(), this.mainAppModel.getProductionSubmenuModel(), this));
+
         this.mainAppModel.setAssetsReportController(new AssetsReportController(this.mainAppModel.getAssetsReportModel(), this.mainAppModel.getAssetsReportView(), this));
         this.mainAppModel.setReportsMenuController(new ReportsMenuController(this.mainAppModel.getReportsMenuModel(), this.mainAppModel.getReportsMenuView(), this));
         this.mainAppModel.setProductionsReportController(new ProductionsReportController(this.mainAppModel.getProductionsReportView(), this.mainAppModel.getProductionsReportModel(), this));
@@ -89,6 +95,10 @@ public class MainAppController implements MouseListener{
     public MainAppModel getMainAppModel() {
         return mainAppModel;
     }
+    
+    public void goToProductionSubmenu(){
+        this.mainAppView.setProductionSubmenuView(this.mainAppModel.getProductionSubmenuView());
+    }
 
     @Override
     public void mouseClicked(MouseEvent me) {
@@ -114,6 +124,4 @@ public class MainAppController implements MouseListener{
     public void mouseExited(MouseEvent me) {
         
     }
-    
-    
 }

@@ -129,7 +129,7 @@
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="ImageIcon img = new ImageIcon(getClass().getResource(&quot;/documentation/Imagenes/Icono Adicionar.png&quot;));&#xa;Icon icon = new ImageIcon(img.getImage().getScaledInstance(jlDetailProduction.getWidth(), jlDetailProduction.getHeight(), Image.SCALE_SMOOTH));&#xa;jlDetailProduction.setIcon(icon);"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="ImageIcon img = new ImageIcon(getClass().getResource(&quot;/documentation/Imagenes/Icono Editar.png&quot;));&#xa;Icon icon = new ImageIcon(img.getImage().getScaledInstance(jlDetailProduction.getWidth(), jlDetailProduction.getHeight(), Image.SCALE_SMOOTH));&#xa;jlDetailProduction.setIcon(icon);"/>
         <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jlDetailProduction.setSize(new Dimension(68,68));"/>
       </AuxValues>
     </Component>

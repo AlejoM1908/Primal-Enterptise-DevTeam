@@ -97,7 +97,7 @@ public class ProductionListView extends javax.swing.JPanel {
         jlDetailProduction.setMaximumSize(new java.awt.Dimension(68, 68));
         jlDetailProduction.setMinimumSize(new java.awt.Dimension(68, 68));
         jlDetailProduction.setPreferredSize(new java.awt.Dimension(68, 68));
-        ImageIcon img = new ImageIcon(getClass().getResource("/documentation/Imagenes/Icono Adicionar.png"));
+        ImageIcon img = new ImageIcon(getClass().getResource("/documentation/Imagenes/Icono Editar.png"));
         Icon icon = new ImageIcon(img.getImage().getScaledInstance(jlDetailProduction.getWidth(), jlDetailProduction.getHeight(), Image.SCALE_SMOOTH));
         jlDetailProduction.setIcon(icon);
 

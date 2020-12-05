@@ -268,42 +268,9 @@ ENGINE = InnoDB
 AUTO_INCREMENT = 9
 DEFAULT CHARACTER SET = utf8;
 
-USE `primalenterpricedb` ;
-
--- -----------------------------------------------------
--- Placeholder table for view `primalenterpricedb`.`productlowamount`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `primalenterpricedb`.`productlowamount` (`nombre` INT, `cantidad` INT, `id` INT);
-
--- -----------------------------------------------------
--- Placeholder table for view `primalenterpricedb`.`productstoexpire`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `primalenterpricedb`.`productstoexpire` (`nombre` INT, `id` INT, `fecha_caducidad` INT, `diff` INT);
-
--- -----------------------------------------------------
--- Placeholder table for view `primalenterpricedb`.`vw_getactives`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `primalenterpricedb`.`vw_getactives` (`id` INT, `nit` INT, `factura` INT, `nombre` INT, `estado` INT, `marca` INT, `fecha_factura` INT, `descripcion` INT);
-
--- -----------------------------------------------------
--- Placeholder table for view `primalenterpricedb`.`vw_getproductions`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `primalenterpricedb`.`vw_getproductions` (`id` INT, `usuario` INT, `estado` INT, `fecha_comienzo` INT, `fecha_finalizacion` INT, `tipo` INT);
-
--- -----------------------------------------------------
--- Placeholder table for view `primalenterpricedb`.`vw_getproducts`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `primalenterpricedb`.`vw_getproducts` (`id` INT, `usuario` INT, `nit` INT, `nombre_proveedor` INT, `nombre` INT, `marca` INT, `tipo` INT, `cantidad` INT, `metodo_almacenaje` INT, `ubicacion` INT, `descripcion` INT, `fecha_factura` INT, `fecha_caducidad` INT);
-
--- -----------------------------------------------------
--- Placeholder table for view `primalenterpricedb`.`vw_getproviders`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `primalenterpricedb`.`vw_getproviders` (`nit` INT, `telefono` INT, `nombre` INT, `email` INT, `direccion` INT);
-
--- -----------------------------------------------------
--- Placeholder table for view `primalenterpricedb`.`vw_getusers`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `primalenterpricedb`.`vw_getusers` (`usuario` INT, `telefono` INT, `contrasena` INT, `rango` INT, `nombre` INT, `cedula` INT, `email` INT, `direccion` INT);
+# J1$9P!a6
+INSERT INTO `PrimalEnterpriceDB`.`usuarios` 
+VALUE("Admin","admin","b69948501d89b5aff7726b649a27264bcd139dc1","None","Admin","None",0,1);
 
 -- -----------------------------------------------------
 -- procedure ActiveInfo

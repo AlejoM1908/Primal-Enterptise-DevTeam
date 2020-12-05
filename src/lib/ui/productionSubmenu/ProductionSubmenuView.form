@@ -46,7 +46,7 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
               <Component id="Title" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="58" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Component id="RegisterProductionsButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="RegisterProductionsLabel" min="-2" pref="30" max="-2" attributes="0"/>
@@ -74,7 +74,7 @@
     <Component class="javax.swing.JLabel" name="RegisterProductionsButton">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/lib/images/RegisterProductionIcon_200x200Px.png"/>
+          <Image iconType="3" name="/lib/images/RegisterProductIcon_200x200Px.png"/>
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">

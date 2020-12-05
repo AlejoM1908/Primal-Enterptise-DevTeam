@@ -4,6 +4,7 @@ package lib.ui.buttonBar;
 import java.awt.Cursor;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import lib.models.User;
 import lib.ui.InventoryMenu.InventoryMenuView;
 
 //Proyect imports
@@ -18,14 +19,13 @@ public class ButtonBarController {
     public ButtonBarController(ButtonBarView buttonBarView, ButtonBarModel buttonBarModel, MainAppController rootComponent){
         this.buttonBarView = buttonBarView;
         this.buttonBarModel = buttonBarModel;
-        
+        this.buttonBarView.setVisibility(rootComponent.getMainAppModel().getLoggedUser());
         this.buttonBarView.getHomeButton().addMouseListener(new ButtonBarListener(buttonBarView, rootComponent));
         this.buttonBarView.getInventoryButton().addMouseListener(new ButtonBarListener(buttonBarView, rootComponent));
         this.buttonBarView.getProductionButton().addMouseListener(new ButtonBarListener(buttonBarView, rootComponent));
         this.buttonBarView.getUsersButton().addMouseListener(new ButtonBarListener(buttonBarView, rootComponent));
         this.buttonBarView.getActivesButton().addMouseListener(new ButtonBarListener(buttonBarView, rootComponent));
-        this.buttonBarView.getReportsButton().addMouseListener(new ButtonBarListener(buttonBarView, rootComponent));
-                        
+        this.buttonBarView.getReportsButton().addMouseListener(new ButtonBarListener(buttonBarView, rootComponent));                
     }
     
     class ButtonBarListener implements MouseListener{
@@ -44,22 +44,39 @@ public class ButtonBarController {
                 this.rootComponent.getMainAppView().setMainMenu(this.rootComponent.getMainAppModel().getMainMenuView());
             }
             else if (me.getSource() == this.view.getInventoryButton()){
-                InventoryMenuView inventoryMenuView = this.rootComponent.getMainAppModel().getInventoryMenuView();
-                this.rootComponent.getMainAppView().setInventoryMenu(inventoryMenuView);
+                if(this.view.getInventoryButton().isEnabled())
+                {
+                    InventoryMenuView inventoryMenuView = this.rootComponent.getMainAppModel().getInventoryMenuView();
+                    this.rootComponent.getMainAppView().setInventoryMenu(inventoryMenuView);
+                }
             }
             else if (me.getSource() == this.view.getProductionButton()){
-                rootComponent.goToProductionSubmenu();
+                if(this.view.getProductionButton().isEnabled())
+                {
+                    rootComponent.goToProductionSubmenu();
+                }
             }
             else if (me.getSource() == this.view.getUsersButton()){
-                AdministrationMenuView adminView = this.rootComponent.getMainAppModel().getAdministrationMenuView();
-                this.rootComponent.getMainAppView().setAdministrationMenu(adminView);
+                if(this.view.getUsersButton().isEnabled())
+                {
+                     AdministrationMenuView adminView = this.rootComponent.getMainAppModel().getAdministrationMenuView();
+                     this.rootComponent.getMainAppView().setAdministrationMenu(adminView);
+                }
+               
             }
             else if (me.getSource() == this.view.getActivesButton()){
-                
+                if(this.view.getActivesButton().isEnabled())
+                {
+                    
+                }
             }
             else if (me.getSource() == this.view.getReportsButton()){
-                ReportsMenuView reportsMenuView = this.rootComponent.getMainAppModel().getReportsMenuView();
-                this.rootComponent.getMainAppView().setReportsMenu(reportsMenuView);
+                if(this.view.getReportsButton().isEnabled())
+                {
+                    ReportsMenuView reportsMenuView = this.rootComponent.getMainAppModel().getReportsMenuView();
+                    this.rootComponent.getMainAppView().setReportsMenu(reportsMenuView);
+                }
+                
             }
         }
 

@@ -5,17 +5,19 @@
  */
 package lib.ui.EditAccount;
 
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import lib.app.DBConnection;
 import lib.models.User;
 import lib.ui.MainApp.MainAppController;
+import java.sql.ResultSet;
 
 /**
  *
  * @author user
  */
 public class EditAccountModel {
-    
+    private DBConnection conn = new DBConnection();
     private EditAccountView view;
     
     private User user;
@@ -49,17 +51,41 @@ public class EditAccountModel {
     public void updateUserInfo(){
         String name = "\"" + view.getJtxtName().getText() + "\"";
         String email = "\"" + view.getJtxtEmail().getText() + "\"";
-        String loggedUser = "\"" + user.getUser() + "\"";
+        String loggedUser = "\"" + view.getJtxtUser().getText() + "\"";
         String number = "\"" + view.getJtxtNumber().getText() + "\"";
         String password = "\"" + String.valueOf(view.getJpfPassword().getPassword()) + "\"";
+        String rango= "\"" + String.valueOf(view.getJtxtRange().getText()) + "\"";//añadida funcion para editar tambien el rango
         DBConnection conn = new DBConnection();
         conn.getConnection();
-        conn.executeQuery("CALL editUserData(" + password +", " +  email +", " + number +", " +  name +", " +  loggedUser + ");");
+        conn.executeQuery("CALL editUserData(" + password +", " +  email +", " + number +", " +  name +", " +  loggedUser +", "+ rango+ ");");
         conn.getConnection();
         
         
     }
-
+    
+    public void EditOtherInfo()//carga la informacion en la interfas, del usuario seleccionado
+    {
+        String user=view.getJtxtUser().getText();
+        try
+        {
+            startConnection();
+            ResultSet result =conn.executeQuery("call userList('usuario','"+user+"')");
+            if (result.next())
+            {
+                String nombre=result.getString("nombre");
+                String cedula=result.getString("cedula");
+                String email=result.getString("email");
+                String telefono=result.getString("telefono");
+                String rango=result.getString("rango");
+                this.view.fillInfoEdit(nombre, cedula, email, telefono, rango);
+                
+            }
+        }
+        catch(SQLException e)
+        {
+            System.out.println("Ha ocurrido una SQLException: "+e.getMessage());
+        }
+    }
     public EditAccountView getView() {
         return view;
     }
@@ -84,5 +110,11 @@ public class EditAccountModel {
         this.rootComponent = rootComponent;
     }
     
-    
+    private void startConnection() {
+        conn.getConnection();
+    }
+
+    private void endConnection() {
+        conn.endCOnnection();
+    }
 }

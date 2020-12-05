@@ -30,6 +30,8 @@ public class EditAccountController implements ActionListener, MouseListener{
         this.model.setRootComponent(rootComponent);
         this.model.getView().fillInfo(user);
         this.view.getJlEdit().addMouseListener(this);
+        this.view.getJlEdit1().addMouseListener(this);
+        this.view.getBtnrefrescar().addMouseListener(this);
         this.view.getBtnSave().addActionListener(this);
         this.view.getJlReturn().addMouseListener(this);
     }
@@ -65,6 +67,16 @@ public class EditAccountController implements ActionListener, MouseListener{
         }else if(me.getSource() == this.view.getJlReturn()){
             MainMenuView mainMenuView = this.model.getRootComponent().getMainAppModel().getMainMenuView();
             this.model.getRootComponent().getMainAppView().setMainMenu(mainMenuView);
+            
+        }else if(me.getSource() == this.view.getJlEdit1()){
+            this.view.getJtxtUser().setEditable(true);
+            
+        }else if(me.getSource() == this.view.getBtnrefrescar()){//carga la informacion de la base, de usuario seleccionado
+            this.model.EditOtherInfo();
+            this.view.getJtxtRange().setEditable(true);
+            this.view.getJtxtId().setEditable(false);
+            this.view.getJtxtUser().setEditable(false);
+            this.view.getJpfPassword().setEditable(true);
         }
         
     }
@@ -82,6 +94,7 @@ public class EditAccountController implements ActionListener, MouseListener{
     @Override
     public void mouseEntered(MouseEvent me) {
         this.view.getJlEdit().setCursor(new Cursor(Cursor.HAND_CURSOR));
+        this.view.getJlEdit1().setCursor(new Cursor(Cursor.HAND_CURSOR));
         this.view.getJlReturn().setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
 

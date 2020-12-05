@@ -2,6 +2,7 @@
 package lib.ui.buttonBar;
 
 import javax.swing.JLabel;
+import lib.models.User;
 import lib.utils.AppColors;
 
 public class ButtonBarView extends javax.swing.JPanel {
@@ -130,7 +131,39 @@ public class ButtonBarView extends javax.swing.JPanel {
                 .addGap(24, 24, 24))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    protected void setVisibility(User user)
+    {
+        switch (user.getRange()){
+            case "Secretario/a":
+                activesButton.setEnabled(false);
+                inventoryButton.setEnabled(false);
+                productionButton.setEnabled(false);
+                usersButton.setEnabled(false);
+                reportsButton.setEnabled(true);
+                break;
+            case "Administrador":
+                activesButton.setEnabled(true);
+                inventoryButton.setEnabled(true);
+                productionButton.setEnabled(true);
+                usersButton.setEnabled(true);
+                reportsButton.setEnabled(true);
+                break;
+            case "Administrador de producciones":
+                 activesButton.setEnabled(false);
+                inventoryButton.setEnabled(false);
+                productionButton.setEnabled(true);
+                usersButton.setEnabled(false);
+                reportsButton.setEnabled(true);
+                break;
+            case "Administrador de inventario":
+                activesButton.setEnabled(false);
+                inventoryButton.setEnabled(true);
+                productionButton.setEnabled(false);
+                usersButton.setEnabled(true);
+                reportsButton.setEnabled(false);
+                break;
+        }
+    }
     protected JLabel getHomeButton() {return this.homeButton;}
     protected JLabel getInventoryButton() {return this.inventoryButton;}
     protected JLabel getProductionButton() {return this.productionButton;}
@@ -148,4 +181,5 @@ public class ButtonBarView extends javax.swing.JPanel {
     private javax.swing.JLabel reportsButton;
     private javax.swing.JLabel usersButton;
     // End of variables declaration//GEN-END:variables
+
 }

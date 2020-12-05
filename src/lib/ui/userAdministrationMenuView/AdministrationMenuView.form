@@ -92,9 +92,9 @@
               <EmptySpace min="40" pref="40" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="rolesCreationlb" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jlSupplierRegistration" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="rolesCreationlb" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="userAdministrationTittle2" min="-2" max="-2" attributes="0"/>

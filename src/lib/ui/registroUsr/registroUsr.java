@@ -5,11 +5,14 @@
  */
 package lib.ui.registroUsr;
 
+import java.awt.Cursor;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import lib.utils.AppColors;
 import lib.ui.registroUsr.registroUsrController;
+import lib.ui.userAdministrationMenuView.AdministrationMenuView;
 
 /**
  *
@@ -17,6 +20,7 @@ import lib.ui.registroUsr.registroUsrController;
  */
 public class registroUsr extends javax.swing.JPanel {
 private AppColors color = new AppColors();
+private AdministrationMenuView administrationMenuView = new AdministrationMenuView();
     /**
      * Creates new form registroUsr
      */
@@ -52,7 +56,7 @@ private AppColors color = new AppColors();
         return nombreUsuarioTF;
     }
 
-    public JTextField getRangoTF() {
+    public JComboBox getRangoTF() {
         return rangoTF;
     }
 
@@ -96,9 +100,9 @@ private AppColors color = new AppColors();
         telefonoTF = new javax.swing.JTextField();
         contraseñaTF = new javax.swing.JTextField();
         direccionTF = new javax.swing.JTextField();
-        rangoTF = new javax.swing.JTextField();
         nombreUsuarioTF = new javax.swing.JTextField();
         registrarB = new javax.swing.JLabel();
+        rangoTF = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -176,12 +180,6 @@ private AppColors color = new AppColors();
             }
         });
 
-        rangoTF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rangoTFActionPerformed(evt);
-            }
-        });
-
         nombreUsuarioTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nombreUsuarioTFActionPerformed(evt);
@@ -195,6 +193,13 @@ private AppColors color = new AppColors();
         registrarB.setText("Registrar");
         registrarB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         registrarB.setOpaque(true);
+
+        rangoTF.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Secretario/a", "Administrador de producciones", "Administrador de inventario" }));
+        rangoTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rangoTFActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -211,25 +216,24 @@ private AppColors color = new AppColors();
             .addGroup(layout.createSequentialGroup()
                 .addGap(137, 137, 137)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(jLabel7)
-                            .addGap(185, 185, 185)
-                            .addComponent(rangoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel5)
-                                .addComponent(jLabel6)
-                                .addComponent(jLabel2))
-                            .addGap(197, 197, 197)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(nombreTF, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(cedulaTF, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(emailTF, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(telefonoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(direccionTF, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(185, 185, 185)
+                        .addComponent(rangoTF, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel2))
+                        .addGap(197, 197, 197)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(nombreTF, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cedulaTF, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(emailTF, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(telefonoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(direccionTF, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
@@ -275,10 +279,10 @@ private AppColors color = new AppColors();
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel6)
                     .addComponent(direccionTF, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
+                .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel7)
-                    .addComponent(rangoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(rangoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(nombreUsuarioTF, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -317,13 +321,18 @@ private AppColors color = new AppColors();
         // TODO add your handling code here:
     }//GEN-LAST:event_direccionTFActionPerformed
 
-    private void rangoTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rangoTFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rangoTFActionPerformed
-
     private void nombreUsuarioTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreUsuarioTFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nombreUsuarioTFActionPerformed
+
+    private void regresarBMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresarBMouseEntered
+        // TODO add your handling code here:
+       regresarB.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_regresarBMouseEntered
+
+    private void rangoTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rangoTFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rangoTFActionPerformed
 
  
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -343,7 +352,7 @@ private AppColors color = new AppColors();
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField nombreTF;
     private javax.swing.JTextField nombreUsuarioTF;
-    private javax.swing.JTextField rangoTF;
+    private javax.swing.JComboBox<String> rangoTF;
     private javax.swing.JLabel registrarB;
     private javax.swing.JLabel regresarB;
     private javax.swing.JTextField telefonoTF;

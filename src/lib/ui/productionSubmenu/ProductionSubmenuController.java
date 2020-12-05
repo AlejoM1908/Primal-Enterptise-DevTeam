@@ -6,6 +6,7 @@ import java.awt.event.MouseListener;
 
 //Proyect imports
 import lib.ui.MainApp.MainAppController;
+import lib.ui.createProduction.CreateProductionView;
 
 public class ProductionSubmenuController {
     private final ProductionSubmenuView productionSubmenuView;
@@ -15,7 +16,6 @@ public class ProductionSubmenuController {
         this.productionSubmenuView = productionSubmenuView;
         this.productionSubmenuModel = productionSubmenuModel;
         this.productionSubmenuModel.setRootComponent(rootComponent);
-        
         this.productionSubmenuView.getRegisterProductionsButton().addMouseListener(new ProductionSubmenuListener(this.productionSubmenuView, this.productionSubmenuModel));
         this.productionSubmenuView.getProductionsListButton().addMouseListener(new ProductionSubmenuListener(this.productionSubmenuView, this.productionSubmenuModel));
     }
@@ -32,10 +32,13 @@ public class ProductionSubmenuController {
         @Override
         public void mouseClicked(MouseEvent me) {
             if (me.getSource() == view.getRegisterProductionsButton()){
-                
+                CreateProductionView createProductionView = this.model.getRootComponent().getMainAppModel().getCreateProductionView();
+                this.model.getRootComponent().getMainAppModel().getCreateProductionModel().clearFields();
+                this.model.getRootComponent().getMainAppModel().getCreateProductionModel().updateTable();
+                this.model.getRootComponent().getMainAppView().setCreateProduction(createProductionView);
             }
             else if (me.getSource() == view.getProductionsListButton()){
-                
+                this.model.getRootComponent().getMainAppView().setProductionListView(this.model.getRootComponent().getMainAppModel().getProductionListView());
             }
         }
 

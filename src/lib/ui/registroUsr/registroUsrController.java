@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import lib.ui.MainApp.MainAppController;
 import lib.ui.registroUsr.registroUsrModel;
 import lib.ui.userAdministrationMenuView.AdministrationMenuView;
+import javax.swing.JComboBox;
 
 /**
  *
@@ -68,7 +69,7 @@ public class registroUsrController implements MouseListener {
         } else if (me.getSource() == this.view.getRegistrarB()) {
             int indicador;
             indicador = registrados("\"" + this.view.getNombreTF().getText() + "\"",
-                    "\"" + this.view.getEmailTF().getText() + "\"", "\"" + this.view.getDireccionTF().getText() + "\"", "\"" + this.view.getRangoTF().getText() + "\"", "\"" + this.view.getNombreUsuarioTF().getText() + "\"",
+                    "\"" + this.view.getEmailTF().getText() + "\"", "\"" + this.view.getDireccionTF().getText() + "\"", "\"" + this.view.getRangoTF().getSelectedItem().toString() + "\"", "\"" + this.view.getNombreUsuarioTF().getText() + "\"",
                     "\"" + this.view.getContraseñaTF().getText() + "\"", this.view.getCedulaTF().getText(), this.view.getTelefonoTF().getText());
             if (indicador == 0) {
                 JOptionPane.showMessageDialog(this.view, "Datos Incorrectos Igrese nuevamente");

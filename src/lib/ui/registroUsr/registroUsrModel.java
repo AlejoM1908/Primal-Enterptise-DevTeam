@@ -46,7 +46,6 @@ public class registroUsrModel {
         this.registroUsrView.getEmailTF().setText("");
         this.registroUsrView.getTelefonoTF().setText("");
         this.registroUsrView.getDireccionTF().setText("");
-        this.registroUsrView.getRangoTF().setText("");
         this.registroUsrView.getNombreUsuarioTF().setText("");
         this.registroUsrView.getContraseñaTF().setText("");
     }

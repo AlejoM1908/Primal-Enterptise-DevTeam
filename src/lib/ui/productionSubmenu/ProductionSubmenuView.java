@@ -33,7 +33,7 @@ public class ProductionSubmenuView extends javax.swing.JPanel {
         Title.setForeground(this.colors.textColor());
         Title.setText("Productos e Insumos");
 
-        RegisterProductionsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/images/RegisterProductionIcon_200x200Px.png"))); // NOI18N
+        RegisterProductionsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/images/RegisterProductIcon_200x200Px.png"))); // NOI18N
         RegisterProductionsButton.setBorder(javax.swing.BorderFactory.createLineBorder(this.colors.borderColor()));
 
         RegisterProductionsLabel.setFont(new java.awt.Font("Leelawadee UI", 0, 20)); // NOI18N
@@ -68,7 +68,7 @@ public class ProductionSubmenuView extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(56, 56, 56)
                 .addComponent(Title)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(RegisterProductionsButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(RegisterProductionsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)

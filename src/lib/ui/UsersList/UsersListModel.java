@@ -50,13 +50,15 @@ public class UsersListModel {
             String range = result.getString(2);
             String email = result.getString(4);
             String address = result.getString(6);
+            boolean blocked = result.getInt(8) == 2;
             model.addRow(new Object[]{name,
                                       user,
                                       id,
                                       tel,
                                       range,
                                       email,
-                                      address});
+                                      address,
+                                      blocked});
         }
         view.updateUI();
     }
@@ -72,6 +74,21 @@ public class UsersListModel {
         } catch (SQLException ex) {
             Logger.getLogger(UsersListModel.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public void saveChanges(){
+        DBConnection conn = new DBConnection();
+        conn.getConnection();
+        DefaultTableModel model = (DefaultTableModel) view.getJtUsers().getModel();
+        int rowCount = model.getRowCount();
+        for(int i = 0; i < rowCount; i++){
+            boolean isBlocked = (boolean) model.getValueAt(i, 7);
+            int newStatus = 1;
+            if(isBlocked) newStatus = 2;
+            String user = "\"" + (String) model.getValueAt(i, 1) + "\"";
+            conn.executeQuery("CALL updateUserStatus(" + user + "," + Integer.toString(newStatus) + ");");
+        }
+        conn.endCOnnection();
     }
 
     public MainAppController getRootComponent() {

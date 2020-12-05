@@ -5,6 +5,19 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+-- -----------------------------------------------------
+-- Schema primalenterpricedb
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema primalenterpricedb
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `primalenterpricedb` DEFAULT CHARACTER SET utf8 ;
+USE `primalenterpricedb` ;
+
+-- -----------------------------------------------------
 -- Table `primalenterpricedb`.`usuarios`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `primalenterpricedb`.`usuarios` ;
@@ -259,8 +272,10 @@ CREATE TABLE IF NOT EXISTS `primalenterpricedb`.`telefonos` (
     FOREIGN KEY (`tel_usuario`)
     REFERENCES `primalenterpricedb`.`usuarios` (`usr_usuario`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 6
+AUTO_INCREMENT = 10
 DEFAULT CHARACTER SET = utf8;
+
+USE `primalenterpricedb` ;
 
 # J1$9P!a6
 INSERT INTO `PrimalEnterpriceDB`.`usuarios` 
@@ -317,6 +332,24 @@ BEGIN
 		ELSE
 			id IS NOT NULL
 		END;
+END$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure bloqueo
+-- -----------------------------------------------------
+
+USE `primalenterpricedb`;
+DROP procedure IF EXISTS `primalenterpricedb`.`bloqueo`;
+
+DELIMITER $$
+USE `primalenterpricedb`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `bloqueo`(
+	IN nombre VARCHAR(80)
+)
+BEGIN
+	UPDATE usuarios SET usr_estado =2 WHERE usr_usuario =nombre;
 END$$
 
 DELIMITER ;
@@ -382,11 +415,12 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `editUserData`(
     IN email VARCHAR(100),
     IN telefono INT,
     IN nombre VARCHAR(80),
-    IN usuario_actual VARCHAR(25)
+    IN usuario_actual VARCHAR(25),
+    IN rango VARCHAR(40)
 )
 BEGIN
 	UPDATE usuarios JOIN telefonos
-    SET usr_nombre = nombre, usr_contrasena = SHA1(contrasena_nueva), usr_email = email, tel_telefono = telefono
+    SET usr_nombre = nombre, usr_contrasena = SHA1(contrasena_nueva), usr_email = email, usr_rango = rango, tel_telefono = telefono
     WHERE usr_usuario = usuario_actual AND tel_usuario = usr_usuario;
 END$$
 
@@ -437,9 +471,9 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `insertUser`(
 )
 BEGIN
 	DECLARE pass VARCHAR(40);
-    INSERT INTO telefonos VALUES (NULL,usuario,NULL,telefono);
 	SET pass = SHA1(contrasena);
-    INSERT INTO usuarios VALUES (usuario,rango,contrasena,email,nombre,direccion,cedula,1);  
+    INSERT INTO usuarios VALUES (usuario,rango,pass,email,nombre,direccion,cedula,1); 
+    INSERT INTO telefonos VALUES (NULL,usuario,NULL,telefono);
 END$$
 
 DELIMITER ;
@@ -466,21 +500,24 @@ BEGIN
 	IF valor = 0 THEN
 		SELECT 0 AS 'error';
 	ELSEIF valor = 1 THEN
-		SELECT SHA1(userPass) INTO pass;
+		select SHA1(userPass) INTO pass;
         
         IF (SELECT COUNT(*) FROM vw_getUsers WHERE usuario = username AND contrasena = pass) = 0 THEN
 			select 1 AS 'error';
-		ELSE
-			SELECT 
-            2 AS 'error',
-            usuario,
-            rango,
-            contrasena,
-            telefono,
-            email,
-            direccion,
-            nombre
-            FROM vw_getUsers WHERE usuario = username AND contrasena = pass;
+			ELSE IF(SELECT COUNT(*) FROM usuarios WHERE usr_usuario = username AND usr_estado= 2)
+			then select 4 AS 'error';
+				ELSE
+					SELECT 
+					2 AS 'error',
+					usuario,
+					rango,
+					contrasena,
+					telefono,
+					email,
+					direccion,
+					nombre
+					FROM vw_getUsers WHERE usuario = username AND contrasena = pass;
+			END IF;
         END IF;
     END IF;
 END$$
@@ -719,7 +756,6 @@ DELIMITER ;
 -- -----------------------------------------------------
 -- View `primalenterpricedb`.`productlowamount`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `primalenterpricedb`.`productlowamount`;
 DROP VIEW IF EXISTS `primalenterpricedb`.`productlowamount` ;
 USE `primalenterpricedb`;
 CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `primalenterpricedb`.`productlowamount` AS select `primalenterpricedb`.`productos`.`pru_nombre` AS `nombre`,`primalenterpricedb`.`productos`.`pru_cantidad` AS `cantidad`,`primalenterpricedb`.`productos`.`pru_id` AS `id` from `primalenterpricedb`.`productos` where ((`primalenterpricedb`.`productos`.`pru_cantidad` <= 5) and (`primalenterpricedb`.`productos`.`pru_estado` <> 2));
@@ -727,7 +763,6 @@ CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY D
 -- -----------------------------------------------------
 -- View `primalenterpricedb`.`productstoexpire`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `primalenterpricedb`.`productstoexpire`;
 DROP VIEW IF EXISTS `primalenterpricedb`.`productstoexpire` ;
 USE `primalenterpricedb`;
 CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `primalenterpricedb`.`productstoexpire` AS select `primalenterpricedb`.`productos`.`pru_nombre` AS `nombre`,`primalenterpricedb`.`productos`.`pru_id` AS `id`,`primalenterpricedb`.`productos`.`pru_fecha_caducidad` AS `fecha_caducidad`,(to_days(`primalenterpricedb`.`productos`.`pru_fecha_caducidad`) - to_days(now())) AS `diff` from `primalenterpricedb`.`productos` where (((to_days(`primalenterpricedb`.`productos`.`pru_fecha_caducidad`) - to_days(now())) < 5) and (`primalenterpricedb`.`productos`.`pru_fecha_caducidad` is not null) and (`primalenterpricedb`.`productos`.`pru_estado` <> 2)) order by (to_days(`primalenterpricedb`.`productos`.`pru_fecha_caducidad`) - to_days(now()));
@@ -735,7 +770,6 @@ CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY D
 -- -----------------------------------------------------
 -- View `primalenterpricedb`.`vw_getactives`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `primalenterpricedb`.`vw_getactives`;
 DROP VIEW IF EXISTS `primalenterpricedb`.`vw_getactives` ;
 USE `primalenterpricedb`;
 CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `primalenterpricedb`.`vw_getactives` AS select `primalenterpricedb`.`activos`.`act_id` AS `id`,`primalenterpricedb`.`activos`.`act_nit` AS `nit`,`primalenterpricedb`.`activos`.`act_factura_id` AS `factura`,`primalenterpricedb`.`activos`.`act_nombre` AS `nombre`,`primalenterpricedb`.`activos`.`act_estado` AS `estado`,`primalenterpricedb`.`activos`.`act_marca` AS `marca`,`primalenterpricedb`.`facturas`.`fac_fecha` AS `fecha_factura`,`primalenterpricedb`.`activos`.`act_descripcion` AS `descripcion` from (`primalenterpricedb`.`activos` left join `primalenterpricedb`.`facturas` on((`primalenterpricedb`.`activos`.`act_factura_id` = `primalenterpricedb`.`facturas`.`fac_id`)));
@@ -743,7 +777,6 @@ CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY D
 -- -----------------------------------------------------
 -- View `primalenterpricedb`.`vw_getproductions`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `primalenterpricedb`.`vw_getproductions`;
 DROP VIEW IF EXISTS `primalenterpricedb`.`vw_getproductions` ;
 USE `primalenterpricedb`;
 CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `primalenterpricedb`.`vw_getproductions` AS select `primalenterpricedb`.`producciones`.`prd_id` AS `id`,`primalenterpricedb`.`producciones`.`prd_usuario` AS `usuario`,`primalenterpricedb`.`producciones`.`prd_estado` AS `estado`,`primalenterpricedb`.`producciones`.`prd_fecha_comienzo` AS `fecha_comienzo`,`primalenterpricedb`.`producciones`.`prd_fecha_finalizacion` AS `fecha_finalizacion`,`primalenterpricedb`.`producciones`.`prd_tipo` AS `tipo` from `primalenterpricedb`.`producciones`;
@@ -751,7 +784,6 @@ CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY D
 -- -----------------------------------------------------
 -- View `primalenterpricedb`.`vw_getproducts`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `primalenterpricedb`.`vw_getproducts`;
 DROP VIEW IF EXISTS `primalenterpricedb`.`vw_getproducts` ;
 USE `primalenterpricedb`;
 CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `primalenterpricedb`.`vw_getproducts` AS select `primalenterpricedb`.`productos`.`pru_id` AS `id`,`primalenterpricedb`.`productos`.`pru_usuario` AS `usuario`,`primalenterpricedb`.`productos`.`pru_nit` AS `nit`,`primalenterpricedb`.`proveedores`.`pve_nombre` AS `nombre_proveedor`,`primalenterpricedb`.`productos`.`pru_nombre` AS `nombre`,`primalenterpricedb`.`productos`.`pru_marca` AS `marca`,`primalenterpricedb`.`productos`.`pru_tipo` AS `tipo`,`primalenterpricedb`.`productos`.`pru_cantidad` AS `cantidad`,`primalenterpricedb`.`productos`.`pru_metodo_almacenamiento` AS `metodo_almacenaje`,`primalenterpricedb`.`productos`.`pru_lugar_almacenamiento` AS `ubicacion`,`primalenterpricedb`.`productos`.`pru_descripcion` AS `descripcion`,`primalenterpricedb`.`facturas`.`fac_fecha` AS `fecha_factura`,`primalenterpricedb`.`productos`.`pru_fecha_caducidad` AS `fecha_caducidad` from (((`primalenterpricedb`.`productos` left join `primalenterpricedb`.`proveedores` on((`primalenterpricedb`.`productos`.`pru_nit` = `primalenterpricedb`.`proveedores`.`pve_nit`))) left join `primalenterpricedb`.`producto_factura` on((`primalenterpricedb`.`productos`.`pru_id` = `primalenterpricedb`.`producto_factura`.`pfa_producto_id`))) left join `primalenterpricedb`.`facturas` on((`primalenterpricedb`.`producto_factura`.`pfa_factura_id` = `primalenterpricedb`.`facturas`.`fac_id`)));
@@ -759,7 +791,6 @@ CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY D
 -- -----------------------------------------------------
 -- View `primalenterpricedb`.`vw_getproviders`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `primalenterpricedb`.`vw_getproviders`;
 DROP VIEW IF EXISTS `primalenterpricedb`.`vw_getproviders` ;
 USE `primalenterpricedb`;
 CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `primalenterpricedb`.`vw_getproviders` AS select `primalenterpricedb`.`proveedores`.`pve_nit` AS `nit`,`primalenterpricedb`.`telefonos`.`tel_telefono` AS `telefono`,`primalenterpricedb`.`proveedores`.`pve_nombre` AS `nombre`,`primalenterpricedb`.`proveedores`.`pve_email` AS `email`,`primalenterpricedb`.`proveedores`.`pve_direccion` AS `direccion` from (`primalenterpricedb`.`proveedores` join `primalenterpricedb`.`telefonos`) where (`primalenterpricedb`.`telefonos`.`tel_proveedor` = `primalenterpricedb`.`proveedores`.`pve_nit`);
@@ -767,14 +798,11 @@ CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY D
 -- -----------------------------------------------------
 -- View `primalenterpricedb`.`vw_getusers`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `primalenterpricedb`.`vw_getusers`;
 DROP VIEW IF EXISTS `primalenterpricedb`.`vw_getusers` ;
 USE `primalenterpricedb`;
 CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `primalenterpricedb`.`vw_getusers` AS select `primalenterpricedb`.`usuarios`.`usr_usuario` AS `usuario`,`primalenterpricedb`.`telefonos`.`tel_telefono` AS `telefono`,`primalenterpricedb`.`usuarios`.`usr_contrasena` AS `contrasena`,`primalenterpricedb`.`usuarios`.`usr_rango` AS `rango`,`primalenterpricedb`.`usuarios`.`usr_nombre` AS `nombre`,`primalenterpricedb`.`usuarios`.`usr_cedula` AS `cedula`,`primalenterpricedb`.`usuarios`.`usr_email` AS `email`,`primalenterpricedb`.`usuarios`.`usr_direccion` AS `direccion` from (`primalenterpricedb`.`usuarios` left join `primalenterpricedb`.`telefonos` on((`primalenterpricedb`.`telefonos`.`tel_usuario` = `primalenterpricedb`.`usuarios`.`usr_usuario`)));
-
 CREATE USER IF NOT EXISTS 'Admin' IDENTIFIED BY 'HTNT^256FbzNNO6eInk$';
 GRANT ALL ON `PrimalEnterpriceDB`.* TO 'Admin';
-
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

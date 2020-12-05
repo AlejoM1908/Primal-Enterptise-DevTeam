@@ -39,12 +39,6 @@ public class AssetRegistrationView extends javax.swing.JPanel {
         return jlReturn;
     }
 
-    
-    
-    public JComboBox<String> getJcbIcon() {
-        return jcbIcon;
-    }
-
     public JTextField getJtxtBrand() {
         return jtxtBrand;
     }
@@ -57,13 +51,6 @@ public class AssetRegistrationView extends javax.swing.JPanel {
         return jtxtNit;
     }
 
-    public JTextField getJtxtQuantity() {
-        return jtxtQuantity;
-    }
-
-    public JTextField getJtxtTicket() {
-        return jtxtTicket;
-    }
 
     public JTextArea getJtxtaDesc() {
         return jtxtaDesc;
@@ -86,21 +73,15 @@ public class AssetRegistrationView extends javax.swing.JPanel {
         jlBrand = new javax.swing.JLabel();
         jlStatus = new javax.swing.JLabel();
         jlNit = new javax.swing.JLabel();
-        jlQuantity = new javax.swing.JLabel();
-        jlIdTicket = new javax.swing.JLabel();
         jlDesc = new javax.swing.JLabel();
-        jlIcon = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         btnRegister = new javax.swing.JButton();
         jtxtName = new javax.swing.JTextField();
         jtxtBrand = new javax.swing.JTextField();
         jtxtNit = new javax.swing.JTextField();
-        jtxtQuantity = new javax.swing.JTextField();
         jcbStatus = new javax.swing.JComboBox<>();
-        jtxtTicket = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtxtaDesc = new javax.swing.JTextArea();
-        jcbIcon = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -133,21 +114,9 @@ public class AssetRegistrationView extends javax.swing.JPanel {
         jlNit.setForeground(new java.awt.Color(79, 84, 110));
         jlNit.setText("NIT Proveedor:");
 
-        jlQuantity.setFont(new java.awt.Font("Leelawadee UI", 0, 22)); // NOI18N
-        jlQuantity.setForeground(new java.awt.Color(79, 84, 110));
-        jlQuantity.setText("Cantidad:");
-
-        jlIdTicket.setFont(new java.awt.Font("Leelawadee UI", 0, 22)); // NOI18N
-        jlIdTicket.setForeground(new java.awt.Color(79, 84, 110));
-        jlIdTicket.setText("ID Factura:");
-
         jlDesc.setFont(new java.awt.Font("Leelawadee UI", 0, 22)); // NOI18N
         jlDesc.setForeground(new java.awt.Color(79, 84, 110));
         jlDesc.setText("Descripción:");
-
-        jlIcon.setFont(new java.awt.Font("Leelawadee UI", 0, 22)); // NOI18N
-        jlIcon.setForeground(new java.awt.Color(79, 84, 110));
-        jlIcon.setText("Icono:");
 
         jPanel1.setBackground(new java.awt.Color(20, 56, 197));
 
@@ -178,18 +147,12 @@ public class AssetRegistrationView extends javax.swing.JPanel {
 
         jtxtNit.setFont(new java.awt.Font("Leelawadee UI", 0, 22)); // NOI18N
 
-        jtxtQuantity.setFont(new java.awt.Font("Leelawadee UI", 0, 22)); // NOI18N
-
         jcbStatus.setFont(new java.awt.Font("Leelawadee UI", 0, 22)); // NOI18N
         jcbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nuevo", "Usado" }));
-
-        jtxtTicket.setFont(new java.awt.Font("Leelawadee UI", 0, 22)); // NOI18N
 
         jtxtaDesc.setColumns(20);
         jtxtaDesc.setRows(5);
         jScrollPane1.setViewportView(jtxtaDesc);
-
-        jcbIcon.setFont(new java.awt.Font("Leelawadee UI", 0, 22)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -197,41 +160,31 @@ public class AssetRegistrationView extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(143, 143, 143)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlName)
-                            .addComponent(jlBrand)
-                            .addComponent(jlStatus))
-                        .addGap(81, 81, 81)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jtxtName)
-                            .addComponent(jtxtBrand)
-                            .addComponent(jcbStatus, 0, 272, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jlQuantity, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlNit, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addComponent(jlNit)
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jtxtNit, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtxtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jtxtNit, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jlName)
+                            .addGap(81, 81, 81)
+                            .addComponent(jtxtName))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jlBrand)
+                                .addComponent(jlStatus))
+                            .addGap(98, 98, 98)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jtxtBrand)
+                                .addComponent(jcbStatus, 0, 272, Short.MAX_VALUE)))))
                 .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jlDesc)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jlIcon)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jcbIcon, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jlIdTicket)
-                                .addGap(29, 29, 29)
-                                .addComponent(jtxtTicket)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
                         .addGap(39, 39, 39))))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -252,40 +205,33 @@ public class AssetRegistrationView extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jlReturn, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(70, 70, 70))
+                        .addGap(157, 157, 157))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jlTitle)
-                        .addGap(46, 46, 46)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlName)
-                    .addComponent(jlIdTicket)
-                    .addComponent(jtxtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtxtTicket, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(48, 48, 48)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlBrand)
-                    .addComponent(jlDesc)
-                    .addComponent(jtxtBrand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGap(61, 61, 61)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jlName)
+                            .addComponent(jtxtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(36, 36, 36)))
+                .addComponent(jlDesc)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jlBrand)
+                            .addComponent(jtxtBrand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jlStatus)
                             .addComponent(jcbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(51, 51, 51)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jlNit)
-                            .addComponent(jtxtNit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1)))
-                .addGap(48, 48, 48)
+                        .addGap(64, 64, 64)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlQuantity)
-                    .addComponent(jtxtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlIcon)
-                    .addComponent(jcbIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                    .addComponent(jlNit)
+                    .addComponent(jtxtNit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(83, 83, 83)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(74, 74, 74))
         );
@@ -300,23 +246,17 @@ public class AssetRegistrationView extends javax.swing.JPanel {
     private javax.swing.JButton btnRegister;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JComboBox<String> jcbIcon;
     private javax.swing.JComboBox<String> jcbStatus;
     private javax.swing.JLabel jlBrand;
     private javax.swing.JLabel jlDesc;
-    private javax.swing.JLabel jlIcon;
-    private javax.swing.JLabel jlIdTicket;
     private javax.swing.JLabel jlName;
     private javax.swing.JLabel jlNit;
-    private javax.swing.JLabel jlQuantity;
     private javax.swing.JLabel jlReturn;
     private javax.swing.JLabel jlStatus;
     private javax.swing.JLabel jlTitle;
     private javax.swing.JTextField jtxtBrand;
     private javax.swing.JTextField jtxtName;
     private javax.swing.JTextField jtxtNit;
-    private javax.swing.JTextField jtxtQuantity;
-    private javax.swing.JTextField jtxtTicket;
     private javax.swing.JTextArea jtxtaDesc;
     // End of variables declaration//GEN-END:variables
 

@@ -1,10 +1,10 @@
 //Java imports
 package lib.ui.MainApp;
-
-//Proyect imports
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JFrame;
+
+//Proyect imports
 import lib.Main;
 import lib.models.User;
 import lib.ui.AssetRegistration.AssetRegistrationController;
@@ -13,8 +13,8 @@ import lib.ui.EditAccount.EditAccountController;
 import lib.ui.Inventory.InventoryController;
 import lib.ui.InventoryMenu.InventoryMenuController;
 import lib.ui.MainBar.MainBarController;
-
 import lib.ui.MainMenu.MainMenuController;
+import lib.ui.ProductionList.ProductionListController;
 import lib.ui.ProductionsReport.ProductionsReportController;
 import lib.ui.ReportsMenu.ReportsMenuController;
 import lib.ui.SingleProduction.SingleProductionController;
@@ -22,12 +22,10 @@ import lib.ui.SupplierRegistration.SupplierRegistrationController;
 import lib.ui.UsersList.UsersListController;
 import lib.ui.userAdministrationMenuView.AdministrationMenuController;
 import lib.ui.userAdministrationMenuView.AdministrationMenuView;
-
 import lib.ui.buttonBar.ButtonBarController;
-
 import lib.ui.productionSubmenu.ProductionSubmenuController;
-
 import lib.ui.consultProductView.ConsultProductController;
+import lib.ui.createProduction.CreateProductionController;
 import lib.ui.registroProd.prodController;
 import lib.ui.registroUsr.registroUsrController;
 
@@ -60,6 +58,8 @@ public class MainAppController implements MouseListener{
         this.mainAppModel.setRegisterProductController(new prodController(this.mainAppModel.getRegisterProductModel(), this.getMainAppModel().getRegisterProductView(), this));
         this.mainAppModel.setRegisterUserController(new registroUsrController(this.mainAppModel.getRegisterUserView(), this.mainAppModel.getRegisterUserModel(), this));
         this.mainAppModel.setConsultProductController(new ConsultProductController(this.mainAppModel.getConsultProductView(), this.mainAppModel.getConsultProductModel(), this));
+        this.mainAppModel.setCreateProductionController(new CreateProductionController(this.mainAppModel.getCreateProductionModel(), this.mainAppModel.getCreateProductionView(), this));
+        this.mainAppModel.setProductionListController(new ProductionListController(this.mainAppModel.getProductionListView(),this.mainAppModel.getProductionListModel() , this));
         this.mainAppModel.setSingleProductionController(new SingleProductionController(this.mainAppModel.getSingleProductionView(), this.mainAppModel.getSingleProductionModel(), this));
         this.mainAppModel.setButtonBarController(new ButtonBarController(this.mainAppModel.getButtonBarView(), this.mainAppModel.getButtonBarModel(), this));
 

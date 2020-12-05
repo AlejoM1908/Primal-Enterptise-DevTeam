@@ -4,8 +4,13 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
-CREATE SCHEMA IF NOT EXISTS `primalenterpricedb` DEFAULT CHARACTER SET utf8 ;
-USE `primalenterpricedb` ;
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+-- -----------------------------------------------------
+-- Schema primalenterpricedb
+-- -----------------------------------------------------
+DROP SCHEMA IF EXISTS `primalenterpricedb` ;
 
 -- -----------------------------------------------------
 -- Schema primalenterpricedb
@@ -30,6 +35,7 @@ CREATE TABLE IF NOT EXISTS `primalenterpricedb`.`usuarios` (
   PRIMARY KEY (`usr_usuario`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
+
 
 -- -----------------------------------------------------
 -- Table `primalenterpricedb`.`proveedores`
@@ -72,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `primalenterpricedb`.`facturas` (
     ON DELETE RESTRICT
     ON UPDATE RESTRICT)
 ENGINE = InnoDB
-AUTO_INCREMENT = 2
+AUTO_INCREMENT = 3
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -110,7 +116,7 @@ CREATE TABLE IF NOT EXISTS `primalenterpricedb`.`activos` (
     ON DELETE RESTRICT
     ON UPDATE RESTRICT)
 ENGINE = InnoDB
-AUTO_INCREMENT = 7
+AUTO_INCREMENT = 9
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -158,8 +164,9 @@ CREATE TABLE IF NOT EXISTS `primalenterpricedb`.`producciones` (
     ON DELETE RESTRICT
     ON UPDATE RESTRICT)
 ENGINE = InnoDB
-AUTO_INCREMENT = 5
+AUTO_INCREMENT = 9
 DEFAULT CHARACTER SET = utf8;
+
 
 -- -----------------------------------------------------
 -- Table `primalenterpricedb`.`productos`
@@ -193,7 +200,7 @@ CREATE TABLE IF NOT EXISTS `primalenterpricedb`.`productos` (
     ON DELETE RESTRICT
     ON UPDATE RESTRICT)
 ENGINE = InnoDB
-AUTO_INCREMENT = 7
+AUTO_INCREMENT = 9
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -219,6 +226,7 @@ CREATE TABLE IF NOT EXISTS `primalenterpricedb`.`produccion_producto` (
     ON UPDATE RESTRICT)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
+
 
 -- -----------------------------------------------------
 -- Table `primalenterpricedb`.`producto_factura`
@@ -265,13 +273,45 @@ CREATE TABLE IF NOT EXISTS `primalenterpricedb`.`telefonos` (
     FOREIGN KEY (`tel_usuario`)
     REFERENCES `primalenterpricedb`.`usuarios` (`usr_usuario`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 6
+AUTO_INCREMENT = 9
 DEFAULT CHARACTER SET = utf8;
 
-# J1$9P!a6
-INSERT INTO `PrimalEnterpriceDB`.`usuarios` 
-VALUE("Admin","admin","b69948501d89b5aff7726b649a27264bcd139dc1","None","Admin","None",0,1);
+USE `primalenterpricedb` ;
 
+-- -----------------------------------------------------
+-- Placeholder table for view `primalenterpricedb`.`productlowamount`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `primalenterpricedb`.`productlowamount` (`nombre` INT, `cantidad` INT, `id` INT);
+
+-- -----------------------------------------------------
+-- Placeholder table for view `primalenterpricedb`.`productstoexpire`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `primalenterpricedb`.`productstoexpire` (`nombre` INT, `id` INT, `fecha_caducidad` INT, `diff` INT);
+
+-- -----------------------------------------------------
+-- Placeholder table for view `primalenterpricedb`.`vw_getactives`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `primalenterpricedb`.`vw_getactives` (`id` INT, `nit` INT, `factura` INT, `nombre` INT, `estado` INT, `marca` INT, `fecha_factura` INT, `descripcion` INT);
+
+-- -----------------------------------------------------
+-- Placeholder table for view `primalenterpricedb`.`vw_getproductions`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `primalenterpricedb`.`vw_getproductions` (`id` INT, `usuario` INT, `estado` INT, `fecha_comienzo` INT, `fecha_finalizacion` INT, `tipo` INT);
+
+-- -----------------------------------------------------
+-- Placeholder table for view `primalenterpricedb`.`vw_getproducts`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `primalenterpricedb`.`vw_getproducts` (`id` INT, `usuario` INT, `nit` INT, `nombre_proveedor` INT, `nombre` INT, `marca` INT, `tipo` INT, `cantidad` INT, `metodo_almacenaje` INT, `ubicacion` INT, `descripcion` INT, `fecha_factura` INT, `fecha_caducidad` INT);
+
+-- -----------------------------------------------------
+-- Placeholder table for view `primalenterpricedb`.`vw_getproviders`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `primalenterpricedb`.`vw_getproviders` (`nit` INT, `telefono` INT, `nombre` INT, `email` INT, `direccion` INT);
+
+-- -----------------------------------------------------
+-- Placeholder table for view `primalenterpricedb`.`vw_getusers`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `primalenterpricedb`.`vw_getusers` (`usuario` INT, `telefono` INT, `contrasena` INT, `rango` INT, `nombre` INT, `cedula` INT, `email` INT, `direccion` INT);
 
 -- -----------------------------------------------------
 -- procedure ActiveInfo
@@ -329,6 +369,29 @@ END$$
 DELIMITER ;
 
 -- -----------------------------------------------------
+-- procedure create_production
+-- -----------------------------------------------------
+
+USE `primalenterpricedb`;
+DROP procedure IF EXISTS `primalenterpricedb`.`create_production`;
+
+DELIMITER $$
+USE `primalenterpricedb`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `create_production`(
+    IN fecha_comienzo DATE,
+    IN fecha_final DATE,
+    IN tipo VARCHAR(20),
+    IN usuario VARCHAR(25),
+    IN estado VARCHAR(25)
+)
+BEGIN
+	INSERT INTO producciones
+    VALUES (NULL,usuario,estado,tipo,fecha_comienzo,fecha_final);
+END$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
 -- procedure decreaceInventory
 -- -----------------------------------------------------
 
@@ -351,6 +414,26 @@ BEGIN
     UPDATE productos SET pru_cantidad = (inventario - Num_items)
     WHERE pru_id = ID_item;
     END IF;
+END$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure deleteProduct
+-- -----------------------------------------------------
+
+USE `primalenterpricedb`;
+DROP procedure IF EXISTS `primalenterpricedb`.`deleteProduct`;
+
+DELIMITER $$
+USE `primalenterpricedb`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `deleteProduct`(
+	IN id INT
+)
+BEGIN
+	UPDATE productos
+    SET pru_estado = 2
+    WHERE pru_id = id;
 END$$
 
 DELIMITER ;
@@ -400,6 +483,26 @@ END$$
 DELIMITER ;
 
 -- -----------------------------------------------------
+-- procedure end_production
+-- -----------------------------------------------------
+
+USE `primalenterpricedb`;
+DROP procedure IF EXISTS `primalenterpricedb`.`end_production`;
+
+DELIMITER $$
+USE `primalenterpricedb`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `end_production`(
+	IN id_produccion INT
+)
+BEGIN
+	UPDATE producciones
+    SET prd_estado = "Terminada"
+    WHERE prd_id = id_produccion;
+END$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
 -- procedure insertProvider
 -- -----------------------------------------------------
 
@@ -444,9 +547,31 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `insertUser`(
 )
 BEGIN
 	DECLARE pass VARCHAR(40);
-    INSERT INTO telefonos VALUES (NULL,usuario,NULL,telefono);
 	SET pass = SHA1(contrasena);
-    INSERT INTO usuarios VALUES (usuario,rango,contrasena,email,nombre,direccion,cedula,1);  
+    INSERT INTO usuarios VALUES (usuario,rango,contrasena,email,nombre,direccion,cedula,1);
+    INSERT INTO telefonos VALUES (NULL,usuario,NULL,telefono);
+END$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure link_product_to_production
+-- -----------------------------------------------------
+
+USE `primalenterpricedb`;
+DROP procedure IF EXISTS `primalenterpricedb`.`link_product_to_production`;
+
+DELIMITER $$
+USE `primalenterpricedb`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `link_product_to_production`(
+	IN id_producto INT,
+    IN id_produccion INT,
+    IN cantidad INT
+)
+BEGIN
+	INSERT INTO produccion_producto
+    VALUES(id_produccion,id_producto,cantidad);
+    CALL decreaceInventory(cantidad,id_producto);
 END$$
 
 DELIMITER ;
@@ -473,7 +598,7 @@ BEGIN
 	IF valor = 0 THEN
 		SELECT 0 AS 'error';
 	ELSEIF valor = 1 THEN
-		SELECT SHA1(userPass) INTO pass;
+		select SHA1(userPass) INTO pass;
         
         IF (SELECT COUNT(*) FROM vw_getUsers WHERE usuario = username AND contrasena = pass) = 0 THEN
 			select 1 AS 'error';
@@ -507,8 +632,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `productInfo`(
 	IN productId INT
 )
 BEGIN
-	SELECT nombre,descripcion,tipo,cantidad,metodo_almacenamiento,lugar_almacenamiento,fecha_caducidad,fecha_factura AS fecha_compra
-    FROM vw_getProduct WHERE id = productId;
+	SELECT nombre,descripcion,tipo,cantidad,metodo_almacenaje,ubicacion,fecha_caducidad,fecha_factura AS fecha_compra
+    FROM vw_getProducts WHERE id = productId;
 END$$
 
 DELIMITER ;
@@ -621,17 +746,16 @@ DROP procedure IF EXISTS `primalenterpricedb`.`registerActive`;
 DELIMITER $$
 USE `primalenterpricedb`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `registerActive`(
-	IN id INT,
     IN usuario VARCHAR(25),
     IN nit INT,
-    IN id_factura INT,
     IN descripcion VARCHAR(255),
 	IN estado VARCHAR(25),
-    IN nombre VARCHAR(80)
+    IN nombre VARCHAR(80),
+    IN marca VARCHAR(45)
 )
 BEGIN
 	INSERT INTO activos
-    VALUES(id,usuario,nit,id_factura,estado,nombre,descripcion);
+    VALUES(NULL,usuario,nit,1,estado,nombre,descripcion,marca);
 END$$
 
 DELIMITER ;
@@ -646,7 +770,6 @@ DROP procedure IF EXISTS `primalenterpricedb`.`registerProduct`;
 DELIMITER $$
 USE `primalenterpricedb`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `registerProduct`(
-	IN id INT,
     IN usuario VARCHAR(25),
     IN nit INT,
     IN marca VARCHAR(80),
@@ -654,13 +777,83 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `registerProduct`(
     IN cantidad INT,
     IN metodo_almacenamiento VARCHAR(255),
     IN lugar_almacenamiento VARCHAR(255),
-    IN fecha_caducidad DATE,
     IN nombre VARCHAR(80),
-    IN descripcion VARCHAR(255)
+    IN descripcion VARCHAR(255),
+    IN fecha_caducidad DATE
 )
 BEGIN
 	INSERT INTO productos
-    VALUES(id,usuario,nit,marca,tipo,cantidad,metodo_almacenamiento,lugar_almacenamiento,nombre,descripcion,fecha_caducidad,1);
+    VALUES(NULL,usuario,nit,marca,tipo,cantidad,metodo_almacenamiento,lugar_almacenamiento,nombre,descripcion,fecha_caducidad,1);
+END$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure updateProductInfo
+-- -----------------------------------------------------
+
+USE `primalenterpricedb`;
+DROP procedure IF EXISTS `primalenterpricedb`.`updateProductInfo`;
+
+DELIMITER $$
+USE `primalenterpricedb`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `updateProductInfo`(
+	IN id INT,
+    IN cantidad INT,
+    IN nombre VARCHAR(80),
+    IN tipo VARCHAR(20),
+    IN lugar VARCHAR(255),
+    IN metodo VARCHAR(255),
+    IN descripcion VARCHAR(255),
+    IN fecha DATE
+)
+BEGIN
+	UPDATE productos
+    SET pru_cantidad = cantidad, pru_nombre = nombre, pru_tipo = tipo, pru_lugar_almacenamiento = lugar, pru_metodo_almacenamiento = metodo, pru_descripcion = descripcion, pru_fecha_caducidad = fecha
+    WHERE pru_id = id;
+END$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure updateUserStatus
+-- -----------------------------------------------------
+
+USE `primalenterpricedb`;
+DROP procedure IF EXISTS `primalenterpricedb`.`updateUserStatus`;
+
+DELIMITER $$
+USE `primalenterpricedb`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `updateUserStatus`(
+	IN usuario VARCHAR(25),
+	IN nuevo_estado INT
+)
+BEGIN
+	UPDATE usuarios
+    SET usr_estado = nuevo_estado
+    WHERE usr_usuario = usuario;
+END$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure update_production
+-- -----------------------------------------------------
+
+USE `primalenterpricedb`;
+DROP procedure IF EXISTS `primalenterpricedb`.`update_production`;
+
+DELIMITER $$
+USE `primalenterpricedb`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `update_production`(
+	IN id_produccion INT,
+    IN nueva_fecha_final DATE,
+    IN nuevo_estado VARCHAR(25)
+)
+BEGIN
+	UPDATE producciones
+    SET prd_fecha_finalizacion = nueva_fecha_final, prd_estado = nuevo_estado
+    WHERE prd_id = id_produccion;
 END$$
 
 DELIMITER ;
@@ -778,10 +971,6 @@ DROP TABLE IF EXISTS `primalenterpricedb`.`vw_getusers`;
 DROP VIEW IF EXISTS `primalenterpricedb`.`vw_getusers` ;
 USE `primalenterpricedb`;
 CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `primalenterpricedb`.`vw_getusers` AS select `primalenterpricedb`.`usuarios`.`usr_usuario` AS `usuario`,`primalenterpricedb`.`telefonos`.`tel_telefono` AS `telefono`,`primalenterpricedb`.`usuarios`.`usr_contrasena` AS `contrasena`,`primalenterpricedb`.`usuarios`.`usr_rango` AS `rango`,`primalenterpricedb`.`usuarios`.`usr_nombre` AS `nombre`,`primalenterpricedb`.`usuarios`.`usr_cedula` AS `cedula`,`primalenterpricedb`.`usuarios`.`usr_email` AS `email`,`primalenterpricedb`.`usuarios`.`usr_direccion` AS `direccion` from (`primalenterpricedb`.`usuarios` left join `primalenterpricedb`.`telefonos` on((`primalenterpricedb`.`telefonos`.`tel_usuario` = `primalenterpricedb`.`usuarios`.`usr_usuario`)));
-
-CREATE USER 'Admin' IDENTIFIED BY 'HTNT^256FbzNNO6eInk$';
-GRANT ALL ON `PrimalEnterpriceDB`.* TO 'Admin';
-
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

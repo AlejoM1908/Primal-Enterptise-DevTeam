@@ -8,6 +8,7 @@ import java.awt.event.MouseListener;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import lib.ui.Inventory.InventoryView;
 import lib.ui.MainApp.MainAppController;
 
@@ -23,7 +24,7 @@ public class ConsultProductController implements MouseListener {
         this.model = model;
         this.model.setRootComponent(rootComponent);
         this.view.getAtraslb().addMouseListener(this);
-
+        this.view.getJlSave().addMouseListener(this);
     }
 
     public ConsultProductModel getModel() {
@@ -37,8 +38,12 @@ public class ConsultProductController implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent me) {
        if(me.getSource() == view.getAtraslb()){
-            InventoryView inventoryView = new InventoryView();
+            InventoryView inventoryView = this.model.getRootComponent().getMainAppModel().getInventoryView();
+            this.model.getRootComponent().getMainAppModel().getInventoryModel().updateTable();
             this.model.getRootComponent().getMainAppView().setInventory(inventoryView);
+        }else if(me.getSource() == view.getJlSave()){
+            this.model.updateInfo();
+            JOptionPane.showMessageDialog(view, "Cambios guardados", "", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
@@ -55,7 +60,7 @@ public class ConsultProductController implements MouseListener {
     @Override
     public void mouseEntered(MouseEvent me) {
         view.getAtraslb().setCursor(new Cursor(Cursor.HAND_CURSOR));
-        
+        view.getJlSave().setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
 
     @Override

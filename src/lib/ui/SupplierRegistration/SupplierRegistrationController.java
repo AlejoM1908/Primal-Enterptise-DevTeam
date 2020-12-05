@@ -15,6 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import lib.ui.MainApp.MainAppController;
+import lib.ui.userAdministrationMenuView.AdministrationMenuView;
 
 /**
  *
@@ -76,7 +77,10 @@ public class SupplierRegistrationController implements ActionListener, MouseList
 
     @Override
     public void mouseClicked(MouseEvent me) {
-        
+        if(me.getSource() == this.view.getJlReturn()){
+            AdministrationMenuView view = this.model.getRootComponent().getMainAppModel().getAdministrationMenuView();
+            this.model.getRootComponent().getMainAppView().setAdministrationMenu(view);
+        }
     }
 
     @Override

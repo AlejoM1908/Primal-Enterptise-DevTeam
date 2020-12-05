@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import lib.ui.InventoryMenu.InventoryMenuView;
 import lib.ui.MainApp.MainAppController;
 
 /**
@@ -67,7 +68,8 @@ public class AssetRegistrationController implements ActionListener, MouseListene
     
     @Override
     public void mouseClicked(MouseEvent me) {
-        //DIRIGIR A VENTANA
+        InventoryMenuView inventoryMenuView = this.model.getRootComponent().getMainAppModel().getInventoryMenuView();
+        this.model.getRootComponent().getMainAppView().setInventoryMenu(inventoryMenuView);
     }
 
     @Override

@@ -51,7 +51,8 @@ public class InventoryController implements MouseListener {
                 DefaultTableModel tableModel = (DefaultTableModel) this.view.getJtInventory().getModel();
                 id = (int) tableModel.getValueAt(row, 6);
                 try {
-                    this.model.getRootComponent().getMainAppModel().getConsultProductModel().fillInfoProduct(id);
+                    this.model.getRootComponent().getMainAppModel().getConsultProductModel().setProductId(id);
+                    this.model.getRootComponent().getMainAppModel().getConsultProductModel().fillInfoProduct();
                 } catch (SQLException ex) {
                     Logger.getLogger(ConsultProductController.class.getName()).log(Level.SEVERE, null, ex);
                 }

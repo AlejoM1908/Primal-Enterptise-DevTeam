@@ -10,6 +10,7 @@ import lib.ui.Inventory.InventoryView;
 import lib.ui.InventoryMenu.InventoryMenuView;
 import lib.ui.MainBar.MainBarView;
 import lib.ui.MainMenu.MainMenuView;
+import lib.ui.ProductionList.ProductionListView;
 import lib.ui.ProductionsReport.ProductionsReportView;
 import lib.ui.ReportsMenu.ReportsMenuView;
 import lib.ui.SupplierRegistration.SupplierRegistrationView;
@@ -17,6 +18,7 @@ import lib.ui.UsersList.UsersListView;
 import lib.ui.buttonBar.ButtonBarView;
 import lib.ui.productionSubmenu.ProductionSubmenuView;
 import lib.ui.consultProductView.ConsultProductView;
+import lib.ui.createProduction.CreateProductionView;
 //Proyect imports
 import lib.ui.registroUsr.registroUsr;
 import lib.ui.registroProd.registroProd;
@@ -291,6 +293,24 @@ public class MainAppView extends javax.swing.JFrame {
         
         this.appContent.add(consultProductView);
         consultProductView.setVisible(true);
+    }
+    
+    public void setCreateProduction(CreateProductionView createProductionView){
+        for(Component c : this.appContent.getComponents()){
+            c.setVisible(false);
+        }
+        this.appContent.removeAll();
+        this.appContent.add(createProductionView);
+        createProductionView.setVisible(true);
+    }
+    public void setProductionListView(ProductionListView productionListView){
+        for(Component c : this.appContent.getComponents()){
+            c.setVisible(false);
+        }
+        this.appContent.removeAll();
+        this.appContent.add(productionListView);
+        productionListView.setVisible(true);
+  
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

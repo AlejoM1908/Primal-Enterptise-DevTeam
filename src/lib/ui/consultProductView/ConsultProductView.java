@@ -9,7 +9,11 @@ import java.awt.Dimension;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 /**
  *
@@ -41,14 +45,20 @@ public class ConsultProductView extends javax.swing.JPanel {
         lugarAlmacenamientolb = new javax.swing.JLabel();
         caducidadlb = new javax.swing.JLabel();
         descripcionlb = new javax.swing.JLabel();
-        nombreInfolb = new javax.swing.JLabel();
-        tipoInfolb = new javax.swing.JLabel();
-        cantidadInfolb = new javax.swing.JLabel();
-        almacenamientoInfolb = new javax.swing.JLabel();
-        fechaCaducidadInfolb = new javax.swing.JLabel();
         atraslb = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtxtaDescripcion = new javax.swing.JTextArea();
+        jtxtName = new javax.swing.JTextField();
+        jtxtAmount = new javax.swing.JTextField();
+        jtxtType = new javax.swing.JTextField();
+        jtxtPlace = new javax.swing.JTextField();
+        lugarAlmacenamientolb1 = new javax.swing.JLabel();
+        jtxtMethod = new javax.swing.JTextField();
+        jcbxYear = new javax.swing.JComboBox<>();
+        jcbxMonth = new javax.swing.JComboBox<>();
+        jcbxDay = new javax.swing.JComboBox<>();
+        jPanel3 = new javax.swing.JPanel();
+        jlSave = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(1060, 708));
@@ -81,21 +91,6 @@ public class ConsultProductView extends javax.swing.JPanel {
         descripcionlb.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
         descripcionlb.setText("Descripción :");
 
-        nombreInfolb.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        nombreInfolb.setText("jLabel1");
-
-        tipoInfolb.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        tipoInfolb.setText("jLabel1");
-
-        cantidadInfolb.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        cantidadInfolb.setText("jLabel1");
-
-        almacenamientoInfolb.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        almacenamientoInfolb.setText("jLabel1");
-
-        fechaCaducidadInfolb.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        fechaCaducidadInfolb.setText("jLabel1");
-
         atraslb.setSize(new Dimension(66,69));
         atraslb.setText("jLabel1");
         atraslb.setMaximumSize(new java.awt.Dimension(66, 69));
@@ -107,36 +102,66 @@ public class ConsultProductView extends javax.swing.JPanel {
 
         jtxtaDescripcion.setEditable(false);
         jtxtaDescripcion.setColumns(20);
-        jtxtaDescripcion.setFont(new java.awt.Font("Leelawadee UI", 0, 13)); // NOI18N
+        jtxtaDescripcion.setFont(new java.awt.Font("Leelawadee UI", 0, 15)); // NOI18N
         jtxtaDescripcion.setLineWrap(true);
         jtxtaDescripcion.setRows(5);
         jScrollPane1.setViewportView(jtxtaDescripcion);
+
+        jtxtName.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
+
+        jtxtAmount.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
+
+        jtxtType.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
+
+        jtxtPlace.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
+
+        lugarAlmacenamientolb1.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        lugarAlmacenamientolb1.setText("Método almacenamiento : ");
+
+        jtxtMethod.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
+
+        jcbxYear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030", "2031", "2032", "2033", "2034", "2035", "2036", "2037", "2038", "2039", "2040" }));
+
+        jcbxMonth.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
+
+        jcbxDay.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+
+        jPanel3.setBackground(new java.awt.Color(20, 56, 197));
+
+        jlSave.setFont(new java.awt.Font("Leelawadee UI", 0, 22)); // NOI18N
+        jlSave.setForeground(new java.awt.Color(255, 255, 255));
+        jlSave.setText("            Guardar");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlSave, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlSave, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(120, 120, 120)
-                .addComponent(iconoProductolb, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(nombrelb, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nombreInfolb, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(tipolb)
-                        .addGap(18, 18, 18)
-                        .addComponent(tipoInfolb, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(120, 120, 120)
+                        .addComponent(iconoProductolb, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(120, 120, 120)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(cantidadlb)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cantidadInfolb, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lugarAlmacenamientolb)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(almacenamientoInfolb, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jtxtAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(descripcionlb)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -144,8 +169,28 @@ public class ConsultProductView extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(caducidadlb)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(fechaCaducidadInfolb, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(91, Short.MAX_VALUE))
+                        .addComponent(jcbxYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jcbxMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jcbxDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nombrelb, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tipolb))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtxtType, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtxtName, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lugarAlmacenamientolb1)
+                            .addComponent(lugarAlmacenamientolb))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtxtPlace, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtxtMethod, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(18, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(44, 44, 44)
                 .addComponent(atraslb, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -165,70 +210,112 @@ public class ConsultProductView extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(nombrelb)
-                            .addComponent(nombreInfolb, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(42, 42, 42)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tipolb)
-                            .addComponent(tipoInfolb))
-                        .addGap(34, 34, 34)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cantidadlb)
-                            .addComponent(cantidadInfolb))
+                            .addComponent(jtxtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(38, 38, 38)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tipolb)
+                            .addComponent(jtxtType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cantidadlb)
+                            .addComponent(jtxtAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lugarAlmacenamientolb)
-                            .addComponent(almacenamientoInfolb, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(43, 43, 43)
+                            .addComponent(jtxtPlace, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lugarAlmacenamientolb1)
+                            .addComponent(jtxtMethod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(descripcionlb)))
-                    .addComponent(iconoProductolb, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(caducidadlb)
-                    .addComponent(fechaCaducidadInfolb))
-                .addContainerGap(148, Short.MAX_VALUE))
+                            .addComponent(descripcionlb))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(caducidadlb)
+                            .addComponent(jcbxYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jcbxMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jcbxDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(109, 109, 109))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(iconoProductolb, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(96, 96, 96))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel almacenamientoInfolb;
     private javax.swing.JLabel atraslb;
+    private javax.swing.JButton btnSave;
+    private javax.swing.JButton btnSave1;
     private javax.swing.JLabel caducidadlb;
-    private javax.swing.JLabel cantidadInfolb;
     private javax.swing.JLabel cantidadlb;
     private javax.swing.JLabel descripcionlb;
-    private javax.swing.JLabel fechaCaducidadInfolb;
     private javax.swing.JLabel iconoProductolb;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JComboBox<String> jcbxDay;
+    private javax.swing.JComboBox<String> jcbxMonth;
+    private javax.swing.JComboBox<String> jcbxYear;
+    private javax.swing.JLabel jlSave;
+    private javax.swing.JTextField jtxtAmount;
+    private javax.swing.JTextField jtxtMethod;
+    private javax.swing.JTextField jtxtName;
+    private javax.swing.JTextField jtxtPlace;
+    private javax.swing.JTextField jtxtType;
     private javax.swing.JTextArea jtxtaDescripcion;
     private javax.swing.JLabel lugarAlmacenamientolb;
-    private javax.swing.JLabel nombreInfolb;
+    private javax.swing.JLabel lugarAlmacenamientolb1;
     private javax.swing.JLabel nombrelb;
-    private javax.swing.JLabel tipoInfolb;
     private javax.swing.JLabel tipolb;
     private javax.swing.JLabel userAdministrationTittle1;
     // End of variables declaration//GEN-END:variables
 
-    public javax.swing.JLabel getNombreInfolb() {
-        return nombreInfolb;
+    public JLabel getAtraslb() {
+        return atraslb;
     }
 
-    public javax.swing.JLabel getTipoInfolb() {
-        return tipoInfolb;
+    public JLabel getJlSave() {
+        return jlSave;
     }
 
-    public javax.swing.JLabel getCantidadInfolb() {
-        return cantidadInfolb;
+
+
+    public JComboBox<String> getJcbxDay() {
+        return jcbxDay;
     }
 
-    public javax.swing.JLabel getAlmacenamientoInfolb() {
-        return almacenamientoInfolb;
+    public JComboBox<String> getJcbxMonth() {
+        return jcbxMonth;
     }
 
-    public javax.swing.JLabel getLugarAlmacenamientolb() {
-        return lugarAlmacenamientolb;
+    public JComboBox<String> getJcbxYear() {
+        return jcbxYear;
+    }
+
+    public JTextField getJtxtAmount() {
+        return jtxtAmount;
+    }
+
+    public JTextField getJtxtMethod() {
+        return jtxtMethod;
+    }
+
+    public JTextField getJtxtName() {
+        return jtxtName;
+    }
+
+    public JTextField getJtxtPlace() {
+        return jtxtPlace;
+    }
+
+    public JTextField getJtxtType() {
+        return jtxtType;
     }
 
     public JTextArea getJtxtaDescripcion() {
@@ -236,14 +323,6 @@ public class ConsultProductView extends javax.swing.JPanel {
     }
 
     
-
-    public javax.swing.JLabel getFechaCaducidadInfolb() {
-        return fechaCaducidadInfolb;
-    }
-
-    public javax.swing.JLabel getAtraslb() {
-        return atraslb;
-    }
 
     
 }

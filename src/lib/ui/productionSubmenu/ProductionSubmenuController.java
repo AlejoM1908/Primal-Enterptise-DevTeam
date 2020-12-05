@@ -39,7 +39,7 @@ public class ProductionSubmenuController {
                 this.model.getRootComponent().getMainAppView().setCreateProduction(createProductionView);
             }
             else if (me.getSource() == view.getProductionsListButton()){
-                
+                this.model.getRootComponent().getMainAppView().setProductionListView(this.model.getRootComponent().getMainAppModel().getProductionListView());
             }
         }
 

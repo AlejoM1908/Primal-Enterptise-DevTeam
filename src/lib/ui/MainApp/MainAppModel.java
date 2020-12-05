@@ -24,6 +24,9 @@ import lib.ui.MainBar.MainBarView;
 import lib.ui.MainMenu.MainMenuController;
 import lib.ui.MainMenu.MainMenuModel;
 import lib.ui.MainMenu.MainMenuView;
+import lib.ui.ProductionList.ProductionListController;
+import lib.ui.ProductionList.ProductionListModel;
+import lib.ui.ProductionList.ProductionListView;
 import lib.ui.ProductionsReport.ProductionsReportController;
 import lib.ui.ProductionsReport.ProductionsReportModel;
 import lib.ui.ProductionsReport.ProductionsReportView;
@@ -128,6 +131,25 @@ public class MainAppModel {
     private final CreateProductionView createProductionView = new CreateProductionView();
     private final CreateProductionModel createProductionModel = new CreateProductionModel(createProductionView);
     private CreateProductionController createProductionController;
+    private final ProductionListView productionListView = new ProductionListView();
+    private final ProductionListModel productionListModel = new ProductionListModel(productionListView);
+    private ProductionListController productionListController;
+
+    public void setProductionListController(ProductionListController productionListController) {
+        this.productionListController = productionListController;
+    }
+
+    public ProductionListView getProductionListView() {
+        return productionListView;
+    }
+
+    public ProductionListModel getProductionListModel() {
+        return productionListModel;
+    }
+
+    public ProductionListController getProductionListController() {
+        return productionListController;
+    }
 
 
     private final ButtonBarView buttonBarView = new ButtonBarView();

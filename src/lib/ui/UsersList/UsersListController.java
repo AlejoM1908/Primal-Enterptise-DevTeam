@@ -6,6 +6,8 @@
 package lib.ui.UsersList;
 
 import java.awt.Cursor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.sql.SQLException;
@@ -22,7 +24,7 @@ import lib.ui.userAdministrationMenuView.AdministrationMenuView;
  *
  * @author user
  */
-public class UsersListController implements MouseListener{
+public class UsersListController implements MouseListener, ActionListener{
     private UsersListModel model;
     private UsersListView view;
 
@@ -38,6 +40,7 @@ public class UsersListController implements MouseListener{
  
         this.view.getJlReturn().addMouseListener(this);
         this.view.getJlDeleteUser().addMouseListener(this);
+        this.view.getBtnSave().addActionListener(this);
     }
 
     @Override
@@ -90,6 +93,11 @@ public class UsersListController implements MouseListener{
 
     public UsersListView getView() {
         return view;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        this.model.saveChanges();
     }
     
     

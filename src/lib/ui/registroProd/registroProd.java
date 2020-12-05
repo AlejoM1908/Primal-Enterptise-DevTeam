@@ -215,13 +215,13 @@ private AppColors color = new AppColors();
         registrarB.setOpaque(true);
 
         anoCB.setFont(new java.awt.Font("Leelawadee UI", 0, 11)); // NOI18N
-        anoCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030", " " }));
+        anoCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030", "2031", "2032", "2033", "2034", "2035", "2036", "2037", "2038", "2039", "2040", " " }));
 
         diaCB.setFont(new java.awt.Font("Leelawadee UI", 0, 11)); // NOI18N
         diaCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
 
         mesCB.setFont(new java.awt.Font("Leelawadee UI", 0, 11)); // NOI18N
-        mesCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", " " }));
+        mesCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
 
         jLabel1.setFont(new java.awt.Font("Leelawadee UI", 0, 11)); // NOI18N
         jLabel1.setText("Año");

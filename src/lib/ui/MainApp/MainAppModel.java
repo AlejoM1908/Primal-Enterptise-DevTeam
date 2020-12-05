@@ -24,12 +24,18 @@ import lib.ui.MainBar.MainBarView;
 import lib.ui.MainMenu.MainMenuController;
 import lib.ui.MainMenu.MainMenuModel;
 import lib.ui.MainMenu.MainMenuView;
+import lib.ui.ProductionList.ProductionListController;
+import lib.ui.ProductionList.ProductionListModel;
+import lib.ui.ProductionList.ProductionListView;
 import lib.ui.ProductionsReport.ProductionsReportController;
 import lib.ui.ProductionsReport.ProductionsReportModel;
 import lib.ui.ProductionsReport.ProductionsReportView;
 import lib.ui.ReportsMenu.ReportsMenuController;
 import lib.ui.ReportsMenu.ReportsMenuModel;
 import lib.ui.ReportsMenu.ReportsMenuView;
+import lib.ui.SingleProduction.SingleProductionController;
+import lib.ui.SingleProduction.SingleProductionModel;
+import lib.ui.SingleProduction.SingleProductionView;
 import lib.ui.SupplierRegistration.SupplierRegistrationController;
 import lib.ui.SupplierRegistration.SupplierRegistrationModel;
 import lib.ui.SupplierRegistration.SupplierRegistrationView;
@@ -48,6 +54,9 @@ import lib.ui.productionSubmenu.ProductionSubmenuView;
 import lib.ui.consultProductView.ConsultProductController;
 import lib.ui.consultProductView.ConsultProductModel;
 import lib.ui.consultProductView.ConsultProductView;
+import lib.ui.createProduction.CreateProductionController;
+import lib.ui.createProduction.CreateProductionModel;
+import lib.ui.createProduction.CreateProductionView;
 import lib.ui.registroProd.prodController;
 import lib.ui.registroProd.prodModel;
 import lib.ui.registroProd.registroProd;
@@ -121,6 +130,35 @@ public class MainAppModel {
     private final ConsultProductView consultProductView = new ConsultProductView();
     private final ConsultProductModel consultProductModel = new ConsultProductModel(consultProductView);
     private ConsultProductController consultProductController;
+    
+    private final CreateProductionView createProductionView = new CreateProductionView();
+    private final CreateProductionModel createProductionModel = new CreateProductionModel(createProductionView);
+    private CreateProductionController createProductionController;
+    private final ProductionListView productionListView = new ProductionListView();
+    private final ProductionListModel productionListModel = new ProductionListModel(productionListView);
+    private ProductionListController productionListController;
+
+    public void setProductionListController(ProductionListController productionListController) {
+        this.productionListController = productionListController;
+    }
+
+    public ProductionListView getProductionListView() {
+        return productionListView;
+    }
+
+    public ProductionListModel getProductionListModel() {
+        return productionListModel;
+    }
+
+    public ProductionListController getProductionListController() {
+        return productionListController;
+    }
+
+
+    private final SingleProductionView singleProductionView = new SingleProductionView();
+    private final SingleProductionModel singleProductionModel = new SingleProductionModel();
+    private SingleProductionController singleProductionController;
+
 
     private final ButtonBarView buttonBarView = new ButtonBarView();
     private final ButtonBarModel buttonBarModel = new ButtonBarModel();
@@ -316,10 +354,26 @@ public class MainAppModel {
     public void setConsultProductController(ConsultProductController consultProductController) {
         this.consultProductController = consultProductController;
     }
+
+    public CreateProductionView getCreateProductionView() {
+        return createProductionView;
+    }
+
+    public CreateProductionModel getCreateProductionModel() {
+        return createProductionModel;
+    }
+
+    public void setCreateProductionController(CreateProductionController createProductionController) {
+        this.createProductionController = createProductionController;
+    }
     
     
     public void setProductionSubmenuController(ProductionSubmenuController productionSubmenuController){
         this.productionSubmenuController = productionSubmenuController;
+    }
+    
+    public void setSingleProductionController(SingleProductionController singleProductionController){
+        this.singleProductionController = singleProductionController;
     }
     
     public MainBarController getMainBarController() {return this.mainBarController;}
@@ -331,4 +385,8 @@ public class MainAppModel {
     public ProductionSubmenuView getProductionSubmenuView() {return this.productionSubmenuView;}
     public ProductionSubmenuModel getProductionSubmenuModel() {return this.productionSubmenuModel;}
     public ProductionSubmenuController getProductionSubmenuController() {return this.productionSubmenuController;}
+    
+    public SingleProductionView getSingleProductionView() {return this.singleProductionView;}
+    public SingleProductionModel getSingleProductionModel() {return this.singleProductionModel;}
+    public SingleProductionController getSingleProductionController() {return this.singleProductionController;}
 }

@@ -9,6 +9,7 @@ import java.awt.Dimension;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 
@@ -37,8 +38,13 @@ public class UsersListView extends javax.swing.JPanel {
         return jlDeleteUser;
     }
 
+
     public JLabel getjlReturn() {
         return jlReturn;
+
+    public JButton getBtnSave() {
+        return btnSave;
+
     }
     
     
@@ -57,7 +63,12 @@ public class UsersListView extends javax.swing.JPanel {
         jtUsers = new javax.swing.JTable();
         jlReturn = new javax.swing.JLabel();
         jlDeleteUser = new javax.swing.JLabel();
+
         jlReturn1 = new javax.swing.JLabel();
+
+        jPanel1 = new javax.swing.JPanel();
+        btnSave = new javax.swing.JButton();
+
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -71,14 +82,14 @@ public class UsersListView extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Nombre", "Usuario", "Cédula", "Telefono", "Rango", "Email", "Dirección"
+                "Nombre", "Usuario", "Cédula", "Telefono", "Rango", "Email", "Dirección", "Bloqueado"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -98,6 +109,7 @@ public class UsersListView extends javax.swing.JPanel {
             jtUsers.getColumnModel().getColumn(4).setResizable(false);
             jtUsers.getColumnModel().getColumn(5).setResizable(false);
             jtUsers.getColumnModel().getColumn(6).setResizable(false);
+            jtUsers.getColumnModel().getColumn(7).setResizable(false);
         }
 
         jlReturn.setSize(new Dimension(68,68));
@@ -116,6 +128,7 @@ public class UsersListView extends javax.swing.JPanel {
         Icon icon3 = new ImageIcon(img3.getImage().getScaledInstance(jlDeleteUser.getWidth(), jlDeleteUser.getHeight(), Image.SCALE_SMOOTH));
         jlDeleteUser.setIcon(icon3);
 
+
         jlReturn.setSize(new Dimension(68,68));
         jlReturn1.setMaximumSize(new java.awt.Dimension(68, 68));
         jlReturn1.setMinimumSize(new java.awt.Dimension(68, 68));
@@ -123,6 +136,31 @@ public class UsersListView extends javax.swing.JPanel {
         ImageIcon img2 = new ImageIcon(getClass().getResource("/documentation/Imagenes/Boton de Atras.png"));
         Icon icon2 = new ImageIcon(img2.getImage().getScaledInstance(jlReturn.getWidth(), jlReturn.getHeight(), Image.SCALE_SMOOTH));
         jlReturn.setIcon(icon2);
+
+        jPanel1.setBackground(new java.awt.Color(20, 56, 197));
+        jPanel1.setToolTipText("");
+
+        btnSave.setFont(new java.awt.Font("Leelawadee UI", 0, 22)); // NOI18N
+        btnSave.setForeground(new java.awt.Color(255, 255, 255));
+        btnSave.setText("Guardar");
+        btnSave.setContentAreaFilled(false);
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -141,6 +179,11 @@ public class UsersListView extends javax.swing.JPanel {
                         .addGap(327, 327, 327)
                         .addComponent(jlTitle)))
                 .addContainerGap(53, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(434, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(434, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,11 +203,22 @@ public class UsersListView extends javax.swing.JPanel {
                         .addGap(177, 177, 177)
                         .addComponent(jlDeleteUser, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(141, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(643, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(46, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSaveActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSave;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel jlDeleteUser;
     private javax.swing.JLabel jlReturn;

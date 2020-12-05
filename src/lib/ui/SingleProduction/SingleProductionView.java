@@ -21,25 +21,25 @@ public class SingleProductionView extends javax.swing.JPanel {
 
         backButton = new javax.swing.JLabel();
         productionIDLabel = new javax.swing.JLabel();
+        productionIDText = new javax.swing.JTextField();
         productsLabel = new javax.swing.JLabel();
+        productsScrollPane = new javax.swing.JScrollPane();
+        productsTable = new javax.swing.JTable();
         stateLabel = new javax.swing.JLabel();
-        tipeLabel = new javax.swing.JLabel();
+        stateText = new javax.swing.JTextField();
+        typeLabel = new javax.swing.JLabel();
+        typeComboBox = new javax.swing.JComboBox<>();
         startingDateLabel = new javax.swing.JLabel();
+        startingDate = new javax.swing.JLabel();
+        yearComboBox = new javax.swing.JComboBox<>();
+        monthComboBox = new javax.swing.JComboBox<>();
+        dayComboBox = new javax.swing.JComboBox<>();
         finishingDateLabel = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jTextField2 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jComboBox4 = new javax.swing.JComboBox<>();
-        jComboBox5 = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
-        jComboBox6 = new javax.swing.JComboBox<>();
-        jComboBox7 = new javax.swing.JComboBox<>();
-        jComboBox8 = new javax.swing.JComboBox<>();
-        jLabel3 = new javax.swing.JLabel();
+        finishingDate = new javax.swing.JLabel();
+        yearComboBox_02 = new javax.swing.JComboBox<>();
+        monthComboBox_02 = new javax.swing.JComboBox<>();
+        dayComboBox_02 = new javax.swing.JComboBox<>();
+        updateButton = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setForeground(this.colors.textColor());
@@ -52,33 +52,17 @@ public class SingleProductionView extends javax.swing.JPanel {
         productionIDLabel.setForeground(this.colors.textColor());
         productionIDLabel.setText("ID de Producción:");
 
+        productionIDText.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
+        productionIDText.setForeground(this.colors.textColor());
+        productionIDText.setText("jTextField1");
+
         productsLabel.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
         productsLabel.setForeground(this.colors.textColor());
         productsLabel.setText("Insumos:");
 
-        stateLabel.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
-        stateLabel.setForeground(this.colors.textColor());
-        stateLabel.setText("Estado:");
-
-        tipeLabel.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
-        tipeLabel.setForeground(this.colors.textColor());
-        tipeLabel.setText("Tipo:");
-
-        startingDateLabel.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
-        startingDateLabel.setForeground(this.colors.textColor());
-        startingDateLabel.setText("Fecha de Comienzo:");
-
-        finishingDateLabel.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
-        finishingDateLabel.setForeground(this.colors.textColor());
-        finishingDateLabel.setText("Fecha de Finalización:");
-
-        jTextField1.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
-        jTextField1.setForeground(this.colors.textColor());
-        jTextField1.setText("jTextField1");
-
-        jTable1.setFont(new java.awt.Font("Leelawadee UI", 0, 20)); // NOI18N
-        jTable1.setForeground(this.colors.textColor());
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        productsTable.setFont(new java.awt.Font("Leelawadee UI", 0, 20)); // NOI18N
+        productsTable.setForeground(this.colors.textColor());
+        productsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -101,52 +85,69 @@ public class SingleProductionView extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
+        productsTable.getTableHeader().setReorderingAllowed(false);
+        productsScrollPane.setViewportView(productsTable);
 
-        jTextField2.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
-        jTextField2.setForeground(this.colors.textColor());
-        jTextField2.setText("jTextField2");
+        stateLabel.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
+        stateLabel.setForeground(this.colors.textColor());
+        stateLabel.setText("Estado:");
 
-        jComboBox1.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
-        jComboBox1.setForeground(this.colors.textColor());
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        stateText.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
+        stateText.setForeground(this.colors.textColor());
+        stateText.setText("jTextField2");
 
-        jLabel1.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
-        jLabel1.setForeground(this.colors.textColor());
-        jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(this.colors.borderColor()));
+        typeLabel.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
+        typeLabel.setForeground(this.colors.textColor());
+        typeLabel.setText("Tipo:");
 
-        jComboBox3.setFont(new java.awt.Font("Leelawadee UI", 0, 16)); // NOI18N
-        jComboBox3.setForeground(this.colors.textColor());
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        typeComboBox.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
+        typeComboBox.setForeground(this.colors.textColor());
+        typeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jComboBox4.setFont(new java.awt.Font("Leelawadee UI", 0, 16)); // NOI18N
-        jComboBox4.setForeground(this.colors.textColor());
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        startingDateLabel.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
+        startingDateLabel.setForeground(this.colors.textColor());
+        startingDateLabel.setText("Fecha de Comienzo:");
 
-        jComboBox5.setFont(new java.awt.Font("Leelawadee UI", 0, 16)); // NOI18N
-        jComboBox5.setForeground(this.colors.textColor());
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        startingDate.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
+        startingDate.setForeground(this.colors.textColor());
+        startingDate.setBorder(javax.swing.BorderFactory.createLineBorder(this.colors.borderColor()));
 
-        jLabel2.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
-        jLabel2.setForeground(this.colors.textColor());
-        jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(this.colors.borderColor()));
+        yearComboBox.setFont(new java.awt.Font("Leelawadee UI", 0, 16)); // NOI18N
+        yearComboBox.setForeground(this.colors.textColor());
+        yearComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jComboBox6.setFont(new java.awt.Font("Leelawadee UI", 0, 16)); // NOI18N
-        jComboBox6.setForeground(this.colors.textColor());
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        monthComboBox.setFont(new java.awt.Font("Leelawadee UI", 0, 16)); // NOI18N
+        monthComboBox.setForeground(this.colors.textColor());
+        monthComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jComboBox7.setFont(new java.awt.Font("Leelawadee UI", 0, 16)); // NOI18N
-        jComboBox7.setForeground(this.colors.textColor());
-        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        dayComboBox.setFont(new java.awt.Font("Leelawadee UI", 0, 16)); // NOI18N
+        dayComboBox.setForeground(this.colors.textColor());
+        dayComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jComboBox8.setFont(new java.awt.Font("Leelawadee UI", 0, 16)); // NOI18N
-        jComboBox8.setForeground(this.colors.textColor());
-        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        finishingDateLabel.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
+        finishingDateLabel.setForeground(this.colors.textColor());
+        finishingDateLabel.setText("Fecha de Finalización:");
 
-        jLabel3.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
-        jLabel3.setText("jLabel3");
-        jLabel3.setOpaque(true);
+        finishingDate.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
+        finishingDate.setForeground(this.colors.textColor());
+        finishingDate.setBorder(javax.swing.BorderFactory.createLineBorder(this.colors.borderColor()));
+
+        yearComboBox_02.setFont(new java.awt.Font("Leelawadee UI", 0, 16)); // NOI18N
+        yearComboBox_02.setForeground(this.colors.textColor());
+        yearComboBox_02.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        monthComboBox_02.setFont(new java.awt.Font("Leelawadee UI", 0, 16)); // NOI18N
+        monthComboBox_02.setForeground(this.colors.textColor());
+        monthComboBox_02.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        dayComboBox_02.setFont(new java.awt.Font("Leelawadee UI", 0, 16)); // NOI18N
+        dayComboBox_02.setForeground(this.colors.textColor());
+        dayComboBox_02.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        updateButton.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
+        updateButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        updateButton.setText("Actualizar Información");
+        updateButton.setOpaque(true);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -158,47 +159,46 @@ public class SingleProductionView extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(stateLabel)
-                            .addComponent(tipeLabel))
+                            .addComponent(typeLabel))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(stateText, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(typeComboBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(productionIDLabel)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(productionIDText, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(productsLabel)
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(productsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(finishingDateLabel)
                     .addComponent(startingDateLabel)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(yearComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(monthComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(dayComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(startingDate, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(yearComboBox_02, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(monthComboBox_02, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jComboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(dayComboBox_02, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(finishingDate, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(104, 104, 104))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(backButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(448, 448, 448)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(25, 25, 25)
+                .addComponent(backButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(430, 430, 430))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,69 +206,69 @@ public class SingleProductionView extends javax.swing.JPanel {
                 .addGap(24, 24, 24)
                 .addComponent(backButton)
                 .addGap(52, 52, 52)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(startingDateLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(startingDate, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(yearComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(monthComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dayComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(finishingDateLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(finishingDate, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(yearComboBox_02, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(monthComboBox_02, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dayComboBox_02, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(productionIDLabel)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(49, 49, 49)
+                            .addComponent(productionIDText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(65, 65, 65)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(productsLabel)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(34, 34, 34)
+                            .addComponent(productsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(stateText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(stateLabel))
-                        .addGap(23, 23, 23)
+                        .addGap(50, 50, 50)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tipeLabel)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(startingDateLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(finishingDateLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(71, 71, 71)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(114, Short.MAX_VALUE))
+                            .addComponent(typeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(typeLabel))))
+                .addGap(58, 58, 58)
+                .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(62, 62, 62))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backButton;
+    private javax.swing.JComboBox<String> dayComboBox;
+    private javax.swing.JComboBox<String> dayComboBox_02;
+    private javax.swing.JLabel finishingDate;
     private javax.swing.JLabel finishingDateLabel;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
-    private javax.swing.JComboBox<String> jComboBox5;
-    private javax.swing.JComboBox<String> jComboBox6;
-    private javax.swing.JComboBox<String> jComboBox7;
-    private javax.swing.JComboBox<String> jComboBox8;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JComboBox<String> monthComboBox;
+    private javax.swing.JComboBox<String> monthComboBox_02;
     private javax.swing.JLabel productionIDLabel;
+    private javax.swing.JTextField productionIDText;
     private javax.swing.JLabel productsLabel;
+    private javax.swing.JScrollPane productsScrollPane;
+    private javax.swing.JTable productsTable;
+    private javax.swing.JLabel startingDate;
     private javax.swing.JLabel startingDateLabel;
     private javax.swing.JLabel stateLabel;
-    private javax.swing.JLabel tipeLabel;
+    private javax.swing.JTextField stateText;
+    private javax.swing.JComboBox<String> typeComboBox;
+    private javax.swing.JLabel typeLabel;
+    private javax.swing.JLabel updateButton;
+    private javax.swing.JComboBox<String> yearComboBox;
+    private javax.swing.JComboBox<String> yearComboBox_02;
     // End of variables declaration//GEN-END:variables
 }

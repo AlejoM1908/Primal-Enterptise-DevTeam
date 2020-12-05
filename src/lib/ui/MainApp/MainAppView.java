@@ -12,7 +12,6 @@ import lib.ui.MainBar.MainBarView;
 import lib.ui.MainMenu.MainMenuView;
 import lib.ui.ProductionsReport.ProductionsReportView;
 import lib.ui.ReportsMenu.ReportsMenuView;
-import lib.ui.SingleProduction.SingleProductionView;
 import lib.ui.SupplierRegistration.SupplierRegistrationView;
 import lib.ui.UsersList.UsersListView;
 import lib.ui.buttonBar.ButtonBarView;
@@ -292,16 +291,6 @@ public class MainAppView extends javax.swing.JFrame {
         
         this.appContent.add(consultProductView);
         consultProductView.setVisible(true);
-    }
-    
-    public void setSingleProduction(SingleProductionView singleProductionView){
-        for(Component c : this.appContent.getComponents()){
-            c.setVisible(false);
-        }
-        this.appContent.removeAll();
-        
-        this.appContent.add(singleProductionView);
-        singleProductionView.setVisible(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

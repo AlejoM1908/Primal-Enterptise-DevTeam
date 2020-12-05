@@ -4,9 +4,6 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
-CREATE SCHEMA IF NOT EXISTS `primalenterpricedb` DEFAULT CHARACTER SET utf8 ;
-USE `primalenterpricedb` ;
-
 -- -----------------------------------------------------
 -- Schema primalenterpricedb
 -- -----------------------------------------------------
@@ -779,9 +776,8 @@ DROP VIEW IF EXISTS `primalenterpricedb`.`vw_getusers` ;
 USE `primalenterpricedb`;
 CREATE  OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `primalenterpricedb`.`vw_getusers` AS select `primalenterpricedb`.`usuarios`.`usr_usuario` AS `usuario`,`primalenterpricedb`.`telefonos`.`tel_telefono` AS `telefono`,`primalenterpricedb`.`usuarios`.`usr_contrasena` AS `contrasena`,`primalenterpricedb`.`usuarios`.`usr_rango` AS `rango`,`primalenterpricedb`.`usuarios`.`usr_nombre` AS `nombre`,`primalenterpricedb`.`usuarios`.`usr_cedula` AS `cedula`,`primalenterpricedb`.`usuarios`.`usr_email` AS `email`,`primalenterpricedb`.`usuarios`.`usr_direccion` AS `direccion` from (`primalenterpricedb`.`usuarios` left join `primalenterpricedb`.`telefonos` on((`primalenterpricedb`.`telefonos`.`tel_usuario` = `primalenterpricedb`.`usuarios`.`usr_usuario`)));
 
-CREATE USER 'Admin' IDENTIFIED BY 'HTNT^256FbzNNO6eInk$';
+CREATE USER IF NOT EXISTS 'Admin' IDENTIFIED BY 'HTNT^256FbzNNO6eInk$';
 GRANT ALL ON `PrimalEnterpriceDB`.* TO 'Admin';
-
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

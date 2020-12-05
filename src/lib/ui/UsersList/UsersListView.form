@@ -203,7 +203,6 @@
         <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jlDeleteUser.setSize(new Dimension(68,68));"/>
       </AuxValues>
     </Component>
-
     <Component class="javax.swing.JLabel" name="jlReturn1">
       <Properties>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -221,7 +220,6 @@
         <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jlReturn.setSize(new Dimension(68,68));"/>
       </AuxValues>
     </Component>
-
     <Container class="javax.swing.JPanel" name="jPanel1">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">

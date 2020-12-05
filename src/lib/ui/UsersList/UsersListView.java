@@ -41,6 +41,7 @@ public class UsersListView extends javax.swing.JPanel {
 
     public JLabel getjlReturn() {
         return jlReturn;
+    }
 
     public JButton getBtnSave() {
         return btnSave;

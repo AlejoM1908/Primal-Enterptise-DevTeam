@@ -33,6 +33,9 @@ import lib.ui.ProductionsReport.ProductionsReportView;
 import lib.ui.ReportsMenu.ReportsMenuController;
 import lib.ui.ReportsMenu.ReportsMenuModel;
 import lib.ui.ReportsMenu.ReportsMenuView;
+import lib.ui.SingleProduction.SingleProductionController;
+import lib.ui.SingleProduction.SingleProductionModel;
+import lib.ui.SingleProduction.SingleProductionView;
 import lib.ui.SupplierRegistration.SupplierRegistrationController;
 import lib.ui.SupplierRegistration.SupplierRegistrationModel;
 import lib.ui.SupplierRegistration.SupplierRegistrationView;
@@ -151,6 +154,9 @@ public class MainAppModel {
         return productionListController;
     }
 
+    private final SingleProductionView singleProductionView = new SingleProductionView();
+    private final SingleProductionModel singleProductionModel = new SingleProductionModel();
+    private SingleProductionController singleProductionController;
 
     private final ButtonBarView buttonBarView = new ButtonBarView();
     private final ButtonBarModel buttonBarModel = new ButtonBarModel();
@@ -362,6 +368,10 @@ public class MainAppModel {
         this.productionSubmenuController = productionSubmenuController;
     }
     
+    public void setSingleProductionController(SingleProductionController singleProductionController){
+        this.singleProductionController = singleProductionController;
+    }
+    
     public MainBarController getMainBarController() {return this.mainBarController;}
     
     public ButtonBarView getButtonBarView() {return this.buttonBarView;}
@@ -371,4 +381,8 @@ public class MainAppModel {
     public ProductionSubmenuView getProductionSubmenuView() {return this.productionSubmenuView;}
     public ProductionSubmenuModel getProductionSubmenuModel() {return this.productionSubmenuModel;}
     public ProductionSubmenuController getProductionSubmenuController() {return this.productionSubmenuController;}
+    
+    public SingleProductionView getSingleProductionView() {return this.singleProductionView;}
+    public SingleProductionModel getSingleProductionModel() {return this.singleProductionModel;}
+    public SingleProductionController getSingleProductionController() {return this.singleProductionController;}
 }

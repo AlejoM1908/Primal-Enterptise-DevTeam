@@ -16,7 +16,6 @@ public class ProductionSubmenuController {
         this.productionSubmenuView = productionSubmenuView;
         this.productionSubmenuModel = productionSubmenuModel;
         this.productionSubmenuModel.setRootComponent(rootComponent);
-        
         this.productionSubmenuView.getRegisterProductionsButton().addMouseListener(new ProductionSubmenuListener(this.productionSubmenuView, this.productionSubmenuModel));
         this.productionSubmenuView.getProductionsListButton().addMouseListener(new ProductionSubmenuListener(this.productionSubmenuView, this.productionSubmenuModel));
     }

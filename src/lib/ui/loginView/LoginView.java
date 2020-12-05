@@ -221,6 +221,10 @@ public class LoginView extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, 
                         "Los campos no pueden estar vacios, intente nuevamnte");
                 break;
+            case 4:
+                JOptionPane.showMessageDialog(this, 
+                        "Usuario Bloqueado, Contacte a un Administrador del Sistema");
+                break;
         }
     }
 

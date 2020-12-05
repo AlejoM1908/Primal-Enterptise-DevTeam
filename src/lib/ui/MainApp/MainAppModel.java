@@ -154,13 +154,17 @@ public class MainAppModel {
         return productionListController;
     }
 
+
     private final SingleProductionView singleProductionView = new SingleProductionView();
     private final SingleProductionModel singleProductionModel = new SingleProductionModel();
     private SingleProductionController singleProductionController;
 
+
     private final ButtonBarView buttonBarView = new ButtonBarView();
     private final ButtonBarModel buttonBarModel = new ButtonBarModel();
     private ButtonBarController buttonBarController;
+    
+    
 
     
     public User getLoggedUser(){

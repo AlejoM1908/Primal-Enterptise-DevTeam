@@ -25,6 +25,7 @@ public class ReportsMenuController implements MouseListener {
         this.model = model;
         this.view = view;
         this.model.setRootComponent(rootComponent);
+        this.view.setVisibility(rootComponent.getMainAppModel().getLoggedUser());
         this.view.getJlAssetsReport().addMouseListener(this);
         this.view.getJlMoneyReport().addMouseListener(this);
         this.view.getJlProductionsReport().addMouseListener(this);
@@ -42,14 +43,26 @@ public class ReportsMenuController implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent me) {
         if(me.getSource() == this.view.getJlAssetsReport()){
-            AssetsReportView assetsReportView = this.model.getRootComponent().getMainAppModel().getAssetsReportView();
-            this.model.getRootComponent().getMainAppModel().getAssetsReportModel().generateGraphic();
-            this.model.getRootComponent().getMainAppView().setAssetsReport(assetsReportView);
+            if(this.view.getJlAssetsReport().isEnabled())
+            {
+                AssetsReportView assetsReportView = this.model.getRootComponent().getMainAppModel().getAssetsReportView();
+                this.model.getRootComponent().getMainAppModel().getAssetsReportModel().generateGraphic();
+                this.model.getRootComponent().getMainAppView().setAssetsReport(assetsReportView);
+            }
+            
         }else if(me.getSource() == this.view.getJlMoneyReport()){
             //REDIRIGIR A REPORTE DE FLUJO DE CAJA
+            if(this.view.getJlMoneyReport().isEnabled())
+            {
+                
+            }
         }else if(me.getSource() == this.view.getJlProductionsReport()){
-            ProductionsReportView productionsReportView = this.model.getRootComponent().getMainAppModel().getProductionsReportView();
-            this.model.getRootComponent().getMainAppView().setProductionsReport(productionsReportView);
+            if(this.view.getJlProductionsReport().isEnabled())
+            {
+                ProductionsReportView productionsReportView = this.model.getRootComponent().getMainAppModel().getProductionsReportView();
+                this.model.getRootComponent().getMainAppView().setProductionsReport(productionsReportView);
+            }
+            
         }
     }
 

@@ -696,6 +696,236 @@ END$$
 DELIMITER ;
 
 -- -----------------------------------------------------
+-- procedure activesList
+-- -----------------------------------------------------
+
+USE `PrimalEnterpriceDB`;
+DROP procedure IF EXISTS `PrimalEnterpriceDB`.`activesList`;
+
+DELIMITER $$
+USE `PrimalEnterpriceDB`$$
+CREATE PROCEDURE activesList(
+	IN paramether VARCHAR(45),
+    IN search VARCHAR(100)
+)
+BEGIN
+	SELECT nit, nombre, estado, marca, descripcion
+    FROM vw_getActives WHERE CASE paramether
+		WHEN 'nombre' THEN
+			nombre LIKE CONCAT('%',search,'%')
+		WHEN 'estado' THEN
+			estado LIKE CONCAT('%',search,'%')
+		WHEN 'nit' THEN
+			nit = search
+		WHEN 'marca' THEN
+			marca LIKE CONCAT('%',search,'%')
+		WHEN 'factura' THEN
+			factura = search
+		WHEN 'descripcion' THEN
+			descripcion LIKE CONCAT('%',search,'%')
+		ELSE
+			id IS NOT NULL
+		END;
+END$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure productionsList
+-- -----------------------------------------------------
+
+USE `PrimalEnterpriceDB`;
+DROP procedure IF EXISTS `PrimalEnterpriceDB`.`productionsList`;
+
+DELIMITER $$
+USE `PrimalEnterpriceDB`$$
+CREATE PROCEDURE productionsList(
+	IN paramether VARCHAR(45),
+    IN search VARCHAR(100)
+)
+BEGIN
+	SELECT * FROM vw_getProductions WHERE CASE paramether
+		WHEN 'estado' THEN
+			estado = search
+		WHEN 'fecha_comienzo' THEN
+			fecha_comienzo = search
+		WHEN 'fecha_finalizacion' THEN
+			fecha_finalizacion = search
+		WHEN 'tipo' THEN
+			tipo = search
+		ELSE
+			id IS NOT NULL
+		END;
+END$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure login
+-- -----------------------------------------------------
+
+USE `PrimalEnterpriceDB`;
+DROP procedure IF EXISTS `PrimalEnterpriceDB`.`login`;
+
+DELIMITER $$
+USE `PrimalEnterpriceDB`$$
+CREATE PROCEDURE login(
+	in username varchar(45),
+    in userPass varchar(45)
+)
+BEGIN
+	DECLARE valor INT;
+    DECLARE pass varchar(40);
+    
+    SELECT COUNT(*) INTO valor FROM vw_getUsers WHERE usuario = username;
+    
+	IF valor = 0 THEN
+		SELECT 0 AS 'error';
+	ELSEIF valor = 1 THEN
+		select SHA1(userPass) INTO pass;
+        
+        IF (SELECT COUNT(*) FROM vw_getUsers WHERE usuario = username AND contrasena = pass) = 0 THEN
+			select 1 AS 'error';
+		ELSE
+			SELECT 
+            2 AS 'error',
+            usuario,
+            rango,
+            contrasena,
+            telefono,
+            email,
+            direccion,
+            nombre
+            FROM vw_getUsers WHERE usuario = username AND contrasena = pass;
+        END IF;
+    END IF;
+END$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure insertUser
+-- -----------------------------------------------------
+
+USE `PrimalEnterpriceDB`;
+DROP procedure IF EXISTS `PrimalEnterpriceDB`.`insertUser`;
+
+DELIMITER $$
+USE `PrimalEnterpriceDB`$$
+CREATE PROCEDURE insertUser(
+	IN nombre VARCHAR(80), 
+	IN cedula int, 
+	IN rango VARCHAR(40),
+	IN contrasena VARCHAR(25),
+	IN telefono int,
+	IN email VARCHAR(100),
+	IN direccion VARCHAR(100),
+	IN usuario VARCHAR(25)
+)
+BEGIN
+	DECLARE pass VARCHAR(40);
+	SET pass = SHA1(contrasena);
+    INSERT INTO usuarios VALUES (usuario,rango,pass,email,nombre,direccion,cedula);  
+    INSERT INTO telefonos VALUES (NULL,usuario,NULL,telefono);
+END$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure insertProvider
+-- -----------------------------------------------------
+
+USE `PrimalEnterpriceDB`;
+DROP procedure IF EXISTS `PrimalEnterpriceDB`.`insertProvider`;
+
+DELIMITER $$
+USE `PrimalEnterpriceDB`$$
+CREATE PROCEDURE insertProvider(
+	IN nombre VARCHAR(80), 
+	IN nit INT,
+	IN telefono INT,
+	IN email VARCHAR(100),
+	IN direccion VARCHAR(100),
+	IN usuario VARCHAR(25)
+)
+BEGIN
+    INSERT INTO telefonos VALUES (NULL,NULL,nit,telefono);
+	INSERT INTO proveedores VALUES (nit,usuario,nombre,direccion,email);  
+END$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure deleteUser
+-- -----------------------------------------------------
+
+USE `PrimalEnterpriceDB`;
+DROP procedure IF EXISTS `PrimalEnterpriceDB`.`deleteUser`;
+
+DELIMITER $$
+USE `PrimalEnterpriceDB`$$
+CREATE PROCEDURE deleteUser(
+	IN userName varchar(25)
+)
+BEGIN
+	delete from usuarios
+    where usr_usuario = userName;
+END$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure decreaceInventory
+-- -----------------------------------------------------
+
+USE `PrimalEnterpriceDB`;
+DROP procedure IF EXISTS `PrimalEnterpriceDB`.`decreaceInventory`;
+
+DELIMITER $$
+USE `PrimalEnterpriceDB`$$
+CREATE PROCEDURE decreaceInventory(
+	IN Num_items INT,
+	IN ID_item INT
+)
+BEGIN
+    DECLARE inventario INT DEFAULT 0;  
+    SELECT pru_cantidad
+    INTO inventario
+    FROM productos
+    WHERE pru_id = ID_item;
+    IF (inventario - Num_items) >= 0 THEN
+    UPDATE productos SET pru_cantidad = (inventario - Num_items)
+    WHERE pru_id = ID_item;
+    END IF;
+END$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure editUserData
+-- -----------------------------------------------------
+
+USE `PrimalEnterpriceDB`;
+DROP procedure IF EXISTS `PrimalEnterpriceDB`.`editUserData`;
+
+DELIMITER $$
+USE `PrimalEnterpriceDB`$$
+CREATE PROCEDURE editUserData(
+	IN contrasena_nueva VARCHAR(25),
+    IN email VARCHAR(100),
+    IN telefono INT,
+    IN nombre VARCHAR(80),
+    IN usuario_actual VARCHAR(25)
+)
+BEGIN
+	UPDATE usuarios JOIN telefonos
+    SET usr_nombre = nombre, usr_contrasena = SHA1(contrasena_nueva), usr_email = email, tel_telefono = telefono
+    WHERE usr_usuario = usuario_actual AND tel_usuario = usr_usuario;
+END$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
 -- procedure registerActive
 -- -----------------------------------------------------
 

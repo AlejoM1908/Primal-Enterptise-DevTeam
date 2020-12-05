@@ -38,8 +38,13 @@ public class UsersListView extends javax.swing.JPanel {
         return jlDeleteUser;
     }
 
+
+    public JLabel getjlReturn() {
+        return jlReturn;
+
     public JButton getBtnSave() {
         return btnSave;
+
     }
     
     
@@ -58,8 +63,12 @@ public class UsersListView extends javax.swing.JPanel {
         jtUsers = new javax.swing.JTable();
         jlReturn = new javax.swing.JLabel();
         jlDeleteUser = new javax.swing.JLabel();
+
+        jlReturn1 = new javax.swing.JLabel();
+
         jPanel1 = new javax.swing.JPanel();
         btnSave = new javax.swing.JButton();
+
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -107,9 +116,9 @@ public class UsersListView extends javax.swing.JPanel {
         jlReturn.setMaximumSize(new java.awt.Dimension(68, 68));
         jlReturn.setMinimumSize(new java.awt.Dimension(68, 68));
         jlReturn.setPreferredSize(new java.awt.Dimension(68, 68));
-        ImageIcon img2 = new ImageIcon(getClass().getResource("/documentation/Imagenes/Boton de Atras.png"));
-        Icon icon2 = new ImageIcon(img2.getImage().getScaledInstance(jlReturn.getWidth(), jlReturn.getHeight(), Image.SCALE_SMOOTH));
-        jlReturn.setIcon(icon2);
+        ImageIcon img4 = new ImageIcon(getClass().getResource("/documentation/Imagenes/Boton de Atras.png"));
+        Icon icon4 = new ImageIcon(img4.getImage().getScaledInstance(jlReturn.getWidth(), jlReturn.getHeight(), Image.SCALE_SMOOTH));
+        jlReturn.setIcon(icon4);
 
         jlDeleteUser.setSize(new Dimension(68,68));
         jlDeleteUser.setMaximumSize(new java.awt.Dimension(68, 68));
@@ -118,6 +127,15 @@ public class UsersListView extends javax.swing.JPanel {
         ImageIcon img3 = new ImageIcon(getClass().getResource("/documentation/Imagenes/Icono Eliminar Usuario.png"));
         Icon icon3 = new ImageIcon(img3.getImage().getScaledInstance(jlDeleteUser.getWidth(), jlDeleteUser.getHeight(), Image.SCALE_SMOOTH));
         jlDeleteUser.setIcon(icon3);
+
+
+        jlReturn.setSize(new Dimension(68,68));
+        jlReturn1.setMaximumSize(new java.awt.Dimension(68, 68));
+        jlReturn1.setMinimumSize(new java.awt.Dimension(68, 68));
+        jlReturn1.setPreferredSize(new java.awt.Dimension(68, 68));
+        ImageIcon img2 = new ImageIcon(getClass().getResource("/documentation/Imagenes/Boton de Atras.png"));
+        Icon icon2 = new ImageIcon(img2.getImage().getScaledInstance(jlReturn.getWidth(), jlReturn.getHeight(), Image.SCALE_SMOOTH));
+        jlReturn.setIcon(icon2);
 
         jPanel1.setBackground(new java.awt.Color(20, 56, 197));
         jPanel1.setToolTipText("");
@@ -142,6 +160,7 @@ public class UsersListView extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -203,6 +222,7 @@ public class UsersListView extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel jlDeleteUser;
     private javax.swing.JLabel jlReturn;
+    private javax.swing.JLabel jlReturn1;
     private javax.swing.JLabel jlTitle;
     private javax.swing.JTable jtUsers;
     // End of variables declaration//GEN-END:variables

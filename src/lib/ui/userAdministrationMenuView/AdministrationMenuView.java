@@ -7,9 +7,11 @@ package lib.ui.userAdministrationMenuView;
 
 import java.awt.Dimension;
 import java.awt.Image;
+import java.util.HashSet;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import lib.models.User;
 
 /**
  *
@@ -158,9 +160,9 @@ public class AdministrationMenuView extends javax.swing.JPanel {
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(rolesCreationlb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jlSupplierRegistration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlSupplierRegistration, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(rolesCreationlb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(userAdministrationTittle2))
                     .addGroup(layout.createSequentialGroup()
@@ -169,7 +171,36 @@ public class AdministrationMenuView extends javax.swing.JPanel {
                 .addContainerGap(92, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    public void setVisibility(User user)
+    {
+        switch (user.getRange()){
+            case "Secretario/a":
+                addUserslb.setEnabled(false);
+                rolesCreationlb.setEnabled(false);
+                usersListlb.setEnabled(false);
+                jlSupplierRegistration.setEnabled(false);
+                break;
+            case "Administrador":
+                addUserslb.setEnabled(true);
+                rolesCreationlb.setEnabled(true);
+                usersListlb.setEnabled(true);
+                jlSupplierRegistration.setEnabled(true);
+                break;
+            case "Administrador de producciones":
+                addUserslb.setEnabled(false);
+                rolesCreationlb.setEnabled(false);
+                usersListlb.setEnabled(false);
+                jlSupplierRegistration.setEnabled(false);
+                break;
+            case "Administrador de inventario":
+                addUserslb.setEnabled(false);
+                rolesCreationlb.setEnabled(false);
+                usersListlb.setEnabled(false);
+                jlSupplierRegistration.setEnabled(true);
+                
+                break;
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel addUserslb;

@@ -182,7 +182,7 @@
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="ImageIcon img2 = new ImageIcon(getClass().getResource(&quot;/documentation/Imagenes/Boton de Atras.png&quot;));&#xa;Icon icon2 = new ImageIcon(img2.getImage().getScaledInstance(jlReturn.getWidth(), jlReturn.getHeight(), Image.SCALE_SMOOTH));&#xa;jlReturn.setIcon(icon2);"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="ImageIcon img4 = new ImageIcon(getClass().getResource(&quot;/documentation/Imagenes/Boton de Atras.png&quot;));&#xa;Icon icon4 = new ImageIcon(img4.getImage().getScaledInstance(jlReturn.getWidth(), jlReturn.getHeight(), Image.SCALE_SMOOTH));&#xa;jlReturn.setIcon(icon4);"/>
         <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jlReturn.setSize(new Dimension(68,68));"/>
       </AuxValues>
     </Component>
@@ -203,6 +203,25 @@
         <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jlDeleteUser.setSize(new Dimension(68,68));"/>
       </AuxValues>
     </Component>
+
+    <Component class="javax.swing.JLabel" name="jlReturn1">
+      <Properties>
+        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[68, 68]"/>
+        </Property>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[68, 68]"/>
+        </Property>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[68, 68]"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="ImageIcon img2 = new ImageIcon(getClass().getResource(&quot;/documentation/Imagenes/Boton de Atras.png&quot;));&#xa;Icon icon2 = new ImageIcon(img2.getImage().getScaledInstance(jlReturn.getWidth(), jlReturn.getHeight(), Image.SCALE_SMOOTH));&#xa;jlReturn.setIcon(icon2);"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jlReturn.setSize(new Dimension(68,68));"/>
+      </AuxValues>
+    </Component>
+
     <Container class="javax.swing.JPanel" name="jPanel1">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">

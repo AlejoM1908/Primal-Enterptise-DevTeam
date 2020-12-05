@@ -10,6 +10,7 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import lib.models.User;
 
 /**
  *
@@ -23,7 +24,18 @@ public class ReportsMenuView extends javax.swing.JPanel {
     public ReportsMenuView() {
         initComponents();
     }
+    
+    protected void setVisibility(User user)
+        {
+            switch (user.getRange()){
 
+                case "Administrador de producciones":
+                     jlAssetsReport.setEnabled(false);
+                     jlMoneyReport.setEnabled(false);
+                     jlProductionsReport.setEnabled(true);
+                    break;
+            }
+        }
     public JLabel getJlAssetsReport() {
         return jlAssetsReport;
     }
@@ -35,7 +47,7 @@ public class ReportsMenuView extends javax.swing.JPanel {
     public JLabel getJlProductionsReport() {
         return jlProductionsReport;
     }
-
+    
     
     
 

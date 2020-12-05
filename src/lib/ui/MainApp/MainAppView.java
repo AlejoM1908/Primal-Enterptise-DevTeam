@@ -302,7 +302,7 @@ public class MainAppView extends javax.swing.JFrame {
         
         this.appContent.add(productionListView);
         productionListView.setVisible(true);
-        
+  
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

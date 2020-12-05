@@ -3,6 +3,8 @@ package lib.ui.ProductionList;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import lib.app.DBConnection;
 import lib.ui.MainApp.MainAppController;
@@ -45,9 +47,27 @@ public class ProductionListModel {
         
         DefaultTableModel model = (DefaultTableModel) view.getJtProductions().getModel();
         while(result.next()){
-            model.addRow(new Object[]{Integer.parseInt(result.getString(1)), result.getString(3), result.getString(4)});
+            int prd_id = Integer.parseInt(result.getString(1));
+            String estado = result.getString(2);
+            String tipo = result.getString(3);
+            model.addRow(new Object[]{prd_id,
+                                      estado,
+                                      tipo});
         }
         view.updateUI();
+    }
+    
+    public void updateTableListProduction(){
+        DefaultTableModel model = (DefaultTableModel) view.getJtProductions().getModel();
+        int rowCount = model.getRowCount();
+        for(int i = 0; i < rowCount; i++){
+            model.removeRow(0);
+        }
+        try {
+            fillTableProductions();
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductionListModel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }

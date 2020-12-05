@@ -33,9 +33,14 @@ public class ProductionListView extends javax.swing.JPanel {
         return jtProductions;
     }
 
-    public JLabel getRegresarB() {
-        return regresarB;
+    public JLabel getJlReturn() {
+        return jlReturn;
     }
+
+
+
+
+  
     
     
     
@@ -54,8 +59,9 @@ public class ProductionListView extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jtProductions = new javax.swing.JTable();
         jlDetailProduction = new javax.swing.JLabel();
-        regresarB = new javax.swing.JLabel();
+        jlReturn = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(1085, 728));
 
         jlTitle.setFont(new java.awt.Font("Leelawadee UI", 1, 26)); // NOI18N
@@ -95,58 +101,55 @@ public class ProductionListView extends javax.swing.JPanel {
         Icon icon = new ImageIcon(img.getImage().getScaledInstance(jlDetailProduction.getWidth(), jlDetailProduction.getHeight(), Image.SCALE_SMOOTH));
         jlDetailProduction.setIcon(icon);
 
-        regresarB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lib/images/Boton de Atras(2).png"))); // NOI18N
-        regresarB.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                regresarBMouseClicked(evt);
-            }
-        });
+        jlReturn.setSize(new Dimension(68,68));
+        jlReturn.setMaximumSize(new java.awt.Dimension(68, 68));
+        jlReturn.setMinimumSize(new java.awt.Dimension(68, 68));
+        jlReturn.setPreferredSize(new java.awt.Dimension(68, 68));
+        ImageIcon img2 = new ImageIcon(getClass().getResource("/documentation/Imagenes/Boton de Atras.png"));
+        Icon icon2 = new ImageIcon(img2.getImage().getScaledInstance(jlReturn.getWidth(), jlReturn.getHeight(), Image.SCALE_SMOOTH));
+        jlReturn.setIcon(icon2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(regresarB)
-                .addGap(324, 324, 324)
-                .addComponent(jlTitle)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(275, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 559, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(83, 83, 83)
+                .addGap(80, 80, 80)
                 .addComponent(jlDetailProduction, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(100, 100, 100))
+                .addGap(103, 103, 103))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jlReturn, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(303, 303, 303)
+                .addComponent(jlTitle)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jlTitle)
-                    .addComponent(regresarB))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(239, 239, 239)
+                        .addGap(51, 51, 51)
+                        .addComponent(jlTitle)
+                        .addGap(164, 164, 164)
                         .addComponent(jlDetailProduction, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
+                        .addGap(28, 28, 28)
+                        .addComponent(jlReturn, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(16, 16, 16)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 499, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(97, Short.MAX_VALUE))
+                .addContainerGap(117, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void regresarBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresarBMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_regresarBMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel jlDetailProduction;
+    private javax.swing.JLabel jlReturn;
     private javax.swing.JLabel jlTitle;
     private javax.swing.JTable jtProductions;
-    private javax.swing.JLabel regresarB;
     // End of variables declaration//GEN-END:variables
 }

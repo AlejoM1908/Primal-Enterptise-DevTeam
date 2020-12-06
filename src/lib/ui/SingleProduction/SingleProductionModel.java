@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import lib.app.DBConnection;
+import lib.models.TableModel;
 import lib.models.ProductionsModel;
 import lib.ui.MainApp.MainAppController;
 
@@ -71,6 +72,8 @@ public class SingleProductionModel {
                 
                 this.productionModel = new ProductionsModel(this.id, user, state, startingDate, finishingDate, type, null);
             }
+            
+            this.view.setTable(new TableModel(id));
         }
         catch(Exception e){
             
@@ -114,12 +117,11 @@ public class SingleProductionModel {
             
             if (id.isEmpty() || state.isEmpty() || type.isEmpty() || startingDate.isEmpty() || finishingDate.isEmpty())
                 this.view.showErrorMessage();
-            
-            String query = "call update_production(" + id + ",\"" + state + "\","
-                    + "\"" + type + "\",\"" + startingDate + "\",\"" + finishingDate + "\");";
-            conn.executeQuery(query);
-            
-            System.out.println(query);
+            else{
+                String query = "call update_production(" + id + ",\"" + state + "\","
+                        + "\"" + type + "\",\"" + startingDate + "\",\"" + finishingDate + "\");";
+                conn.executeQuery(query);
+            }
         }
         catch(Exception e){
             

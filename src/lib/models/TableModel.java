@@ -4,32 +4,30 @@ import java.sql.ResultSet;
 import javax.swing.table.DefaultTableModel;
 import lib.app.DBConnection;
 
-public class CustomTableModel extends DefaultTableModel{
+public class TableModel extends DefaultTableModel{
     DBConnection con = new DBConnection();
     
 
-    public CustomTableModel() {
+    public TableModel(int id) {
         super();
-        initializeTable();
+        initializeTable(id);
     }
     
-    private void initializeTable(){
+    private void initializeTable(int id){
         String[] titles = {"Icono", "Nombre", "ID Producto"};
         setColumnIdentifiers(titles);
         
         con.getConnection();
         try{
-            ResultSet result = con.executeQuery("select * from getLastHistory");
+            ResultSet result = con.executeQuery("call getProductionsProducts(" + id + ");");
             con.endCOnnection();
 
             while (result.next()){
                 String[] query = new String[5];
                 
-                query[0] = result.getString("name");
-                query[1] = result.getString("value");
-                query[2] = result.getString("dateTime");
-                query[3] = result.getString("location");
-                query[4] = result.getString("processing");
+                query[0] = result.getString("icon");
+                query[1] = result.getString("nombre");
+                query[2] = result.getString("id");
                 
                 addRow(query);
             }
@@ -37,7 +35,7 @@ public class CustomTableModel extends DefaultTableModel{
         catch(Exception e){
             
         }
-    } 
+    }
     
     @Override
     public boolean isCellEditable (int row, int column){

@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import lib.models.ProductionsModel;
+import lib.models.TableModel;
 import lib.utils.AppColors;
 
 public class SingleProductionView extends javax.swing.JPanel {
@@ -151,7 +152,9 @@ public class SingleProductionView extends javax.swing.JPanel {
         dayComboBox_02.setForeground(this.colors.textColor());
         dayComboBox_02.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        updateButton.setBackground(this.colors.buttonColor());
         updateButton.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
+        updateButton.setForeground(new java.awt.Color(255, 255, 255));
         updateButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         updateButton.setText("Actualizar Información");
         updateButton.setOpaque(true);
@@ -278,6 +281,11 @@ public class SingleProductionView extends javax.swing.JPanel {
     public void showErrorMessage(){
         JOptionPane.showMessageDialog(this, 
                         "Los campos no pueden estar vacios, porfavor completelos he intentelo nuevamente");
+    }
+    
+    public void setTable(TableModel tableModel){
+        this.productsTable.setModel(tableModel);
+        this.productsTable.updateUI();
     }
     
     public JLabel getBackButton(){return this.backButton;}

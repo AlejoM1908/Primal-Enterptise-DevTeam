@@ -10,6 +10,7 @@ public class ButtonBarView extends javax.swing.JPanel {
 
     public ButtonBarView() {
         initComponents();
+        this.activesButton.setVisible(false);
     }
 
     /**

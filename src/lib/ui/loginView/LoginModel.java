@@ -42,7 +42,8 @@ public class LoginModel {
                     userName = result.getString("nombre");
                     range = result.getString("rango");
                     System.out.println(userName + " , " + range);
-                    result = conn.executeQuery("call userList('usuario','"+userName+"')");
+                    String query = "call userList('usuario',\""+userName+"\")";
+                    result = conn.executeQuery(query);
 
                     if (result.next()){
                         int telefono = -1;

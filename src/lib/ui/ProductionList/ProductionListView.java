@@ -10,6 +10,7 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
 /**
@@ -36,15 +37,13 @@ public class ProductionListView extends javax.swing.JPanel {
     public JLabel getJlReturn() {
         return jlReturn;
     }
-
-
-
-
-  
     
+    protected void sendError(){
+        JOptionPane.showMessageDialog(this, 
+                        "No has seleccionado ninguna producción, selecciona una he intentalo nuevamente");
+    }
     
-    
-    
+    public JTable getProductionsTable() {return this.jtProductions;}
 
     /**
      * This method is called from within the constructor to initialize the form.

@@ -37,7 +37,12 @@ public class ProductionListController implements MouseListener {
             ProductionSubmenuView productionSubmenuView = this.model.getRoot().getMainAppModel().getProductionSubmenuView();
             this.model.getRoot().getMainAppView().setProductionSubmenuView(productionSubmenuView);
         } else if (me.getSource()==this.view.getJlDetailProduction()){
+            int row = this.view.getProductionsTable().getSelectedRow();
             
+            if (row == -1)
+                this.view.sendError();
+            else
+                this.model.getRoot().goToSingleProduction( (int) this.view.getProductionsTable().getValueAt(row, 0));
         }
     }
 

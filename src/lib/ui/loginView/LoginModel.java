@@ -42,7 +42,8 @@ public class LoginModel {
                     userName = result.getString("nombre");
                     range = result.getString("rango");
                     System.out.println(userName + " , " + range);
-                    result = conn.executeQuery("call userList('usuario','"+userName+"')");
+                    String query = "call userList('usuario',\""+userName+"\")";
+                    result = conn.executeQuery(query);
 
                     if (result.next()){
                         int telefono = -1;
@@ -81,13 +82,13 @@ public class LoginModel {
                         nombres_login.remove(lugar_nombre);
                     }
                 }
-            }
-            
-            endConnection();
+            } 
         }
         catch(SQLException e){
             System.out.println("Ha ocurrido una SQLException: "+e.getMessage());
         }
+        
+        endConnection();
     }
     
     private void startConnection(){

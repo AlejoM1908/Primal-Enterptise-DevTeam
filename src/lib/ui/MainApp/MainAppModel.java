@@ -156,7 +156,7 @@ public class MainAppModel {
 
 
     private final SingleProductionView singleProductionView = new SingleProductionView();
-    private final SingleProductionModel singleProductionModel = new SingleProductionModel();
+    private final SingleProductionModel singleProductionModel = new SingleProductionModel(singleProductionView);
     private SingleProductionController singleProductionController;
 
 

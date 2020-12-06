@@ -1,6 +1,9 @@
 //Java imports
 package lib.ui.SingleProduction;
 
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JLabel;
+import lib.models.ProductionsModel;
 import lib.utils.AppColors;
 
 public class SingleProductionView extends javax.swing.JPanel {
@@ -52,9 +55,9 @@ public class SingleProductionView extends javax.swing.JPanel {
         productionIDLabel.setForeground(this.colors.textColor());
         productionIDLabel.setText("ID de Producción:");
 
+        productionIDText.setEditable(false);
         productionIDText.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
         productionIDText.setForeground(this.colors.textColor());
-        productionIDText.setText("jTextField1");
 
         productsLabel.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
         productsLabel.setForeground(this.colors.textColor());
@@ -94,7 +97,6 @@ public class SingleProductionView extends javax.swing.JPanel {
 
         stateText.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
         stateText.setForeground(this.colors.textColor());
-        stateText.setText("jTextField2");
 
         typeLabel.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
         typeLabel.setForeground(this.colors.textColor());
@@ -247,6 +249,29 @@ public class SingleProductionView extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public void setDate(String[] yearsList, String[] monthsList, String[] daysList){
+        this.yearComboBox.setModel(new DefaultComboBoxModel<>(yearsList));
+        this.monthComboBox.setModel(new DefaultComboBoxModel<>(monthsList));
+        this.dayComboBox.setModel(new DefaultComboBoxModel<>(daysList));
+        
+        this.yearComboBox_02.setModel(new DefaultComboBoxModel<>(yearsList));
+        this.monthComboBox_02.setModel(new DefaultComboBoxModel<>(monthsList));
+        this.dayComboBox_02.setModel(new DefaultComboBoxModel<>(daysList));
+    }
+    
+    public void setProductionModel (ProductionsModel model){
+        this.productionIDText.setText("" + model.getId());
+        this.stateText.setText(model.getState());
+        this.startingDate.setText(model.getStartingDate());
+        this.finishingDate.setText(model.getFinishingDate());
+    }
+    
+    public void setTypes(String[] types){
+        this.typeComboBox.setModel(new DefaultComboBoxModel<>(types));
+    }
+    
+    public JLabel getBackButton(){return this.backButton;}
+    public JLabel getUpdateButton() {return this.updateButton;}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backButton;

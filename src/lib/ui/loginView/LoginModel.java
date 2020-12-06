@@ -81,13 +81,13 @@ public class LoginModel {
                         nombres_login.remove(lugar_nombre);
                     }
                 }
-            }
-            
-            endConnection();
+            } 
         }
         catch(SQLException e){
             System.out.println("Ha ocurrido una SQLException: "+e.getMessage());
         }
+        
+        endConnection();
     }
     
     private void startConnection(){

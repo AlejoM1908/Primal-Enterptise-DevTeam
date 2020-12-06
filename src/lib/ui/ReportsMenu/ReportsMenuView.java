@@ -23,6 +23,9 @@ public class ReportsMenuView extends javax.swing.JPanel {
      */
     public ReportsMenuView() {
         initComponents();
+        
+        this.jlMoneyReport.setVisible(false);
+        this.jlMoney.setVisible(false);
     }
     
     protected void setVisibility(User user)

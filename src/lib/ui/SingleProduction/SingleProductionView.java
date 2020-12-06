@@ -2,7 +2,10 @@
 package lib.ui.SingleProduction;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import lib.models.ProductionsModel;
 import lib.utils.AppColors;
 
@@ -45,6 +48,7 @@ public class SingleProductionView extends javax.swing.JPanel {
         updateButton = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setBorder(javax.swing.BorderFactory.createLineBorder(this.colors.borderColor()));
         setForeground(this.colors.textColor());
         setMaximumSize(new java.awt.Dimension(1060, 708));
         setMinimumSize(new java.awt.Dimension(1060, 708));
@@ -102,6 +106,7 @@ public class SingleProductionView extends javax.swing.JPanel {
         typeLabel.setForeground(this.colors.textColor());
         typeLabel.setText("Tipo:");
 
+        typeComboBox.setEditable(true);
         typeComboBox.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
         typeComboBox.setForeground(this.colors.textColor());
         typeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -174,7 +179,7 @@ public class SingleProductionView extends javax.swing.JPanel {
                         .addComponent(productsLabel)
                         .addGap(18, 18, 18)
                         .addComponent(productsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(finishingDateLabel)
                     .addComponent(startingDateLabel)
@@ -235,7 +240,7 @@ public class SingleProductionView extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(productsLabel)
                             .addComponent(productsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(stateText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(stateLabel))
@@ -270,8 +275,26 @@ public class SingleProductionView extends javax.swing.JPanel {
         this.typeComboBox.setModel(new DefaultComboBoxModel<>(types));
     }
     
+    public void showErrorMessage(){
+        JOptionPane.showMessageDialog(this, 
+                        "Los campos no pueden estar vacios, porfavor completelos he intentelo nuevamente");
+    }
+    
     public JLabel getBackButton(){return this.backButton;}
     public JLabel getUpdateButton() {return this.updateButton;}
+    public JTextField getIdText() {return this.productionIDText;}
+    public JTextField getStateText() {return this.stateText;}
+    public JComboBox getTypeComboBox(){return this.typeComboBox;}
+    public JLabel getStatringDate(){return this.startingDate;}
+    public JLabel getFinishingDate() {return this.finishingDate;}
+    
+    public JComboBox getYearComboBox() {return this.yearComboBox;}
+    public JComboBox getMonthComboBox() {return this.monthComboBox;}
+    public JComboBox getDayComboBox() {return this.dayComboBox;}
+    
+    public JComboBox getYearComboBox_02() {return this.yearComboBox_02;}
+    public JComboBox getMonthComboBox_02() {return this.monthComboBox_02;}
+    public JComboBox getDayComboBox_02() {return this.dayComboBox_02;}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backButton;

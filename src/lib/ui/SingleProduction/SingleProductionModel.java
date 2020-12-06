@@ -47,7 +47,7 @@ public class SingleProductionModel {
             yearsList[i] = "" + (1990 + i);
         }
         
-        this.monthsList = new String[]{"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
+        this.monthsList = new String[]{"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"};
         
         daysList = new String[31];
         
@@ -100,6 +100,32 @@ public class SingleProductionModel {
         catch(Exception e){
             
         }
+    }
+    
+    public void updateInfo(){
+        conn.getConnection();
+        
+        try{
+            String id = this.view.getIdText().getText();
+            String state = this.view.getStateText().getText();
+            String type = (String) this.view.getTypeComboBox().getSelectedItem();
+            String startingDate = this.view.getStatringDate().getText();
+            String finishingDate = this.view.getFinishingDate().getText();
+            
+            if (id.isEmpty() || state.isEmpty() || type.isEmpty() || startingDate.isEmpty() || finishingDate.isEmpty())
+                this.view.showErrorMessage();
+            
+            String query = "call update_production(" + id + ",\"" + state + "\","
+                    + "\"" + type + "\",\"" + startingDate + "\",\"" + finishingDate + "\");";
+            conn.executeQuery(query);
+            
+            System.out.println(query);
+        }
+        catch(Exception e){
+            
+        }
+        
+        conn.endCOnnection();
     }
     
     public MainAppController getRootComponent() {return this.rootComponent;}

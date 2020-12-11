@@ -95,7 +95,7 @@ public class CreateProductionModel {
             int rowCount = model.getRowCount();
             for (int i = 0; i < rowCount; i++) {
                 String productId = Integer.toString((int) model.getValueAt(i, 0));
-                int amount = (int) model.getValueAt(i, 3);
+                int amount = (int) model.getValueAt(i, 4);
                 if (amount != 0) {
                     conn.executeQuery("CALL link_product_to_production(" + productId + "," + productionId + "," + Integer.toString(amount) + ");");
                 }

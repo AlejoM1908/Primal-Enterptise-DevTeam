@@ -503,8 +503,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `insertProvider`(
 	IN usuario VARCHAR(25)
 )
 BEGIN
+    INSERT INTO proveedores VALUES (nit,usuario,nombre,direccion,email); 
     INSERT INTO telefonos VALUES (NULL,NULL,nit,telefono);
-	INSERT INTO proveedores VALUES (nit,usuario,nombre,direccion,email);  
 END$$
 
 DELIMITER ;
@@ -732,17 +732,16 @@ DROP procedure IF EXISTS `primalenterpricedb`.`registerActive`;
 DELIMITER $$
 USE `primalenterpricedb`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `registerActive`(
-	IN id INT,
-    IN usuario VARCHAR(25),
+	IN usuario VARCHAR(25),
     IN nit INT,
-    IN id_factura INT,
     IN descripcion VARCHAR(255),
 	IN estado VARCHAR(25),
-    IN nombre VARCHAR(80)
+    IN nombre VARCHAR(80),
+    IN marca VARCHAR(45)
 )
 BEGIN
 	INSERT INTO activos
-    VALUES(id,usuario,nit,id_factura,estado,nombre,descripcion);
+    VALUES(NULL,usuario,nit,2,estado,nombre,descripcion,marca);
 END$$
 
 DELIMITER ;
@@ -990,7 +989,7 @@ CREATE USER IF NOT EXISTS 'Admin' IDENTIFIED BY 'HTNT^256FbzNNO6eInk$';
 GRANT ALL ON `PrimalEnterpriceDB`.* TO 'Admin';
 
 INSERT INTO facturas
-VALUES(NULL,"Admin","0","2020-01-01","Normal")
+VALUES(NULL,"Admin","0","2020-01-01","Normal");
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

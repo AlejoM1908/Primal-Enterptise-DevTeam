@@ -618,8 +618,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `productInfo`(
 	IN productId INT
 )
 BEGIN
-	SELECT nombre,descripcion,tipo,cantidad,metodo_almacenamiento,lugar_almacenamiento,fecha_caducidad,fecha_factura AS fecha_compra
-    FROM vw_getProduct WHERE id = productId;
+	SELECT nombre,descripcion,tipo,cantidad,metodo_almacenaje,ubicacion,fecha_caducidad,fecha_factura AS fecha_compra
+    FROM vw_getProducts WHERE id = productId;
 END$$
 
 DELIMITER ;

@@ -756,7 +756,6 @@ DROP procedure IF EXISTS `primalenterpricedb`.`registerProduct`;
 DELIMITER $$
 USE `primalenterpricedb`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `registerProduct`(
-	IN id INT,
     IN usuario VARCHAR(25),
     IN nit INT,
     IN marca VARCHAR(80),
@@ -770,7 +769,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `registerProduct`(
 )
 BEGIN
 	INSERT INTO productos
-    VALUES(id,usuario,nit,marca,tipo,cantidad,metodo_almacenamiento,lugar_almacenamiento,nombre,descripcion,fecha_caducidad,1);
+    VALUES(null,usuario,nit,marca,tipo,cantidad,metodo_almacenamiento,lugar_almacenamiento,nombre,descripcion,fecha_caducidad,1);
 END$$
 
 DELIMITER ;

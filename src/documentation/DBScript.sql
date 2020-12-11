@@ -763,9 +763,9 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `registerProduct`(
     IN cantidad INT,
     IN metodo_almacenamiento VARCHAR(255),
     IN lugar_almacenamiento VARCHAR(255),
-    IN fecha_caducidad DATE,
     IN nombre VARCHAR(80),
-    IN descripcion VARCHAR(255)
+    IN descripcion VARCHAR(255),
+    IN fecha_caducidad DATE
 )
 BEGIN
 	INSERT INTO productos

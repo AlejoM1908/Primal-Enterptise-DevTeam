@@ -60,11 +60,11 @@ public class prodController implements MouseListener {
         } else if (me.getSource() == this.view.getRegistrarB()) {
             int indicador;
             String fecha = "\"" + this.view.getAnoCB().getSelectedItem().toString() + "-" + this.view.getMesCB().getSelectedItem().toString() + "-" + this.view.getDiaCB().getSelectedItem().toString() + "\"";
-            String usr = this.model.getRootComponent().getMainAppModel().getLoggedUser().getUser();
+            String usr = "\"" + this.model.getRootComponent().getMainAppModel().getLoggedUser().getUser() + "\"";
             
             indicador = this.model.registrados("\"" + this.view.getNombreTF().getText() + "\"", "\"" + this.view.getMarcaTF().getText() + "\"",
                     "\"" + this.view.getTipolTF().getText() + "\"", this.view.getNitTF().getText(), this.view.getCantidadTF().getText(), "\"" + this.view.getAlmacenamientoTF().getText() + "\"",
-                    "\"" + this.view.getLugarTF().getText() + "\"", fecha, "\"" + usr + "\"", "\"" + this.view.getDescripcionTF().getText() + "\"");
+                    "\"" + this.view.getLugarTF().getText() + "\"", fecha, usr, "\"" + this.view.getDescripcionTF().getText() + "\"");
 
             if (indicador != 1) {
                 JOptionPane.showMessageDialog(this.view, "Datos Incorrectos");

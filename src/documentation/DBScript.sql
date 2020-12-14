@@ -503,8 +503,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `insertProvider`(
 	IN usuario VARCHAR(25)
 )
 BEGIN
+    INSERT INTO proveedores VALUES (nit,usuario,nombre,direccion,email); 
     INSERT INTO telefonos VALUES (NULL,NULL,nit,telefono);
-	INSERT INTO proveedores VALUES (nit,usuario,nombre,direccion,email);  
 END$$
 
 DELIMITER ;
@@ -618,8 +618,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `productInfo`(
 	IN productId INT
 )
 BEGIN
-	SELECT nombre,descripcion,tipo,cantidad,metodo_almacenamiento,lugar_almacenamiento,fecha_caducidad,fecha_factura AS fecha_compra
-    FROM vw_getProduct WHERE id = productId;
+	SELECT nombre,descripcion,tipo,cantidad,metodo_almacenaje,ubicacion,fecha_caducidad,fecha_factura AS fecha_compra
+    FROM vw_getProducts WHERE id = productId;
 END$$
 
 DELIMITER ;
@@ -732,17 +732,16 @@ DROP procedure IF EXISTS `primalenterpricedb`.`registerActive`;
 DELIMITER $$
 USE `primalenterpricedb`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `registerActive`(
-	IN id INT,
-    IN usuario VARCHAR(25),
+	IN usuario VARCHAR(25),
     IN nit INT,
-    IN id_factura INT,
     IN descripcion VARCHAR(255),
 	IN estado VARCHAR(25),
-    IN nombre VARCHAR(80)
+    IN nombre VARCHAR(80),
+    IN marca VARCHAR(45)
 )
 BEGIN
 	INSERT INTO activos
-    VALUES(id,usuario,nit,id_factura,estado,nombre,descripcion);
+    VALUES(NULL,usuario,nit,2,estado,nombre,descripcion,marca);
 END$$
 
 DELIMITER ;
@@ -757,7 +756,6 @@ DROP procedure IF EXISTS `primalenterpricedb`.`registerProduct`;
 DELIMITER $$
 USE `primalenterpricedb`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `registerProduct`(
-	IN id INT,
     IN usuario VARCHAR(25),
     IN nit INT,
     IN marca VARCHAR(80),
@@ -765,13 +763,13 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `registerProduct`(
     IN cantidad INT,
     IN metodo_almacenamiento VARCHAR(255),
     IN lugar_almacenamiento VARCHAR(255),
-    IN fecha_caducidad DATE,
     IN nombre VARCHAR(80),
-    IN descripcion VARCHAR(255)
+    IN descripcion VARCHAR(255),
+    IN fecha_caducidad DATE
 )
 BEGIN
 	INSERT INTO productos
-    VALUES(id,usuario,nit,marca,tipo,cantidad,metodo_almacenamiento,lugar_almacenamiento,nombre,descripcion,fecha_caducidad,1);
+    VALUES(null,usuario,nit,marca,tipo,cantidad,metodo_almacenamiento,lugar_almacenamiento,nombre,descripcion,fecha_caducidad,1);
 END$$
 
 DELIMITER ;
@@ -990,7 +988,7 @@ CREATE USER IF NOT EXISTS 'Admin' IDENTIFIED BY 'HTNT^256FbzNNO6eInk$';
 GRANT ALL ON `PrimalEnterpriceDB`.* TO 'Admin';
 
 INSERT INTO facturas
-VALUES(NULL,"Admin","0","2020-01-01","Normal")
+VALUES(NULL,"Admin","0","2020-01-01","Normal");
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

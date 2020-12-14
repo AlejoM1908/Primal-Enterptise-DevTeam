@@ -51,9 +51,7 @@ public class SupplierRegistrationModel {
     public boolean validateNit(int nitEntered) throws SQLException{
         DBConnection conn = new DBConnection();
         conn.getConnection();
-        ResultSet result = conn.executeQuery("SELECT COUNT(pve_nit)"
-                                           + "FROM proveedores"
-                                           + "WHERE pve_nit = " + Integer.toString(nitEntered) + ";");
+        ResultSet result = conn.executeQuery("SELECT COUNT(pve_nit) FROM proveedores WHERE pve_nit = " + Integer.toString(nitEntered) + ";");
         result.next();
         if(result.getInt(1) > 0){
             conn.endCOnnection();
@@ -71,8 +69,9 @@ public class SupplierRegistrationModel {
         String address = "\"" + view.getJtxtAddress().getText() + "\"";
         String email = "\"" + view.getJtxtEmail().getText() + "\"";
         int phoneNumber = Integer.parseInt(view.getJtxtPhoneNumber().getText());
+        String user = "\"" + this.rootComponent.getMainAppModel().getLoggedUser().getUser() + "\"";
         conn.executeQuery("CALL insertProvider(" + name + "," + nit + "," 
-                         + phoneNumber + "," + email + "," + address + "," + this.rootComponent.getMainAppModel().getLoggedUser().getUser() + ");");
+                         + phoneNumber + "," + email + "," + address + "," + user + ");");
         conn.endCOnnection();
     }
     
